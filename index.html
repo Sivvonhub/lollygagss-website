@@ -386,6 +386,72 @@
     .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
     .gallery-item { aspect-ratio:1; }
 
+    /* ── JOURNAL ── */
+    .journal-intro {
+      max-width:780px; margin:0 auto 56px; text-align:center; padding:0 24px;
+    }
+    .journal-grid {
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:48px; max-width:1200px; margin:0 auto; padding:0 48px;
+    }
+    .journal-card {
+      background:var(--white); cursor:pointer;
+      transition:transform .25s; text-decoration:none; color:inherit;
+      display:block;
+    }
+    .journal-card:hover { transform:translateY(-4px); }
+    .journal-card-image {
+      aspect-ratio: 4/3;
+      background:linear-gradient(145deg,#F4ECEC,#E0CCCA);
+      margin-bottom:20px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .journal-card-image span {
+      font-family:'Dancing Script',cursive; font-size:48px;
+      color:var(--rose); opacity:.6;
+    }
+    .journal-card-meta {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px;
+      text-transform:uppercase; color:var(--rose); margin-bottom:10px;
+    }
+    .journal-card-title {
+      font-family:'Playfair Display',serif; font-size:24px; font-weight:700;
+      line-height:1.25; margin-bottom:10px; color:var(--black);
+    }
+    .journal-card-excerpt {
+      font-family:'Cormorant Garamond',serif; font-size:17px;
+      font-weight:300; font-style:italic; color:var(--gray-dark);
+      line-height:1.6;
+    }
+    .journal-card-link {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--rose); margin-top:14px; display:inline-block;
+    }
+    .journal-empty {
+      text-align:center; padding:80px 24px; max-width:680px; margin:0 auto;
+    }
+    .journal-empty p {
+      font-family:'Cormorant Garamond',serif; font-size:20px;
+      font-style:italic; color:var(--gray-dark); line-height:1.7;
+    }
+    .journal-coming {
+      display:inline-flex; flex-direction:column; align-items:center;
+      padding:48px 60px; background:var(--blush); margin-top:32px;
+      max-width:480px;
+    }
+    .journal-coming-label {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px;
+      text-transform:uppercase; color:var(--rose); margin-bottom:12px;
+    }
+    .journal-coming h3 {
+      font-family:'Playfair Display',serif; font-size:26px; font-weight:700;
+      margin-bottom:10px; line-height:1.2;
+    }
+    .journal-coming p {
+      font-family:'Cormorant Garamond',serif; font-size:17px;
+      font-style:italic; color:var(--gray-dark); margin:0;
+    }
+
     /* ── CONTACT ── */
     .contact-grid { display:grid; grid-template-columns:1fr 1fr; }
     .contact-info { padding:80px 60px; background:var(--black); color:var(--white); }
@@ -477,6 +543,7 @@
     <li><a id="nav-services" onclick="showPage('services')"                data-en="Services" data-id="Layanan">Services</a></li>
     <li><a id="nav-about"    onclick="showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
     <li><a id="nav-gallery"  onclick="showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
+    <li><a id="nav-journal"  onclick="showPage('journal')"                 data-en="Journal"  data-id="Jurnal">Journal</a></li>
     <li><a id="nav-contact"  onclick="showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
   </ul>
 
@@ -888,6 +955,52 @@
 </div>
 
 <!-- ══════════════════════════════════════
+     JOURNAL
+══════════════════════════════════════ -->
+<div id="page-journal" class="page">
+
+  <div class="services-hero">
+    <p class="section-label" data-en="Stories & Guides" data-id="Cerita & Panduan">Stories & Guides</p>
+    <h1 class="section-title" data-en="Journal" data-id="Jurnal">Journal</h1>
+    <p data-en="Treatments, trends, and tips from our studio in Bali." data-id="Perawatan, tren, dan tips dari studio kami di Bali.">Treatments, trends, and tips from our studio in Bali.</p>
+  </div>
+
+  <div style="padding:64px 0;">
+    <!-- ═══ Post grid will be populated as posts are added ═══ -->
+    <div class="journal-grid">
+
+      <!-- ▼▼▼ POST CARDS GO HERE — copy this template for each post ▼▼▼
+
+      <a class="journal-card" href="/journal/biab-bali.html">
+        <div class="journal-card-image">
+          <span>BIAB</span>
+        </div>
+        <div class="journal-card-meta">
+          <span data-en="Treatments · 5 min read" data-id="Perawatan · 5 min baca">Treatments · 5 min read</span>
+        </div>
+        <h3 class="journal-card-title" data-en="What is BIAB and why it works in Bali" data-id="Apa itu BIAB dan mengapa cocok di Bali">What is BIAB and why it works in Bali</h3>
+        <p class="journal-card-excerpt" data-en="Builder gel that strengthens natural nails and survives the tropics. Here's everything you need to know." data-id="Gel builder yang menguatkan kuku alami dan tahan iklim tropis.">Builder gel that strengthens natural nails and survives the tropics. Here's everything you need to know.</p>
+        <span class="journal-card-link" data-en="Read more →" data-id="Baca selengkapnya →">Read more →</span>
+      </a>
+
+      ▲▲▲ END TEMPLATE ▲▲▲ -->
+
+    </div>
+
+    <!-- ═══ EMPTY STATE — remove this when first post is published ═══ -->
+    <div class="journal-empty">
+      <div class="journal-coming">
+        <span class="journal-coming-label" data-en="Coming Soon" data-id="Segera Hadir">Coming Soon</span>
+        <h3 data-en="Our first stories are on the way" data-id="Cerita pertama kami akan segera hadir">Our first stories are on the way</h3>
+        <p data-en="Treatment guides, behind-the-scenes from the studio, and answers to the questions our clients ask most." data-id="Panduan perawatan, cerita di balik layar studio, dan jawaban untuk pertanyaan yang paling sering ditanyakan klien kami.">Treatment guides, behind-the-scenes from the studio, and answers to the questions our clients ask most.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════
      CONTACT
 ══════════════════════════════════════ -->
 <div id="page-contact" class="page">
@@ -963,6 +1076,7 @@
         <li><a onclick="showPage('services')" data-en="Services" data-id="Layanan">Services</a></li>
         <li><a onclick="showPage('about')"    data-en="About"    data-id="Tentang">About</a></li>
         <li><a onclick="showPage('gallery')"  data-en="Gallery"  data-id="Galeri">Gallery</a></li>
+        <li><a onclick="showPage('journal')"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
         <li><a onclick="showPage('contact')"  data-en="Contact"  data-id="Kontak">Contact</a></li>
       </ul>
     </div>
@@ -994,7 +1108,7 @@
 <!-- ══ JAVASCRIPT ══ -->
 <script>
   // ── ROUTING ──
-  const PAGES = ['home','services','about','gallery','contact'];
+  const PAGES = ['home','services','about','gallery','journal','contact'];
 
   function showPage(id) {
     PAGES.forEach(p => {
