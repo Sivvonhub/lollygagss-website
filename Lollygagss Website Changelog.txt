@@ -77,6 +77,13 @@ Three services wired with Fresha deep links (pre-selects service in cart):
 
 BIAB Manicure: serviceId=23993534
 Classic Manicure/Pedicure: serviceId=23993497
+
+
+Changelog — v1.8:
+
+All 16 Fresha service IDs wired as deep links (every Book button now pre-selects the correct service)
+About page studio photo added (replaces "Coming Soon" placeholder)
+Photo optimised and embedded directly in HTML
 Gel Manicure/Pedicure: serviceId=23993503
 
 
