@@ -1,0 +1,111 @@
+Lollygagss Website Changelog
+
+v1.0 — Initial Build
+Date: Early May 2026
+
+Full single-file HTML site built with five pages: Home, Services, About, Gallery, Contact
+EN/ID language toggle
+IDR/AUD/USD/EUR/GBP currency converter with live exchange rate API
+Floating WhatsApp button with prefilled booking message
+Google Maps embed on contact page
+Logo recreated as inline SVG from Instagram branding
+Service menu: full nail and lash services with prices and durations
+Placeholder Instagram grid (blush-toned tiles linking to Instagram)
+About page with placeholder copy
+Fresha booking placeholder on contact page
+Footer with nav links and contact details
+
+
+v1.1 — Fouita Instagram Feed
+
+Replaced placeholder Instagram grid tiles with live Fouita carousel embed (widget ID: 0x455bdc, key: fthsb0t5d)
+Applied same embed to Gallery page
+
+
+v1.2 — Tracking & SEO
+
+Added Google Analytics (GA4) tracking code (G-62J9EXMBRP)
+Added Microsoft Clarity session recording (wm9ol66bbv)
+Added Google Search Console verification meta tag (Z0zSRF8admGdH7TZp5bXov08-XMq9WgDhtPPXUL3Zb4)
+Added Open Graph tags for social sharing previews
+Added Local Business structured data (address, hours, phone, coordinates)
+
+
+v1.3 — Service Menu Rename & Fresha Pricing
+
+Renamed all nail services to match Fresha menu names
+Renamed all lash services to match Fresha menu names
+Updated all prices to match live Fresha listing:
+
+Classic Lash Extensions 2D: Rp 125,000 → Rp 250,000
+Natural Volume Lashes 3D: Rp 150,000 → Rp 280,000
+Volume Lash Extensions 4D-6D: Rp 250,000 → Rp 350,000
+Lash Infill: "Half price" → Rp 220,000
+Lash Removal: Rp 50,000 → Rp 100,000
+Gel Removal: Rp 30,000 → Rp 50,000
+Extensions Removal: Rp 50,000 → Rp 80,000
+Nail Art Simple duration: 60 min → 90 min
+
+
+Added service descriptions to all rows
+
+
+v1.4 — Hero Wordmark, Meta Pixel, Fresha Integration, About Page, Stats Bar
+
+Added "Lollygagss Studio" wordmark in Dancing Script above "Feel Beautiful" in hero
+Added Meta Pixel (ID: 2380616549131464)
+Removed stats bar (8.7K followers / open daily / specialist services)
+All Book Now / Book Appointment buttons now open Fresha booking page in new tab
+Contact page Fresha placeholder replaced with real "Book Online via Fresha" button
+About page updated with full Fresha business description
+Sitemap generated (sitemap.xml)
+
+
+v1.5 — Remove Appointment Only
+
+Removed all instances of "appointment only" across the entire site (8 occurrences)
+Hero subtitle now reads: "Nail & lash studio in the heart of Teuku Umar, Bali"
+Visit Us section now reads: "Walk-ins welcome"
+About page booking meta changed to "Walk-ins Welcome"
+Footer and meta descriptions updated accordingly
+
+
+v1.6 — Per-Service Book Buttons & Deep Links
+
+Added Book button to every service row in both nail and lash tables
+Three services wired with Fresha deep links (pre-selects service in cart):
+
+BIAB Manicure: serviceId=23993534
+Classic Manicure/Pedicure: serviceId=23993497
+Gel Manicure/Pedicure: serviceId=23993503
+
+
+Remaining services use general Fresha booking link as fallback
+Polygel and Acrylic "Enquire" buttons open WhatsApp with prefilled service-specific message
+Added Book column header to both service tables
+
+
+v1.7 — Dedicated Pages for SEO, Hours Correction
+
+Services and Journal split into dedicated HTML files for Google indexing
+services.html created — serves lollygagss.id/services as a standalone indexable URL
+journal.html created — serves lollygagss.id/journal as a standalone indexable URL
+index.html updated — Services and Journal nav/footer links changed from onclick to real href links
+Home page service cards and "View Services" hero button converted to real anchor links
+vercel.json added — enables clean URLs (/services not /services.html) and 301 redirects from old hash URLs
+sitemap.xml updated — /#services and /#journal replaced with real URLs /services and /journal
+Each dedicated page has unique title tag, meta description, canonical URL, and correct nav active state
+SPA routing JS replaced with lightweight stub on dedicated pages
+Hours corrected across all three files and structured data:
+  Previously: Daily 09:00–19:00
+  Now: Mon–Sat 09:00–19:00. Sun by appointment.
+Structured data split into two OpeningHoursSpecification entries (Mon–Sat regular, Sunday by appointment)
+Hero "Book Appointment" button standardised to "Book Now"
+
+
+v1.8 — Remove Staff-Specific Fresha Links
+
+Stripped eid and pId parameters from all 21 Fresha booking URLs across index.html, services.html, and journal.html
+All booking buttons now point to the general Lollygagss Studio Fresha page (lid=2968855)
+Per-service deep links retain serviceId so individual Book buttons still pre-select the correct service
+Fixes "team member no longer available" error caused by removal of previous staff member from Fresha
