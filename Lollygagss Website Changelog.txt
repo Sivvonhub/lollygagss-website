@@ -77,13 +77,6 @@ Three services wired with Fresha deep links (pre-selects service in cart):
 
 BIAB Manicure: serviceId=23993534
 Classic Manicure/Pedicure: serviceId=23993497
-
-
-Changelog — v1.8:
-
-All 16 Fresha service IDs wired as deep links (every Book button now pre-selects the correct service)
-About page studio photo added (replaces "Coming Soon" placeholder)
-Photo optimised and embedded directly in HTML
 Gel Manicure/Pedicure: serviceId=23993503
 
 
@@ -92,13 +85,19 @@ Polygel and Acrylic "Enquire" buttons open WhatsApp with prefilled service-speci
 Added Book column header to both service tables
 
 
+v1.7 — Dedicated Pages for SEO, Hours Correction
 
-What's in this update (v1.9):
-
-"Journal" added to nav (between Gallery and Contact) and footer
-New Journal page with hero header matching the site style
-Empty state showing "Coming Soon — Our first stories are on the way" so it doesn't look broken
-Post grid framework ready — when you publish your first post in the SEO chat, I just drop a card into the grid and replace the empty state
-Template for post cards left in HTML comments so any future Claude conversation can see exactly how to add new posts
-EN/ID translations included for all journal text
-Same Cormorant Garamond / Playfair Display / Dancing Script aesthetic as the rest of the site
+Services and Journal split into dedicated HTML files for Google indexing
+services.html created — serves lollygagss.id/services as a standalone indexable URL
+journal.html created — serves lollygagss.id/journal as a standalone indexable URL
+index.html updated — Services and Journal nav/footer links changed from onclick to real href links
+Home page service cards and "View Services" hero button converted to real anchor links
+vercel.json added — enables clean URLs (/services not /services.html) and 301 redirects from old hash URLs
+sitemap.xml updated — /#services and /#journal replaced with real URLs /services and /journal
+Each dedicated page has unique title tag, meta description, canonical URL, and correct nav active state
+SPA routing JS replaced with lightweight stub on dedicated pages
+Hours corrected across all three files and structured data:
+  Previously: Daily 09:00–19:00
+  Now: Mon–Sat 09:00–19:00. Sun by appointment.
+Structured data split into two OpeningHoursSpecification entries (Mon–Sat regular, Sunday by appointment)
+Hero "Book Appointment" button standardised to "Book Now"
