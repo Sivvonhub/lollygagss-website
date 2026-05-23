@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/#services", "destination": "/services", "permanent": true },
+    { "source": "/#journal",  "destination": "/journal",  "permanent": true }
+  ]
+}
