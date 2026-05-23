@@ -37,12 +37,21 @@
       "latitude": -8.6706,
       "longitude": 115.2126
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "09:00",
-      "closes": "19:00"
-    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday"],
+        "opens": "09:00",
+        "closes": "19:00",
+        "description": "By appointment only"
+      }
+    ],
     "sameAs": ["https://www.instagram.com/lollygagss_studio/"]
   }
   </script>
@@ -540,10 +549,10 @@
 
   <ul class="nav-links">
     <li><a id="nav-home"     onclick="showPage('home')"     class="active" data-en="Home"     data-id="Beranda">Home</a></li>
-    <li><a id="nav-services" onclick="showPage('services')"                data-en="Services" data-id="Layanan">Services</a></li>
+    <li><a id="nav-services" href="/services" data-en="Services" data-id="Layanan">Services</a></li>
     <li><a id="nav-about"    onclick="showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
     <li><a id="nav-gallery"  onclick="showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
-    <li><a id="nav-journal"  onclick="showPage('journal')"                 data-en="Journal"  data-id="Jurnal">Journal</a></li>
+    <li><a id="nav-journal"  href="/journal"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
     <li><a id="nav-contact"  onclick="showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
   </ul>
 
@@ -584,8 +593,8 @@
         Nail & lash studio in the heart of Teuku Umar, Bali. Home service available.
       </p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Appointment" data-id="Buat Janji">Book Appointment</button>
-        <button class="btn-secondary" onclick="showPage('services')" data-en="View Services" data-id="Lihat Layanan">View Services</button>
+        <button class="btn-primary" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
+        <a href="/services" class="btn-secondary" data-en="View Services" data-id="Lihat Layanan">View Services</a>
       </div>
     </div>
   </section>
@@ -597,22 +606,22 @@
       Precision nails and professional lash services, delivered in a calm and clean space.
     </p>
     <div class="service-cards">
-      <div class="service-card" onclick="showPage('services')">
+      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;">
         <div class="sc-num">01</div>
         <div class="sc-title" data-en="Nails" data-id="Kuku">Nails</div>
         <div class="sc-desc" data-en="Gel manicure, BIAB, nail extensions, and nail art from simple to hard design." data-id="Gel manikur, BIAB, ekstensi kuku, dan seni kuku dari desain sederhana hingga kompleks.">
           Gel manicure, BIAB, nail extensions, and nail art from simple to hard design.
         </div>
         <div class="sc-link" data-en="View nail services →" data-id="Lihat layanan kuku →">View nail services →</div>
-      </div>
-      <div class="service-card" onclick="showPage('services')">
+      </a>
+      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;">
         <div class="sc-num">02</div>
         <div class="sc-title" data-en="Lashes" data-id="Bulu Mata">Lashes</div>
         <div class="sc-desc" data-en="Natural 2D through volume 6D lash extensions. Cat eye and volume styling available." data-id="Ekstensi bulu mata natural 2D hingga volume 6D. Tersedia styling cat eye dan volume.">
           Natural 2D through volume 6D lash extensions. Cat eye and volume styling available.
         </div>
         <div class="sc-link" data-en="View lash services →" data-id="Lihat layanan bulu mata →">View lash services →</div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -620,8 +629,8 @@
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-label" data-en="Visit Us" data-id="Kunjungi Kami">Visit Us</p>
       <h2 class="section-title" data-en="Jl. Persada II, Teuku Umar, Bali" data-id="Jl. Persada II, Teuku Umar, Bali">Jl. Persada II, Teuku Umar, Bali</h2>
-      <p class="section-intro" style="margin-bottom:36px;" data-en="Open daily 09:00–19:00. Walk-ins welcome. Home service available on request." data-id="Buka setiap hari 09.00–19.00. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
-        Open daily 09:00–19:00. Walk-ins welcome. Home service available on request.
+      <p class="section-intro" style="margin-bottom:36px;" data-en="Mon–Sat 09:00–19:00. Sun by appointment. Walk-ins welcome. Home service available on request." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
+        Mon–Sat 09:00–19:00. Sun by appointment. Walk-ins welcome. Home service available on request.
       </p>
       <button class="btn-primary" onclick="showPage('contact')" data-en="Get Directions & Book" data-id="Dapatkan Petunjuk & Pesan">Get Directions & Book</button>
     </div>
@@ -643,7 +652,7 @@
   <div class="book-banner">
     <h2 data-en="Ready to treat yourself?" data-id="Siap memanjakan diri?">Ready to treat yourself?</h2>
     <p data-en="Book your appointment via WhatsApp or our online booking system." data-id="Buat janji Anda melalui WhatsApp atau sistem pemesanan online kami.">Book your appointment via WhatsApp or our online booking system.</p>
-    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Now" data-id="Pesan Sekarang">Book Now</button>
+    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
   </div>
 
 </div>
@@ -893,7 +902,7 @@
   <div class="book-banner">
     <h2 data-en="Ready to book?" data-id="Siap memesan?">Ready to book?</h2>
     <p data-en="Message us on WhatsApp or use our online booking system." data-id="Hubungi kami di WhatsApp atau gunakan sistem pemesanan online kami.">Message us on WhatsApp or use our online booking system.</p>
-    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Appointment" data-id="Buat Janji">Book Appointment</button>
+    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
   </div>
 
 </div>
@@ -918,7 +927,7 @@
       <div class="about-meta">
         <div>
           <div class="meta-lbl" data-en="Hours" data-id="Jam Buka">Hours</div>
-          <div class="meta-val" data-en="Daily 09:00–19:00" data-id="Setiap Hari 09.00–19.00">Daily 09:00–19:00</div>
+          <div class="meta-val" data-en="Mon–Sat 09:00–19:00. Sun by appointment." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji.">Mon–Sat 09:00–19:00. Sun by appointment.</div>
         </div>
         <div>
           <div class="meta-lbl" data-en="Booking" data-id="Pemesanan">Booking</div>
@@ -1015,7 +1024,7 @@
       </div>
       <div class="c-item">
         <div class="c-lbl" data-en="Hours" data-id="Jam Buka">Hours</div>
-        <div class="c-val" data-en="Daily 09:00–19:00" data-id="Setiap Hari 09.00–19.00">Daily 09:00–19:00</div>
+        <div class="c-val" data-en="Mon–Sat 09:00–19:00. Sun by appointment." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji.">Mon–Sat 09:00–19:00. Sun by appointment.</div>
       </div>
       <div class="c-item">
         <div class="c-lbl" data-en="Phone / WhatsApp" data-id="Telepon / WhatsApp">Phone / WhatsApp</div>
@@ -1073,10 +1082,10 @@
       <div class="footer-h" data-en="Navigate" data-id="Navigasi">Navigate</div>
       <ul class="footer-links">
         <li><a onclick="showPage('home')"     data-en="Home"     data-id="Beranda">Home</a></li>
-        <li><a onclick="showPage('services')" data-en="Services" data-id="Layanan">Services</a></li>
+        <li><a href="/services" data-en="Services" data-id="Layanan">Services</a></li>
         <li><a onclick="showPage('about')"    data-en="About"    data-id="Tentang">About</a></li>
         <li><a onclick="showPage('gallery')"  data-en="Gallery"  data-id="Galeri">Gallery</a></li>
-        <li><a onclick="showPage('journal')"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
+        <li><a href="/journal"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
         <li><a onclick="showPage('contact')"  data-en="Contact"  data-id="Kontak">Contact</a></li>
       </ul>
     </div>
@@ -1086,7 +1095,7 @@
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
         <li><a onclick="showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
-        <li><a onclick="showPage('contact')" data-en="Daily 09:00–19:00" data-id="Setiap Hari 09.00–19.00">Daily 09:00–19:00</a></li>
+        <li><a onclick="showPage('contact')" data-en="Mon–Sat 09:00–19:00. Sun by appointment." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji.">Mon–Sat 09:00–19:00. Sun by appointment.</a></li>
       </ul>
     </div>
   </div>
