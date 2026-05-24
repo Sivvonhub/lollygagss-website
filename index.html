@@ -37,21 +37,12 @@
       "latitude": -8.6706,
       "longitude": 115.2126
     },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday"],
-        "opens": "09:00",
-        "closes": "19:00",
-        "description": "By appointment only"
-      }
-    ],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
     "sameAs": ["https://www.instagram.com/lollygagss_studio/"]
   }
   </script>
@@ -282,10 +273,11 @@
     }
     .service-card:last-child { background:var(--rose); }
     .service-card:hover { filter:brightness(1.1); }
-    .sc-num { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:3px; opacity:.4; margin-bottom:28px; }
-    .sc-title { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; margin-bottom:14px; }
-    .sc-desc { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; font-style:italic; opacity:.8; line-height:1.65; margin-bottom:36px; }
-    .sc-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.7; }
+    a.service-card { color:var(--white); text-decoration:none; display:block; }
+    .sc-num { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:3px; opacity:.4; margin-bottom:28px; color:var(--white); }
+    .sc-title { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; margin-bottom:14px; color:var(--white); }
+    .sc-desc { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; font-style:italic; opacity:.8; line-height:1.65; margin-bottom:36px; color:var(--white); }
+    .sc-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.7; color:var(--white); }
 
     /* ── BOOK BANNER ── */
     .book-banner { background:var(--rose); color:var(--white); padding:72px 48px; text-align:center; }
@@ -549,10 +541,10 @@
 
   <ul class="nav-links">
     <li><a id="nav-home"     onclick="showPage('home')"     class="active" data-en="Home"     data-id="Beranda">Home</a></li>
-    <li><a id="nav-services" href="/services" data-en="Services" data-id="Layanan">Services</a></li>
+    <li><a id="nav-services" onclick="showPage('services')"                data-en="Services" data-id="Layanan">Services</a></li>
     <li><a id="nav-about"    onclick="showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
     <li><a id="nav-gallery"  onclick="showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
-    <li><a id="nav-journal"  href="/journal"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
+    <li><a id="nav-journal"  onclick="showPage('journal')"                 data-en="Journal"  data-id="Jurnal">Journal</a></li>
     <li><a id="nav-contact"  onclick="showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
   </ul>
 
@@ -568,7 +560,7 @@
       <option value="EUR">EUR</option>
       <option value="GBP">GBP</option>
     </select>
-    <button class="btn-book-nav" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
+    <button class="btn-book-nav" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
   </div>
 </nav>
 
@@ -593,8 +585,8 @@
         Nail & lash studio in the heart of Teuku Umar, Bali. Home service available.
       </p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
-        <a href="/services" class="btn-secondary" data-en="View Services" data-id="Lihat Layanan">View Services</a>
+        <button class="btn-primary" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Appointment" data-id="Buat Janji">Book Appointment</button>
+        <button class="btn-secondary" onclick="showPage('services')" data-en="View Services" data-id="Lihat Layanan">View Services</button>
       </div>
     </div>
   </section>
@@ -629,8 +621,8 @@
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-label" data-en="Visit Us" data-id="Kunjungi Kami">Visit Us</p>
       <h2 class="section-title" data-en="Jl. Persada II, Teuku Umar, Bali" data-id="Jl. Persada II, Teuku Umar, Bali">Jl. Persada II, Teuku Umar, Bali</h2>
-      <p class="section-intro" style="margin-bottom:36px;" data-en="Mon–Sat 09:00–19:00. Sun by appointment. Walk-ins welcome. Home service available on request." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
-        Mon–Sat 09:00–19:00. Sun by appointment. Walk-ins welcome. Home service available on request.
+      <p class="section-intro" style="margin-bottom:36px;" data-en="Open daily 09:00–19:00. Walk-ins welcome. Home service available on request." data-id="Buka setiap hari 09.00–19.00. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
+        Open daily 09:00–19:00. Walk-ins welcome. Home service available on request.
       </p>
       <button class="btn-primary" onclick="showPage('contact')" data-en="Get Directions & Book" data-id="Dapatkan Petunjuk & Pesan">Get Directions & Book</button>
     </div>
@@ -652,7 +644,7 @@
   <div class="book-banner">
     <h2 data-en="Ready to treat yourself?" data-id="Siap memanjakan diri?">Ready to treat yourself?</h2>
     <p data-en="Book your appointment via WhatsApp or our online booking system." data-id="Buat janji Anda melalui WhatsApp atau sistem pemesanan online kami.">Book your appointment via WhatsApp or our online booking system.</p>
-    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
+    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Now" data-id="Pesan Sekarang">Book Now</button>
   </div>
 
 </div>
@@ -710,7 +702,7 @@
           </td>
           <td><div class="svc-dur">60 min</div></td>
           <td><div class="svc-price" data-idr="250000">Rp 250,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993534','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993534','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td><div class="svc-name" data-en="Classic Manicure / Classic Pedicure" data-id="Manikur Klasik / Pedikur Klasik">Classic Manicure / Classic Pedicure</div>
@@ -718,7 +710,7 @@
           </td>
           <td><div class="svc-dur">45 min</div></td>
           <td><div class="svc-price" data-idr="100000">Rp 100,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993497','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993497','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -727,7 +719,7 @@
           </td>
           <td><div class="svc-dur">60 min</div></td>
           <td><div class="svc-price" data-idr="150000">Rp 150,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993503','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993503','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -736,7 +728,7 @@
           </td>
           <td><div class="svc-dur">90 min</div></td>
           <td><div class="svc-price" data-idr="200000">Rp 200,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993517','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993517','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -748,7 +740,7 @@
             <div class="svc-price" data-idr="225000">Rp 225,000</div>
             <div class="svc-note" data-en="starting price" data-id="harga mulai dari">starting price</div>
           </td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993538','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993538','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -760,7 +752,7 @@
             <div class="svc-price" data-idr="225000">Rp 225,000</div>
             <div class="svc-note" data-en="starting price" data-id="harga mulai dari">starting price</div>
           </td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993544','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993544','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -772,7 +764,7 @@
             <div class="svc-price" data-idr="250000">Rp 250,000</div>
             <div class="svc-note" data-en="starting price" data-id="harga mulai dari">starting price</div>
           </td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993552','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993552','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -784,7 +776,7 @@
             <div class="svc-price" data-idr="300000">Rp 300,000</div>
             <div class="svc-note" data-en="starting price" data-id="harga mulai dari">starting price</div>
           </td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993565','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993565','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -793,7 +785,7 @@
           </td>
           <td><div class="svc-dur">90 min</div></td>
           <td><div class="svc-price" data-idr="100000">Rp 100,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993571','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993571','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td><div class="svc-name" data-en="Polygel Extensions" data-id="Ekstensi Polygel">Polygel Extensions</div></td>
@@ -814,7 +806,7 @@
           </td>
           <td><div class="svc-dur">60 min</div></td>
           <td><div class="svc-price" data-idr="80000">Rp 80,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993611','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993611','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -823,7 +815,7 @@
           </td>
           <td><div class="svc-dur">20 min</div></td>
           <td><div class="svc-price" data-idr="50000">Rp 50,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993607','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993607','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
       </tbody>
     </table>
@@ -857,7 +849,7 @@
           </td>
           <td><div class="svc-dur">120 min</div></td>
           <td><div class="svc-price" data-idr="250000">Rp 250,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23943085','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23943085','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -866,7 +858,7 @@
           </td>
           <td><div class="svc-dur">120 min</div></td>
           <td><div class="svc-price" data-idr="280000">Rp 280,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993650','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993650','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -875,7 +867,7 @@
           </td>
           <td><div class="svc-dur">120 min</div></td>
           <td><div class="svc-price" data-idr="350000">Rp 350,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993659','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993659','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -884,7 +876,7 @@
           </td>
           <td><div class="svc-dur">60 min</div></td>
           <td><div class="svc-price" data-idr="220000">Rp 220,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993664','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993664','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
         <tr>
           <td>
@@ -893,7 +885,7 @@
           </td>
           <td><div class="svc-dur">60 min</div></td>
           <td><div class="svc-price" data-idr="100000">Rp 100,000</div></td>
-          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&serviceId=23993668','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
+          <td><button class="btn-book-row" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775&serviceId=23993668','_blank')" data-en="Book" data-id="Pesan">Book</button></td>
         </tr>
       </tbody>
     </table>
@@ -902,7 +894,7 @@
   <div class="book-banner">
     <h2 data-en="Ready to book?" data-id="Siap memesan?">Ready to book?</h2>
     <p data-en="Message us on WhatsApp or use our online booking system." data-id="Hubungi kami di WhatsApp atau gunakan sistem pemesanan online kami.">Message us on WhatsApp or use our online booking system.</p>
-    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
+    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" data-en="Book Appointment" data-id="Buat Janji">Book Appointment</button>
   </div>
 
 </div>
@@ -927,7 +919,7 @@
       <div class="about-meta">
         <div>
           <div class="meta-lbl" data-en="Hours" data-id="Jam Buka">Hours</div>
-          <div class="meta-val" data-en="Mon–Sat 09:00–19:00. Sun by appointment." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji.">Mon–Sat 09:00–19:00. Sun by appointment.</div>
+          <div class="meta-val" data-en="Daily 09:00–19:00" data-id="Setiap Hari 09.00–19.00">Daily 09:00–19:00</div>
         </div>
         <div>
           <div class="meta-lbl" data-en="Booking" data-id="Pemesanan">Booking</div>
@@ -1024,7 +1016,7 @@
       </div>
       <div class="c-item">
         <div class="c-lbl" data-en="Hours" data-id="Jam Buka">Hours</div>
-        <div class="c-val" data-en="Mon–Sat 09:00–19:00. Sun by appointment." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji.">Mon–Sat 09:00–19:00. Sun by appointment.</div>
+        <div class="c-val" data-en="Daily 09:00–19:00" data-id="Setiap Hari 09.00–19.00">Daily 09:00–19:00</div>
       </div>
       <div class="c-item">
         <div class="c-lbl" data-en="Phone / WhatsApp" data-id="Telepon / WhatsApp">Phone / WhatsApp</div>
@@ -1047,7 +1039,7 @@
       <div class="fresha-placeholder">
         <p data-en="Online Booking" data-id="Pemesanan Online">Online Booking</p>
         <p data-en="Book directly — instant confirmation, no account required." data-id="Pesan langsung — konfirmasi instan, tidak perlu akun.">Book directly — instant confirmation, no account required.</p>
-        <button onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" style="margin-top:16px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;background:var(--rose);color:white;border:none;cursor:pointer;" data-en="Book Online via Fresha" data-id="Pesan Online via Fresha">Book Online via Fresha</button>
+        <button onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5247207&share=true&pId=2869775','_blank')" style="margin-top:16px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;background:var(--rose);color:white;border:none;cursor:pointer;" data-en="Book Online via Fresha" data-id="Pesan Online via Fresha">Book Online via Fresha</button>
       </div>
     </div>
 
@@ -1082,10 +1074,10 @@
       <div class="footer-h" data-en="Navigate" data-id="Navigasi">Navigate</div>
       <ul class="footer-links">
         <li><a onclick="showPage('home')"     data-en="Home"     data-id="Beranda">Home</a></li>
-        <li><a href="/services" data-en="Services" data-id="Layanan">Services</a></li>
+        <li><a onclick="showPage('services')" data-en="Services" data-id="Layanan">Services</a></li>
         <li><a onclick="showPage('about')"    data-en="About"    data-id="Tentang">About</a></li>
         <li><a onclick="showPage('gallery')"  data-en="Gallery"  data-id="Galeri">Gallery</a></li>
-        <li><a href="/journal"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
+        <li><a onclick="showPage('journal')"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
         <li><a onclick="showPage('contact')"  data-en="Contact"  data-id="Kontak">Contact</a></li>
       </ul>
     </div>
@@ -1095,7 +1087,7 @@
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
         <li><a onclick="showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
-        <li><a onclick="showPage('contact')" data-en="Mon–Sat 09:00–19:00. Sun by appointment." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji.">Mon–Sat 09:00–19:00. Sun by appointment.</a></li>
+        <li><a onclick="showPage('contact')" data-en="Daily 09:00–19:00" data-id="Setiap Hari 09.00–19.00">Daily 09:00–19:00</a></li>
       </ul>
     </div>
   </div>
