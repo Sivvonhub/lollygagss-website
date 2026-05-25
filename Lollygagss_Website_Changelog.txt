@@ -158,3 +158,80 @@ Stripped eid and pId parameters from all 21 Fresha booking URLs across index.htm
 All booking buttons now point to the general Lollygagss Studio Fresha page (lid=2968855)
 Per-service deep links retain serviceId so individual Book buttons still pre-select the correct service
 Fixes "team member no longer available" error caused by removal of previous staff member from Fresha
+
+
+v1.9 — Google Reviews API Integration
+Date: 25 May 2026
+New Feature: Live Google Reviews Display
+
+Added Google Places API integration to display live Google reviews on website
+Three review sections added to index.html (Home, Services, Contact pages)
+Each section displays:
+
+Aggregate star rating and review count with link to Google Business Profile
+Up to 3 most recent written reviews (5-star preferred, sorted by recency)
+Reviewer name, timestamp ("X months ago" format), and avatar photo
+Reviews pull from Google Place ID: ChIJHTK4hLlH0i0RMqbSXuaV1XY
+
+
+
+Smart Caching & Performance
+
+API calls cached for 6 hours to minimise request volume and cost
+Responsive design: Reviews grid collapses to single column on mobile
+Language support: Review summary labels respect EN/ID language toggle
+Graceful fallback if API fails or Place ID has no reviews yet
+
+Styling
+
+Styling integrated into brand palette: cream/blush/white backgrounds, rose accents
+Review quote text in Cormorant Garamond italic
+Reviewer names and metadata in Jost sans-serif
+Matches existing design system
+
+API Architecture
+
+Client-side JS fetch calls /api/reviews endpoint (no API key in browser code)
+Vercel serverless function (api/reviews.js) proxies Google Places API
+API key stored securely as environment variable GOOGLE_PLACES_API_KEY in Vercel dashboard
+Function returns JSON with rating, user_ratings_total, and reviews array
+Cache headers set to 6-hour revalidation with 1-hour stale-while-revalidate window
+
+Setup Requirements
+
+Google Cloud Console: Places API enabled, API key generated and restricted to Places API + lollygagss.id
+Vercel: Environment variable GOOGLE_PLACES_API_KEY added to Production environment
+GitHub: api/reviews.js file added to lollygagss-website repo root (auto-deployed by Vercel)
+index.html: Updated with three review sections and fetch logic
+
+Cost
+
+Free within Google's generous free tier (~11,700 calls/month at current usage)
+Card on file required but no charge expected until traffic scales significantly
+28,500 map loads per month before any charge applies
+
+v1.10 — Bug Fixes: Nav & Google Reviews API
+Date: 25 May 2026
+Nav links broken (critical fix)
+
+Fixed showPage() conflict introduced in v1.9
+Root cause: reviews code redeclared function showPage() using _origShowPage pattern — JavaScript function hoisting caused both declarations to reference each other, breaking all nav link clicks
+Fix: removed the override pattern entirely; reviews trigger (loadReviews()) added directly inside the original showPage() function
+All nav links (Home, Services, About, Gallery, Journal, Contact) restored
+
+Google Reviews API — fully operational
+
+Rewrote api/reviews.js from CommonJS (module.exports) to ES Module (export default) to match Vercel's runtime expectations
+Added "type": "module" to package.json to suppress Vercel's ESM/CommonJS conversion warning
+Removed invalid functions runtime block from vercel.json (nodejs18.x is not a valid Vercel runtime string — caused build error)
+Switched API call from header-based auth (X-Goog-Api-Key) to query param (?key=) — matches Places API (New) browser behaviour and resolved REQUEST_DENIED errors
+Removed timeAgo() function from index.html — Places API (New) returns human-readable relative time strings directly (relativePublishTimeDescription), no calculation needed
+Fixed sort function in renderGrid() — removed reference to b.time (classic API field, not present in new API response)
+Reviews confirmed live: 5.0 stars, 49 reviews, pulling correctly from Place ID ChIJHTK4hLlH0i0RMqbSXuaV1XY
+
+Debugging notes for future reference
+
+Places API (New) uses places.googleapis.com/v1/places/{ID} not maps.googleapis.com/maps/api/place/details/json
+Places API (New) requires billing enabled on Google Cloud project even within free tier
+Vercel serverless functions cache aggressively — adding a blank line to force file hash change triggers a true rebuild
+HTTP referrer restrictions on Google API keys block server-to-server calls; use no restriction or IP restriction for server-side usage
