@@ -587,9 +587,6 @@
       .reviews-big-score { font-size:56px; }
     }
   </style>
-  <!-- Vercel Web Analytics -->
-  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-
 </head>
 <body>
 
@@ -1243,6 +1240,8 @@
     window.scrollTo({ top:0, behavior:'smooth' });
     // Update URL hash for bookmarking
     history.replaceState(null,'','#'+id);
+    // Trigger reviews load on relevant pages
+    if (['home','services','contact'].includes(id)) loadReviews();
   }
 
   // Handle hash on load
@@ -1440,25 +1439,12 @@
     });
   }
 
-  // Load reviews on first page visit and whenever user navigates to a reviews page
-  const REVIEW_PAGES = ['home','services','contact'];
-  const _origShowPage = showPage;
-  function showPage(id) {
-    _origShowPage(id);
-    if (REVIEW_PAGES.includes(id)) loadReviews();
-  }
-  // Also load on initial page load
+  // Load reviews on initial page load
   window.addEventListener('load', () => {
     const hash = window.location.hash.replace('#','');
     const startPage = PAGES.includes(hash) ? hash : 'home';
-    if (REVIEW_PAGES.includes(startPage)) loadReviews();
+    if (['home','services','contact'].includes(startPage)) loadReviews();
   });
-</script>
-
-<!-- Vercel Speed Insights -->
-<script type="module">
-  import { injectSpeedInsights } from 'https://unpkg.com/@vercel/speed-insights@2.0.0/dist/index.mjs';
-  injectSpeedInsights();
 </script>
 </body>
 </html>
