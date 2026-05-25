@@ -1198,5 +1198,11 @@
       window.scrollY > 20 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
   }, { passive:true });
 </script>
+
+<!-- Vercel Speed Insights -->
+<script type="module">
+  import { injectSpeedInsights } from 'https://unpkg.com/@vercel/speed-insights@2.0.0/dist/index.mjs';
+  injectSpeedInsights();
+</script>
 </body>
 </html>
