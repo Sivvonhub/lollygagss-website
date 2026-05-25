@@ -3,5 +3,13 @@
   "redirects": [
     { "source": "/#services", "destination": "/services", "permanent": true },
     { "source": "/#journal",  "destination": "/journal",  "permanent": true }
-  ]
+  ],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ],
+  "functions": {
+    "api/reviews.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
