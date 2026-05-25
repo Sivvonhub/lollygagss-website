@@ -273,11 +273,10 @@
     }
     .service-card:last-child { background:var(--rose); }
     .service-card:hover { filter:brightness(1.1); }
-    a.service-card { color:var(--white); text-decoration:none; display:block; }
-    .sc-num { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:3px; opacity:.4; margin-bottom:28px; color:var(--white); }
-    .sc-title { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; margin-bottom:14px; color:var(--white); }
-    .sc-desc { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; font-style:italic; opacity:.8; line-height:1.65; margin-bottom:36px; color:var(--white); }
-    .sc-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.7; color:var(--white); }
+    .sc-num { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:3px; opacity:.4; margin-bottom:28px; }
+    .sc-title { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; margin-bottom:14px; }
+    .sc-desc { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; font-style:italic; opacity:.8; line-height:1.65; margin-bottom:36px; }
+    .sc-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.7; }
 
     /* ── BOOK BANNER ── */
     .book-banner { background:var(--rose); color:var(--white); padding:72px 48px; text-align:center; }
@@ -501,6 +500,70 @@
     .footer-btm { max-width:1100px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; align-items:center; }
     .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.28); }
 
+    /* ── GOOGLE REVIEWS ── */
+    .reviews-section {
+      padding:88px 48px; background:var(--cream);
+    }
+    .reviews-inner { max-width:1200px; margin:0 auto; }
+    .reviews-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:52px; flex-wrap:wrap; gap:20px; }
+    .reviews-rating-summary { display:flex; align-items:center; gap:20px; }
+    .reviews-big-score {
+      font-family:'Playfair Display',serif; font-size:72px; font-weight:900;
+      color:var(--rose); line-height:1;
+    }
+    .reviews-stars-col { display:flex; flex-direction:column; gap:4px; }
+    .reviews-stars { display:flex; gap:3px; }
+    .reviews-stars span { color:var(--rose); font-size:18px; }
+    .reviews-count {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gray); margin-top:4px;
+    }
+    .reviews-google-link {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--rose); text-decoration:none;
+      border-bottom:1px solid var(--rose-light); padding-bottom:2px;
+      transition:color .2s;
+    }
+    .reviews-google-link:hover { color:var(--rose-dark); }
+    .reviews-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    }
+    .review-card {
+      background:var(--white); padding:36px 32px;
+      display:flex; flex-direction:column; gap:16px;
+    }
+    .review-card-stars { display:flex; gap:2px; }
+    .review-card-stars span { color:var(--rose); font-size:14px; }
+    .review-card-text {
+      font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:300;
+      font-style:italic; color:var(--gray-dark); line-height:1.7; flex:1;
+    }
+    .review-card-author {
+      display:flex; align-items:center; gap:12px; margin-top:8px;
+    }
+    .review-card-avatar {
+      width:36px; height:36px; border-radius:50%; background:var(--rose-light);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Jost',sans-serif; font-size:13px; font-weight:500; color:var(--white);
+      flex-shrink:0; overflow:hidden;
+    }
+    .review-card-avatar img { width:100%; height:100%; object-fit:cover; }
+    .review-card-name {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:var(--black);
+    }
+    .review-card-date {
+      font-family:'Jost',sans-serif; font-size:10px; color:var(--gray); margin-top:2px;
+    }
+    .reviews-loading {
+      text-align:center; padding:48px 0;
+      font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray);
+    }
+    /* Contact page reviews — dark background variant */
+    .reviews-section-dark {
+      padding:72px 48px; background:var(--blush);
+    }
+    .reviews-section-dark .reviews-inner { max-width:1200px; margin:0 auto; }
+
     /* ── RESPONSIVE ── */
     @media(max-width:768px) {
       nav { padding:0 20px; }
@@ -518,6 +581,10 @@
       .currency-bar { padding:12px 24px; gap:8px; flex-wrap:wrap; }
       .svc-header { flex-direction:column; }
       .footer-grid { gap:40px; }
+      .reviews-section, .reviews-section-dark { padding:56px 24px; }
+      .reviews-grid { grid-template-columns:1fr; }
+      .reviews-header { flex-direction:column; align-items:flex-start; }
+      .reviews-big-score { font-size:56px; }
     }
   </style>
 </head>
@@ -598,22 +665,22 @@
       Precision nails and professional lash services, delivered in a calm and clean space.
     </p>
     <div class="service-cards">
-      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;">
+      <div class="service-card" onclick="showPage('services')">
         <div class="sc-num">01</div>
         <div class="sc-title" data-en="Nails" data-id="Kuku">Nails</div>
         <div class="sc-desc" data-en="Gel manicure, BIAB, nail extensions, and nail art from simple to hard design." data-id="Gel manikur, BIAB, ekstensi kuku, dan seni kuku dari desain sederhana hingga kompleks.">
           Gel manicure, BIAB, nail extensions, and nail art from simple to hard design.
         </div>
         <div class="sc-link" data-en="View nail services →" data-id="Lihat layanan kuku →">View nail services →</div>
-      </a>
-      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;">
+      </div>
+      <div class="service-card" onclick="showPage('services')">
         <div class="sc-num">02</div>
         <div class="sc-title" data-en="Lashes" data-id="Bulu Mata">Lashes</div>
         <div class="sc-desc" data-en="Natural 2D through volume 6D lash extensions. Cat eye and volume styling available." data-id="Ekstensi bulu mata natural 2D hingga volume 6D. Tersedia styling cat eye dan volume.">
           Natural 2D through volume 6D lash extensions. Cat eye and volume styling available.
         </div>
         <div class="sc-link" data-en="View lash services →" data-id="Lihat layanan bulu mata →">View lash services →</div>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -640,6 +707,23 @@
       <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);text-decoration:none;" data-en="Follow on Instagram →" data-id="Ikuti di Instagram →">Follow on Instagram →</a>
     </div>
   </section>
+
+  <!-- GOOGLE REVIEWS — HOME -->
+  <div class="reviews-section">
+    <div class="reviews-inner">
+      <div class="reviews-header">
+        <div>
+          <p class="section-label" data-en="What Clients Say" data-id="Kata Klien">What Clients Say</p>
+          <h2 class="section-title" data-en="Google Reviews" data-id="Ulasan Google">Google Reviews</h2>
+        </div>
+        <div class="reviews-rating-summary" id="reviews-summary-home">
+          <div class="reviews-loading" data-en="Loading reviews…" data-id="Memuat ulasan…">Loading reviews…</div>
+        </div>
+      </div>
+      <div class="reviews-grid" id="reviews-grid-home">
+      </div>
+    </div>
+  </div>
 
   <div class="book-banner">
     <h2 data-en="Ready to treat yourself?" data-id="Siap memanjakan diri?">Ready to treat yourself?</h2>
@@ -891,6 +975,22 @@
     </table>
   </div>
 
+  <!-- GOOGLE REVIEWS — SERVICES -->
+  <div class="reviews-section">
+    <div class="reviews-inner">
+      <div class="reviews-header">
+        <div>
+          <p class="section-label" data-en="Client Feedback" data-id="Ulasan Klien">Client Feedback</p>
+          <h2 class="section-title" data-en="What Our Clients Say" data-id="Kata Klien Kami">What Our Clients Say</h2>
+        </div>
+        <div id="reviews-summary-services">
+        </div>
+      </div>
+      <div class="reviews-grid" id="reviews-grid-services">
+      </div>
+    </div>
+  </div>
+
   <div class="book-banner">
     <h2 data-en="Ready to book?" data-id="Siap memesan?">Ready to book?</h2>
     <p data-en="Message us on WhatsApp or use our online booking system." data-id="Hubungi kami di WhatsApp atau gunakan sistem pemesanan online kami.">Message us on WhatsApp or use our online booking system.</p>
@@ -1051,6 +1151,23 @@
       </iframe>
     </div>
   </div>
+
+  <!-- GOOGLE REVIEWS — CONTACT -->
+  <div class="reviews-section-dark">
+    <div class="reviews-inner">
+      <div class="reviews-header">
+        <div>
+          <p class="section-label" data-en="Trusted by Clients" data-id="Dipercaya Klien">Trusted by Clients</p>
+          <h2 class="section-title" data-en="Google Reviews" data-id="Ulasan Google">Google Reviews</h2>
+        </div>
+        <div id="reviews-summary-contact">
+        </div>
+      </div>
+      <div class="reviews-grid" id="reviews-grid-contact">
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══ FOOTER ══ -->
@@ -1201,6 +1318,138 @@
     document.getElementById('navbar').style.boxShadow =
       window.scrollY > 20 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
   }, { passive:true });
+
+  // ── GOOGLE REVIEWS ──
+  const PLACE_ID   = 'ChIJHTK4hLlH0i0RMqbSXuaV1XY';
+  const MAPS_LINK  = 'https://www.google.com/maps/place/?q=place_id:' + PLACE_ID;
+  let   reviewsData = null; // cache so we only fetch once
+
+  function starsHTML(rating, size = 16) {
+    const full  = Math.floor(rating);
+    const half  = rating % 1 >= 0.5 ? 1 : 0;
+    const empty = 5 - full - half;
+    return (
+      '<span style="display:flex;gap:2px;font-size:' + size + 'px;">' +
+      '★'.repeat(full) +
+      (half ? '½' : '') +
+      '<span style="opacity:.3;">' + '★'.repeat(empty) + '</span>' +
+      '</span>'
+    );
+  }
+
+  function timeAgo(unixSeconds) {
+    const diff = Math.floor(Date.now() / 1000) - unixSeconds;
+    if (diff < 60 * 60 * 24 * 14)  return 'This week';
+    if (diff < 60 * 60 * 24 * 60)  return 'Last month';
+    const months = Math.floor(diff / (60 * 60 * 24 * 30));
+    if (months < 12) return months + ' months ago';
+    const years = Math.floor(months / 12);
+    return years + ' year' + (years > 1 ? 's' : '') + ' ago';
+  }
+
+  function initials(name) {
+    return name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+  }
+
+  function renderSummary(containerId, rating, total) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML =
+      '<div class="reviews-rating-summary">' +
+        '<div class="reviews-big-score">' + rating.toFixed(1) + '</div>' +
+        '<div class="reviews-stars-col">' +
+          '<div class="reviews-stars">' + starsHTML(rating, 18) + '</div>' +
+          '<div class="reviews-count">' + total + ' Google reviews</div>' +
+          '<a class="reviews-google-link" href="' + MAPS_LINK + '" target="_blank" ' +
+             'data-en="View on Google →" data-id="Lihat di Google →">View on Google →</a>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function renderGrid(containerId, reviews) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    // Show up to 3 reviews, preferring 5-star with text
+    const sorted = [...reviews]
+      .filter(r => r.text && r.text.trim().length > 10)
+      .sort((a, b) => b.rating - a.rating || b.time - a.time)
+      .slice(0, 3);
+
+    if (!sorted.length) {
+      el.innerHTML = '<p style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:var(--gray);font-size:18px;">No written reviews yet — be the first!</p>';
+      return;
+    }
+
+    el.innerHTML = sorted.map(r => {
+      const avatarInner = r.profile_photo_url
+        ? '<img src="' + r.profile_photo_url + '" alt="' + r.author_name + '" loading="lazy">'
+        : initials(r.author_name);
+      return (
+        '<div class="review-card">' +
+          '<div class="review-card-stars">' + starsHTML(r.rating, 14) + '</div>' +
+          '<p class="review-card-text">"' + r.text.replace(/"/g, '&quot;').substring(0, 220) +
+            (r.text.length > 220 ? '…' : '') + '"</p>' +
+          '<div class="review-card-author">' +
+            '<div class="review-card-avatar">' + avatarInner + '</div>' +
+            '<div>' +
+              '<div class="review-card-name">' + r.author_name + '</div>' +
+              '<div class="review-card-date">' + timeAgo(r.time) + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  function populateAllReviews(data) {
+    // Summary blocks
+    renderSummary('reviews-summary-home',     data.rating, data.user_ratings_total);
+    renderSummary('reviews-summary-services', data.rating, data.user_ratings_total);
+    renderSummary('reviews-summary-contact',  data.rating, data.user_ratings_total);
+    // Review grids
+    renderGrid('reviews-grid-home',     data.reviews || []);
+    renderGrid('reviews-grid-services', data.reviews || []);
+    renderGrid('reviews-grid-contact',  data.reviews || []);
+    // Re-apply language if not EN
+    if (lang !== 'en') setLang(lang);
+  }
+
+  async function loadReviews() {
+    if (reviewsData) { populateAllReviews(reviewsData); return; }
+    try {
+      const res  = await fetch('/api/reviews');
+      const json = await res.json();
+      if (json && json.rating) {
+        reviewsData = json;
+        populateAllReviews(reviewsData);
+      } else {
+        clearLoadingStates();
+      }
+    } catch (e) {
+      clearLoadingStates();
+    }
+  }
+
+  function clearLoadingStates() {
+    ['reviews-summary-home','reviews-summary-services','reviews-summary-contact'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = '';
+    });
+  }
+
+  // Load reviews on first page visit and whenever user navigates to a reviews page
+  const REVIEW_PAGES = ['home','services','contact'];
+  const _origShowPage = showPage;
+  function showPage(id) {
+    _origShowPage(id);
+    if (REVIEW_PAGES.includes(id)) loadReviews();
+  }
+  // Also load on initial page load
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.replace('#','');
+    const startPage = PAGES.includes(hash) ? hash : 'home';
+    if (REVIEW_PAGES.includes(startPage)) loadReviews();
+  });
 </script>
 </body>
 </html>
