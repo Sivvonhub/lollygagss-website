@@ -1,10 +1,10 @@
 // api/reviews.js — Vercel serverless function
-// Proxies Google Places API so the key never appears in client-side code.
+// Uses Google Places API (New) — places.googleapis.com/v1/places/:id
+// Proxies the request so the API key never appears in client-side code.
 
 const https = require('https');
 
 module.exports = async function handler(req, res) {
-  // CORS — allow your domain and Vercel preview URLs
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
 
@@ -15,45 +15,70 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'API key not configured' });
   }
 
-  const fields = 'rating,user_ratings_total,reviews';
-  const url    = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=${fields}&key=${API_KEY}&reviews_sort=newest`;
+  // Places API (New) endpoint
+  const url = `https://places.googleapis.com/v1/places/${PLACE_ID}`;
+
+  // Places API (New) uses header-based field masks instead of query params
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-Goog-Api-Key':    API_KEY,
+      'X-Goog-FieldMask':  'rating,userRatingCount,reviews',
+      'Content-Type':      'application/json',
+    },
+  };
 
   try {
-    // Use native fetch (Node 18+) with fallback to https module
     let data;
+
     if (typeof fetch !== 'undefined') {
-      const upstream = await fetch(url);
+      // Node 18+ native fetch
+      const upstream = await fetch(url, options);
       data = await upstream.json();
     } else {
-      // Fallback for older Node versions
+      // Fallback for older Node
       data = await new Promise((resolve, reject) => {
-        https.get(url, (r) => {
+        const req = https.request(url, options, (r) => {
           let body = '';
           r.on('data', chunk => body += chunk);
           r.on('end', () => {
             try { resolve(JSON.parse(body)); }
             catch (e) { reject(e); }
           });
-        }).on('error', reject);
+        });
+        req.on('error', reject);
+        req.end();
       });
     }
 
-    if (data.status !== 'OK') {
+    // Places API (New) returns error objects differently
+    if (data.error) {
       return res.status(502).json({
-        error: data.status,
-        message: data.error_message || 'Google Places API error'
+        error: data.error.status || 'API_ERROR',
+        message: data.error.message || 'Google Places API (New) error',
       });
     }
 
-    const result = data.result;
+    // Places API (New) response shape is different from classic:
+    // data.rating, data.userRatingCount, data.reviews[]
+    // Each review: { rating, text: { text }, authorAttribution: { displayName, photoUri }, relativePublishTimeDescription }
+
+    const reviews = (data.reviews || []).map(r => ({
+      rating:             r.rating || 5,
+      text:               r.text?.text || '',
+      author_name:        r.authorAttribution?.displayName || 'Guest',
+      profile_photo_url:  r.authorAttribution?.photoUri || '',
+      // New API gives relative time as a string e.g. "2 months ago" — use directly
+      relative_time:      r.relativePublishTimeDescription || '',
+    }));
 
     // Cache for 6 hours
     res.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=3600');
 
     return res.status(200).json({
-      rating:             result.rating             || 0,
-      user_ratings_total: result.user_ratings_total || 0,
-      reviews:            result.reviews            || [],
+      rating:             data.rating             || 0,
+      user_ratings_total: data.userRatingCount    || 0,
+      reviews,
     });
 
   } catch (err) {
