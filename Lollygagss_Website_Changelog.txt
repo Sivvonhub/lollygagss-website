@@ -30,6 +30,55 @@ Added Google Search Console verification meta tag (Z0zSRF8admGdH7TZp5bXov08-XMq9
 Added Open Graph tags for social sharing previews
 Added Local Business structured data (address, hours, phone, coordinates)
 
+v1.9 — Google Reviews API Integration
+Date: 25 May 2026
+New Feature: Live Google Reviews Display
+
+Added Google Places API integration to display live Google reviews on website
+Three review sections added to index.html (Home, Services, Contact pages)
+Each section displays:
+
+Aggregate star rating and review count with link to Google Business Profile
+Up to 3 most recent written reviews (5-star preferred, sorted by recency)
+Reviewer name, timestamp ("X months ago" format), and avatar photo
+Reviews pull from Google Place ID: ChIJHTK4hLlH0i0RMqbSXuaV1XY
+
+
+
+Smart Caching & Performance
+
+API calls cached for 6 hours to minimise request volume and cost
+Responsive design: Reviews grid collapses to single column on mobile
+Language support: Review summary labels respect EN/ID language toggle
+Graceful fallback if API fails or Place ID has no reviews yet
+
+Styling
+
+Styling integrated into brand palette: cream/blush/white backgrounds, rose accents
+Review quote text in Cormorant Garamond italic
+Reviewer names and metadata in Jost sans-serif
+Matches existing design system
+
+API Architecture
+
+Client-side JS fetch calls /api/reviews endpoint (no API key in browser code)
+Vercel serverless function (api/reviews.js) proxies Google Places API
+API key stored securely as environment variable GOOGLE_PLACES_API_KEY in Vercel dashboard
+Function returns JSON with rating, user_ratings_total, and reviews array
+Cache headers set to 6-hour revalidation with 1-hour stale-while-revalidate window
+
+Setup Requirements
+
+Google Cloud Console: Places API enabled, API key generated and restricted to Places API + lollygagss.id
+Vercel: Environment variable GOOGLE_PLACES_API_KEY added to Production environment
+GitHub: api/reviews.js file added to lollygagss-website repo root (auto-deployed by Vercel)
+index.html: Updated with three review sections and fetch logic
+
+Cost
+
+Free within Google's generous free tier (~11,700 calls/month at current usage)
+Card on file required but no charge expected until traffic scales significantly
+28,500 map loads per month before any charge applies
 
 v1.3 — Service Menu Rename & Fresha Pricing
 
