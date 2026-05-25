@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Lollygagss Studio - Nails & Lashes Bali",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0"
   }
