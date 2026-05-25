@@ -1339,14 +1339,6 @@
     );
   }
 
-  function timeAgo(unixSeconds) {
-    const diff = Math.floor(Date.now() / 1000) - unixSeconds;
-    if (diff < 60 * 60 * 24 * 14)  return 'This week';
-    if (diff < 60 * 60 * 24 * 60)  return 'Last month';
-    const months = Math.floor(diff / (60 * 60 * 24 * 30));
-    if (months < 12) return months + ' months ago';
-    const years = Math.floor(months / 12);
-    return years + ' year' + (years > 1 ? 's' : '') + ' ago';
   }
 
   function initials(name) {
@@ -1374,7 +1366,7 @@
     // Show up to 3 reviews, preferring 5-star with text
     const sorted = [...reviews]
       .filter(r => r.text && r.text.trim().length > 10)
-      .sort((a, b) => b.rating - a.rating || b.time - a.time)
+      .sort((a, b) => b.rating - a.rating)
       .slice(0, 3);
 
     if (!sorted.length) {
@@ -1395,7 +1387,7 @@
             '<div class="review-card-avatar">' + avatarInner + '</div>' +
             '<div>' +
               '<div class="review-card-name">' + r.author_name + '</div>' +
-              '<div class="review-card-date">' + timeAgo(r.time) + '</div>' +
+              '<div class="review-card-date">' + (r.relative_time || '') + '</div>' +
             '</div>' +
           '</div>' +
         '</div>'
