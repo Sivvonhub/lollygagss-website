@@ -1,13 +1,12 @@
-// api/reviews.js — Vercel serverless function (Places API New)
+// api/reviews.js — Vercel serverless function (Places API New, ES Module)
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
 
   const PLACE_ID = 'ChIJHTK4hLlH0i0RMqbSXuaV1XY';
   const API_KEY  = process.env.GOOGLE_PLACES_API_KEY;
 
-  // Log to Vercel so we can see in dashboard
   console.log('API key present:', !!API_KEY);
   console.log('API key prefix:', API_KEY ? API_KEY.substring(0, 8) : 'MISSING');
 
@@ -17,20 +16,13 @@ module.exports = async function handler(req, res) {
 
   const url = `https://places.googleapis.com/v1/places/${PLACE_ID}?fields=rating,userRatingCount,reviews&key=${API_KEY}`;
 
-  console.log('Fetching URL (key hidden):', url.replace(API_KEY, 'HIDDEN'));
+  console.log('Fetching Places API (New):', url.replace(API_KEY, 'KEY_HIDDEN'));
 
   try {
-    const upstream = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
+    const upstream = await fetch(url);
     console.log('Google response status:', upstream.status);
 
     const data = await upstream.json();
-
     console.log('Google response keys:', Object.keys(data));
 
     if (data.error) {
@@ -42,11 +34,11 @@ module.exports = async function handler(req, res) {
     }
 
     const reviews = (data.reviews || []).map(r => ({
-      rating:            r.rating || 5,
-      text:              r.text?.text || '',
-      author_name:       r.authorAttribution?.displayName || 'Guest',
-      profile_photo_url: r.authorAttribution?.photoUri    || '',
-      relative_time:     r.relativePublishTimeDescription  || '',
+      rating:            r.rating                           || 5,
+      text:              r.text?.text                       || '',
+      author_name:       r.authorAttribution?.displayName  || 'Guest',
+      profile_photo_url: r.authorAttribution?.photoUri     || '',
+      relative_time:     r.relativePublishTimeDescription   || '',
     }));
 
     res.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=3600');
@@ -61,4 +53,4 @@ module.exports = async function handler(req, res) {
     console.error('Caught error:', err.message, err.stack);
     return res.status(500).json({ error: 'Fetch failed', detail: err.message });
   }
-};
+}
