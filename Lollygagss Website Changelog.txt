@@ -46,7 +46,6 @@ Gel Removal: Rp 30,000 → Rp 50,000
 Extensions Removal: Rp 50,000 → Rp 80,000
 Nail Art Simple duration: 60 min → 90 min
 
-
 Added service descriptions to all rows
 
 
@@ -79,7 +78,6 @@ BIAB Manicure: serviceId=23993534
 Classic Manicure/Pedicure: serviceId=23993497
 Gel Manicure/Pedicure: serviceId=23993503
 
-
 Remaining services use general Fresha booking link as fallback
 Polygel and Acrylic "Enquire" buttons open WhatsApp with prefilled service-specific message
 Added Book column header to both service tables
@@ -101,3 +99,63 @@ Hours corrected across all three files and structured data:
   Now: Mon–Sat 09:00–19:00. Sun by appointment.
 Structured data split into two OpeningHoursSpecification entries (Mon–Sat regular, Sunday by appointment)
 Hero "Book Appointment" button standardised to "Book Now"
+
+
+v1.8 — First Journal Article (BIAB), Journal Page Activation
+Date: 30 May 2026
+
+Created /journal/ folder in repo for article HTML files
+Published first journal article: journal/biab-bali.html
+  Title: "What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now"
+  Author: Lina Zahirah Dimes
+  Word count: ~1,100
+  Target keywords: BIAB Bali, BIAB manicure Bali, BIAB Kerobokan, BIAB Teuku Umar
+  Geographic targeting: Seminyak, Canggu, Kerobokan, Kuta, Legian, Denpasar, Teuku Umar
+Article includes:
+  GA4, Microsoft Clarity, and Meta Pixel tracking tags
+  Canonical URL tag
+  Article structured data (Schema.org Article type)
+  FAQ structured data for Google snippet eligibility (3 questions)
+  Open Graph tags for social sharing
+  Full navigation bar with Services, About, Gallery, Journal, Contact, Book Now
+  Mobile hamburger menu
+  Reading progress bar
+  Mid-article CTA with Fresha and WhatsApp buttons
+  BIAB vs Gel Manicure comparison table (desktop 3-column, mobile stacked cards)
+  BIAB Manicure service spotlight card with Fresha deep link and WhatsApp button
+  Aftercare tips list
+  Closing CTA section with Fresha, WhatsApp, and View All Services buttons
+  Related articles section (placeholder cards for next two articles)
+  Floating WhatsApp button
+  Footer with full nav and contact details
+journal.html updated — BIAB article card uncommented and made live
+journal.html updated — "Coming Soon" empty state block removed
+sitemap.xml updated — /journal/biab-bali.html added (priority 0.8, lastmod 2026-05-30)
+
+
+v1.9 — Article Nav Fix, Journal Routing Cleanup
+Date: 30 May 2026
+
+biab-bali.html — nav rebuilt to exactly match main site:
+  SVG circular logo replaced text-based wordmark in article nav
+  Nav links changed from <div> to <ul> list structure matching journal.html and services.html
+  Letter spacing corrected to 2.5px to match main site
+  Underline active indicator added to Journal link
+  Book Now changed from <a> tag to <button> inside .nav-right div
+  Nav link colour corrected from gray-dark to black (matching main site)
+  Mobile nav now hides .nav-right as well as .nav-links on small screens
+biab-bali.html — article hero background changed from solid black to warm cream with rose gradient
+  Heading colour changed from white to black
+  Lead paragraph colour changed from white/70 to gray-dark
+  Eyebrow and active accent colours updated from rose-light to rose
+  Article meta border and text colours updated for light background
+biab-bali.html — inaccurate travel time claim removed from "Where to get BIAB" section
+  Replaced with vague but encouraging language: "clients from Canggu regularly make the trip"
+biab-bali.html — comparison table mobile layout fixed
+  Desktop: 3-column grid with black header (unchanged)
+  Mobile: stacked card layout with row label as rose heading, BIAB/Gel prefixed inline
+index.html — Journal nav link changed from onclick="showPage('journal')" to href="/journal"
+index.html — Journal footer link changed from onclick="showPage('journal')" to href="/journal"
+index.html — "journal" removed from PAGES array in SPA routing
+index.html — Hash redirect added: lollygagss.id/#journal now redirects to lollygagss.id/journal
+journal.html — Journal nav link updated to href="/journal" with active state
