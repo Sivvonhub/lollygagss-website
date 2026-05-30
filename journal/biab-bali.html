@@ -139,34 +139,24 @@
       backdrop-filter:blur(12px);
       border-bottom:1px solid var(--gray-light);
     }
-    .nav-logo {
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none; color:inherit;
-    }
-    .nav-logo-script {
-      font-family:'Dancing Script',cursive; font-size:26px; font-weight:600; color:var(--black);
-    }
-    .nav-logo-sub {
-      font-family:'Jost',sans-serif; font-size:9px; letter-spacing:4px;
-      text-transform:uppercase; color:var(--gray); display:block; margin-top:1px;
-    }
-    .nav-right { display:flex; align-items:center; gap:14px; }
-    .nav-links {
-      display:flex; align-items:center; gap:32px;
-    }
+    .nav-logo { display:flex; align-items:center; gap:10px; cursor:pointer; text-decoration:none; }
+    .nav-logo svg { width:46px; height:46px; }
+    .nav-links { display:flex; gap:36px; list-style:none; }
     .nav-links a {
-      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
-      text-transform:uppercase; color:var(--gray-dark); text-decoration:none;
-      transition:color .2s;
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:400;
+      letter-spacing:2.5px; text-transform:uppercase;
+      text-decoration:none; color:var(--black);
+      cursor:pointer; transition:color .2s;
+      padding-bottom:3px; border-bottom:1px solid transparent;
     }
     .nav-links a:hover { color:var(--rose); }
-    .nav-links a.active { color:var(--rose); }
+    .nav-links a.active { color:var(--rose); border-bottom-color:var(--rose); }
+    .nav-right { display:flex; align-items:center; gap:14px; }
     .btn-book-nav {
       font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
       letter-spacing:2px; text-transform:uppercase;
       padding:11px 26px; background:var(--black); color:var(--white);
-      border:none; cursor:pointer; transition:background .2s; text-decoration:none;
-      display:inline-block;
+      border:none; cursor:pointer; transition:background .2s;
     }
     .btn-book-nav:hover { background:var(--rose); }
     .nav-hamburger {
@@ -185,10 +175,6 @@
     .nav-mobile-menu a {
       font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
       text-transform:uppercase; color:var(--gray-dark); text-decoration:none;
-    }
-    @media(max-width:768px) {
-      .nav-links { display:none; }
-      .nav-hamburger { display:flex; }
     }
 
     /* ── ARTICLE HERO ── */
@@ -580,6 +566,7 @@
     @media(max-width:768px) {
       nav { padding:0 20px; }
       .nav-links { display:none; }
+      .nav-right { display:none; }
       .nav-hamburger { display:flex; }
       .article-hero-inner { padding:56px 24px 0; }
       .article-body { padding:48px 24px; }
@@ -601,21 +588,34 @@
 <div class="reading-progress" id="readingProgress"></div>
 
 <!-- ── NAV ── -->
-<nav>
-  <a class="nav-logo" href="https://lollygagss.id">
-    <div>
-      <span class="nav-logo-script">Lollygagss</span>
-      <span class="nav-logo-sub">Studio</span>
-    </div>
+<nav id="navbar">
+  <a class="nav-logo" href="/" style="text-decoration:none;">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="cc"><circle cx="60" cy="60" r="57"/></clipPath>
+      </defs>
+      <circle cx="60" cy="60" r="58" fill="white" stroke="#E8E0DE" stroke-width="1.5"/>
+      <text x="8"  y="92" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="#1A1A1A" clip-path="url(#cc)">L</text>
+      <text x="50" y="117" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="#1A1A1A" clip-path="url(#cc)">S</text>
+      <text x="13" y="73" font-family="'Dancing Script',cursive" font-weight="600" font-size="19" fill="#C4796F">Lollygagss</text>
+      <text x="98" y="70" font-family="Arial" font-size="12" fill="#C4796F">♥</text>
+      <text x="60" y="85" font-family="'Jost',sans-serif" font-weight="300" font-size="8" fill="#1A1A1A" text-anchor="middle" letter-spacing="4">STUDIO</text>
+    </svg>
   </a>
-  <div class="nav-links">
-    <a href="https://lollygagss.id/#services">Services</a>
-    <a href="https://lollygagss.id/#about">About</a>
-    <a href="https://lollygagss.id/#gallery">Gallery</a>
-    <a href="https://lollygagss.id/journal.html" class="active">Journal</a>
-    <a href="https://lollygagss.id/#contact">Contact</a>
-    <a class="btn-book-nav" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank">Book Now</a>
+
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#gallery">Gallery</a></li>
+    <li><a href="/journal" class="active">Journal</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="btn-book-nav" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')">Book Now</button>
   </div>
+
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -623,11 +623,12 @@
 
 <!-- Mobile menu -->
 <div class="nav-mobile-menu" id="mobileMenu">
-  <a href="https://lollygagss.id/#services">Services</a>
-  <a href="https://lollygagss.id/#about">About</a>
-  <a href="https://lollygagss.id/#gallery">Gallery</a>
-  <a href="https://lollygagss.id/journal.html" class="active">Journal</a>
-  <a href="https://lollygagss.id/#contact">Contact</a>
+  <a href="/">Home</a>
+  <a href="/services">Services</a>
+  <a href="/#about">About</a>
+  <a href="/#gallery">Gallery</a>
+  <a href="/journal" class="active">Journal</a>
+  <a href="/#contact">Contact</a>
   <a href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank">Book Now</a>
 </div>
 
