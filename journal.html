@@ -396,8 +396,97 @@
     .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
     .gallery-item { aspect-ratio:1; }
 
-    /* ── JOURNAL ── */
-    .journal-intro {
+    /* ── JOURNAL PAGE HERO ── */
+    .journal-page-hero {
+      background:var(--cream);
+      padding:80px 48px 64px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .journal-page-hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 60% 80% at 85% 50%, rgba(196,121,111,.10) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 15% 50%, rgba(196,121,111,.07) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .journal-page-hero .section-label { color:var(--rose); }
+    .journal-page-hero .section-title { color:var(--black); }
+    .journal-page-hero p {
+      font-family:'Cormorant Garamond',serif;
+      font-size:19px; font-style:italic; color:var(--gray-dark); margin-top:12px;
+    }
+
+    /* ── JOURNAL FEATURED CARD ── */
+    .journal-featured-card {
+      display:grid; grid-template-columns:1fr 1fr;
+      background:var(--cream);
+      margin-bottom:72px;
+      text-decoration:none; color:inherit;
+      transition:transform .25s;
+    }
+    .journal-featured-card:hover { transform:translateY(-4px); }
+    .journal-featured-img { overflow:hidden; }
+    .journal-featured-img img {
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      display:block;
+    }
+    .journal-featured-text {
+      padding:52px 56px 48px;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    .journal-featured-tag {
+      font-family:'Jost',sans-serif; font-size:9px; letter-spacing:2px;
+      text-transform:uppercase; padding:4px 10px;
+      background:var(--rose); color:var(--white);
+      align-self:flex-start; margin-bottom:16px;
+    }
+    .journal-featured-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(22px,2.5vw,36px); font-weight:700; line-height:1.12;
+      color:var(--black); margin-bottom:18px;
+    }
+    .journal-featured-excerpt {
+      font-family:'Cormorant Garamond',serif;
+      font-size:18px; font-weight:300; font-style:italic;
+      color:var(--gray-dark); line-height:1.7;
+      border-left:3px solid var(--rose); padding-left:18px;
+      margin-bottom:24px;
+    }
+    .journal-featured-meta {
+      display:flex; gap:20px; flex-wrap:wrap;
+      padding-top:18px; border-top:1px solid var(--gray-light);
+      margin-bottom:20px;
+    }
+    .journal-meta-item {
+      font-family:'Jost',sans-serif; font-size:9px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gray);
+    }
+    .journal-meta-item span {
+      display:block; color:var(--gray-dark); margin-top:3px;
+      font-size:11px; letter-spacing:.5px;
+    }
+
+    /* ── JOURNAL GRID DIVIDER ── */
+    .journal-grid-divider {
+      display:flex; align-items:center; gap:20px;
+      margin-bottom:48px;
+    }
+    .journal-grid-divider span {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:4px;
+      text-transform:uppercase; color:var(--gray); white-space:nowrap;
+    }
+    .journal-grid-divider-line { flex:1; height:1px; background:var(--gray-light); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px) {
+      .journal-featured-card { grid-template-columns:1fr; }
+      .journal-featured-img img { height:280px; object-fit:cover; }
+      .journal-featured-text { padding:32px 24px 40px; }
+    }
       max-width:780px; margin:0 auto 56px; text-align:center; padding:0 24px;
     }
     .journal-grid {
@@ -969,35 +1058,65 @@
 ══════════════════════════════════════ -->
 <div id="page-journal" class="page active">
 
-  <div class="services-hero">
+  <div class="journal-page-hero">
     <p class="section-label" data-en="Stories & Guides" data-id="Cerita & Panduan">Stories & Guides</p>
     <h1 class="section-title" data-en="Journal" data-id="Jurnal">Journal</h1>
     <p data-en="Treatments, trends, and tips from our studio in Bali." data-id="Perawatan, tren, dan tips dari studio kami di Bali.">Treatments, trends, and tips from our studio in Bali.</p>
   </div>
 
-  <div style="padding:64px 0;">
-    <!-- ═══ Post grid will be populated as posts are added ═══ -->
+  <div style="padding:64px 48px;">
+
+    <!-- ▼▼▼ FEATURED CARD — always the most recent article ▼▼▼ -->
+    <p class="section-label" style="margin-bottom:16px;" data-en="Latest" data-id="Terbaru">Latest</p>
+
+    <a class="journal-featured-card" href="/journal/biab-bali.html">
+      <div class="journal-featured-img">
+        <img src="/images/journal/biab-cover.jpg"
+             alt="Nail work by Lollygagss Studio Bali">
+      </div>
+      <div class="journal-featured-text">
+        <span class="journal-featured-tag" data-en="Featured" data-id="Unggulan">Featured</span>
+        <div class="journal-card-meta" style="margin-bottom:14px;">
+          <span data-en="Treatments · 6 min read" data-id="Perawatan · 6 min baca">Treatments · 6 min read</span>
+        </div>
+        <h2 class="journal-featured-title" data-en="What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now" data-id="Apa Itu BIAB? Mengapa Kuku BIAB Begitu Populer di Bali Saat Ini">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</h2>
+        <p class="journal-featured-excerpt" data-en="Builder gel that strengthens natural nails and survives the tropics. Here is everything you need to know before booking." data-id="Gel builder yang menguatkan kuku alami dan tahan iklim tropis. Inilah yang perlu kamu tahu sebelum booking.">Builder gel that strengthens natural nails and survives the tropics. Here is everything you need to know before booking.</p>
+        <div class="journal-featured-meta">
+          <div class="journal-meta-item">By <span>Lina Zahirah Dimes</span></div>
+          <div class="journal-meta-item" data-en="Published" data-id="Diterbitkan">Published <span>May 2026</span></div>
+        </div>
+        <span class="journal-card-link" data-en="Read article →" data-id="Baca artikel →">Read article →</span>
+      </div>
+    </a>
+    <!-- ▲▲▲ END FEATURED CARD ▲▲▲ -->
+
+    <!-- ▼▼▼ GRID — add subsequent articles here ▼▼▼ -->
+    <!-- Uncomment and duplicate this block for each new article after the first:
+
+    <div class="journal-grid-divider">
+      <span class="journal-grid-divider-line"></span>
+      <span data-en="More from the Journal" data-id="Lebih dari Jurnal">More from the Journal</span>
+      <span class="journal-grid-divider-line"></span>
+    </div>
+
     <div class="journal-grid">
 
-      <!-- ▼▼▼ POST CARDS — add new posts below this line ▼▼▼ -->
-
-      <a class="journal-card" href="/journal/biab-bali.html">
+      <a class="journal-card" href="/journal/ARTICLE-SLUG.html">
         <div class="journal-card-image" style="background:none; overflow:hidden;">
-          <img src="/images/journal/biab-cover.jpg"
-               alt="Nail work by Lollygagss Studio Bali"
+          <img src="/images/journal/COVER-IMAGE.jpg"
+               alt="Description of image"
                style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;">
         </div>
         <div class="journal-card-meta">
-          <span data-en="Treatments · 6 min read" data-id="Perawatan · 6 min baca">Treatments · 6 min read</span>
+          <span data-en="CATEGORY · X min read" data-id="KATEGORI · X menit baca">CATEGORY · X min read</span>
         </div>
-        <h3 class="journal-card-title" data-en="What is BIAB and why it works in Bali" data-id="Apa itu BIAB dan mengapa cocok di Bali">What is BIAB and why it works in Bali</h3>
-        <p class="journal-card-excerpt" data-en="Builder gel that strengthens natural nails and survives the tropics. Here's everything you need to know." data-id="Gel builder yang menguatkan kuku alami dan tahan iklim tropis.">Builder gel that strengthens natural nails and survives the tropics. Here's everything you need to know.</p>
+        <h3 class="journal-card-title">ARTICLE TITLE</h3>
+        <p class="journal-card-excerpt">ARTICLE EXCERPT</p>
         <span class="journal-card-link" data-en="Read more →" data-id="Baca selengkapnya →">Read more →</span>
       </a>
 
-      <!-- ▲▲▲ END POSTS ▲▲▲ -->
-
     </div>
+    ▲▲▲ END GRID ▲▲▲ -->
 
   </div>
 
