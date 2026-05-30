@@ -626,7 +626,7 @@
     <li><a id="nav-services" onclick="showPage('services')"                data-en="Services" data-id="Layanan">Services</a></li>
     <li><a id="nav-about"    onclick="showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
     <li><a id="nav-gallery"  onclick="showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
-    <li><a id="nav-journal"  onclick="showPage('journal')"                 data-en="Journal"  data-id="Jurnal">Journal</a></li>
+    <li><a id="nav-journal"  href="/journal"                               data-en="Journal"  data-id="Jurnal">Journal</a></li>
     <li><a id="nav-contact"  onclick="showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
   </ul>
 
@@ -1209,7 +1209,7 @@
         <li><a onclick="showPage('services')" data-en="Services" data-id="Layanan">Services</a></li>
         <li><a onclick="showPage('about')"    data-en="About"    data-id="Tentang">About</a></li>
         <li><a onclick="showPage('gallery')"  data-en="Gallery"  data-id="Galeri">Gallery</a></li>
-        <li><a onclick="showPage('journal')"  data-en="Journal"  data-id="Jurnal">Journal</a></li>
+        <li><a href="/journal"             data-en="Journal"  data-id="Jurnal">Journal</a></li>
         <li><a onclick="showPage('contact')"  data-en="Contact"  data-id="Kontak">Contact</a></li>
       </ul>
     </div>
@@ -1241,7 +1241,7 @@
 <!-- ══ JAVASCRIPT ══ -->
 <script>
   // ── ROUTING ──
-  const PAGES = ['home','services','about','gallery','journal','contact'];
+  const PAGES = ['home','services','about','gallery','contact'];
 
   function showPage(id, scrollTo) {
     PAGES.forEach(p => {
@@ -1269,6 +1269,7 @@
   // Handle hash on load
   window.addEventListener('load', () => {
     const hash = window.location.hash.replace('#','');
+    if(hash === 'journal') { window.location.replace('/journal'); return; }
     if(PAGES.includes(hash)) showPage(hash);
   });
 
