@@ -151,12 +151,16 @@
       text-transform:uppercase; color:var(--gray); display:block; margin-top:1px;
     }
     .nav-right { display:flex; align-items:center; gap:14px; }
-    .nav-back {
+    .nav-links {
+      display:flex; align-items:center; gap:32px;
+    }
+    .nav-links a {
       font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
       text-transform:uppercase; color:var(--gray-dark); text-decoration:none;
       transition:color .2s;
     }
-    .nav-back:hover { color:var(--rose); }
+    .nav-links a:hover { color:var(--rose); }
+    .nav-links a.active { color:var(--rose); }
     .btn-book-nav {
       font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
       letter-spacing:2px; text-transform:uppercase;
@@ -165,6 +169,27 @@
       display:inline-block;
     }
     .btn-book-nav:hover { background:var(--rose); }
+    .nav-hamburger {
+      display:none; flex-direction:column; gap:5px; cursor:pointer;
+      background:none; border:none; padding:4px;
+    }
+    .nav-hamburger span {
+      display:block; width:22px; height:1.5px; background:var(--black); transition:all .3s;
+    }
+    .nav-mobile-menu {
+      display:none; position:fixed; top:var(--nav-h); left:0; right:0;
+      background:var(--white); border-bottom:1px solid var(--gray-light);
+      padding:24px; z-index:199; flex-direction:column; gap:20px;
+    }
+    .nav-mobile-menu.open { display:flex; }
+    .nav-mobile-menu a {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gray-dark); text-decoration:none;
+    }
+    @media(max-width:768px) {
+      .nav-links { display:none; }
+      .nav-hamburger { display:flex; }
+    }
 
     /* ── ARTICLE HERO ── */
     .article-hero {
@@ -554,8 +579,8 @@
     /* ── RESPONSIVE ── */
     @media(max-width:768px) {
       nav { padding:0 20px; }
-      .nav-back { display:none; }
-      .btn-book-nav { padding:10px 18px; font-size:10px; }
+      .nav-links { display:none; }
+      .nav-hamburger { display:flex; }
       .article-hero-inner { padding:56px 24px 0; }
       .article-body { padding:48px 24px; }
       .service-spotlight { padding:32px 24px; }
@@ -583,11 +608,28 @@
       <span class="nav-logo-sub">Studio</span>
     </div>
   </a>
-  <div class="nav-right">
-    <a class="nav-back" href="https://lollygagss.id/#journal">← Journal</a>
+  <div class="nav-links">
+    <a href="https://lollygagss.id/#services">Services</a>
+    <a href="https://lollygagss.id/#about">About</a>
+    <a href="https://lollygagss.id/#gallery">Gallery</a>
+    <a href="https://lollygagss.id/journal.html" class="active">Journal</a>
+    <a href="https://lollygagss.id/#contact">Contact</a>
     <a class="btn-book-nav" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank">Book Now</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile menu -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="https://lollygagss.id/#services">Services</a>
+  <a href="https://lollygagss.id/#about">About</a>
+  <a href="https://lollygagss.id/#gallery">Gallery</a>
+  <a href="https://lollygagss.id/journal.html" class="active">Journal</a>
+  <a href="https://lollygagss.id/#contact">Contact</a>
+  <a href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank">Book Now</a>
+</div>
 
 <!-- ── ARTICLE HERO ── -->
 <div class="article-hero">
@@ -887,6 +929,17 @@
     const scrollHeight = doc.scrollHeight - doc.clientHeight;
     const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
     document.getElementById('readingProgress').style.width = progress + '%';
+  });
+
+  // Mobile hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  // Close menu when a link is clicked
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
 </script>
 
