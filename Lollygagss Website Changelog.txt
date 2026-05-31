@@ -1,161 +1,182 @@
-Lollygagss Website Changelog
+# Lollygagss Website Changelog
 
-v1.0 — Initial Build
-Date: Early May 2026
+---
 
-Full single-file HTML site built with five pages: Home, Services, About, Gallery, Contact
-EN/ID language toggle
-IDR/AUD/USD/EUR/GBP currency converter with live exchange rate API
-Floating WhatsApp button with prefilled booking message
-Google Maps embed on contact page
-Logo recreated as inline SVG from Instagram branding
-Service menu: full nail and lash services with prices and durations
-Placeholder Instagram grid (blush-toned tiles linking to Instagram)
-About page with placeholder copy
-Fresha booking placeholder on contact page
-Footer with nav links and contact details
+## v1.0 — Initial Build
 
+Full single-file HTML site built with five pages: Home, Services, About, Gallery, Contact.
 
-v1.1 — Fouita Instagram Feed
+- EN/ID language toggle
+- IDR/AUD/USD/EUR/GBP currency converter with live exchange rate API
+- Floating WhatsApp button with prefilled booking message
+- Google Maps embed on contact page
+- Logo recreated as inline SVG from Instagram branding
+- Service menu: full nail and lash services with prices and durations
+- Placeholder Instagram grid (blush-toned tiles linking to Instagram)
+- About page with placeholder copy
+- Fresha booking placeholder on contact page
+- Footer with nav links and contact details
 
-Replaced placeholder Instagram grid tiles with live Fouita carousel embed (widget ID: 0x455bdc, key: fthsb0t5d)
-Applied same embed to Gallery page
+---
 
+## v1.1 — Fouita Instagram Feed
 
-v1.2 — Tracking & SEO
+- Replaced placeholder Instagram grid tiles with live Fouita carousel embed (widget ID: 0x455bdc, key: fthsb0t5d)
+- Applied same embed to Gallery page
 
-Added Google Analytics (GA4) tracking code (G-62J9EXMBRP)
-Added Microsoft Clarity session recording (wm9ol66bbv)
-Added Google Search Console verification meta tag (Z0zSRF8admGdH7TZp5bXov08-XMq9WgDhtPPXUL3Zb4)
-Added Open Graph tags for social sharing previews
-Added Local Business structured data (address, hours, phone, coordinates)
+---
 
+## v1.2 — Tracking & SEO
 
-v1.3 — Service Menu Rename & Fresha Pricing
+- Added Google Analytics GA4 tracking code (G-62J9EXMBRP)
+- Added Microsoft Clarity session recording (wm9ol66bbv)
+- Added Google Search Console verification meta tag (Z0zSRF8admGdH7TZp5bXov08-XMq9WgDhtPPXUL3Zb4)
+- Added Open Graph tags for social sharing previews
+- Added Local Business structured data (address, hours, phone, coordinates)
 
-Renamed all nail services to match Fresha menu names
-Renamed all lash services to match Fresha menu names
-Updated all prices to match live Fresha listing:
+---
 
-Classic Lash Extensions 2D: Rp 125,000 → Rp 250,000
-Natural Volume Lashes 3D: Rp 150,000 → Rp 280,000
-Volume Lash Extensions 4D-6D: Rp 250,000 → Rp 350,000
-Lash Infill: "Half price" → Rp 220,000
-Lash Removal: Rp 50,000 → Rp 100,000
-Gel Removal: Rp 30,000 → Rp 50,000
-Extensions Removal: Rp 50,000 → Rp 80,000
-Nail Art Simple duration: 60 min → 90 min
+## v1.3 — Service Menu Rename & Fresha Pricing
 
-Added service descriptions to all rows
+- Renamed all nail services to match Fresha menu names
+- Renamed all lash services to match Fresha menu names
+- Updated all prices to match live Fresha listing:
+  - Classic Lash Extensions 2D: Rp 125,000 → Rp 250,000
+  - Natural Volume Lashes 3D: Rp 150,000 → Rp 280,000
+  - Volume Lash Extensions 4D–6D: Rp 250,000 → Rp 350,000
+  - Lash Infill: "Half price" → Rp 220,000
+  - Lash Removal: Rp 50,000 → Rp 100,000
+  - Gel Removal: Rp 30,000 → Rp 50,000
+  - Extensions Removal: Rp 50,000 → Rp 80,000
+  - Nail Art Simple duration: 60 min → 90 min
+- Added service descriptions to all rows
 
+---
 
-v1.4 — Hero Wordmark, Meta Pixel, Fresha Integration, About Page, Stats Bar
+## v1.4 — Hero Wordmark, Meta Pixel, Fresha Integration, About Page, Stats Bar
 
-Added "Lollygagss Studio" wordmark in Dancing Script above "Feel Beautiful" in hero
-Added Meta Pixel (ID: 2380616549131464)
-Removed stats bar (8.7K followers / open daily / specialist services)
-All Book Now / Book Appointment buttons now open Fresha booking page in new tab
-Contact page Fresha placeholder replaced with real "Book Online via Fresha" button
-About page updated with full Fresha business description
-Sitemap generated (sitemap.xml)
+- Added "Lollygagss Studio" wordmark in Dancing Script above "Feel Beautiful" in hero
+- Added Meta Pixel (ID: 2380616549131464)
+- Removed stats bar (8.7K followers / open daily / specialist services)
+- All Book Now / Book Appointment buttons now open Fresha booking page in new tab
+- Contact page Fresha placeholder replaced with real "Book Online via Fresha" button
+- About page updated with full Fresha business description
+- Sitemap generated (sitemap.xml)
 
+---
 
-v1.5 — Remove Appointment Only
+## v1.5 — Remove Appointment Only
 
-Removed all instances of "appointment only" across the entire site (8 occurrences)
-Hero subtitle now reads: "Nail & lash studio in the heart of Teuku Umar, Bali"
-Visit Us section now reads: "Walk-ins welcome"
-About page booking meta changed to "Walk-ins Welcome"
-Footer and meta descriptions updated accordingly
+- Removed all instances of "appointment only" across the entire site (8 occurrences)
+- Hero subtitle now reads: "Nail & lash studio in the heart of Teuku Umar, Bali"
+- Visit Us section now reads: "Walk-ins welcome"
+- About page booking meta changed to "Walk-ins Welcome"
+- Footer and meta descriptions updated accordingly
 
+---
 
-v1.6 — Per-Service Book Buttons & Deep Links
+## v1.6 — Per-Service Book Buttons & Deep Links
 
-Added Book button to every service row in both nail and lash tables
-Three services wired with Fresha deep links (pre-selects service in cart):
+- Added Book button to every service row in both nail and lash tables
+- Three services wired with Fresha deep links (pre-selects service in cart):
+  - BIAB Manicure: serviceId=23993534
+  - Classic Manicure/Pedicure: serviceId=23993497
+  - Gel Manicure/Pedicure: serviceId=23993503
+- Remaining services use general Fresha booking link as fallback
+- Polygel and Acrylic "Enquire" buttons open WhatsApp with prefilled service-specific message
+- Added Book column header to both service tables
 
-BIAB Manicure: serviceId=23993534
-Classic Manicure/Pedicure: serviceId=23993497
-Gel Manicure/Pedicure: serviceId=23993503
+---
 
-Remaining services use general Fresha booking link as fallback
-Polygel and Acrylic "Enquire" buttons open WhatsApp with prefilled service-specific message
-Added Book column header to both service tables
+## v1.7 — Dedicated Pages for SEO, Hours Correction
 
+- Services and Journal split into dedicated HTML files for Google indexing
+- services.html created — serves lollygagss.id/services as a standalone indexable URL
+- journal.html created — serves lollygagss.id/journal as a standalone indexable URL
+- index.html updated — Services and Journal nav/footer links changed from onclick to real href links
+- Home page service cards and "View Services" hero button converted to real anchor links
+- vercel.json added — enables clean URLs (/services not /services.html) and 301 redirects from old hash URLs
+- sitemap.xml updated — /#services and /#journal replaced with real URLs /services and /journal
+- Each dedicated page has unique title tag, meta description, canonical URL, and correct nav active state
+- SPA routing JS replaced with lightweight stub on dedicated pages
+- Hours corrected across all three files and structured data:
+  - Previously: Daily 09:00–19:00
+  - Now: Mon–Sat 09:00–19:00. Sun by appointment.
+- Structured data split into two OpeningHoursSpecification entries (Mon–Sat regular, Sunday by appointment)
+- Hero "Book Appointment" button standardised to "Book Now"
 
-v1.7 — Dedicated Pages for SEO, Hours Correction
+---
 
-Services and Journal split into dedicated HTML files for Google indexing
-services.html created — serves lollygagss.id/services as a standalone indexable URL
-journal.html created — serves lollygagss.id/journal as a standalone indexable URL
-index.html updated — Services and Journal nav/footer links changed from onclick to real href links
-Home page service cards and "View Services" hero button converted to real anchor links
-vercel.json added — enables clean URLs (/services not /services.html) and 301 redirects from old hash URLs
-sitemap.xml updated — /#services and /#journal replaced with real URLs /services and /journal
-Each dedicated page has unique title tag, meta description, canonical URL, and correct nav active state
-SPA routing JS replaced with lightweight stub on dedicated pages
-Hours corrected across all three files and structured data:
-  Previously: Daily 09:00–19:00
-  Now: Mon–Sat 09:00–19:00. Sun by appointment.
-Structured data split into two OpeningHoursSpecification entries (Mon–Sat regular, Sunday by appointment)
-Hero "Book Appointment" button standardised to "Book Now"
+## v1.8 — Remove Staff-Specific Fresha Links
 
+- Stripped eid and pId parameters from all 21 Fresha booking URLs across index.html, services.html, and journal.html
+- All booking buttons now point to the general Lollygagss Studio Fresha page (lid=2968855)
+- Per-service deep links retain serviceId so individual Book buttons still pre-select the correct service
+- Fixes "team member no longer available" error caused by removal of previous staff member from Fresha
 
-v1.8 — First Journal Article (BIAB), Journal Page Activation
-Date: 30 May 2026
+---
 
-Created /journal/ folder in repo for article HTML files
-Published first journal article: journal/biab-bali.html
-  Title: "What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now"
-  Author: Lina Zahirah Dimes
-  Word count: ~1,100
-  Target keywords: BIAB Bali, BIAB manicure Bali, BIAB Kerobokan, BIAB Teuku Umar
-  Geographic targeting: Seminyak, Canggu, Kerobokan, Kuta, Legian, Denpasar, Teuku Umar
-Article includes:
-  GA4, Microsoft Clarity, and Meta Pixel tracking tags
-  Canonical URL tag
-  Article structured data (Schema.org Article type)
-  FAQ structured data for Google snippet eligibility (3 questions)
-  Open Graph tags for social sharing
-  Full navigation bar with Services, About, Gallery, Journal, Contact, Book Now
-  Mobile hamburger menu
-  Reading progress bar
-  Mid-article CTA with Fresha and WhatsApp buttons
-  BIAB vs Gel Manicure comparison table (desktop 3-column, mobile stacked cards)
-  BIAB Manicure service spotlight card with Fresha deep link and WhatsApp button
-  Aftercare tips list
-  Closing CTA section with Fresha, WhatsApp, and View All Services buttons
-  Related articles section (placeholder cards for next two articles)
-  Floating WhatsApp button
-  Footer with full nav and contact details
-journal.html updated — BIAB article card uncommented and made live
-journal.html updated — "Coming Soon" empty state block removed
-sitemap.xml updated — /journal/biab-bali.html added (priority 0.8, lastmod 2026-05-30)
+## v1.9 — Google Reviews API Integration
+**Date: 25 May 2026**
 
+- Added Google Places API integration to display live Google reviews on website
+- Three review sections added to index.html (Home, Services, Contact pages)
+- Each section displays aggregate star rating, review count, and up to 3 most recent written reviews
+- Reviewer name, timestamp ("X months ago" format), and avatar photo included
+- Reviews pull from Google Place ID: ChIJHTK4hLlH0i0RMqbSXuaV1XY
+- Smart caching: API calls cached for 6 hours to minimise request volume and cost
+- Responsive design: reviews grid collapses to single column on mobile
+- Language support: review summary labels respect EN/ID language toggle
+- Styling integrated into brand palette
 
-v1.9 — Article Nav Fix, Journal Routing Cleanup
-Date: 30 May 2026
+**API architecture:**
+- Client-side JS fetch calls `/api/reviews` endpoint (no API key exposed in browser)
+- Vercel serverless function (`api/reviews.js`) proxies Google Places API
+- API key stored securely as environment variable `GOOGLE_PLACES_API_KEY` in Vercel dashboard
+- Graceful fallback if API fails or Place ID has no reviews yet
 
-biab-bali.html — nav rebuilt to exactly match main site:
-  SVG circular logo replaced text-based wordmark in article nav
-  Nav links changed from <div> to <ul> list structure matching journal.html and services.html
-  Letter spacing corrected to 2.5px to match main site
-  Underline active indicator added to Journal link
-  Book Now changed from <a> tag to <button> inside .nav-right div
-  Nav link colour corrected from gray-dark to black (matching main site)
-  Mobile nav now hides .nav-right as well as .nav-links on small screens
-biab-bali.html — article hero background changed from solid black to warm cream with rose gradient
-  Heading colour changed from white to black
-  Lead paragraph colour changed from white/70 to gray-dark
-  Eyebrow and active accent colours updated from rose-light to rose
-  Article meta border and text colours updated for light background
-biab-bali.html — inaccurate travel time claim removed from "Where to get BIAB" section
-  Replaced with vague but encouraging language: "clients from Canggu regularly make the trip"
-biab-bali.html — comparison table mobile layout fixed
-  Desktop: 3-column grid with black header (unchanged)
-  Mobile: stacked card layout with row label as rose heading, BIAB/Gel prefixed inline
-index.html — Journal nav link changed from onclick="showPage('journal')" to href="/journal"
-index.html — Journal footer link changed from onclick="showPage('journal')" to href="/journal"
-index.html — "journal" removed from PAGES array in SPA routing
-index.html — Hash redirect added: lollygagss.id/#journal now redirects to lollygagss.id/journal
-journal.html — Journal nav link updated to href="/journal" with active state
+**Setup:**
+- Google Cloud Console: Places API enabled, key restricted to Places API + lollygagss.id
+- Vercel: `GOOGLE_PLACES_API_KEY` environment variable added to Production environment
+- GitHub: `api/reviews.js` added to repo root (auto-deployed by Vercel)
+
+---
+
+## v2.0 — June Offer Announcement Bar & BIAB Journal Post
+**Date: 31 May 2026**
+
+**June lash offer — Fresha bundles created:**
+- Three new Fresha bundles created for June promotion:
+  - Classic Lashes + Free Removal — June (Rp 250,000)
+  - Natural Volume Lashes + Free Removal — June (Rp 280,000)
+  - Volume Lashes + Free Removal — June (Rp 350,000)
+- Each bundle prices at lash-set cost only, making removal complimentary
+- Bundles set to expire 30 June 2026
+
+**Google Business Profile — June offer post:**
+- GBP offer post published (Explainer version) with lash_2696 image
+- Title: set as offer title in GBP offer field
+- Offer dates: 01/06/2026 – 30/06/2026
+- "Link to redeem offer" button wired to Classic bundle Fresha link
+- Terms added: valid on full lash set bookings only, one per client, until 30 June
+
+**Announcement bar added to index.html:**
+- Fixed dark announcement bar inserted above nav (z-index 201)
+- Nav pushed from top:0 to top:38px to sit below bar
+- Page and hero padding-top adjusted to calc(var(--nav-h) + 38px) across all pages
+- Bar displays June offer text, "Until 30 June" label, coral Book Now button
+- Book Now button links to Classic Lashes + Free Removal Fresha bundle
+- Bilingual support: EN/ID data attributes on bar text
+- Mobile responsive: "Until 30 June" label hidden on small screens, text scales down
+- Bar added to index.html, journal.html, and biab-bali.html
+
+**BIAB Bali blog post:**
+- biab-bali.html published at lollygagss.id/journal/biab-bali
+- Full article on BIAB manicures in Bali — what BIAB is, why it suits the tropical climate, aftercare, and booking at Lollygagss
+- Announcement bar applied to this page also
+- sitemap.xml updated to include /journal/biab-bali
+
+**Files changed this version:**
+- index.html
+- journal.html
+- biab-bali.html
