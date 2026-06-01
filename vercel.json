@@ -1,7 +1,10 @@
 {
   "cleanUrls": true,
-  "redirects": [
-    { "source": "/#services", "destination": "/services", "permanent": true },
-    { "source": "/#journal",  "destination": "/journal",  "permanent": true }
+  "rewrites": [
+    { "source": "/home",    "destination": "/index.html" },
+    { "source": "/services","destination": "/index.html" },
+    { "source": "/about",   "destination": "/index.html" },
+    { "source": "/gallery", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" }
   ]
 }
