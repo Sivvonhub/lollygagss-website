@@ -663,7 +663,7 @@
 
 <!-- ══ NAVIGATION ══ -->
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">
+  <a class="nav-logo" href="/" onclick="event.preventDefault();showPage('home')" style="text-decoration:none;cursor:pointer;">
     <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <clipPath id="cc"><circle cx="60" cy="60" r="57"/></clipPath>
@@ -675,15 +675,15 @@
       <text x="98" y="70" font-family="Arial" font-size="12" fill="#C4796F">♥</text>
       <text x="60" y="85" font-family="'Jost',sans-serif" font-weight="300" font-size="8" fill="#1A1A1A" text-anchor="middle" letter-spacing="4">STUDIO</text>
     </svg>
-  </div>
+  </a>
 
   <ul class="nav-links">
-    <li><a id="nav-home"     onclick="showPage('home')"     class="active" data-en="Home"     data-id="Beranda">Home</a></li>
-    <li><a id="nav-services" onclick="showPage('services')"                data-en="Services" data-id="Layanan">Services</a></li>
-    <li><a id="nav-about"    onclick="showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
-    <li><a id="nav-gallery"  onclick="showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
+    <li><a id="nav-home"     href="/"         onclick="event.preventDefault();showPage('home')"     class="active" data-en="Home"     data-id="Beranda">Home</a></li>
+    <li><a id="nav-services" href="/services"                                                                      data-en="Services" data-id="Layanan">Services</a></li>
+    <li><a id="nav-about"    href="/about"    onclick="event.preventDefault();showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
+    <li><a id="nav-gallery"  href="/gallery"  onclick="event.preventDefault();showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
     <li><a id="nav-journal"  href="/journal"                               data-en="Journal"  data-id="Jurnal">Journal</a></li>
-    <li><a id="nav-contact"  onclick="showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
+    <li><a id="nav-contact"  href="/contact"  onclick="event.preventDefault();showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
   </ul>
 
   <div class="nav-right">
@@ -724,7 +724,7 @@
       </p>
       <div class="hero-ctas">
         <button class="btn-primary" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan Sekarang">Book Now</button>
-        <button class="btn-secondary" onclick="showPage('services')" data-en="View Services" data-id="Lihat Layanan">View Services</button>
+        <a href="/services" class="btn-secondary" data-en="View Services" data-id="Lihat Layanan">View Services</a>
       </div>
     </div>
   </section>
@@ -736,22 +736,22 @@
       Precision nails and professional lash services, delivered in a calm and clean space.
     </p>
     <div class="service-cards">
-      <div class="service-card" onclick="showPage('services')">
+      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;display:block;">
         <div class="sc-num">01</div>
         <div class="sc-title" data-en="Nails" data-id="Kuku">Nails</div>
         <div class="sc-desc" data-en="Gel manicure, BIAB, nail extensions, and nail art from simple to hard design." data-id="Gel manikur, BIAB, ekstensi kuku, dan seni kuku dari desain sederhana hingga kompleks.">
           Gel manicure, BIAB, nail extensions, and nail art from simple to hard design.
         </div>
         <div class="sc-link" data-en="View nail services →" data-id="Lihat layanan kuku →">View nail services →</div>
-      </div>
-      <div class="service-card" onclick="showPage('services', 'lash-services')">
+      </a>
+      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;display:block;">
         <div class="sc-num">02</div>
         <div class="sc-title" data-en="Lashes" data-id="Bulu Mata">Lashes</div>
         <div class="sc-desc" data-en="Natural 2D through volume 6D lash extensions. Cat eye and volume styling available." data-id="Ekstensi bulu mata natural 2D hingga volume 6D. Tersedia styling cat eye dan volume.">
           Natural 2D through volume 6D lash extensions. Cat eye and volume styling available.
         </div>
         <div class="sc-link" data-en="View lash services →" data-id="Lihat layanan bulu mata →">View lash services →</div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -762,7 +762,7 @@
       <p class="section-intro" style="margin-bottom:36px;" data-en="Open daily 09:00–19:00. Walk-ins welcome. Home service available on request." data-id="Buka setiap hari 09.00–19.00. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
         Open daily 09:00–19:00. Walk-ins welcome. Home service available on request.
       </p>
-      <button class="btn-primary" onclick="showPage('contact')" data-en="Get Directions & Book" data-id="Dapatkan Petunjuk & Pesan">Get Directions & Book</button>
+      <a href="/contact" class="btn-primary" onclick="event.preventDefault();showPage('contact')" data-en="Get Directions & Book" data-id="Dapatkan Petunjuk & Pesan">Get Directions & Book</a>
     </div>
   </div>
 
@@ -1261,12 +1261,12 @@
     <div>
       <div class="footer-h" data-en="Navigate" data-id="Navigasi">Navigate</div>
       <ul class="footer-links">
-        <li><a onclick="showPage('home')"     data-en="Home"     data-id="Beranda">Home</a></li>
-        <li><a onclick="showPage('services')" data-en="Services" data-id="Layanan">Services</a></li>
-        <li><a onclick="showPage('about')"    data-en="About"    data-id="Tentang">About</a></li>
-        <li><a onclick="showPage('gallery')"  data-en="Gallery"  data-id="Galeri">Gallery</a></li>
+        <li><a href="/" onclick="event.preventDefault();showPage('home')" data-en="Home" data-id="Beranda">Home</a></li>
+        <li><a href="/services" data-en="Services" data-id="Layanan">Services</a></li>
+        <li><a href="/about" onclick="event.preventDefault();showPage('about')" data-en="About" data-id="Tentang">About</a></li>
+        <li><a href="/gallery" onclick="event.preventDefault();showPage('gallery')" data-en="Gallery" data-id="Galeri">Gallery</a></li>
         <li><a href="/journal"             data-en="Journal"  data-id="Jurnal">Journal</a></li>
-        <li><a onclick="showPage('contact')"  data-en="Contact"  data-id="Kontak">Contact</a></li>
+        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')" data-en="Contact" data-id="Kontak">Contact</a></li>
       </ul>
     </div>
     <div>
@@ -1274,8 +1274,8 @@
       <ul class="footer-links">
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
-        <li><a onclick="showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
-        <li><a onclick="showPage('contact')" data-en="Mon–Sat 09:00–19:00. Sun by appt." data-id="Sen–Sab 09.00–19.00. Min dengan janji.">Mon–Sat 09:00–19:00. Sun by appt.</a></li>
+        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
+        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')" data-en="Mon–Sat 09:00–19:00. Sun by appt." data-id="Sen–Sab 09.00–19.00. Min dengan janji.">Mon–Sat 09:00–19:00. Sun by appt.</a></li>
       </ul>
     </div>
   </div>
@@ -1309,8 +1309,9 @@
     const nav = document.getElementById('nav-'+id);
     if(nav) nav.classList.add('active');
     window.scrollTo({ top:0, behavior:'smooth' });
-    // Update URL hash for bookmarking
-    history.replaceState(null,'','#'+id);
+    // Update URL with real path for analytics and bookmarking
+    const path = id === 'home' ? '/' : '/'+id;
+    history.pushState(null,'',path);
     // Scroll to specific section if requested
     if (scrollTo) {
       setTimeout(() => {
@@ -1322,11 +1323,20 @@
     if (['home','services','contact'].includes(id)) loadReviews();
   }
 
-  // Handle hash on load
+  // Handle path or hash on load
   window.addEventListener('load', () => {
+    const path = window.location.pathname.replace(/^\//, '');
     const hash = window.location.hash.replace('#','');
-    if(hash === 'journal') { window.location.replace('/journal'); return; }
-    if(PAGES.includes(hash)) showPage(hash);
+    const page = path || hash;
+    if(page === 'journal') { window.location.replace('/journal'); return; }
+    if(PAGES.includes(page)) showPage(page);
+  });
+
+  // Handle browser back/forward with pushState
+  window.addEventListener('popstate', () => {
+    const path = window.location.pathname.replace(/^\//, '');
+    const page = PAGES.includes(path) ? path : 'home';
+    showPage(page);
   });
 
   // ── LANGUAGE ──
@@ -1511,8 +1521,9 @@
 
   // Load reviews on initial page load
   window.addEventListener('load', () => {
+    const path = window.location.pathname.replace(/^\//, '');
     const hash = window.location.hash.replace('#','');
-    const startPage = PAGES.includes(hash) ? hash : 'home';
+    const startPage = PAGES.includes(path) ? path : (PAGES.includes(hash) ? hash : 'home');
     if (['home','services','contact'].includes(startPage)) loadReviews();
   });
 </script>
