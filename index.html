@@ -19,6 +19,7 @@
   <meta property="og:url" content="https://lollygagss.id">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Lollygagss Studio">
+  <link rel="canonical" href="https://lollygagss.id/">
 
   <!-- Local Business Structured Data -->
   <script type="application/ld+json">
@@ -31,8 +32,10 @@
     "telephone": "+6285121950351",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jl. Persada II, Teuku Umar",
-      "addressLocality": "Bali",
+      "streetAddress": "Jl. Persada II, Jl. Teuku Umar Barat",
+      "addressLocality": "Kerobokan Kelod",
+      "addressRegion": "Bali",
+      "postalCode": "80117",
       "addressCountry": "ID"
     },
     "geo": {
@@ -44,12 +47,6 @@
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday"],
         "opens": "09:00",
         "closes": "19:00"
       }
@@ -330,6 +327,7 @@
       padding:64px 52px; cursor:pointer; transition:all .25s;
       position:relative; overflow:hidden;
     }
+    a.service-card { color:var(--white); }
     .service-card:last-child { background:var(--rose); }
     .service-card:hover { filter:brightness(1.1); }
     .sc-num { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:3px; opacity:.4; margin-bottom:28px; }
@@ -736,7 +734,7 @@
       Precision nails and professional lash services, delivered in a calm and clean space.
     </p>
     <div class="service-cards">
-      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;display:block;">
+      <a class="service-card" href="/services" style="text-decoration:none;color:var(--white);display:block;">
         <div class="sc-num">01</div>
         <div class="sc-title" data-en="Nails" data-id="Kuku">Nails</div>
         <div class="sc-desc" data-en="Gel manicure, BIAB, nail extensions, and nail art from simple to hard design." data-id="Gel manikur, BIAB, ekstensi kuku, dan seni kuku dari desain sederhana hingga kompleks.">
@@ -744,7 +742,7 @@
         </div>
         <div class="sc-link" data-en="View nail services →" data-id="Lihat layanan kuku →">View nail services →</div>
       </a>
-      <a class="service-card" href="/services" style="text-decoration:none;color:inherit;display:block;">
+      <a class="service-card" href="/services" style="text-decoration:none;color:var(--white);display:block;">
         <div class="sc-num">02</div>
         <div class="sc-title" data-en="Lashes" data-id="Bulu Mata">Lashes</div>
         <div class="sc-desc" data-en="Natural 2D through volume 6D lash extensions. Cat eye and volume styling available." data-id="Ekstensi bulu mata natural 2D hingga volume 6D. Tersedia styling cat eye dan volume.">
@@ -759,8 +757,8 @@
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-label" data-en="Visit Us" data-id="Kunjungi Kami">Visit Us</p>
       <h2 class="section-title" data-en="Jl. Persada II, Teuku Umar, Bali" data-id="Jl. Persada II, Teuku Umar, Bali">Jl. Persada II, Teuku Umar, Bali</h2>
-      <p class="section-intro" style="margin-bottom:36px;" data-en="Open daily 09:00–19:00. Walk-ins welcome. Home service available on request." data-id="Buka setiap hari 09.00–19.00. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
-        Open daily 09:00–19:00. Walk-ins welcome. Home service available on request.
+      <p class="section-intro" style="margin-bottom:36px;" data-en="Mon–Sat 09:00–19:00. Walk-ins welcome. Home service available on request." data-id="Sen–Sab 09.00–19.00. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
+        Mon–Sat 09:00–19:00. Walk-ins welcome. Home service available on request.
       </p>
       <a href="/contact" class="btn-primary" onclick="event.preventDefault();showPage('contact')" data-en="Get Directions & Book" data-id="Dapatkan Petunjuk & Pesan">Get Directions & Book</a>
     </div>
@@ -811,7 +809,7 @@
 
   <div class="services-hero">
     <p class="section-label" data-en="Our Menu" data-id="Menu Kami">Our Menu</p>
-    <h1 class="section-title" data-en="Services & Pricing" data-id="Layanan & Harga">Services & Pricing</h1>
+    <h2 class="section-title" data-en="Services & Pricing" data-id="Layanan & Harga">Services & Pricing</h2>
     <p data-en="All nail design prices are starting prices. Final price depends on complexity and detail." data-id="Semua harga desain kuku adalah harga mulai dari. Harga akhir tergantung kompleksitas dan detail.">
       All nail design prices are starting prices. Final price depends on complexity and detail.
     </p>
@@ -1090,7 +1088,7 @@
       <div class="about-meta">
         <div>
           <div class="meta-lbl" data-en="Hours" data-id="Jam Buka">Hours</div>
-          <div class="meta-val" data-en="Mon–Sat 09:00–19:00. Sun by appt." data-id="Sen–Sab 09.00–19.00. Min dengan janji.">Mon–Sat 09:00–19:00. Sun by appt.</div>
+          <div class="meta-val" data-en="Mon–Sat 09:00–19:00. Closed Sunday." data-id="Sen–Sab 09.00–19.00. Tutup Hari Minggu.">Mon–Sat 09:00–19:00. Closed Sunday.</div>
         </div>
         <div>
           <div class="meta-lbl" data-en="Booking" data-id="Pemesanan">Booking</div>
@@ -1111,7 +1109,7 @@
 <div id="page-gallery" class="page">
   <div class="services-hero">
     <p class="section-label" data-en="Our Work" data-id="Karya Kami">Our Work</p>
-    <h1 class="section-title" data-en="Gallery" data-id="Galeri">Gallery</h1>
+    <h2 class="section-title" data-en="Gallery" data-id="Galeri">Gallery</h2>
     <p data-en="Follow @lollygagss_studio on Instagram for our latest work." data-id="Ikuti @lollygagss_studio di Instagram untuk karya terbaru kami.">Follow @lollygagss_studio on Instagram for our latest work.</p>
   </div>
 
@@ -1133,7 +1131,7 @@
 
   <div class="services-hero">
     <p class="section-label" data-en="Stories & Guides" data-id="Cerita & Panduan">Stories & Guides</p>
-    <h1 class="section-title" data-en="Journal" data-id="Jurnal">Journal</h1>
+    <h2 class="section-title" data-en="Journal" data-id="Jurnal">Journal</h2>
     <p data-en="Treatments, trends, and tips from our studio in Bali." data-id="Perawatan, tren, dan tips dari studio kami di Bali.">Treatments, trends, and tips from our studio in Bali.</p>
   </div>
 
@@ -1187,7 +1185,7 @@
       </div>
       <div class="c-item">
         <div class="c-lbl" data-en="Hours" data-id="Jam Buka">Hours</div>
-        <div class="c-val" data-en="Mon–Sat 09:00–19:00 &middot; Sun by appointment" data-id="Sen–Sab 09.00–19.00 &middot; Min dengan janji">Mon–Sat 09:00–19:00 &middot; Sun by appointment</div>
+        <div class="c-val" data-en="Mon–Sat 09:00–19:00 &middot; Closed Sunday" data-id="Sen–Sab 09.00–19.00 &middot; Tutup Hari Minggu">Mon–Sat 09:00–19:00 &middot; Closed Sunday</div>
       </div>
       <div class="c-item">
         <div class="c-lbl" data-en="Phone / WhatsApp" data-id="Telepon / WhatsApp">Phone / WhatsApp</div>
@@ -1275,7 +1273,7 @@
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
         <li><a href="/contact" onclick="event.preventDefault();showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
-        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')" data-en="Mon–Sat 09:00–19:00. Sun by appt." data-id="Sen–Sab 09.00–19.00. Min dengan janji.">Mon–Sat 09:00–19:00. Sun by appt.</a></li>
+        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')" data-en="Mon–Sat 09:00–19:00. Closed Sunday." data-id="Sen–Sab 09.00–19.00. Tutup Hari Minggu.">Mon–Sat 09:00–19:00. Closed Sunday.</a></li>
       </ul>
     </div>
   </div>
