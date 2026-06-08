@@ -507,41 +507,50 @@
       max-width:780px; margin:0 auto 56px; text-align:center; padding:0 24px;
     }
     .journal-grid {
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-      gap:48px; max-width:1200px; margin:0 auto; padding:0 48px;
+      display:flex; flex-direction:column; gap:0;
+      max-width:1200px; margin:0 auto; padding:0 48px;
     }
     .journal-card {
-      background:var(--white); cursor:pointer;
-      transition:transform .25s; text-decoration:none; color:inherit;
-      display:block;
+      display:grid; grid-template-columns:200px 1fr;
+      border-top:1px solid var(--gray-light);
+      text-decoration:none; color:inherit;
+      transition:background .2s; cursor:pointer;
+      min-height:120px;
     }
-    .journal-card:hover { transform:translateY(-4px); }
+    .journal-card:last-child { border-bottom:1px solid var(--gray-light); }
+    .journal-card:hover { background:var(--blush); }
     .journal-card-image {
-      aspect-ratio: 4/3;
-      background:linear-gradient(145deg,#F4ECEC,#E0CCCA);
-      margin-bottom:20px;
-      display:flex; align-items:center; justify-content:center;
+      overflow:hidden; background:var(--blush);
     }
-    .journal-card-image span {
-      font-family:'Dancing Script',cursive; font-size:48px;
-      color:var(--rose); opacity:.6;
+    .journal-card-image img {
+      width:100%; height:100%; object-fit:cover; object-position:center; display:block;
+    }
+    .journal-card-body {
+      padding:24px 32px; display:flex; flex-direction:column; justify-content:center;
     }
     .journal-card-meta {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px;
-      text-transform:uppercase; color:var(--rose); margin-bottom:10px;
+      text-transform:uppercase; color:var(--gray); margin-bottom:8px;
     }
     .journal-card-title {
-      font-family:'Playfair Display',serif; font-size:24px; font-weight:700;
-      line-height:1.25; margin-bottom:10px; color:var(--black);
+      font-family:'Playfair Display',serif; font-size:20px; font-weight:700;
+      line-height:1.25; margin-bottom:8px; color:var(--black);
     }
     .journal-card-excerpt {
       font-family:'Cormorant Garamond',serif; font-size:17px;
       font-weight:300; font-style:italic; color:var(--gray-dark);
-      line-height:1.6;
+      line-height:1.5; margin-bottom:10px;
     }
     .journal-card-link {
-      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
-      text-transform:uppercase; color:var(--rose); margin-top:14px; display:inline-block;
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--rose); display:inline-block;
+    }
+    @media(max-width:600px) {
+      .journal-grid { padding:0 24px; }
+      .journal-card { grid-template-columns:120px 1fr; }
+      .journal-card-body { padding:16px; }
+      .journal-card-title { font-size:16px; }
+      .journal-card-excerpt { display:none; }
     }
     .journal-empty {
       text-align:center; padding:80px 24px; max-width:680px; margin:0 auto;
@@ -1130,17 +1139,18 @@
     <div class="journal-grid">
 
       <a class="journal-card" href="/journal/biab-bali.html">
-        <div class="journal-card-image" style="background:none; overflow:hidden;">
+        <div class="journal-card-image">
           <img src="/images/journal/biab-nails-bali-kerobokan.jpg"
-               alt="BIAB manicure with pink gel nails at Lollygagss Studio, Kerobokan Bali"
-               style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;">
+               alt="BIAB manicure with pink gel nails at Lollygagss Studio, Kerobokan Bali">
         </div>
-        <div class="journal-card-meta">
-          <span data-en="Treatments · 6 min read" data-id="Perawatan · 6 min baca">Treatments · 6 min read</span>
+        <div class="journal-card-body">
+          <div class="journal-card-meta">
+            <span data-en="Treatments · 6 min read" data-id="Perawatan · 6 min baca">Treatments · 6 min read</span>
+          </div>
+          <h3 class="journal-card-title" data-en="What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now" data-id="Apa Itu BIAB? Mengapa Kuku BIAB Begitu Populer di Bali Saat Ini">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</h3>
+          <p class="journal-card-excerpt" data-en="Builder gel that strengthens natural nails and survives the tropics. Everything you need to know before booking." data-id="Gel builder yang menguatkan kuku alami dan tahan iklim tropis.">Builder gel that strengthens natural nails and survives the tropics. Everything you need to know before booking.</p>
+          <span class="journal-card-link" data-en="Read more →" data-id="Baca selengkapnya →">Read more →</span>
         </div>
-        <h3 class="journal-card-title" data-en="What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now" data-id="Apa Itu BIAB? Mengapa Kuku BIAB Begitu Populer di Bali Saat Ini">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</h3>
-        <p class="journal-card-excerpt" data-en="Builder gel that strengthens natural nails and survives the tropics. Everything you need to know before booking." data-id="Gel builder yang menguatkan kuku alami dan tahan iklim tropis.">Builder gel that strengthens natural nails and survives the tropics. Everything you need to know before booking.</p>
-        <span class="journal-card-link" data-en="Read more →" data-id="Baca selengkapnya →">Read more →</span>
       </a>
 
     </div>
