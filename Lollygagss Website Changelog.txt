@@ -1,3 +1,25 @@
+v2.5 — 11 June 2026
+
+GSC & SEO audit based on 3-month Search Console performance data (10 clicks, 218 impressions, avg position 6.4).
+
+vercel.json — Added HTTP → HTTPS permanent redirects for bare domain and www subdomain. Fixes GSC duplicate page issue where http://lollygagss.id/ and https://lollygagss.id/ were being treated as separate URLs, splitting ranking authority.
+
+sitemap.xml — Removed three anchor fragment entries (/#about, /#gallery, /#contact) which are not indexable pages. Added journal/biab-bali and journal/gel-biab-extensions-bali (both were live but missing from sitemap). Updated journal index lastmod to 2026-06-11.
+
+index.html — Updated title: Lollygagss Studio — Nails & Lashes Bali → Lollygagss Studio — Nail & Lash Studio, Kerobokan Bali. Adds Kerobokan to the clickable title link in search results.
+
+journal.html — Updated title: Journal — Lollygagss Studio Bali → Nail & Lash Guides — Lollygagss Studio Kerobokan Bali. Rewrote meta description to lead with services rather than author framing. Page had 25 impressions, zero clicks — title was not signalling content type.
+
+services.html — Updated title: Services & Pricing — Lollygagss Studio Bali → BIAB, Gel & Lash Extensions Kerobokan Bali — Lollygagss Studio. Updated meta description (added "with pricing", tightened copy). Added internal link under BIAB Manicure row: What is BIAB? Read our guide → /journal/biab-bali. Added internal link under Gel Manicure row: Gel vs BIAB vs extensions — which is right for you? → /journal/gel-biab-extensions-bali. Both links use existing .journal-card-link CSS class.
+
+journal/biab-bali.html — Updated title: What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now | Lollygagss Studio → What Is BIAB? Gel Nails in Kerobokan Bali — Lollygagss Studio. Rewrote meta description to open with the reader's question. Article is at position 7.9 in GSC — title length was 87 characters and Kerobokan was absent from the title.
+
+journal/gel-biab-extensions-bali.html — Updated title: Gel Manicure vs BIAB vs Nail Extensions: Which Is Right for You? | Lollygagss Studio → Gel vs BIAB vs Nail Extensions — Which to Choose in Kerobokan, Bali?. Rewrote meta description with Kerobokan Bali added explicitly. Brand suffix dropped in favour of location signal. Original title was 87 characters and truncating in results.
+
+Post-deploy actions: resubmit sitemap.xml in GSC; request recrawl via URL Inspection on both journal articles.
+
+---
+
 v2.4 — 6 June 2026
 
 Fixed black service card text on homepage — browser default link colour was overriding .service-card { color:var(--white) } because the <a> elements had color:inherit in their inline styles. Added a.service-card { color:var(--white); } CSS rule and updated both inline styles.
