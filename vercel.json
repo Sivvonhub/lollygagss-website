@@ -1,7 +1,3 @@
 {
-  "cleanUrls": true,
-  "redirects": [
-    { "source": "http://lollygagss.id/:path*", "destination": "https://lollygagss.id/:path*", "permanent": true },
-    { "source": "http://www.lollygagss.id/:path*", "destination": "https://lollygagss.id/:path*", "permanent": true }
-  ]
+  "cleanUrls": true
 }
