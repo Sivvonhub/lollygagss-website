@@ -1,9 +1,7 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "http://lollygagss.id/(.*)", "destination": "https://lollygagss.id/$1", "permanent": true },
-    { "source": "http://www.lollygagss.id/(.*)", "destination": "https://lollygagss.id/$1", "permanent": true },
-    { "source": "/#services", "destination": "/services", "permanent": true },
-    { "source": "/#journal",  "destination": "/journal",  "permanent": true }
+    { "source": "http://lollygagss.id/:path*", "destination": "https://lollygagss.id/:path*", "permanent": true },
+    { "source": "http://www.lollygagss.id/:path*", "destination": "https://lollygagss.id/:path*", "permanent": true }
   ]
 }
