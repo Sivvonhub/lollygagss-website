@@ -20,6 +20,8 @@ Not changed: Twitter card tags intentionally skipped (studio does not use X/Twit
 
 Post-deploy actions: deploy the seven updated files; run a new Ahrefs Site Audit crawl to clear issues; resubmit sitemap.xml in GSC.
 
+--
+
 v2.5 — 11 June 2026
 
 GSC & SEO audit based on 3-month Search Console performance data (10 clicks, 218 impressions, avg position 6.4).
