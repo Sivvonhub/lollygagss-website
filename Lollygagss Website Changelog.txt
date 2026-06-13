@@ -152,3 +152,5 @@ Inline SVG logo (Playfair Display + Dancing Script)
 Brand colours: Coral #C4796F, Near Black #1A1A1A, Warm White #FAF7F5, Soft Blush #F0E8E6, Light Coral #E8A89E, Mid Grey #8A8A8A
 Fonts: Playfair Display (headings), Cormorant Garamond (body), Dancing Script (wordmark), Jost (UI)
 Deployed on Vercel via GitHub; domain and email on Hostinger
+
+2026-06-13: Test commit to verify Vercel deployment pipeline
