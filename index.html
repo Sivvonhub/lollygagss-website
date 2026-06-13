@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lollygagss Studio — Nail & Lash Studio, Kerobokan Bali</title>
-  <meta name="description" content="Nail and lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail and lash extensions, all by owner Lina. Book online or via WhatsApp.">
+  <title>Lollygagss Studio — Nails & Lashes Bali</title>
+  <meta name="description" content="Lollygagss Studio — nail and lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail extensions and lash extensions, all by owner Lina. Book online or via WhatsApp.">
 
   <!-- Search Console Verification -->
   <meta name="google-site-verification" content="Z0zSRF8admGdH7TZp5bXov08-XMq9WgDhtPPXUL3Zb4" />
@@ -13,11 +13,10 @@
   <meta name="ahrefs-site-verification" content="a5577e7fef22b3c07820e643a97a2c60879cbdc29264a3198eb033387e431c78">
 
   <!-- Open Graph (social sharing) -->
-  <meta property="og:title" content="Lollygagss Studio — Nail & Lash Studio, Kerobokan Bali">
-  <meta property="og:description" content="Nail and lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail and lash extensions, all by owner Lina. Book online or via WhatsApp.">
-  <meta property="og:image" content="https://lollygagss.id/images/journal/biab-nails-bali-kerobokan.jpg">
+  <meta property="og:title" content="Lollygagss Studio — Nails & Lashes Bali">
+  <meta property="og:description" content="Nail and lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail extensions and lash extensions, all by owner Lina.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lollygagss.id/">
+  <meta property="og:url" content="https://lollygagss.id">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Lollygagss Studio">
   <link rel="canonical" href="https://lollygagss.id/">
@@ -418,9 +417,11 @@
     /* ── ABOUT ── */
     .about-grid { display:grid; grid-template-columns:1fr 1fr; min-height:75vh; }
     .about-img-side {
-      background:var(--blush); display:flex;
-      align-items:center; justify-content:center; padding:80px 60px;
+      background:var(--blush); padding:0;
+      position:relative; overflow:hidden;
     }
+    .about-img-side picture { position:absolute; inset:0; display:block; }
+    .about-img-side img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
     .about-img-placeholder {
       width:100%; max-width:380px; aspect-ratio:3/4;
       background:linear-gradient(145deg, var(--blush) 0%, var(--rose-light) 50%, var(--blush) 100%);
@@ -630,6 +631,7 @@
       .section, .svc-section { padding:56px 24px; }
       .section-full { padding:56px 24px; }
       .service-cards, .about-grid, .contact-grid, .footer-grid { grid-template-columns:1fr; }
+      .about-img-side { min-height:56vh; }
       .stats-bar { grid-template-columns:1fr; }
       .insta-grid { grid-template-columns:repeat(2,1fr); }
       .gallery-grid { grid-template-columns:repeat(2,1fr); }
@@ -679,10 +681,10 @@
   <ul class="nav-links">
     <li><a id="nav-home"     href="/"         onclick="event.preventDefault();showPage('home')"     class="active" data-en="Home"     data-id="Beranda">Home</a></li>
     <li><a id="nav-services" href="/services"                                                                      data-en="Services" data-id="Layanan">Services</a></li>
-    <li><a id="nav-about"    href="/#about"    onclick="event.preventDefault();showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
-    <li><a id="nav-gallery"  href="/#gallery"  onclick="event.preventDefault();showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
+    <li><a id="nav-about"    href="/about"    onclick="event.preventDefault();showPage('about')"                   data-en="About"    data-id="Tentang">About</a></li>
+    <li><a id="nav-gallery"  href="/gallery"  onclick="event.preventDefault();showPage('gallery')"                 data-en="Gallery"  data-id="Galeri">Gallery</a></li>
     <li><a id="nav-journal"  href="/journal"                               data-en="Journal"  data-id="Jurnal">Journal</a></li>
-    <li><a id="nav-contact"  href="/#contact"  onclick="event.preventDefault();showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
+    <li><a id="nav-contact"  href="/contact"  onclick="event.preventDefault();showPage('contact')"                 data-en="Contact"  data-id="Kontak">Contact</a></li>
   </ul>
 
   <div class="nav-right">
@@ -761,7 +763,7 @@
       <p class="section-intro" style="margin-bottom:36px;" data-en="Mon–Sat 09:00–19:00. Walk-ins welcome. Home service available on request." data-id="Sen–Sab 09.00–19.00. Walk-in disambut. Layanan ke rumah tersedia atas permintaan.">
         Mon–Sat 09:00–19:00. Walk-ins welcome. Home service available on request.
       </p>
-      <a href="/#contact" class="btn-primary" onclick="event.preventDefault();showPage('contact')" data-en="Get Directions & Book" data-id="Dapatkan Petunjuk & Pesan">Get Directions & Book</a>
+      <a href="/contact" class="btn-primary" onclick="event.preventDefault();showPage('contact')" data-en="Get Directions & Book" data-id="Dapatkan Petunjuk & Pesan">Get Directions & Book</a>
     </div>
   </div>
 
@@ -1077,7 +1079,7 @@
     <div class="about-img-side">
       <picture>
         <source srcset="/images/studio-interior.webp" type="image/webp">
-        <img src="/images/studio-interior.jpg" alt="Lollygagss Studio interior in Kerobokan, Bali" width="840" height="987" loading="lazy" decoding="async" style="width:100%;max-width:420px;height:auto;display:block;object-fit:cover;" />
+        <img src="/images/studio-interior.jpg" alt="Lollygagss Studio interior in Kerobokan, Bali" width="840" height="987" loading="lazy" decoding="async" />
       </picture>
     </div>
     <div class="about-content">
@@ -1268,10 +1270,10 @@
       <ul class="footer-links">
         <li><a href="/" onclick="event.preventDefault();showPage('home')" data-en="Home" data-id="Beranda">Home</a></li>
         <li><a href="/services" data-en="Services" data-id="Layanan">Services</a></li>
-        <li><a href="/#about" onclick="event.preventDefault();showPage('about')" data-en="About" data-id="Tentang">About</a></li>
-        <li><a href="/#gallery" onclick="event.preventDefault();showPage('gallery')" data-en="Gallery" data-id="Galeri">Gallery</a></li>
+        <li><a href="/about" onclick="event.preventDefault();showPage('about')" data-en="About" data-id="Tentang">About</a></li>
+        <li><a href="/gallery" onclick="event.preventDefault();showPage('gallery')" data-en="Gallery" data-id="Galeri">Gallery</a></li>
         <li><a href="/journal"             data-en="Journal"  data-id="Jurnal">Journal</a></li>
-        <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')" data-en="Contact" data-id="Kontak">Contact</a></li>
+        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')" data-en="Contact" data-id="Kontak">Contact</a></li>
       </ul>
     </div>
     <div>
@@ -1279,8 +1281,8 @@
       <ul class="footer-links">
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
-        <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
-        <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')" data-en="Mon–Sat 09:00–19:00. Closed Sunday." data-id="Sen–Sab 09.00–19.00. Tutup Hari Minggu.">Mon–Sat 09:00–19:00. Closed Sunday.</a></li>
+        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
+        <li><a href="/contact" onclick="event.preventDefault();showPage('contact')" data-en="Mon–Sat 09:00–19:00. Closed Sunday." data-id="Sen–Sab 09.00–19.00. Tutup Hari Minggu.">Mon–Sat 09:00–19:00. Closed Sunday.</a></li>
       </ul>
     </div>
   </div>
