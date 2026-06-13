@@ -1,4 +1,4 @@
-v2.6 — 13 June 2026 
+v2.6 — 13 June 2026 `1
 
 Ahrefs Site Audit fix (project 9891341). Worked from current source files and verified every issue against the live site — the Ahrefs crawl was stale and did not match deployed HTML. Issues addressed across four batches: meta/title length, social tags, internal 404 links, and sitemap/robots.
 
