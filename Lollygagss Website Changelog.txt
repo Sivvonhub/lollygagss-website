@@ -1,3 +1,25 @@
+v2.6 — 13 June 2026
+
+Ahrefs Site Audit fix (project 9891341). Worked from current source files and verified every issue against the live site — the Ahrefs crawl was stale and did not match deployed HTML. Issues addressed across four batches: meta/title length, social tags, internal 404 links, and sitemap/robots.
+
+index.html — Trimmed meta description to 134 chars (was 165). Synced og:title and og:description to the live title/description wording. Added og:image (images/journal/biab-nails-bali-kerobokan.jpg). Aligned og:url to canonical (https://lollygagss.id → https://lollygagss.id/). Fixed nine internal links pointing to non-existent /about, /gallery, /contact (returned 404 for crawlers/no-JS) — changed to /#about, /#gallery, /#contact in top nav, footer, footer address/hours, and the hero "Get Directions & Book" CTA; onclick showPage() handlers left untouched so JS behaviour is unchanged. Now consistent with the other five pages.
+
+services.html — Trimmed title to 57 chars: BIAB, Gel & Lash Extensions Kerobokan Bali — Lollygagss Studio → BIAB, Gel & Lash Services in Kerobokan, Bali — Lollygagss. Trimmed meta description to 142 chars. Added og:image. Synced og:title and og:description to new wording.
+
+journal.html — Added og:image. (Title and meta description already in range — left unchanged.)
+
+journal/biab-bali.html — Trimmed title to 55 chars: removed "Studio" suffix, added comma to "Kerobokan, Bali". Trimmed meta description to 135 chars, opening with the reader's question. Removed .html suffix from og:url (…/biab-bali.html → …/biab-bali) to match canonical. Added og:image. Synced og:title and og:description.
+
+journal/gel-biab-extensions-bali.html — Trimmed title to 60 chars: Gel vs BIAB vs Nail Extensions — Which to Choose in Kerobokan, Bali? → Gel vs BIAB vs Extensions: Which to Choose? Lollygagss, Bali. Trimmed meta description to 137 chars. Removed .html suffix from og:url to match canonical. Synced og:title and og:description.
+
+sitemap.xml — Removed three /#about, /#gallery, /#contact anchor entries still present in the live sitemap (canonical to /, not indexable). Removed /journal/biab-bali.html (308-redirects to clean URL). Added /journal/gel-biab-extensions-bali (live but missing). Final sitemap lists five clean canonical URLs only.
+
+robots.txt — Created (was returning 404). Allows all crawlers and references https://lollygagss.id/sitemap.xml.
+
+Not changed: Twitter card tags intentionally skipped (studio does not use X/Twitter; og tags cover WhatsApp/Facebook/etc.). Fresha and wa.me booking links flagged as "links to redirect" left as-is — external, working, low severity. IndexNow submission skipped.
+
+Post-deploy actions: deploy the seven updated files; run a new Ahrefs Site Audit crawl to clear issues; resubmit sitemap.xml in GSC.
+
 v2.5 — 11 June 2026
 
 GSC & SEO audit based on 3-month Search Console performance data (10 clicks, 218 impressions, avg position 6.4).
