@@ -203,8 +203,9 @@
     .ba-wrap { max-width:760px; margin:48px auto 0; padding:0 48px; }
     .ba-slider { position:relative; width:100%; aspect-ratio:4/3; overflow:hidden; user-select:none; cursor:ew-resize; border-radius:2px; }
     .ba-img { position:absolute; inset:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
-    .ba-before { background:linear-gradient(145deg,#D8CFCD,#B8AAA7); }
-    .ba-after  { background:linear-gradient(145deg,#F4D9D4,#C4796F); clip-path:inset(0 0 0 50%); }
+    .ba-img { background-size:cover; background-position:center; }
+    .ba-before { background-image:url('https://loremflickr.com/900/700/fingernails,hand?lock=51'); }
+    .ba-after  { background-image:url('https://loremflickr.com/900/700/manicure,nailart?lock=52'); clip-path:inset(0 0 0 50%); }
     .ba-img span { font-family:'Jost',sans-serif; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#fff; background:rgba(26,26,26,.45); padding:6px 16px; border-radius:100px; }
     .ba-handle { position:absolute; top:0; bottom:0; left:50%; width:2px; background:#fff; transform:translateX(-50%); pointer-events:none; }
     .ba-handle::after { content:'⟺'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:40px; height:40px; background:#fff; color:var(--rose); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; box-shadow:0 2px 10px rgba(0,0,0,.25); }
@@ -236,6 +237,11 @@
     footer { background:var(--black); color:var(--white); padding:64px 48px 96px; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:64px; max-width:1100px; margin:0 auto 52px; }
     .footer-brand p { font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:rgba(255,255,255,.55); line-height:1.75; margin-top:18px; max-width:320px; }
+    .footer-social { display:flex; gap:14px; margin-top:24px; }
+    .footer-social a { width:38px; height:38px; border:1px solid rgba(255,255,255,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background .2s, border-color .2s, transform .2s; }
+    .footer-social a:hover { background:var(--rose); border-color:var(--rose); transform:translateY(-2px); }
+    .footer-social svg { width:17px; height:17px; fill:rgba(255,255,255,.7); transition:fill .2s; }
+    .footer-social a:hover svg { fill:#fff; }
     .footer-h { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--rose-light); margin-bottom:20px; }
     .footer-links { list-style:none; display:flex; flex-direction:column; gap:12px; }
     .footer-links li a { font-family:'Cormorant Garamond',serif; font-size:18px; color:rgba(255,255,255,.65); text-decoration:none; cursor:pointer; transition:color .2s; }
@@ -519,18 +525,18 @@
   <div class="services-hero">
     <p class="section-label">Our Work</p>
     <h2 class="section-title">Gallery</h2>
-    <p>Tap any image to view full screen. (Placeholder tiles — swap in real photos before launch.)</p>
+    <p>Tap any image to view full screen. (Demo stock photos — swap in your own before launch.)</p>
   </div>
   <div class="gallery-grid" id="gallery-grid">
-    <!-- 8 placeholder tiles; data-cap is the caption shown in lightbox -->
-    <div class="gallery-tile" data-cap="BIAB Manicure · Soft Pink"><div class="gallery-tile-ph"><span>Nails 01</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="gallery-tile" data-cap="Volume Lashes · 5D"><div class="gallery-tile-ph"><span>Lashes 01</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="gallery-tile" data-cap="Chrome Nail Art"><div class="gallery-tile-ph"><span>Nails 02</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="gallery-tile" data-cap="Cat Eye Lashes"><div class="gallery-tile-ph"><span>Lashes 02</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="gallery-tile" data-cap="French Ombre"><div class="gallery-tile-ph"><span>Nails 03</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="gallery-tile" data-cap="Natural 3D Lashes"><div class="gallery-tile-ph"><span>Lashes 03</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="gallery-tile" data-cap="3D Hand-Painted Art"><div class="gallery-tile-ph"><span>Nails 04</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="gallery-tile" data-cap="Studio Interior"><div class="gallery-tile-ph"><span>Studio</span></div><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <!-- Demo stock from LoremFlickr; data-full = larger image for lightbox -->
+    <div class="gallery-tile" data-cap="BIAB Manicure · Soft Pink" data-full="https://loremflickr.com/1100/1100/manicure?lock=21"><img src="https://loremflickr.com/600/600/manicure?lock=21" alt="BIAB manicure"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <div class="gallery-tile" data-cap="Volume Lashes · 5D" data-full="https://loremflickr.com/1100/1100/eyelashes,eye?lock=31"><img src="https://loremflickr.com/600/600/eyelashes,eye?lock=31" alt="Volume lashes"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <div class="gallery-tile" data-cap="Chrome Nail Art" data-full="https://loremflickr.com/1100/1100/nailart,nails?lock=22"><img src="https://loremflickr.com/600/600/nailart,nails?lock=22" alt="Chrome nail art"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <div class="gallery-tile" data-cap="Cat Eye Lashes" data-full="https://loremflickr.com/1100/1100/eyelash,makeup?lock=32"><img src="https://loremflickr.com/600/600/eyelash,makeup?lock=32" alt="Cat eye lashes"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <div class="gallery-tile" data-cap="French Ombre" data-full="https://loremflickr.com/1100/1100/nails,manicure?lock=23"><img src="https://loremflickr.com/600/600/nails,manicure?lock=23" alt="French ombre nails"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <div class="gallery-tile" data-cap="Natural 3D Lashes" data-full="https://loremflickr.com/1100/1100/eyelashes?lock=33"><img src="https://loremflickr.com/600/600/eyelashes?lock=33" alt="Natural 3D lashes"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <div class="gallery-tile" data-cap="3D Hand-Painted Art" data-full="https://loremflickr.com/1100/1100/nailart?lock=24"><img src="https://loremflickr.com/600/600/nailart?lock=24" alt="Hand-painted nail art"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    <div class="gallery-tile" data-cap="Studio Interior" data-full="https://loremflickr.com/1100/1100/beauty,salon?lock=41"><img src="https://loremflickr.com/600/600/beauty,salon?lock=41" alt="Studio interior"><div class="gallery-tile-ov"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
   </div>
 
   <!-- BEFORE/AFTER SLIDER -->
@@ -540,8 +546,8 @@
   </section>
   <div class="ba-wrap">
     <div class="ba-slider" id="ba-slider">
-      <div class="ba-img ba-before"><span>Before</span></div>
-      <div class="ba-img ba-after" id="ba-after"><span>After</span></div>
+      <div class="ba-img ba-before"></div>
+      <div class="ba-img ba-after" id="ba-after"></div>
       <div class="ba-label ba-label-before">Before</div>
       <div class="ba-label ba-label-after">After</div>
       <div class="ba-handle" id="ba-handle"></div>
@@ -634,6 +640,11 @@
         <text x="60" y="85" font-family="'Jost',sans-serif" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="4">STUDIO</text>
       </svg>
       <p>Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.9.04-1.39.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.19 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.19-1.39-.32-1.71a2.85 2.85 0 00-.69-1.06 2.85 2.85 0 00-1.06-.69c-.32-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.3 5.3 0 110 10.6 5.3 5.3 0 010-10.6zm0 1.62a3.68 3.68 0 100 7.36 3.68 3.68 0 000-7.36zm5.5-1.62a1.24 1.24 0 110 2.48 1.24 1.24 0 010-2.48z"/></svg>
+        </a>
+      </div>
     </div>
     <div>
       <div class="footer-h">Navigate</div>
@@ -678,7 +689,7 @@
   <button class="lightbox-nav lightbox-prev" id="lb-prev">‹</button>
   <button class="lightbox-nav lightbox-next" id="lb-next">›</button>
   <div class="lightbox-content">
-    <div class="lightbox-ph" id="lb-ph"><span id="lb-ph-text">Nails 01</span></div>
+    <img class="lightbox-img" id="lb-img" src="" alt="">
     <div class="lightbox-caption" id="lb-caption">BIAB Manicure</div>
   </div>
 </div>
@@ -808,7 +819,9 @@
   function openLightbox(i) {
     lbIndex = i;
     const tile = tiles[i];
-    document.getElementById('lb-ph-text').textContent = tile.querySelector('.gallery-tile-ph span').textContent;
+    const img = document.getElementById('lb-img');
+    img.src = tile.dataset.full || tile.querySelector('img').src;
+    img.alt = tile.dataset.cap;
     document.getElementById('lb-caption').textContent = tile.dataset.cap;
     lightbox.classList.add('open');
   }
