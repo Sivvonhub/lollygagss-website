@@ -505,8 +505,6 @@
       .journal-featured-img img { height:280px; object-fit:cover; }
       .journal-featured-text { padding:32px 24px 40px; }
     }
-      max-width:780px; margin:0 auto 56px; text-align:center; padding:0 24px;
-    }
     .journal-grid {
       display:flex; flex-direction:column; gap:0;
       max-width:1200px; margin:0 auto; padding:0 48px;
@@ -545,8 +543,40 @@
     .journal-card-link {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
       text-transform:uppercase; color:var(--rose); display:inline-block;
+      transition:transform .25s ease;
     }
+
+    /* ── JOURNAL FINISHING TOUCHES ── */
+    /* Image hover zoom */
+    .journal-featured-img img, .journal-card-image img { transition:transform .55s ease; }
+    .journal-featured-card:hover .journal-featured-img img,
+    .journal-card:hover .journal-card-image img { transform:scale(1.06); }
+    /* Read-link arrow nudge */
+    .journal-featured-card:hover .journal-card-link,
+    .journal-card:hover .journal-card-link { transform:translateX(6px); }
+    /* Category chip */
+    .journal-chip {
+      display:inline-block; font-family:'Jost',sans-serif; font-size:9px;
+      letter-spacing:2px; text-transform:uppercase; color:var(--rose);
+      border:1px solid var(--rose-light); padding:3px 11px; border-radius:100px;
+      margin-bottom:10px;
+    }
+    /* End-of-list CTA */
+    .journal-end-cta {
+      max-width:1200px; margin:64px auto 0; padding:56px 48px;
+      background:var(--cream); text-align:center;
+    }
+    .journal-end-cta h3 {
+      font-family:'Playfair Display',serif; font-size:clamp(24px,3vw,34px);
+      font-weight:700; color:var(--black); margin-bottom:12px;
+    }
+    .journal-end-cta p {
+      font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic;
+      color:var(--gray-dark); margin-bottom:28px;
+    }
+    .journal-end-cta .je-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
     @media(max-width:600px) {
+      .journal-end-cta { padding:44px 24px; margin-top:48px; }
       .journal-grid { padding:0 24px; }
       .journal-card { grid-template-columns:120px 1fr; }
       .journal-card-body { padding:16px; }
@@ -625,6 +655,16 @@
     .footer-links li a:hover { color:var(--rose-light); }
     .footer-btm { max-width:1100px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; align-items:center; }
     .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.28); }
+    /* Footer social icons */
+    .footer-social { display:flex; gap:12px; margin-top:22px; }
+    .footer-social a { width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); transition:all .25s; text-decoration:none; }
+    .footer-social a:hover { background:var(--rose); border-color:var(--rose); color:var(--white); transform:translateY(-3px); }
+    .footer-social svg { width:18px; height:18px; }
+    /* Animated nav underline */
+    .nav-links a { position:relative; }
+    .nav-links a::after { content:''; position:absolute; left:50%; bottom:-1px; width:0; height:1px; background:var(--rose); transform:translateX(-50%); transition:width .3s ease; }
+    .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+    .nav-links a.active { border-bottom-color:transparent; }
 
     /* ── RESPONSIVE ── */
     @media(max-width:768px) {
@@ -1145,17 +1185,29 @@
                alt="BIAB manicure with pink gel nails at Lollygagss Studio, Kerobokan Bali">
         </div>
         <div class="journal-card-body">
-          <div class="journal-card-meta">
-            <span data-en="Treatments · 6 min read" data-id="Perawatan · 6 min baca">Treatments · 6 min read</span>
-          </div>
+          <span class="journal-chip" data-en="Treatments" data-id="Perawatan">Treatments</span>
           <h3 class="journal-card-title" data-en="What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now" data-id="Apa Itu BIAB? Mengapa Kuku BIAB Begitu Populer di Bali Saat Ini">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</h3>
           <p class="journal-card-excerpt" data-en="Builder gel that strengthens natural nails and survives the tropics. Everything you need to know before booking." data-id="Gel builder yang menguatkan kuku alami dan tahan iklim tropis.">Builder gel that strengthens natural nails and survives the tropics. Everything you need to know before booking.</p>
+          <div class="journal-card-meta">
+            <span data-en="May 2026 · 6 min read" data-id="Mei 2026 · 6 min baca">May 2026 · 6 min read</span>
+          </div>
           <span class="journal-card-link" data-en="Read more →" data-id="Baca selengkapnya →">Read more →</span>
         </div>
       </a>
 
     </div>
     <!-- ▲▲▲ END GRID ▲▲▲ -->
+
+    <!-- ▼▼▼ END-OF-LIST CTA ▼▼▼ -->
+    <div class="journal-end-cta">
+      <h3 data-en="Ready to book your appointment?" data-id="Siap membuat janji?">Ready to book your appointment?</h3>
+      <p data-en="Have a question about a treatment you read about? We are happy to help." data-id="Punya pertanyaan tentang perawatan yang kamu baca? Kami senang membantu.">Have a question about a treatment you read about? We are happy to help.</p>
+      <div class="je-actions">
+        <a class="btn-primary" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener" data-en="Book Now" data-id="Pesan Sekarang">Book Now</a>
+        <a class="btn-secondary" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%20have%20a%20question." target="_blank" rel="noopener" data-en="Ask on WhatsApp" data-id="Tanya via WhatsApp">Ask on WhatsApp</a>
+      </div>
+    </div>
+    <!-- ▲▲▲ END CTA ▲▲▲ -->
 
   </div>
 
@@ -1229,6 +1281,14 @@
       <p data-en="Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you." data-id="Studio kuku dan bulu mata di jantung Teuku Umar, Bali. Presisi, kepedulian, dan seni — untuk Anda.">
         Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you.
       </p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.threads.net/@lollygagss_studio" target="_blank" rel="noopener" aria-label="Threads">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.18 22h-.04c-2.85-.02-5.04-.95-6.51-2.78C4.27 17.6 3.6 15.21 3.55 12.27v-.04c.05-2.94.72-5.33 2.08-6.95C7.1 3.45 9.29 2.52 12.14 2.5h.04c2.18.02 4 .51 5.41 1.48 1.33.91 2.26 2.21 2.77 3.86l-1.85.55c-.84-2.66-2.74-4.02-5.34-4.04-1.72.01-3.02.55-3.87 1.6-.79.98-1.2 2.39-1.24 4.21v.07c.04 1.82.45 3.23 1.24 4.21.85 1.05 2.15 1.59 3.87 1.6 1.55-.01 2.58-.38 3.44-1.23.99-.98 1.07-2.18 1-2.94-.41 1.5-1.65 2.39-3.34 2.39-2.05 0-3.4-1.18-3.4-2.99 0-1.79 1.46-2.9 3.61-2.9.78 0 1.5.12 2.11.35-.08-1.32-.78-2.08-2.05-2.09-.86 0-1.49.31-1.94 1.04l-1.68-1.01c.74-1.21 1.95-1.86 3.62-1.86 2.51.02 3.9 1.62 3.97 4.3.01.06.01.13.01.19v.06c0 .06 0 .11-.01.17.93.56 1.62 1.36 2 2.34.5 1.29.53 3.4-1.18 5.11-1.31 1.31-2.9 1.9-5.16 1.92z"/></svg>
+        </a>
+      </div>
     </div>
     <div>
       <div class="footer-h" data-en="Navigate" data-id="Navigasi">Navigate</div>
@@ -1245,6 +1305,7 @@
       <div class="footer-h" data-en="Contact" data-id="Kontak">Contact</div>
       <ul class="footer-links">
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
+        <li><a href="mailto:hello@lollygagss.id">hello@lollygagss.id</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
         <li><a href="/#contact">Jl. Persada II, Teuku Umar</a></li>
         <li><a href="/#contact" data-en="Mon–Sat 09:00–19:00. Sun by appointment." data-id="Sen–Sab 09.00–19.00. Minggu hanya dengan janji.">Mon–Sat 09:00–19:00. Sun by appointment.</a></li>

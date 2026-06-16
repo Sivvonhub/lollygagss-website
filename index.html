@@ -256,12 +256,15 @@
       position:relative; overflow:hidden; background:var(--cream);
       padding-top:calc(var(--nav-h) + 38px); margin-top:calc(-1 * (var(--nav-h) + 38px));
     }
-    .hero-bg {
-      position:absolute; inset:0;
+    .hero-bg { position:absolute; inset:0; overflow:hidden; will-change:transform; }
+    .hero-bg-inner {
+      position:absolute; inset:-8%;
       background:
         radial-gradient(ellipse 65% 80% at 85% 55%, rgba(196,121,111,.12) 0%, transparent 70%),
         radial-gradient(ellipse 45% 55% at 15% 30%, rgba(196,121,111,.08) 0%, transparent 60%);
+      animation:heroBreathe 16s ease-in-out infinite;
     }
+    @keyframes heroBreathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.07); } }
     .hero-content { text-align:center; position:relative; z-index:2; padding:0 24px; }
     .hero-eyebrow {
       font-family:'Jost',sans-serif; font-size:11px; letter-spacing:5px;
@@ -646,6 +649,89 @@
       .reviews-header { flex-direction:column; align-items:flex-start; }
       .reviews-big-score { font-size:56px; }
     }
+
+    /* ════════ MOTION & INTERACTION ENHANCEMENTS ════════ */
+
+    /* Page fade-in on navigation */
+    @keyframes pageIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+    .page.active { animation:pageIn .45s ease both; }
+
+    /* Scroll reveals */
+    .reveal      { opacity:0; transform:translateY(30px); transition:opacity .75s ease, transform .75s ease; }
+    .reveal-left { opacity:0; transform:translateX(-42px); transition:opacity .85s ease, transform .85s ease; }
+    .reveal-right{ opacity:0; transform:translateX(42px);  transition:opacity .85s ease .12s, transform .85s ease .12s; }
+    .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity:1; transform:none; }
+    .reveal-stagger > * { opacity:0; transform:translateY(26px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal-stagger.visible > * { opacity:1; transform:none; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay:.1s; }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay:.2s; }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay:.3s; }
+
+    /* Service card hover upgrade */
+    .service-card { transition:transform .3s ease, box-shadow .3s ease, filter .3s ease; }
+    .service-card::after {
+      content:''; position:absolute; left:52px; bottom:46px;
+      width:0; height:2px; background:currentColor; opacity:.55; transition:width .35s ease;
+    }
+    .service-card:hover { transform:translateY(-6px); box-shadow:0 20px 52px rgba(0,0,0,.18); }
+    .service-card:hover::after { width:46px; }
+    .service-card .sc-link { display:inline-block; transition:transform .3s ease; }
+    .service-card:hover .sc-link { transform:translateX(7px); }
+
+    /* Animated nav underline (grows from centre) */
+    .nav-links a { position:relative; }
+    .nav-links a::after {
+      content:''; position:absolute; left:50%; bottom:-1px;
+      width:0; height:1px; background:var(--rose);
+      transform:translateX(-50%); transition:width .3s ease;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+    .nav-links a.active { border-bottom-color:transparent; }
+
+    /* Currency price flash */
+    [data-idr] { transition:opacity .18s ease; }
+    [data-idr].price-flash { opacity:0; }
+
+    /* Footer social icons */
+    .footer-social { display:flex; gap:12px; margin-top:22px; }
+    .footer-social a {
+      width:40px; height:40px; border-radius:50%;
+      border:1px solid rgba(255,255,255,.2);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.7); transition:all .25s; text-decoration:none;
+    }
+    .footer-social a:hover { background:var(--rose); border-color:var(--rose); color:var(--white); transform:translateY(-3px); }
+    .footer-social svg { width:18px; height:18px; }
+
+    /* Magnetic WhatsApp float */
+    .wa-float { transition:transform .18s ease, box-shadow .2s ease; }
+
+    /* Sticky mobile book bar */
+    .mobile-book-bar { display:none; }
+    @media(max-width:768px) {
+      .mobile-book-bar {
+        display:flex; position:fixed; bottom:0; left:0; right:0; z-index:250;
+        background:var(--white); border-top:1px solid var(--gray-light);
+        box-shadow:0 -4px 20px rgba(0,0,0,.08);
+      }
+      .mobile-book-bar a {
+        flex:1; text-align:center; padding:15px 8px;
+        font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
+        letter-spacing:2px; text-transform:uppercase; text-decoration:none;
+        display:flex; align-items:center; justify-content:center; gap:8px;
+      }
+      .mbb-wa   { background:#25D366; color:#fff; }
+      .mbb-book { background:var(--black); color:#fff; }
+      .wa-float { bottom:78px; }
+      body { padding-bottom:50px; }
+    }
+
+    /* Respect reduced-motion preferences */
+    @media(prefers-reduced-motion:reduce) {
+      .page.active { animation:none; }
+      .hero-bg-inner { animation:none; }
+      .reveal, .reveal-left, .reveal-right, .reveal-stagger > * { opacity:1 !important; transform:none !important; transition:none; }
+    }
   </style>
 </head>
 <body>
@@ -709,7 +795,7 @@
 <div id="page-home" class="page active">
 
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" id="hero-bg"><div class="hero-bg-inner"></div></div>
     <div class="hero-content">
       <p class="hero-eyebrow" data-en="Nails · Lashes · Bali" data-id="Kuku · Bulu Mata · Bali">Nails · Lashes · Bali</p>
       <div class="hero-wordmark">
@@ -730,13 +816,13 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <p class="section-label" data-en="What We Offer" data-id="Yang Kami Tawarkan">What We Offer</p>
     <h2 class="section-title" data-en="Studio Services" data-id="Layanan Studio">Studio Services</h2>
     <p class="section-intro" data-en="Precision nails and professional lash services, delivered in a calm and clean space." data-id="Layanan kuku presisi dan bulu mata profesional di ruang yang tenang dan bersih.">
       Precision nails and professional lash services, delivered in a calm and clean space.
     </p>
-    <div class="service-cards">
+    <div class="service-cards reveal-stagger">
       <a class="service-card" href="/services" style="text-decoration:none;color:var(--white);display:block;">
         <div class="sc-num">01</div>
         <div class="sc-title" data-en="Nails" data-id="Kuku">Nails</div>
@@ -756,7 +842,7 @@
     </div>
   </section>
 
-  <div class="section-full">
+  <div class="section-full reveal">
     <div style="max-width:1200px;margin:0 auto;">
       <p class="section-label" data-en="Visit Us" data-id="Kunjungi Kami">Visit Us</p>
       <h2 class="section-title" data-en="Jl. Persada II, Teuku Umar, Bali" data-id="Jl. Persada II, Teuku Umar, Bali">Jl. Persada II, Teuku Umar, Bali</h2>
@@ -767,7 +853,7 @@
     </div>
   </div>
 
-  <section class="section">
+  <section class="section reveal">
     <p class="section-label" data-en="Follow Along" data-id="Ikuti Kami">Follow Along</p>
     <h2 class="section-title">@lollygagss_studio</h2>
     <p class="section-intro" data-en="Our latest nail and lash work, straight from Instagram." data-id="Karya kuku dan bulu mata terbaru kami, langsung dari Instagram.">Our latest nail and lash work, straight from Instagram.</p>
@@ -781,7 +867,7 @@
   </section>
 
   <!-- GOOGLE REVIEWS — HOME -->
-  <div class="reviews-section">
+  <div class="reviews-section reveal">
     <div class="reviews-inner">
       <div class="reviews-header">
         <div>
@@ -797,7 +883,7 @@
     </div>
   </div>
 
-  <div class="book-banner">
+  <div class="book-banner reveal">
     <h2 data-en="Ready to treat yourself?" data-id="Siap memanjakan diri?">Ready to treat yourself?</h2>
     <p data-en="Book your appointment via WhatsApp or our online booking system." data-id="Buat janji Anda melalui WhatsApp atau sistem pemesanan online kami.">Book your appointment via WhatsApp or our online booking system.</p>
     <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan Sekarang">Book Now</button>
@@ -1076,13 +1162,13 @@
 ══════════════════════════════════════ -->
 <div id="page-about" class="page">
   <div class="about-grid">
-    <div class="about-img-side">
+    <div class="about-img-side reveal-left">
       <picture>
         <source srcset="/images/studio-interior.webp" type="image/webp">
         <img src="/images/studio-interior.jpg" alt="Lollygagss Studio interior in Kerobokan, Bali" width="840" height="987" loading="lazy" decoding="async" />
       </picture>
     </div>
-    <div class="about-content">
+    <div class="about-content reveal-right">
       <p class="section-label" data-en="Our Story" data-id="Cerita Kami">Our Story</p>
       <h2 class="section-title" data-en="Lollygagss Studio" data-id="Lollygagss Studio">Lollygagss Studio</h2>
       <p class="about-body" data-en="Lollygagss Studio is a boutique nail and lash studio nestled in Teuku Umar, right where the warmth of local Bali life meets the energy of Kerobokan's expat community. Opened in November 2024, the studio is owner-operated and every appointment is handled personally, ensuring a consistent, attentive experience from start to finish.<br><br>We offer a full range of nail services including gel manicure, BIAB, nail extensions, and nail art from simple to intricate designs, alongside professional lash extensions from natural 2D through to volume 6D.<br><br>Walk-ins are always welcome, though booking ahead is the best way to secure your spot. Home service is also available for those who prefer the comfort of their own space.<br><br>Lollygagss welcomes everyone: Bali locals, tourists making the most of the island, and the expats who came for a holiday and never quite left." data-id="Lollygagss Studio adalah studio kuku dan bulu mata butik yang terletak di Teuku Umar, tepat di persimpangan kehangatan kehidupan lokal Bali dan energi komunitas ekspatriat Kerobokan. Dibuka pada November 2024, studio ini dioperasikan oleh pemiliknya sendiri dan setiap janji ditangani secara personal, memastikan pengalaman yang konsisten dan penuh perhatian dari awal hingga akhir.<br><br>Kami menawarkan berbagai layanan kuku lengkap termasuk manikur gel, BIAB, ekstensi kuku, dan seni kuku dari desain sederhana hingga rumit, bersama ekstensi bulu mata profesional dari natural 2D hingga volume 6D.<br><br>Walk-in selalu disambut, meski memesan lebih awal adalah cara terbaik untuk mendapatkan tempat Anda. Layanan ke rumah juga tersedia bagi mereka yang lebih menyukai kenyamanan ruang mereka sendiri.<br><br>Lollygagss menyambut semua orang: penduduk lokal Bali, wisatawan yang menikmati pulau ini, dan para ekspatriat yang datang untuk liburan dan tidak pernah benar-benar pergi.">
@@ -1103,6 +1189,10 @@
         <div>
           <div class="meta-lbl" data-en="Home Service" data-id="Layanan Rumah">Home Service</div>
           <div class="meta-val" data-en="Available" data-id="Tersedia">Available</div>
+        </div>
+        <div>
+          <div class="meta-lbl" data-en="Email" data-id="Email">Email</div>
+          <div class="meta-val"><a href="mailto:hello@lollygagss.id" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--gray-light);">hello@lollygagss.id</a></div>
         </div>
       </div>
     </div>
@@ -1201,6 +1291,10 @@
         <div class="c-val"><a href="tel:+6285121950351">+62 851-2195-0351</a></div>
       </div>
       <div class="c-item">
+        <div class="c-lbl" data-en="Email" data-id="Email">Email</div>
+        <div class="c-val"><a href="mailto:hello@lollygagss.id">hello@lollygagss.id</a></div>
+      </div>
+      <div class="c-item">
         <div class="c-lbl" data-en="Instagram" data-id="Instagram">Instagram</div>
         <div class="c-val"><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></div>
       </div>
@@ -1231,7 +1325,7 @@
   </div>
 
   <!-- GOOGLE REVIEWS — CONTACT -->
-  <div class="reviews-section-dark">
+  <div class="reviews-section-dark reveal">
     <div class="reviews-inner">
       <div class="reviews-header">
         <div>
@@ -1264,6 +1358,18 @@
       <p data-en="Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you." data-id="Studio kuku dan bulu mata di jantung Teuku Umar, Bali. Presisi, kepedulian, dan seni — untuk Anda.">
         Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you.
       </p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.threads.net/@lollygagss_studio" target="_blank" rel="noopener" aria-label="Threads">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.18 22h-.04c-2.85-.02-5.04-.95-6.51-2.78C4.27 17.6 3.6 15.21 3.55 12.27v-.04c.05-2.94.72-5.33 2.08-6.95C7.1 3.45 9.29 2.52 12.14 2.5h.04c2.18.02 4 .51 5.41 1.48 1.33.91 2.26 2.21 2.77 3.86l-1.85.55c-.84-2.66-2.74-4.02-5.34-4.04-1.72.01-3.02.55-3.87 1.6-.79.98-1.2 2.39-1.24 4.21v.07c.04 1.82.45 3.23 1.24 4.21.85 1.05 2.15 1.59 3.87 1.6 1.55-.01 2.58-.38 3.44-1.23.99-.98 1.07-2.18 1-2.94-.41 1.5-1.65 2.39-3.34 2.39-2.05 0-3.4-1.18-3.4-2.99 0-1.79 1.46-2.9 3.61-2.9.78 0 1.5.12 2.11.35-.08-1.32-.78-2.08-2.05-2.09-.86 0-1.49.31-1.94 1.04l-1.68-1.01c.74-1.21 1.95-1.86 3.62-1.86 2.51.02 3.9 1.62 3.97 4.3.01.06.01.13.01.19v.06c0 .06 0 .11-.01.17.93.56 1.62 1.36 2 2.34.5 1.29.53 3.4-1.18 5.11-1.31 1.31-2.9 1.9-5.16 1.92zm.71-9.04c-1.19 0-1.79.45-1.79 1.13 0 .74.78 1.13 1.6 1.13 1.34 0 2.27-.79 2.45-2.07-.66-.19-1.41-.19-2.26-.19z"/>
+          </svg>
+        </a>
+      </div>
     </div>
     <div>
       <div class="footer-h" data-en="Navigate" data-id="Navigasi">Navigate</div>
@@ -1280,6 +1386,7 @@
       <div class="footer-h" data-en="Contact" data-id="Kontak">Contact</div>
       <ul class="footer-links">
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
+        <li><a href="mailto:hello@lollygagss.id">hello@lollygagss.id</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
         <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')">Jl. Persada II, Teuku Umar</a></li>
         <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')" data-en="Mon–Sat 09:00–19:00. Closed Sunday." data-id="Sen–Sab 09.00–19.00. Tutup Hari Minggu.">Mon–Sat 09:00–19:00. Closed Sunday.</a></li>
@@ -1300,6 +1407,15 @@
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
+
+<!-- ══ STICKY MOBILE BOOK BAR ══ -->
+<div class="mobile-book-bar">
+  <a class="mbb-wa" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20make%20a%20booking." target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+    <span data-en="WhatsApp" data-id="WhatsApp">WhatsApp</span>
+  </a>
+  <a class="mbb-book" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener" data-en="Book Now" data-id="Pesan Sekarang">Book Now</a>
+</div>
 
 <!-- ══ JAVASCRIPT ══ -->
 <script>
@@ -1390,7 +1506,11 @@
 
   function updatePrices(currency) {
     document.querySelectorAll('[data-idr]').forEach(el => {
-      el.textContent = formatPrice(parseInt(el.getAttribute('data-idr')), currency);
+      el.classList.add('price-flash');
+      setTimeout(() => {
+        el.textContent = formatPrice(parseInt(el.getAttribute('data-idr')), currency);
+        el.classList.remove('price-flash');
+      }, 180);
     });
   }
 
@@ -1533,6 +1653,58 @@
     const startPage = PAGES.includes(path) ? path : (PAGES.includes(hash) ? hash : 'home');
     if (['home','services','contact'].includes(startPage)) loadReviews();
   });
+
+  // ── SCROLL REVEALS ──
+  (function () {
+    const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-stagger');
+    if (!('IntersectionObserver' in window) || !els.length) {
+      els.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // ── MAGNETIC WHATSAPP BUTTON ── (hover-capable devices only)
+  (function () {
+    const wa = document.querySelector('.wa-float');
+    if (!wa || !window.matchMedia('(hover:hover)').matches) return;
+    window.addEventListener('mousemove', (e) => {
+      const r = wa.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2);
+      const dy = e.clientY - (r.top + r.height / 2);
+      if (Math.hypot(dx, dy) < 160) {
+        wa.style.transform = 'translate(' + (dx * 0.25) + 'px,' + (dy * 0.25) + 'px) scale(1.12)';
+      } else {
+        wa.style.transform = '';
+      }
+    }, { passive: true });
+  })();
+
+  // ── HERO PARALLAX ──
+  (function () {
+    const heroBg = document.getElementById('hero-bg');
+    const home = document.getElementById('page-home');
+    if (!heroBg || !home) return;
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        if (home.classList.contains('active') && window.scrollY < window.innerHeight) {
+          heroBg.style.transform = 'translateY(' + (window.scrollY * 0.3) + 'px)';
+        }
+        ticking = false;
+      });
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>
