@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@vercel/speed-insights": "^2.0.0"
+    "@vercel/speed-insights": "^2.0.0",
+    "motion": "^12.40.0"
   }
 }
