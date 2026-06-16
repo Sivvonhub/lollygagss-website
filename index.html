@@ -1642,7 +1642,9 @@
   function clearLoadingStates() {
     ['reviews-summary-home','reviews-summary-services','reviews-summary-contact'].forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.innerHTML = '';
+      if (!el) return;
+      const section = el.closest('.reviews-section, .reviews-section-dark');
+      if (section) section.style.display = 'none';
     });
   }
 
