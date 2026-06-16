@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lollygagss Studio — Enhanced Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── MOCKUP BANNER ── */
+    .mockup-banner {
+      position:fixed; bottom:0; left:0; right:0; z-index:9999;
+      background:#1A1A1A; color:#E8A89E;
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
+      text-transform:uppercase; padding:10px 24px;
+      display:flex; align-items:center; justify-content:space-between;
+      border-top:1px solid #C4796F;
+    }
+    .mockup-banner span { color:rgba(255,255,255,.4); }
+    .mockup-changes { display:flex; gap:20px; }
+    .mockup-tag {
+      background:#C4796F; color:#fff; padding:3px 10px; border-radius:100px;
+      font-size:9px; letter-spacing:1.5px;
+    }
+
+    /* ══════════════════════
+       DESIGN TOKENS
+    ══════════════════════ */
+    :root {
+      --white:      #FFFFFF;
+      --cream:      #FAF7F5;
+      --blush:      #F0E8E6;
+      --rose:       #C4796F;
+      --rose-light: #E8A89E;
+      --rose-dark:  #8F4E46;
+      --black:      #1A1A1A;
+      --gray-dark:  #4A4A4A;
+      --gray:       #8A8A8A;
+      --gray-light: #E0DAD8;
+      --nav-h:      72px;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Cormorant Garamond', serif;
+      background:var(--white);
+      color:var(--black);
+      overflow-x:hidden;
+    }
+
+    /* ══════════════════════
+       CHANGE 1 — PAGE TRANSITIONS
+       Was: display:none / display:block (instant snap)
+       Now: opacity fade 300ms
+    ══════════════════════ */
+    .page {
+      display:none;
+      padding-top:calc(var(--nav-h) + 38px);
+      opacity:0;
+      transition:opacity .3s ease;
+    }
+    .page.active {
+      display:block;
+    }
+    .page.visible {
+      opacity:1;
+    }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .ann-bar {
+      position:fixed; top:0; left:0; right:0; z-index:201;
+      background:var(--black);
+      padding:9px 48px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .ann-bar-left { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
+    .ann-bar-heart { font-family:'Dancing Script',cursive; font-size:18px; color:var(--rose); flex-shrink:0; }
+    .ann-bar-text {
+      font-family:'Cormorant Garamond',serif; font-size:14px;
+      font-style:italic; color:rgba(250,247,245,0.85);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .ann-bar-text strong { font-style:normal; font-weight:600; color:var(--rose-light); }
+    .ann-bar-right { display:flex; align-items:center; gap:14px; flex-shrink:0; }
+    .ann-bar-until { font-family:'Jost',sans-serif; font-size:10px; font-weight:300; letter-spacing:0.08em; color:var(--gray); }
+    .ann-bar-btn {
+      font-family:'Jost',sans-serif; font-size:10px; font-weight:500;
+      letter-spacing:0.06em; color:var(--black);
+      background:var(--rose); padding:6px 16px; border-radius:2px;
+      text-decoration:none; white-space:nowrap; transition:background .2s;
+    }
+    .ann-bar-btn:hover { background:var(--rose-dark); }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:38px; left:0; right:0; z-index:200;
+      height:var(--nav-h);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 48px;
+      background:rgba(255,255,255,0.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--gray-light);
+      transition:box-shadow 0.3s;
+    }
+    .nav-logo { display:flex; align-items:center; gap:10px; cursor:pointer; }
+    .nav-logo svg { width:46px; height:46px; }
+    .nav-links { display:flex; gap:36px; list-style:none; }
+    .nav-links a {
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:400;
+      letter-spacing:2.5px; text-transform:uppercase;
+      text-decoration:none; color:var(--black);
+      cursor:pointer; transition:color .2s;
+      padding-bottom:3px; border-bottom:1px solid transparent;
+    }
+    .nav-links a:hover { color:var(--rose); }
+    .nav-links a.active { color:var(--rose); border-bottom-color:var(--rose); }
+    .nav-right { display:flex; align-items:center; gap:14px; }
+    .btn-book-nav {
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
+      letter-spacing:2px; text-transform:uppercase;
+      padding:11px 26px; background:var(--black); color:var(--white);
+      border:none; cursor:pointer; transition:background .2s;
+    }
+    .btn-book-nav:hover { background:var(--rose); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
+      letter-spacing:2.5px; text-transform:uppercase;
+      padding:16px 42px; background:var(--black); color:var(--white);
+      border:2px solid var(--black); cursor:pointer; transition:all .25s; display:inline-block;
+      text-decoration:none;
+    }
+    .btn-primary:hover { background:var(--rose); border-color:var(--rose); }
+    .btn-secondary {
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
+      letter-spacing:2.5px; text-transform:uppercase;
+      padding:16px 42px; background:transparent; color:var(--black);
+      border:2px solid var(--black); cursor:pointer; transition:all .25s;
+    }
+    .btn-secondary:hover { background:var(--black); color:var(--white); }
+    .btn-white {
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
+      letter-spacing:2.5px; text-transform:uppercase;
+      padding:16px 42px; background:var(--white); color:var(--rose);
+      border:2px solid var(--white); cursor:pointer; transition:all .25s;
+    }
+    .btn-white:hover { background:transparent; color:var(--white); }
+
+    /* ── SECTIONS ── */
+    .section { padding:88px 48px; max-width:1200px; margin:0 auto; }
+    .section-full { padding:88px 48px; background:var(--blush); }
+    .section-label {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:4px;
+      text-transform:uppercase; color:var(--rose); margin-bottom:14px;
+    }
+    .section-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(34px,4vw,56px); font-weight:700; line-height:1.08; margin-bottom:16px;
+    }
+    .section-intro {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(17px,1.5vw,21px); font-weight:300; font-style:italic;
+      color:var(--gray-dark); line-height:1.75; max-width:560px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden; background:var(--cream);
+      padding-top:calc(var(--nav-h) + 38px); margin-top:calc(-1 * (var(--nav-h) + 38px));
+    }
+
+    /* ══════════════════════
+       CHANGE 2 — ANIMATED HERO BACKGROUND
+       Was: static radial gradients
+       Now: slowly breathing/shifting gradient
+    ══════════════════════ */
+    .hero-bg {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 65% 80% at 85% 55%, rgba(196,121,111,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 55% at 15% 30%, rgba(196,121,111,.08) 0%, transparent 60%);
+      animation:heroBreathe 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroBreathe {
+      0%   { opacity:.7; transform:scale(1); }
+      100% { opacity:1;  transform:scale(1.04); }
+    }
+
+    .hero-content { text-align:center; position:relative; z-index:2; padding:0 24px; }
+    .hero-eyebrow {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:5px;
+      text-transform:uppercase; color:var(--rose); margin-bottom:22px;
+      opacity:0; animation:fadeUp .9s ease .2s forwards;
+    }
+    .hero-wordmark { opacity:0; animation:fadeUp .9s ease .35s forwards; margin-bottom:16px; }
+    .hero-wordmark-script {
+      font-family:'Dancing Script',cursive; font-size:clamp(42px,6vw,80px);
+      font-weight:600; color:var(--black); display:block; line-height:1.1;
+    }
+    .hero-wordmark-sub {
+      font-family:'Jost',sans-serif; font-size:clamp(10px,1.2vw,14px);
+      letter-spacing:6px; text-transform:uppercase; color:var(--gray);
+      display:block; margin-top:4px;
+    }
+    .hero-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(56px,9vw,120px); font-weight:900; line-height:.92;
+      color:var(--black); opacity:0; animation:fadeUp .9s ease .4s forwards;
+    }
+    .hero-script {
+      font-family:'Dancing Script',cursive; font-size:clamp(34px,5.5vw,72px);
+      font-weight:600; color:var(--rose); display:block; line-height:1.2;
+    }
+    .hero-sub {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(17px,2vw,23px); font-weight:300; font-style:italic;
+      color:var(--gray-dark); margin:28px 0 44px;
+      opacity:0; animation:fadeUp .9s ease .6s forwards;
+    }
+    .hero-ctas {
+      display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+      opacity:0; animation:fadeUp .9s ease .8s forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ══════════════════════
+       CHANGE 3 — SCROLL-TRIGGERED REVEALS
+       Was: elements appeared instantly on scroll
+       Now: fade+rise triggered by IntersectionObserver
+    ══════════════════════ */
+    .reveal {
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+    /* Stagger children */
+    .reveal-stagger > * {
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .55s ease, transform .55s ease;
+    }
+    .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
+    .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.18s; }
+    .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.31s; }
+    .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.44s; }
+
+    /* ══════════════════════
+       CHANGE 4 — STATS COUNTER BAR (new section)
+       Stats numbers count up from 0 when scrolled into view
+    ══════════════════════ */
+    .stats-bar {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:var(--gray-light);
+    }
+    .stat-item { background:var(--cream); padding:52px 40px; text-align:center; }
+    .stat-num {
+      font-family:'Playfair Display',serif; font-size:52px; font-weight:900;
+      color:var(--rose); display:block;
+    }
+    .stat-label {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:3px;
+      text-transform:uppercase; color:var(--gray); margin-top:8px; display:block;
+    }
+
+    /* ══════════════════════
+       CHANGE 5 — SERVICE CARD HOVER
+       Was: filter:brightness(1.1) only
+       Now: translateY lift + rose underline slide on the arrow link
+    ══════════════════════ */
+    .service-cards {
+      display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:52px;
+    }
+    .service-card {
+      background:var(--black); color:var(--white);
+      padding:64px 52px; cursor:pointer;
+      position:relative; overflow:hidden;
+      transition:transform .3s ease, box-shadow .3s ease;
+      text-decoration:none; display:block;
+    }
+    .service-card:last-child { background:var(--rose); }
+    .service-card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+    }
+    /* Rose border reveal from bottom */
+    .service-card::after {
+      content:'';
+      position:absolute; bottom:0; left:0; right:0;
+      height:3px; background:var(--rose-light);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .35s ease;
+    }
+    .service-card:last-child::after { background:rgba(255,255,255,.5); }
+    .service-card:hover::after { transform:scaleX(1); }
+
+    .sc-num { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:3px; opacity:.4; margin-bottom:28px; }
+    .sc-title { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; margin-bottom:14px; }
+    .sc-desc { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; font-style:italic; opacity:.8; line-height:1.65; margin-bottom:36px; }
+    /* Arrow link animates right on hover */
+    .sc-link {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
+      text-transform:uppercase; opacity:.7;
+      display:inline-block;
+      transition:transform .25s ease, opacity .25s ease;
+    }
+    .service-card:hover .sc-link {
+      transform:translateX(6px);
+      opacity:1;
+    }
+
+    /* ── BOOK BANNER ── */
+    .book-banner { background:var(--rose); color:var(--white); padding:72px 48px; text-align:center; }
+    .book-banner h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,50px); font-weight:700; margin-bottom:14px; }
+    .book-banner p { font-family:'Cormorant Garamond',serif; font-size:21px; font-style:italic; margin-bottom:36px; opacity:.9; }
+
+    /* ══════════════════════
+       CHANGE 6 — REVIEW CARDS STAGGER
+       Was: all 3 cards appeared at once
+       Now: staggered 150ms apart via reveal-stagger
+    ══════════════════════ */
+    .reviews-section { padding:88px 48px; background:var(--cream); }
+    .reviews-inner { max-width:1200px; margin:0 auto; }
+    .reviews-header {
+      display:flex; align-items:flex-end; justify-content:space-between;
+      margin-bottom:52px; flex-wrap:wrap; gap:20px;
+    }
+    .reviews-big-score {
+      font-family:'Playfair Display',serif; font-size:72px; font-weight:900;
+      color:var(--rose); line-height:1;
+    }
+    .reviews-stars-col { display:flex; flex-direction:column; gap:4px; }
+    .reviews-stars { display:flex; gap:3px; color:var(--rose); font-size:18px; }
+    .reviews-count {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gray); margin-top:4px;
+    }
+    .reviews-rating-summary { display:flex; align-items:center; gap:20px; }
+    .reviews-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    }
+    .review-card {
+      background:var(--white); padding:36px 32px;
+      display:flex; flex-direction:column; gap:16px;
+    }
+    .review-card-stars { color:var(--rose); font-size:14px; }
+    .review-card-text {
+      font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:300;
+      font-style:italic; color:var(--gray-dark); line-height:1.7; flex:1;
+    }
+    .review-card-author { display:flex; align-items:center; gap:12px; margin-top:8px; }
+    .review-card-avatar {
+      width:36px; height:36px; border-radius:50%; background:var(--rose-light);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Jost',sans-serif; font-size:13px; font-weight:500; color:var(--white);
+      flex-shrink:0;
+    }
+    .review-card-name { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:var(--black); }
+    .review-card-date { font-family:'Jost',sans-serif; font-size:10px; color:var(--gray); margin-top:2px; }
+
+    /* ══════════════════════
+       CHANGE 7 — JOURNAL CARD IMAGE ZOOM
+       Was: card lifts -4px, image static
+       Now: image zooms in smoothly on hover
+    ══════════════════════ */
+    .journal-grid {
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:48px; max-width:1200px; margin:0 auto; padding:0 48px;
+    }
+    .journal-card {
+      background:var(--white); cursor:pointer;
+      text-decoration:none; color:inherit; display:block;
+    }
+    .journal-card-image {
+      aspect-ratio: 4/3;
+      overflow:hidden;
+      margin-bottom:20px;
+      position:relative;
+    }
+    .journal-card-image img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .6s ease;
+      display:block;
+    }
+    .journal-card:hover .journal-card-image img {
+      transform:scale(1.06);
+    }
+    .journal-card-image-placeholder {
+      width:100%; height:100%;
+      background:linear-gradient(145deg,#F4ECEC,#E0CCCA);
+      display:flex; align-items:center; justify-content:center;
+      transition:transform .6s ease;
+    }
+    .journal-card:hover .journal-card-image-placeholder { transform:scale(1.04); }
+    .journal-card-image-placeholder span {
+      font-family:'Dancing Script',cursive; font-size:48px;
+      color:var(--rose); opacity:.6;
+    }
+    .journal-card-meta {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px;
+      text-transform:uppercase; color:var(--rose); margin-bottom:10px;
+    }
+    .journal-card-title {
+      font-family:'Playfair Display',serif; font-size:24px; font-weight:700;
+      line-height:1.25; margin-bottom:10px; color:var(--black);
+    }
+    .journal-card-excerpt {
+      font-family:'Cormorant Garamond',serif; font-size:17px;
+      font-weight:300; font-style:italic; color:var(--gray-dark); line-height:1.6;
+    }
+    .journal-card-link {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--rose); margin-top:14px; display:inline-block;
+      transition:transform .25s ease;
+    }
+    .journal-card:hover .journal-card-link { transform:translateX(5px); }
+
+    /* ══════════════════════
+       CHANGE 8 — ABOUT SPLIT REVEAL
+       Was: image + content appear instantly
+       Now: image slides from left, content from right
+    ══════════════════════ */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; min-height:75vh; }
+    .about-img-side {
+      background:var(--blush); padding:0;
+      position:relative; overflow:hidden;
+    }
+    .about-img-side picture { position:absolute; inset:0; display:block; }
+    .about-img-side img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+
+    /* Split reveal classes */
+    .reveal-from-left {
+      opacity:0;
+      transform:translateX(-40px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+    .reveal-from-right {
+      opacity:0;
+      transform:translateX(40px);
+      transition:opacity .8s ease .15s, transform .8s ease .15s;
+    }
+    .reveal-from-left.visible,
+    .reveal-from-right.visible {
+      opacity:1;
+      transform:translateX(0);
+    }
+
+    .about-content { padding:100px 80px; display:flex; flex-direction:column; justify-content:center; }
+    .about-body {
+      font-family:'Cormorant Garamond',serif; font-size:19px; line-height:1.9;
+      color:var(--gray-dark); margin:24px 0 44px;
+    }
+    .about-meta { display:flex; gap:48px; }
+    .meta-lbl { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--rose); margin-bottom:6px; }
+    .meta-val { font-family:'Cormorant Garamond',serif; font-size:19px; }
+
+    /* ══════════════════════
+       CHANGE 9 — CURRENCY PRICE FLASH
+       Was: prices swap instantly
+       Now: brief fade-out then fade-in
+    ══════════════════════ */
+    [data-idr] {
+      transition:opacity .18s ease;
+    }
+    [data-idr].price-updating {
+      opacity:0;
+    }
+
+    /* ── SECTION FULL ── */
+    .section-full-inner { max-width:1200px; margin:0 auto; }
+
+    /* ── FOOTER ── */
+    footer { background:var(--black); color:var(--white); padding:64px 48px 96px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:64px; max-width:1100px; margin:0 auto 52px; }
+    .footer-brand p { font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:rgba(255,255,255,.55); line-height:1.75; margin-top:18px; max-width:320px; }
+    .footer-h { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--rose-light); margin-bottom:20px; }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .footer-links li a { font-family:'Cormorant Garamond',serif; font-size:18px; color:rgba(255,255,255,.65); text-decoration:none; cursor:pointer; transition:color .2s; }
+    .footer-links li a:hover { color:var(--rose-light); }
+    .footer-btm { max-width:1100px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; align-items:center; }
+    .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.28); }
+
+    /* ── FLOATING WA ── */
+    .wa-float {
+      position:fixed; bottom:72px; right:32px; z-index:300;
+      width:58px; height:58px; background:#25D366; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; box-shadow:0 4px 24px rgba(37,211,102,.45);
+      transition:transform .2s, box-shadow .2s; text-decoration:none;
+    }
+    .wa-float:hover { transform:scale(1.1); box-shadow:0 6px 32px rgba(37,211,102,.55); }
+
+    /* ── SERVICES PAGE ── */
+    .services-hero {
+      background:var(--black); color:var(--white);
+      padding:100px 48px 64px; text-align:center;
+    }
+    .services-hero .section-label { color:var(--rose-light); }
+    .services-hero .section-title { color:var(--white); }
+    .services-hero p { font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:rgba(255,255,255,.65); margin-top:14px; }
+
+    .currency-bar {
+      background:var(--cream); padding:14px 48px;
+      display:flex; align-items:center; gap:14px;
+      border-bottom:1px solid var(--gray-light);
+      position:sticky; top:calc(var(--nav-h) + 38px); z-index:50;
+    }
+    .currency-bar > span { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); }
+    .currency-pills { display:flex; gap:4px; }
+    .pill {
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
+      padding:6px 16px; border:1px solid var(--gray-light);
+      background:none; cursor:pointer; border-radius:100px; transition:all .2s; color:var(--gray-dark);
+    }
+    .pill.active { background:var(--black); color:var(--white); border-color:var(--black); }
+    .svc-section { padding:64px 48px; max-width:1100px; margin:0 auto; }
+    .svc-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:36px; padding-bottom:20px; border-bottom:2px solid var(--black); gap:24px; }
+    .design-note { background:var(--blush); border-left:3px solid var(--rose); padding:14px 18px; font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:var(--gray-dark); max-width:260px; }
+    .svc-table { width:100%; border-collapse:collapse; }
+    .svc-table th { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--gray-light); }
+    .svc-table td { padding:18px 16px 18px 0; border-bottom:1px solid var(--blush); vertical-align:middle; }
+    .svc-table td:last-child { text-align:right; white-space:nowrap; }
+    .btn-book-row { font-family:'Jost',sans-serif; font-size:10px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; padding:7px 16px; background:transparent; color:var(--rose); border:1px solid var(--rose); cursor:pointer; transition:all .2s; white-space:nowrap; margin-left:16px; }
+    .btn-book-row:hover { background:var(--rose); color:var(--white); }
+    .svc-name { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400; }
+    .svc-desc { font-family:'Jost',sans-serif; font-size:11px; color:var(--gray); margin-top:5px; letter-spacing:.5px; }
+    .svc-dur { font-family:'Jost',sans-serif; font-size:12px; color:var(--gray); }
+    .svc-price { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; }
+    .svc-note { font-family:'Jost',sans-serif; font-size:10px; color:var(--rose); letter-spacing:1px; }
+    .price-tba { font-family:'Jost',sans-serif; font-size:11px; color:var(--gray); letter-spacing:1px; text-transform:uppercase; }
+    .section-divider { height:1px; background:var(--gray-light); margin:0 48px; }
+
+    @media(max-width:768px) {
+      nav { padding:0 20px; }
+      .nav-links { display:none; }
+      .section, .svc-section { padding:56px 24px; }
+      .section-full { padding:56px 24px; }
+      .service-cards, .about-grid, .footer-grid { grid-template-columns:1fr; }
+      .about-img-side { min-height:56vh; }
+      .stats-bar { grid-template-columns:1fr; }
+      .hero-ctas { flex-direction:column; align-items:center; }
+      .about-content { padding:60px 32px; }
+      .currency-bar { padding:12px 24px; gap:8px; flex-wrap:wrap; }
+      .svc-header { flex-direction:column; }
+      .footer-grid { gap:40px; }
+      .reviews-section { padding:56px 24px; }
+      .reviews-grid { grid-template-columns:1fr; }
+      .reviews-header { flex-direction:column; align-items:flex-start; }
+      .reviews-big-score { font-size:56px; }
+      .journal-grid { padding:0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ ANNOUNCEMENT BAR ══ -->
+<div class="ann-bar">
+  <div class="ann-bar-left">
+    <span class="ann-bar-heart">♡</span>
+    <span class="ann-bar-text"><strong>June offer:</strong> Complimentary lash removal included with any full lash set booking</span>
+  </div>
+  <div class="ann-bar-right">
+    <span class="ann-bar-until">Until 30 June</span>
+    <a class="ann-bar-btn" href="#">Book now</a>
+  </div>
+</div>
+
+<!-- ══ NAVIGATION ══ -->
+<nav id="navbar">
+  <a class="nav-logo" href="#" onclick="showPage('home');return false;" style="text-decoration:none;">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="cc"><circle cx="60" cy="60" r="57"/></clipPath></defs>
+      <circle cx="60" cy="60" r="58" fill="white" stroke="#E8E0DE" stroke-width="1.5"/>
+      <text x="8" y="92" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="#1A1A1A" clip-path="url(#cc)">L</text>
+      <text x="50" y="117" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="#1A1A1A" clip-path="url(#cc)">S</text>
+      <text x="13" y="73" font-family="'Dancing Script',cursive" font-weight="600" font-size="19" fill="#C4796F">Lollygagss</text>
+      <text x="98" y="70" font-family="Arial" font-size="12" fill="#C4796F">♥</text>
+      <text x="60" y="85" font-family="'Jost',sans-serif" font-weight="300" font-size="8" fill="#1A1A1A" text-anchor="middle" letter-spacing="4">STUDIO</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a id="nav-home"     href="#" onclick="showPage('home');return false;"     class="active">Home</a></li>
+    <li><a id="nav-services" href="#" onclick="showPage('services');return false;"            >Services</a></li>
+    <li><a id="nav-about"    href="#" onclick="showPage('about');return false;"               >About</a></li>
+    <li><a id="nav-journal"  href="#" onclick="showPage('journal');return false;"             >Journal</a></li>
+    <li><a id="nav-contact"  href="#" onclick="showPage('contact');return false;"             >Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div style="display:flex;gap:4px;">
+      <button style="font-family:'Jost',sans-serif;font-size:11px;font-weight:500;padding:5px 10px;border:1px solid #1A1A1A;background:#1A1A1A;color:#fff;cursor:pointer;border-radius:2px;">EN</button>
+      <button style="font-family:'Jost',sans-serif;font-size:11px;font-weight:500;padding:5px 10px;border:1px solid #E0DAD8;background:none;cursor:pointer;border-radius:2px;color:#8A8A8A;">ID</button>
+    </div>
+    <select id="currency-select" class="currency-select" onchange="setCurrency(this.value)" style="font-family:'Jost',sans-serif;font-size:11px;border:1px solid #E0DAD8;background:none;padding:5px 10px;border-radius:2px;cursor:pointer;color:#4A4A4A;outline:none;">
+      <option value="IDR">IDR</option>
+      <option value="AUD">AUD</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+    </select>
+    <button class="btn-book-nav">Book Now</button>
+  </div>
+</nav>
+
+<!-- ══════════════ HOME ══════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO (existing animations preserved) -->
+  <section class="hero">
+    <div class="hero-bg"></div><!-- ← breathing animation added -->
+    <div class="hero-content">
+      <p class="hero-eyebrow">Nails · Lashes · Bali</p>
+      <div class="hero-wordmark">
+        <span class="hero-wordmark-script">Lollygagss</span>
+        <span class="hero-wordmark-sub">STUDIO</span>
+      </div>
+      <div class="hero-title">
+        Feel<br>
+        <span class="hero-script">Beautiful</span>
+      </div>
+      <h1 class="hero-sub">Nail and Lash Studio in Kerobokan, Bali. Home service available.</h1>
+      <div class="hero-ctas">
+        <button class="btn-primary">Book Now</button>
+        <button class="btn-secondary">View Services</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANGE 4 — STATS COUNTER BAR (NEW) -->
+  <div class="stats-bar reveal-stagger" id="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" data-target="500" data-suffix="+">0</span>
+      <span class="stat-label">Happy Clients</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="18" data-suffix=" mos">0</span>
+      <span class="stat-label">Serving Bali</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="5" data-suffix="★">0</span>
+      <span class="stat-label">Google Rating</span>
+    </div>
+  </div>
+
+  <!-- SERVICES SECTION — reveal on scroll -->
+  <section class="section">
+    <p class="section-label reveal">What We Offer</p>
+    <h2 class="section-title reveal">Studio Services</h2>
+    <p class="section-intro reveal">Precision nails and professional lash services, delivered in a calm and clean space.</p>
+
+    <!-- CHANGE 5 — improved service card hover -->
+    <div class="service-cards">
+      <a class="service-card reveal" href="#" onclick="showPage('services');return false;">
+        <div class="sc-num">01</div>
+        <div class="sc-title">Nails</div>
+        <div class="sc-desc">Gel manicure, BIAB, nail extensions, and nail art from simple to hard design.</div>
+        <div class="sc-link">View nail services →</div>
+      </a>
+      <a class="service-card reveal" href="#" onclick="showPage('services');return false;" style="transition-delay:.12s">
+        <div class="sc-num">02</div>
+        <div class="sc-title">Lashes</div>
+        <div class="sc-desc">Natural 2D through volume 6D lash extensions. Cat eye and volume styling available.</div>
+        <div class="sc-link">View lash services →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- VISIT US -->
+  <div class="section-full">
+    <div class="section-full-inner">
+      <p class="section-label reveal">Visit Us</p>
+      <h2 class="section-title reveal">Jl. Persada II, Teuku Umar, Bali</h2>
+      <p class="section-intro reveal" style="margin-bottom:36px;">Mon–Sat 09:00–19:00. Walk-ins welcome. Home service available on request.</p>
+      <a class="btn-primary reveal" href="#" onclick="showPage('contact');return false;">Get Directions &amp; Book</a>
+    </div>
+  </div>
+
+  <!-- CHANGE 3+6 — GOOGLE REVIEWS with staggered cards -->
+  <div class="reviews-section">
+    <div class="reviews-inner">
+      <div class="reviews-header">
+        <div>
+          <p class="section-label reveal">What Clients Say</p>
+          <h2 class="section-title reveal">Google Reviews</h2>
+        </div>
+        <div class="reviews-rating-summary reveal">
+          <div class="reviews-big-score">4.9</div>
+          <div class="reviews-stars-col">
+            <div class="reviews-stars">★★★★★</div>
+            <div class="reviews-count">24 Google reviews</div>
+            <a href="#" style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);text-decoration:none;border-bottom:1px solid var(--rose-light);padding-bottom:2px;">View on Google →</a>
+          </div>
+        </div>
+      </div>
+      <!-- CHANGE 6 — staggered reveal -->
+      <div class="reviews-grid reveal-stagger">
+        <div class="review-card">
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">"Absolutely loved my BIAB manicure — Lina is so skilled and the studio feels like a little sanctuary. Will definitely be back before I leave Bali!"</p>
+          <div class="review-card-author">
+            <div class="review-card-avatar" style="background:#C4796F;">SJ</div>
+            <div>
+              <div class="review-card-name">Sarah J.</div>
+              <div class="review-card-date">2 weeks ago</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">"Best lash extensions I've had anywhere in Bali — natural looking 3D and they lasted so well in the humidity. Lina really listens to what you want."</p>
+          <div class="review-card-author">
+            <div class="review-card-avatar" style="background:#8F4E46;">MC</div>
+            <div>
+              <div class="review-card-name">Mia C.</div>
+              <div class="review-card-date">1 month ago</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">"Super clean, super professional, and very affordable compared to Seminyak. The gel tips held up through surfing and everything. 10/10."</p>
+          <div class="review-card-author">
+            <div class="review-card-avatar" style="background:#4A4A4A;">RL</div>
+            <div>
+              <div class="review-card-name">Rachel L.</div>
+              <div class="review-card-date">3 weeks ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK BANNER -->
+  <div class="book-banner">
+    <h2 class="reveal">Ready to treat yourself?</h2>
+    <p class="reveal">Book your appointment via WhatsApp or our online booking system.</p>
+    <button class="btn-white reveal">Book Now</button>
+  </div>
+
+</div><!-- /page-home -->
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<div id="page-services" class="page">
+
+  <div class="services-hero">
+    <p class="section-label">Our Menu</p>
+    <h2 class="section-title">Services &amp; Pricing</h2>
+    <p>All nail design prices are starting prices. Final price depends on complexity and detail.</p>
+  </div>
+
+  <!-- CHANGE 9 — currency flash on switch -->
+  <div class="currency-bar">
+    <span>Display prices in:</span>
+    <div class="currency-pills">
+      <button class="pill active" onclick="setCurrencyPill(this,'IDR')">IDR</button>
+      <button class="pill" onclick="setCurrencyPill(this,'AUD')">AUD</button>
+      <button class="pill" onclick="setCurrencyPill(this,'USD')">USD</button>
+      <button class="pill" onclick="setCurrencyPill(this,'EUR')">EUR</button>
+      <button class="pill" onclick="setCurrencyPill(this,'GBP')">GBP</button>
+    </div>
+  </div>
+
+  <div class="svc-section">
+    <div class="svc-header reveal">
+      <div>
+        <p class="section-label">01</p>
+        <h2 class="section-title">Nail Services</h2>
+      </div>
+      <div class="design-note">Design prices listed are starting from amounts. Contact us to discuss your design.</div>
+    </div>
+    <table class="svc-table">
+      <thead>
+        <tr>
+          <th>Service</th><th>Duration</th><th>Price</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="svc-name">BIAB Manicure (Builder Overlay)</div><div class="svc-desc">Strengthening builder gel over natural nails for extra length and durability</div></td><td><div class="svc-dur">60 min</div></td><td><div class="svc-price" data-idr="250000">Rp 250,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Classic Manicure / Classic Pedicure</div><div class="svc-desc">Shape, buff and tidy — no gel, no polish</div></td><td><div class="svc-dur">45 min</div></td><td><div class="svc-price" data-idr="100000">Rp 100,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Gel Manicure / Gel Pedicure</div><div class="svc-desc">Classic prep with gel colour and nail vitamin finish</div></td><td><div class="svc-dur">60 min</div></td><td><div class="svc-price" data-idr="150000">Rp 150,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Gel Tip Extensions</div><div class="svc-desc">Full set with plastic tips, gel colour and nail vitamin</div></td><td><div class="svc-dur">90 min</div></td><td><div class="svc-price" data-idr="200000">Rp 200,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Nail Art — Simple</div><div class="svc-desc">Dots, lines, hearts and minimalist accents</div></td><td><div class="svc-dur">90 min</div></td><td><div class="svc-price" data-idr="225000">Rp 225,000</div><div class="svc-note">starting price</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Nail Art — Bespoke</div><div class="svc-desc">Freehand painting and structural designs</div></td><td><div class="svc-dur">120 min</div></td><td><div class="svc-price" data-idr="300000">Rp 300,000</div><div class="svc-note">starting price</div></td><td><button class="btn-book-row">Book</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="svc-section">
+    <div class="svc-header reveal">
+      <div>
+        <p class="section-label">02</p>
+        <h2 class="section-title">Lash Services</h2>
+      </div>
+    </div>
+    <table class="svc-table">
+      <thead>
+        <tr><th>Service</th><th>Duration</th><th>Price</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="svc-name">Classic Lash Extensions (2D)</div><div class="svc-desc">Natural, lightweight individual lash extensions</div></td><td><div class="svc-dur">120 min</div></td><td><div class="svc-price" data-idr="250000">Rp 250,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Natural Volume Lashes (3D)</div><div class="svc-desc">Soft volume for a naturally fuller look</div></td><td><div class="svc-dur">120 min</div></td><td><div class="svc-price" data-idr="280000">Rp 280,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Volume Lash Extensions (4D–6D)</div><div class="svc-desc">Full volume or cat eye styling for a dramatic finish</div></td><td><div class="svc-dur">120 min</div></td><td><div class="svc-price" data-idr="350000">Rp 350,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Lash Infill</div><div class="svc-desc">Maintenance appointment. Minimum 70% of lashes remaining required</div></td><td><div class="svc-dur">60 min</div></td><td><div class="svc-price" data-idr="220000">Rp 220,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+        <tr><td><div class="svc-name">Lash Removal</div><div class="svc-desc">Safe and gentle removal of lash extensions</div></td><td><div class="svc-dur">60 min</div></td><td><div class="svc-price" data-idr="100000">Rp 100,000</div></td><td><button class="btn-book-row">Book</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="book-banner">
+    <h2>Ready to book?</h2>
+    <p>Message us on WhatsApp or use our online booking system.</p>
+    <button class="btn-white">Book Now</button>
+  </div>
+
+</div><!-- /page-services -->
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<div id="page-about" class="page">
+  <!-- CHANGE 8 — split reveal -->
+  <div class="about-grid">
+    <div class="about-img-side reveal-from-left" id="about-img">
+      <!-- Placeholder gradient when no image -->
+      <div style="position:absolute;inset:0;background:linear-gradient(145deg,#F0E8E6 0%,#E8A89E 50%,#F0E8E6 100%);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:'Dancing Script',cursive;font-size:72px;color:#8F4E46;opacity:.25;">Lollygagss</span>
+      </div>
+    </div>
+    <div class="about-content reveal-from-right" id="about-content">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">Lollygagss Studio</h2>
+      <p class="about-body">
+        Lollygagss Studio is a boutique nail and lash studio nestled in Teuku Umar, right where the warmth of local Bali life meets the energy of Kerobokan's expat community. Opened in November 2024, the studio is owner-operated and every appointment is handled personally, ensuring a consistent, attentive experience from start to finish.<br><br>
+        We offer a full range of nail services including gel manicure, BIAB, nail extensions, and nail art from simple to intricate designs, alongside professional lash extensions from natural 2D through to volume 6D.<br><br>
+        Lollygagss welcomes everyone: Bali locals, tourists making the most of the island, and the expats who came for a holiday and never quite left.
+      </p>
+      <div class="about-meta">
+        <div><div class="meta-lbl">Hours</div><div class="meta-val">Mon–Sat 09:00–19:00</div></div>
+        <div><div class="meta-lbl">Booking</div><div class="meta-val">Walk-ins Welcome</div></div>
+        <div><div class="meta-lbl">Home Service</div><div class="meta-val">Available</div></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-about -->
+
+<!-- ══════════════ JOURNAL ══════════════ -->
+<div id="page-journal" class="page">
+  <div class="services-hero">
+    <p class="section-label">Stories &amp; Guides</p>
+    <h2 class="section-title">Journal</h2>
+    <p>Treatments, trends, and tips from our studio in Bali.</p>
+  </div>
+
+  <div style="padding:64px 0;">
+    <!-- CHANGE 7 — journal card image zoom -->
+    <div class="journal-grid">
+      <a class="journal-card reveal" href="#">
+        <div class="journal-card-image">
+          <div class="journal-card-image-placeholder"><span>✦</span></div>
+        </div>
+        <div class="journal-card-meta">Treatments · 7 min read</div>
+        <h3 class="journal-card-title">Gel, BIAB, or Extensions? Which Nail Service Is Right for You</h3>
+        <p class="journal-card-excerpt">Three of Bali's most popular nail services, honestly compared. Which one suits your lifestyle and how long you are staying?</p>
+        <span class="journal-card-link">Read more →</span>
+      </a>
+      <a class="journal-card reveal" href="#" style="transition-delay:.12s;">
+        <div class="journal-card-image">
+          <div class="journal-card-image-placeholder" style="background:linear-gradient(145deg,#E8D5D3,#D4B8B5);"><span>♥</span></div>
+        </div>
+        <div class="journal-card-meta">Treatments · 6 min read</div>
+        <h3 class="journal-card-title">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</h3>
+        <p class="journal-card-excerpt">Builder gel that strengthens natural nails and survives the tropics. Everything you need to know before booking.</p>
+        <span class="journal-card-link">Read more →</span>
+      </a>
+    </div>
+  </div>
+</div><!-- /page-journal -->
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<div id="page-contact" class="page">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:60vh;">
+    <div style="padding:80px 60px;background:var(--black);color:var(--white);">
+      <p class="section-label reveal" style="color:var(--rose-light);">Get In Touch</p>
+      <h2 class="section-title reveal" style="color:var(--white);font-size:40px;margin-bottom:52px;">Book &amp; Contact</h2>
+      <div style="margin-bottom:36px;" class="reveal">
+        <div style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose-light);margin-bottom:6px;">Address</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:white;line-height:1.5;">Jl. Persada II, Teuku Umar<br>Bali, Indonesia</div>
+      </div>
+      <div style="margin-bottom:36px;" class="reveal">
+        <div style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose-light);margin-bottom:6px;">Hours</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:white;">Mon–Sat 09:00–19:00 · Closed Sunday</div>
+      </div>
+      <div style="margin-bottom:36px;" class="reveal">
+        <div style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose-light);margin-bottom:6px;">WhatsApp</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:white;">+62 851-2195-0351</div>
+      </div>
+      <button class="reveal" style="display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;background:#25D366;color:white;border:none;cursor:pointer;margin-top:20px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message on WhatsApp
+      </button>
+    </div>
+    <div style="min-height:400px;background:var(--blush);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;padding:48px;">
+        <div style="font-family:'Dancing Script',cursive;font-size:64px;color:var(--rose);opacity:.3;margin-bottom:16px;">♥</div>
+        <p style="font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gray);">Map loads in live site</p>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-contact -->
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+        <defs><clipPath id="cc2"><circle cx="60" cy="60" r="57"/></clipPath></defs>
+        <circle cx="60" cy="60" r="58" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="8" y="92" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="rgba(255,255,255,0.12)" clip-path="url(#cc2)">L</text>
+        <text x="50" y="117" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="rgba(255,255,255,0.12)" clip-path="url(#cc2)">S</text>
+        <text x="13" y="73" font-family="'Dancing Script',cursive" font-weight="600" font-size="19" fill="#E8A89E">Lollygagss</text>
+        <text x="98" y="70" font-family="Arial" font-size="12" fill="#E8A89E">♥</text>
+        <text x="60" y="85" font-family="'Jost',sans-serif" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="4">STUDIO</text>
+      </svg>
+      <p>Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you.</p>
+    </div>
+    <div>
+      <div class="footer-h">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('services');return false;">Services</a></li>
+        <li><a href="#" onclick="showPage('about');return false;">About</a></li>
+        <li><a href="#" onclick="showPage('journal');return false;">Journal</a></li>
+        <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Contact</div>
+      <ul class="footer-links">
+        <li><a href="#">+62 851-2195-0351</a></li>
+        <li><a href="#">@lollygagss_studio</a></li>
+        <li><a href="#">Jl. Persada II, Teuku Umar</a></li>
+        <li><a href="#">Mon–Sat 09:00–19:00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-btm">
+    <p>© 2026 Lollygagss Studio. Bali, Indonesia.</p>
+    <p style="color:var(--rose-light);">♥ @lollygagss_studio</p>
+  </div>
+</footer>
+
+<!-- ══ FLOATING WA ══ -->
+<a class="wa-float" href="#">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ══ MOCKUP LABEL ══ -->
+<div class="mockup-banner">
+  <span>ENHANCED MOCKUP — lollygagss.id</span>
+  <div class="mockup-changes">
+    <span class="mockup-tag">Page Fade</span>
+    <span class="mockup-tag">Stats Counter</span>
+    <span class="mockup-tag">Scroll Reveals</span>
+    <span class="mockup-tag">Card Hover</span>
+    <span class="mockup-tag">Image Zoom</span>
+    <span class="mockup-tag">Split Reveal</span>
+    <span class="mockup-tag">Price Flash</span>
+  </div>
+</div>
+
+<script>
+  /* ══ PAGE ROUTING — with fade transition ══ */
+  const PAGES = ['home','services','about','journal','contact'];
+
+  function showPage(id) {
+    const current = document.querySelector('.page.active');
+    if (current) {
+      current.classList.remove('visible');
+      setTimeout(() => {
+        current.classList.remove('active');
+        activatePage(id);
+      }, 280);
+    } else {
+      activatePage(id);
+    }
+  }
+
+  function activatePage(id) {
+    const el = document.getElementById('page-' + id);
+    if (!el) return;
+    el.classList.add('active');
+    window.scrollTo({ top: 0 });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.classList.add('visible');
+        PAGES.forEach(p => {
+          const nav = document.getElementById('nav-' + p);
+          if (nav) nav.classList.toggle('active', p === id);
+        });
+        // Trigger scroll-based reveals after page switch
+        setTimeout(checkReveals, 50);
+        // Trigger about split reveal
+        if (id === 'about') triggerAboutReveal();
+      });
+    });
+  }
+
+  // Init home page fade-in on load
+  window.addEventListener('load', () => {
+    const home = document.getElementById('page-home');
+    home.classList.add('active');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        home.classList.add('visible');
+      });
+    });
+  });
+
+  /* ══ CHANGE 3 — SCROLL REVEAL (IntersectionObserver) ══ */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Don't unobserve stagger parents so children get re-checked
+      }
+    });
+  }, { threshold: 0.12 });
+
+  function checkReveals() {
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+      revealObserver.observe(el);
+    });
+  }
+  checkReveals();
+
+  /* ══ CHANGE 4 — STATS COUNTER ══ */
+  function animateCounter(el, target, suffix) {
+    const duration = 1400;
+    const start = performance.now();
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const value = Math.round(eased * target);
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.stat-num[data-target]').forEach(el => {
+          const target = parseInt(el.dataset.target);
+          const suffix = el.dataset.suffix || '';
+          animateCounter(el, target, suffix);
+          delete el.dataset.target; // run once
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsBar = document.getElementById('stats-bar');
+  if (statsBar) statsObserver.observe(statsBar);
+
+  /* ══ CHANGE 8 — ABOUT SPLIT REVEAL ══ */
+  function triggerAboutReveal() {
+    setTimeout(() => {
+      const img = document.getElementById('about-img');
+      const content = document.getElementById('about-content');
+      if (img) img.classList.add('visible');
+      if (content) content.classList.add('visible');
+    }, 100);
+  }
+
+  /* ══ CHANGE 9 — CURRENCY WITH PRICE FLASH ══ */
+  const RATES = { IDR:1, AUD:0.0000862, USD:0.0000630, EUR:0.0000582, GBP:0.0000500 };
+  const SYM   = { IDR:'Rp ', AUD:'A$ ', USD:'US$ ', EUR:'€ ', GBP:'£ ' };
+  const DEC   = { IDR:0, AUD:2, USD:2, EUR:2, GBP:2 };
+  let cur = 'IDR';
+
+  function formatPrice(idr, currency) {
+    const val = idr * RATES[currency];
+    return SYM[currency] + val.toLocaleString('en-AU',{
+      minimumFractionDigits: DEC[currency],
+      maximumFractionDigits: DEC[currency]
+    });
+  }
+
+  function setCurrency(currency) {
+    cur = currency;
+    const els = document.querySelectorAll('[data-idr]');
+    // Flash out
+    els.forEach(el => el.classList.add('price-updating'));
+    setTimeout(() => {
+      // Update values
+      els.forEach(el => {
+        el.textContent = formatPrice(parseInt(el.getAttribute('data-idr')), currency);
+      });
+      // Flash in
+      els.forEach(el => el.classList.remove('price-updating'));
+    }, 180);
+    // Sync select
+    const sel = document.getElementById('currency-select');
+    if (sel) sel.value = currency;
+  }
+
+  function setCurrencyPill(btn, currency) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    setCurrency(currency);
+  }
+
+  /* ══ NAV SHADOW ON SCROLL ══ */
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.boxShadow =
+      window.scrollY > 20 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
+    checkReveals();
+  }, { passive: true });
+</script>
+</body>
+</html>
