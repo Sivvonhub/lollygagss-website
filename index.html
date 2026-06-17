@@ -722,7 +722,7 @@
       }
       .mbb-wa   { background:#25D366; color:#fff; }
       .mbb-book { background:var(--black); color:#fff; }
-      .wa-float { bottom:78px; }
+      .wa-float { display:none; }
       body { padding-bottom:50px; }
     }
 
@@ -744,7 +744,7 @@
   </div>
   <div class="ann-bar-right">
     <span class="ann-bar-until" data-en="Until 30 June" data-id="Hingga 30 Juni">Until 30 June</span>
-    <a class="ann-bar-btn" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=p%3A1869397&share=true&pId=2869775" target="_blank" data-en="Book now" data-id="Pesan sekarang">Book now</a>
+    <a class="ann-bar-btn" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=p%3A1869397&share=true&pId=2869775" target="_blank" data-en="Claim offer →" data-id="Klaim promo →">Claim offer →</a>
   </div>
 </div>
 
@@ -831,7 +831,7 @@
         </div>
         <div class="sc-link" data-en="View nail services →" data-id="Lihat layanan kuku →">View nail services →</div>
       </a>
-      <a class="service-card" href="/services" style="text-decoration:none;color:var(--white);display:block;">
+      <a class="service-card" href="/services#lash-extensions" style="text-decoration:none;color:var(--white);display:block;">
         <div class="sc-num">02</div>
         <div class="sc-title" data-en="Lashes" data-id="Bulu Mata">Lashes</div>
         <div class="sc-desc" data-en="Natural 2D through volume 6D lash extensions. Cat eye and volume styling available." data-id="Ekstensi bulu mata natural 2D hingga volume 6D. Tersedia styling cat eye dan volume.">
@@ -1542,6 +1542,36 @@
   const MAPS_LINK  = 'https://www.google.com/maps/place/?q=place_id:' + PLACE_ID;
   let   reviewsData = null; // cache so we only fetch once
 
+  // Curated real Google reviews — static baseline so the section always shows,
+  // even if the live API is briefly unavailable. Live data replaces these on load.
+  const FALLBACK_REVIEWS = {
+    rating: 5.0,
+    user_ratings_total: 51,
+    reviews: [
+      {
+        rating: 5,
+        text: "I'm really satisfied with the service at this nail salon! The nail art is absolutely beautiful and neatly done, just like I wanted. The staff are very friendly and professional, which made the whole experience even better. The owner is also super kind and pays great attention to detail. Totally recommended for anyone looking to get perfectly done nails! 💅✨",
+        author_name: "Dwi Madame",
+        profile_photo_url: "",
+        relative_time: "a year ago"
+      },
+      {
+        rating: 5,
+        text: "Clean and cozy studio, very friendly nail tech, they provide wide options of nail colors.",
+        author_name: "Putri YW",
+        profile_photo_url: "",
+        relative_time: "a month ago"
+      },
+      {
+        rating: 5,
+        text: "Really nice and amazing studio service! The owner was very friendly and polite 😊 and staff also very polite. Recommend for you ladies who stay around Denpasar or Badung. Thank you for the service 🌸🙏🏽",
+        author_name: "Marina Nju",
+        profile_photo_url: "",
+        relative_time: "a year ago"
+      }
+    ]
+  };
+
   function starsHTML(rating, size = 16) {
     const full  = Math.floor(rating);
     const half  = rating % 1 >= 0.5 ? 1 : 0;
@@ -1625,17 +1655,19 @@
 
   async function loadReviews() {
     if (reviewsData) { populateAllReviews(reviewsData); return; }
+    // Show curated reviews immediately so the section is never empty.
+    populateAllReviews(FALLBACK_REVIEWS);
+    // Then try the live Google feed; if it succeeds, swap in the fresh data.
     try {
       const res  = await fetch('/api/reviews');
       const json = await res.json();
-      if (json && json.rating) {
+      if (json && json.rating && Array.isArray(json.reviews) && json.reviews.length) {
         reviewsData = json;
         populateAllReviews(reviewsData);
-      } else {
-        clearLoadingStates();
       }
+      // On any miss, the curated baseline already shown remains in place.
     } catch (e) {
-      clearLoadingStates();
+      /* keep the curated baseline */
     }
   }
 
