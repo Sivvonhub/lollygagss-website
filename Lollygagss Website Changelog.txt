@@ -1,4 +1,34 @@
-v2.6 — 13 June 2026 
+v2.7 — 17 June 2026
+
+Studio-grade UX session: motion/interaction layer, blog restructure, booking-pressure reduction, and a resilient hybrid Google Reviews system. Shipped across two pull requests (PR #3 then PR #4).
+
+Motion & interaction layer (all pages) — Added a site-wide animation system: IntersectionObserver scroll-reveal (.reveal / .reveal-left / .reveal-right / .reveal-stagger), hero two-layer parallax (.hero-bg outer translateY via JS + .hero-bg-inner CSS breathing scale, split to avoid transform conflict), animated nav underline (.nav-links a::after growing from centre), page fade-in (@keyframes pageIn), and a currency price-flash on conversion. All gated behind @media(prefers-reduced-motion:reduce) so reduced-motion users get a static experience.
+
+Magnetic WhatsApp (desktop only) — Floating WhatsApp bubble follows the cursor within a 160px radius (translate 0.25 + scale 1.12) on hover-capable devices. As of PR #4 it is hidden on mobile (display:none under 768px) so it no longer stacks on top of the sticky mobile book bar.
+
+Sticky mobile book bar (all pages) — Fixed bottom bar under 768px with WhatsApp + Book Now, body padding-bottom added to clear it. Replaces the floating WhatsApp on mobile.
+
+Footer & contact — Added footer social icon row (Instagram + Threads) on the main SPA pages and Threads + Email links on the blog-page footers. Added hello@lollygagss.id email to the Contact section, footer, and About meta. links.html gained a social icon row (Instagram, Threads, Email) with GA4/Pixel click tracking.
+
+journal.html — Polish pass: image hover-zoom on featured/card thumbnails, arrow-nudge on hover, category chips (.journal-chip), end-of-list CTA (.journal-end-cta), and reveal classes on cards. Fixed a pre-existing orphaned CSS bug (stray max-width/margin declarations left outside any selector after a media query).
+
+journal/biab-bali.html — Added the missing "image" field to the Article (BlogPosting) JSON-LD structured data, pointing at images/journal/biab-nails-bali-kerobokan.jpg.
+
+Blog page restructure — Moved biab-bali.html and gel-biab-extensions-bali.html out of the site root and into /journal/ (resolving a merge conflict where root copies had been deleted on main). Merged all UI improvements and the JSON-LD fix into the canonical /journal/ versions and removed the root duplicates.
+
+Lash deep-link (index.html + services.html) — The home-page "Lashes" service card now links to /services#lash-extensions and snaps to the Lash Extensions section instead of landing at the top (nails). Added id="lash-extensions" with scroll-margin-top:130px so it clears the fixed announcement bar + nav. (Verified via git history this deep-link was never present in the prior production build — it was added, not restored.)
+
+Booking-pressure reduction (all pages) — The announcement-bar CTA changed from "Book now" to "Claim offer →" (data-en "Claim offer →" / data-id "Klaim promo →" where the language toggle exists) so it reads as offer-specific rather than duplicating the nav "Book Now" directly below it. The nav Book Now remains the persistent primary CTA.
+
+Google Reviews — Hybrid system. Root cause of the blank reviews section was a missing GOOGLE_PLACES_API_KEY env var in Vercel (logs showed "API key present: false"); restored as a project-level env var (Production + Preview) and the live /api/reviews feed now returns the real 5.0★ / 51-review data. PR #3 first made the section hide gracefully on API failure; PR #4 replaced that with a hybrid: three curated real 5-star reviews (Dwi Madame, Putri YW, Marina Nju) are hard-coded as a FALLBACK_REVIEWS baseline that renders instantly, and the live Google feed swaps in when it loads. Avatars fall back to initials, so there is no dependency on expiring Google photo URLs. The section can no longer go blank. Note: Google's Places API only ever returns 5 of the 51 reviews.
+
+Not changed: gallery left as-is (lightbox + before/after slider code ready, awaiting real photos); mockup-enhanced.html dev file left untouched.
+
+Post-deploy actions: confirm hello@lollygagss.id inbox is monitored; verify the Google API key is restricted to "Places API (New)" only after rotation.
+
+---
+
+v2.6 — 13 June 2026
 
 Ahrefs Site Audit fix (project 9891341). Worked from current source files and verified every issue against the live site — the Ahrefs crawl was stale and did not match deployed HTML. Issues addressed across four batches: meta/title length, social tags, internal 404 links, and sitemap/robots.
 
