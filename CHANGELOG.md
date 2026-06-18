@@ -1,0 +1,1 @@
+- 2026-06-18: Add "BIAB Nails in Kerobokan" journal article (featured card, related links, sitemap, jpg/webp images, SEO).
