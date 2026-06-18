@@ -1,1 +1,3 @@
 - 2026-06-18: Add "BIAB Nails in Kerobokan" journal article (featured card, related links, sitemap, jpg/webp images, SEO).
+- 2026-06-19: Credit Dwi Madame and link her Google review in the BIAB Kerobokan article.
+- 2026-06-19: Add og:image dimensions/type + Twitter cards across all pages for reliable link previews (WhatsApp); add og:image to index and links pages, which had none.
