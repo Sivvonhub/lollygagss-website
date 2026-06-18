@@ -262,6 +262,52 @@
       margin-top:10px;
       display:inline-block;
     }
+    .journal-more {
+      width:100%;
+      margin-top:30px;
+    }
+    .journal-more-label {
+      font-family:'Jost', sans-serif;
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:var(--gray);
+      text-align:center;
+      margin-bottom:14px;
+    }
+    .journal-link {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      width:100%;
+      background:var(--white);
+      border:1px solid var(--gray-light);
+      border-radius:14px;
+      padding:14px 18px;
+      margin-bottom:10px;
+      text-decoration:none;
+      color:var(--black);
+      transition:box-shadow .15s ease, transform .15s ease;
+    }
+    .journal-link:hover {
+      box-shadow:0 6px 18px rgba(26,26,26,.07);
+      transform:translateY(-2px);
+    }
+    .journal-link-title {
+      font-family:'Playfair Display', serif;
+      font-weight:700;
+      font-size:15px;
+      line-height:1.3;
+      text-align:left;
+    }
+    .journal-link-arrow {
+      font-family:'Jost', sans-serif;
+      color:var(--rose);
+      font-size:16px;
+      flex-shrink:0;
+    }
 
     .links-social {
       display:flex;
@@ -378,6 +424,24 @@
     </a>
 
   </div>
+
+  <!-- ── MORE FROM THE JOURNAL ── -->
+  <div class="journal-more">
+    <div class="journal-more-label">More from the Journal</div>
+
+    <a class="journal-link" href="https://lollygagss.id/journal/biab-bali"
+       onclick="trackClick('journal_biab_bali')">
+      <span class="journal-link-title">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</span>
+      <span class="journal-link-arrow">&rarr;</span>
+    </a>
+
+    <a class="journal-link" href="https://lollygagss.id/journal/gel-biab-extensions-bali"
+       onclick="trackClick('journal_gel_biab_extensions')">
+      <span class="journal-link-title">Gel Manicure vs BIAB vs Nail Extensions: Which Is Right for You?</span>
+      <span class="journal-link-arrow">&rarr;</span>
+    </a>
+  </div>
+  <!-- ── END MORE FROM THE JOURNAL ── -->
 
   <div class="links-social">
     <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram" onclick="trackClick('social_instagram')">
