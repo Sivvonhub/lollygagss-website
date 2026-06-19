@@ -13,6 +13,18 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lollygagss.id/links">
   <meta property="og:site_name" content="Lollygagss Studio">
+  <meta property="og:image" content="https://lollygagss.id/images/studio-interior.jpg">
+  <meta property="og:image:secure_url" content="https://lollygagss.id/images/studio-interior.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="840">
+  <meta property="og:image:height" content="987">
+  <meta property="og:image:alt" content="Inside Lollygagss Studio, a nail and lash studio in Kerobokan, Bali">
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lollygagss Studio — Links">
+  <meta name="twitter:description" content="Nail and lash studio in Kerobokan, Bali. Book, browse services, or message us.">
+  <meta name="twitter:image" content="https://lollygagss.id/images/studio-interior.jpg">
   <link rel="canonical" href="https://lollygagss.id/links">
 
   <!-- Google Analytics -->
@@ -250,6 +262,52 @@
       margin-top:10px;
       display:inline-block;
     }
+    .journal-more {
+      width:100%;
+      margin-top:30px;
+    }
+    .journal-more-label {
+      font-family:'Jost', sans-serif;
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:var(--gray);
+      text-align:center;
+      margin-bottom:14px;
+    }
+    .journal-link {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      width:100%;
+      background:var(--white);
+      border:1px solid var(--gray-light);
+      border-radius:14px;
+      padding:14px 18px;
+      margin-bottom:10px;
+      text-decoration:none;
+      color:var(--black);
+      transition:box-shadow .15s ease, transform .15s ease;
+    }
+    .journal-link:hover {
+      box-shadow:0 6px 18px rgba(26,26,26,.07);
+      transform:translateY(-2px);
+    }
+    .journal-link-title {
+      font-family:'Playfair Display', serif;
+      font-weight:700;
+      font-size:15px;
+      line-height:1.3;
+      text-align:left;
+    }
+    .journal-link-arrow {
+      font-family:'Jost', sans-serif;
+      color:var(--rose);
+      font-size:16px;
+      flex-shrink:0;
+    }
 
     .links-social {
       display:flex;
@@ -324,13 +382,13 @@
   <p class="location">Kerobokan &middot; Bali</p>
 
   <!-- ── FEATURED SLOT ──
-       Swap this block out per campaign. Currently: BIAB journal article.
+       Swap this block out per campaign. Currently: BIAB Nails in Kerobokan journal article.
        To remove: delete from <a class="featured"> to </a>.
   -->
-  <a class="featured" href="https://lollygagss.id/journal/biab-bali"
-     onclick="trackClick('featured_biab_article')">
+  <a class="featured" href="https://lollygagss.id/journal/biab-nails-kerobokan"
+     onclick="trackClick('featured_biab_kerobokan_article')">
     <div class="featured-tag">New on the Journal</div>
-    <div class="featured-title">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</div>
+    <div class="featured-title">BIAB Nails in Kerobokan: Where to Book and What to Expect</div>
     <span class="featured-link">Read the article &rarr;</span>
   </a>
   <!-- ── END FEATURED SLOT ── -->
@@ -366,6 +424,24 @@
     </a>
 
   </div>
+
+  <!-- ── MORE FROM THE JOURNAL ── -->
+  <div class="journal-more">
+    <div class="journal-more-label">More from the Journal</div>
+
+    <a class="journal-link" href="https://lollygagss.id/journal/biab-bali"
+       onclick="trackClick('journal_biab_bali')">
+      <span class="journal-link-title">What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</span>
+      <span class="journal-link-arrow">&rarr;</span>
+    </a>
+
+    <a class="journal-link" href="https://lollygagss.id/journal/gel-biab-extensions-bali"
+       onclick="trackClick('journal_gel_biab_extensions')">
+      <span class="journal-link-title">Gel Manicure vs BIAB vs Nail Extensions: Which Is Right for You?</span>
+      <span class="journal-link-arrow">&rarr;</span>
+    </a>
+  </div>
+  <!-- ── END MORE FROM THE JOURNAL ── -->
 
   <div class="links-social">
     <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram" onclick="trackClick('social_instagram')">
