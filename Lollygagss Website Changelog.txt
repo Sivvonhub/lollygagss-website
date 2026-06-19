@@ -1,3 +1,21 @@
+v2.8 — 19 June 2026
+
+Gallery, About section personalisation, and SPA preview fixes. Shipped across three pull requests (PR #5, #6, #7).
+
+Photo gallery (index.html) — Replaced the Instagram placeholder on the Gallery page with a real photo grid featuring 9 studio images: cat-eye gel nails, natural BIAB nails, polka dot gel nail art (2 angles), green & gold gel nails, nude nail extensions, classic lash extensions, studio storefront, and Lina in the studio. All images renamed with SEO-optimized filenames (e.g. cat-eye-gel-nails-bali.jpg) and descriptive alt tags. 3-column grid on desktop, 2-column on mobile, with hover zoom + gradient overlay effect. Images stored in images/gallery/.
+
+Lightbox (index.html) — Full-screen image viewer overlay: click any gallery image to open, prev/next arrow navigation, keyboard support (ArrowLeft/ArrowRight to navigate, Escape to close), image counter (e.g. "3 / 9"), body scroll lock while open. Closes on backdrop click but not on image or nav button click.
+
+About section (index.html) — Replaced the studio interior photo with Lina's personal portrait (floral top, smiling). Makes the "Our Story" section warm and personal. Image stored at images/lina-owner-lollygagss-studio-bali.jpg.
+
+WhatsApp link previews (vercel.json) — Added Vercel rewrites for SPA routes (/gallery, /about, /contact, /home) so they serve index.html instead of returning 404. Fixes WhatsApp and social media link previews which were blank on these URLs because crawlers don't execute JavaScript and Vercel's cleanUrls was looking for gallery.html etc. which don't exist.
+
+Fresha image cropping — Cropped all gallery images to 1080x1080 (square) and 1920x1080 (16:9 landscape) for Fresha uploads. Storefront image custom-cropped from bottom to keep the welcome mat visible. Images provided to user but not kept in repo (.gitignore added).
+
+Not changed: before/after slider deferred to a future session; Instagram Reels embed deferred.
+
+---
+
 v2.7 — 17 June 2026
 
 Studio-grade UX session: motion/interaction layer, blog restructure, booking-pressure reduction, and a resilient hybrid Google Reviews system. Shipped across two pull requests (PR #3 then PR #4).
