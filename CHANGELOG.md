@@ -1,7 +1,0 @@
-- 2026-06-18: Add "BIAB Nails in Kerobokan" journal article (featured card, related links, sitemap, jpg/webp images, SEO).
-- 2026-06-19: Credit Dwi Madame and link her Google review in the BIAB Kerobokan article.
-- 2026-06-19: Add og:image dimensions/type + Twitter cards across all pages for reliable link previews (WhatsApp); add og:image to index and links pages, which had none.
-- 2026-06-19: Build photo gallery with 9 real studio images and full-screen lightbox (PR #5).
-- 2026-06-19: Fix WhatsApp link previews for SPA pages (/gallery, /about, /contact) via Vercel rewrites (PR #6).
-- 2026-06-19: Add Lina's portrait to About section, studio selfie to gallery as 9th image (PR #7).
-- 2026-06-19: SEO-optimized all gallery image filenames and alt tags.
