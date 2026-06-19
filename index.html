@@ -457,8 +457,62 @@
     .meta-val { font-family:'Cormorant Garamond',serif; font-size:19px; }
 
     /* ── GALLERY ── */
-    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
-    .gallery-item { aspect-ratio:1; }
+    .gallery-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:6px;
+      max-width:1200px; margin:0 auto; padding:0 24px;
+    }
+    .gallery-item {
+      position:relative; overflow:hidden; cursor:pointer;
+      aspect-ratio:1; border-radius:2px;
+    }
+    .gallery-item img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .45s ease, filter .45s ease;
+    }
+    .gallery-item:hover img { transform:scale(1.06); filter:brightness(.92); }
+    .gallery-item::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,.25));
+      opacity:0; transition:opacity .35s ease; pointer-events:none;
+    }
+    .gallery-item:hover::after { opacity:1; }
+    .gallery-cta {
+      text-align:center; margin-top:48px; padding:0 24px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display:none; position:fixed; inset:0; z-index:500;
+      background:rgba(0,0,0,.92); align-items:center; justify-content:center;
+      opacity:0; transition:opacity .3s ease;
+    }
+    .lightbox.open { display:flex; opacity:1; }
+    .lightbox-img {
+      max-width:90vw; max-height:85vh; object-fit:contain;
+      border-radius:2px; user-select:none;
+    }
+    .lightbox-close {
+      position:absolute; top:24px; right:28px;
+      width:44px; height:44px; border:none; background:none;
+      color:#fff; font-size:32px; cursor:pointer; opacity:.7;
+      transition:opacity .2s, transform .2s;
+      font-family:'Jost',sans-serif; line-height:1;
+    }
+    .lightbox-close:hover { opacity:1; transform:scale(1.15); }
+    .lightbox-nav {
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:48px; height:48px; border:none; background:none;
+      color:#fff; font-size:28px; cursor:pointer; opacity:.6;
+      transition:opacity .2s; font-family:'Jost',sans-serif;
+    }
+    .lightbox-nav:hover { opacity:1; }
+    .lightbox-prev { left:16px; }
+    .lightbox-next { right:16px; }
+    .lightbox-counter {
+      position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+      font-family:'Jost',sans-serif; font-size:13px; letter-spacing:2px;
+      color:rgba(255,255,255,.6);
+    }
 
     /* ── JOURNAL ── */
     .journal-intro {
@@ -649,7 +703,9 @@
       .about-img-side { min-height:56vh; }
       .stats-bar { grid-template-columns:1fr; }
       .insta-grid { grid-template-columns:repeat(2,1fr); }
-      .gallery-grid { grid-template-columns:repeat(2,1fr); }
+      .gallery-grid { grid-template-columns:repeat(2,1fr); gap:4px; }
+      .lightbox-prev { left:8px; }
+      .lightbox-next { right:8px; }
       .hero-ctas { flex-direction:column; align-items:center; }
       .about-content { padding:60px 32px; }
       .contact-info { padding:60px 32px; }
@@ -1218,18 +1274,50 @@
   <div class="services-hero">
     <p class="section-label" data-en="Our Work" data-id="Karya Kami">Our Work</p>
     <h2 class="section-title" data-en="Gallery" data-id="Galeri">Gallery</h2>
-    <p data-en="Follow @lollygagss_studio on Instagram for our latest work." data-id="Ikuti @lollygagss_studio di Instagram untuk karya terbaru kami.">Follow @lollygagss_studio on Instagram for our latest work.</p>
+    <p data-en="Nails, lashes, and studio life — all by Lina at Lollygagss Studio, Kerobokan." data-id="Kuku, bulu mata, dan kehidupan studio — semuanya oleh Lina di Lollygagss Studio, Kerobokan.">Nails, lashes, and studio life — all by Lina at Lollygagss Studio, Kerobokan.</p>
   </div>
 
-  <div style="padding:48px;max-width:1200px;margin:0 auto;">
-    <div data-key="Carousel Instagram Feed" class="ft" id="fthsb0t5d-gallery"></div>
-    <div style="text-align:center;margin-top:48px;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--gray);margin-bottom:20px;" data-en="Live Instagram gallery integration coming soon. View our full portfolio on Instagram." data-id="Integrasi galeri Instagram langsung segera hadir. Lihat portofolio lengkap kami di Instagram.">
-        Live Instagram gallery integration coming soon. View our full portfolio on Instagram.
-      </p>
-      <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" class="btn-primary" data-en="Open @lollygagss_studio →" data-id="Buka @lollygagss_studio →">Open @lollygagss_studio →</a>
+  <div style="padding:48px 0;">
+    <div class="gallery-grid reveal-stagger">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="/images/gallery/cat-eye-gel-nails-bali.jpg" alt="Purple cat-eye gel manicure at Lollygagss Studio Bali" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="/images/gallery/biab-natural-nails-lollygagss-studio.jpg" alt="Natural BIAB builder gel nails at Lollygagss Studio Kerobokan" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="/images/gallery/polka-dot-gel-nail-art-bali.jpg" alt="Pink and polka dot gel nail art in Bali" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="/images/gallery/gel-bottle-nail-art-kerobokan.jpg" alt="Polka dot nail art with The Gel Bottle products at Lollygagss Studio" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="/images/gallery/green-gold-gel-nails-kerobokan.jpg" alt="Green and gold gel nail art at Lollygagss Studio storefront Kerobokan" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="/images/gallery/nude-nail-extensions-bali.jpg" alt="Nude nail extensions by Lollygagss Studio Bali" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="/images/gallery/classic-lash-extensions-bali.jpg" alt="Classic lash extensions closeup at Lollygagss Studio Bali" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="/images/gallery/lollygagss-studio-storefront-kerobokan.jpg" alt="Lollygagss Studio storefront with colorful window art in Kerobokan Bali" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-cta">
+      <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" class="btn-primary" data-en="See more on Instagram →" data-id="Lihat lebih banyak di Instagram →">See more on Instagram →</a>
     </div>
   </div>
+</div>
+
+<!-- Gallery Lightbox -->
+<div class="lightbox" id="gallery-lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(event,-1)" aria-label="Previous">&#8249;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(event,1)" aria-label="Next">&#8250;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -1751,6 +1839,44 @@
       });
     }, { passive: true });
   })();
+
+  // ── GALLERY LIGHTBOX ──
+  const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+  let lbIndex = 0;
+
+  function openLightbox(i) {
+    lbIndex = i;
+    const lb = document.getElementById('gallery-lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = galleryImages[i].src;
+    img.alt = galleryImages[i].alt;
+    document.getElementById('lightbox-counter').textContent = (i + 1) + ' / ' + galleryImages.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (e.target.classList.contains('lightbox-nav') || e.target.classList.contains('lightbox-img')) return;
+    document.getElementById('gallery-lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navLightbox(e, dir) {
+    e.stopPropagation();
+    lbIndex = (lbIndex + dir + galleryImages.length) % galleryImages.length;
+    const img = document.getElementById('lightbox-img');
+    img.src = galleryImages[lbIndex].src;
+    img.alt = galleryImages[lbIndex].alt;
+    document.getElementById('lightbox-counter').textContent = (lbIndex + 1) + ' / ' + galleryImages.length;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('gallery-lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') navLightbox(e, -1);
+    if (e.key === 'ArrowRight') navLightbox(e, 1);
+  });
 </script>
 </body>
 </html>
