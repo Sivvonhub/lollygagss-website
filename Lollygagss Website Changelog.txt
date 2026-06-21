@@ -1,3 +1,11 @@
+v2.8.1 — 21 June 2026
+
+Pinterest domain verification — Added p:domain_verify meta tag to index.html <head> for Pinterest business account verification (lollygagss.id).
+
+Journal link cleanup — Removed .html suffixes from two journal grid card hrefs in journal.html to match the site's clean URL pattern (Vercel cleanUrls).
+
+---
+
 v2.8 — 19 June 2026
 
 Gallery, About section personalisation, and SPA preview fixes. Shipped across three pull requests (PR #5, #6, #7).
