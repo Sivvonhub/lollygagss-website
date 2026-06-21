@@ -16,6 +16,28 @@ Not changed: before/after slider deferred to a future session; Instagram Reels e
 
 ---
 
+v2.7.1 — 18–19 June 2026
+
+BIAB Kerobokan journal article, social preview fixes, and /links page updates.
+
+journal/biab-nails-kerobokan.html — New article: "BIAB Nails in Kerobokan: What to Know Before You Book". Full blog page with Article (BlogPosting) JSON-LD, meta descriptions, reading progress bar, mobile book bar, hamburger nav, keep-reading section, and footer consistent with existing journal pages. Images: biab-manicure-kerobokan-bali.jpeg converted to .jpg and .webp.
+
+journal.html — Made biab-nails-kerobokan the new featured card (50/50 hero slot), moved gel-biab-extensions-bali down to the grid.
+
+journal/biab-bali.html — Replaced "Coming soon" placeholder in keep-reading section with real card linking to /journal/biab-nails-kerobokan.
+
+journal/gel-biab-extensions-bali.html — Added keep-reading card for the new BIAB Kerobokan article.
+
+journal/biab-nails-kerobokan.html — Credited Dwi Madame's Google review and linked to it from the article body.
+
+sitemap.xml — Added /journal/biab-nails-kerobokan entry.
+
+og:image & Twitter cards (all pages) — Added og:image:width, og:image:height, og:image:type, and Twitter card meta tags (twitter:card, twitter:title, twitter:description, twitter:image) across index.html, services.html, journal.html, links.html, and all three journal articles. Fixes WhatsApp and social media link previews that were showing no image.
+
+links.html — Updated featured journal slot to BIAB Nails in Kerobokan article. Added "More from the Journal" links section for the two older BIAB articles.
+
+---
+
 v2.7 — 17 June 2026
 
 Studio-grade UX session: motion/interaction layer, blog restructure, booking-pressure reduction, and a resilient hybrid Google Reviews system. Shipped across two pull requests (PR #3 then PR #4).
