@@ -1,3 +1,25 @@
+v2.9 — 23 June 2026
+
+Lash extensions journal article — first lash-focused content on the site.
+
+journal/lash-extensions-bali-humidity.html — New article: "How Long Do Lash Extensions Last in Bali Humidity?" Full blog page cloned from biab-nails-kerobokan.html template with split-hero, article body (six H2 sections), care-list aftercare checklist, closing CTA, and related-articles grid. Article + FAQPage JSON-LD structured data (three questions targeting Google snippets). OG/Twitter meta tags with og:image dimensions for WhatsApp, Facebook, iMessage, and X link previews.
+
+images/journal/lash-extensions-bali-humidity.jpg — Hero image converted from HEIC, resized to 1200×1600 at 85% quality (209 KB).
+
+journal.html — Made lash-extensions-bali-humidity the new featured card (50/50 hero slot). Demoted biab-nails-kerobokan into a standard grid card at the top of the grid, with full bilingual data-en/data-id attributes.
+
+journal/biab-bali.html — Added third related-card linking to the new lash article.
+
+journal/gel-biab-extensions-bali.html — Added third related-card linking to the new lash article.
+
+journal/biab-nails-kerobokan.html — Added third related-card linking to the new lash article.
+
+links.html — Updated featured slot to the new lash article. Added biab-nails-kerobokan to the "More from the Journal" link list.
+
+sitemap.xml — Added /journal/lash-extensions-bali-humidity entry.
+
+---
+
 v2.8.1 — 21 June 2026
 
 Pinterest domain verification — Added p:domain_verify meta tag to index.html <head> for Pinterest business account verification (lollygagss.id).
