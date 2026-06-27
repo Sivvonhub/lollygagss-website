@@ -1,3 +1,23 @@
+v2.10 — 27 June 2026
+
+Ahrefs Site Audit fix (project 9891341) — five issues resolved.
+
+services.html — Replaced two internal links pointing to .html URLs that 308-redirect: /journal/biab-bali.html → /journal/biab-bali and /journal/gel-biab-extensions-bali.html → /journal/gel-biab-extensions-bali. Grepped entire repo and confirmed no other .html internal links remain.
+
+index.html — Shortened homepage meta description from 165 to 139 characters. Changed "nail and lash" → "nail & lash" and "nail extensions and lash extensions, all by owner Lina" → "nail & lash extensions by Lina" to stay under the 160-char Ahrefs threshold while keeping brand, location, services, and CTA.
+
+images/gallery/classic-lash-extensions-bali.jpg — Resized from 3024×4032 to 1200×1600 and re-encoded at JPEG quality 70. File size reduced from 1,224,420 bytes (1.2 MB) to 170,582 bytes (167 KB).
+
+images/gallery/green-gold-gel-nails-kerobokan.jpg — Resized from 2239×2239 to 1200×1200 and re-encoded at JPEG quality 62. File size reduced from 1,120,728 bytes (1.1 MB) to 204,397 bytes (200 KB).
+
+Vercel dashboard — Added www.lollygagss.id as a domain configured to 308 Permanent Redirect → lollygagss.id. Previously the www → non-www redirect was a 307 Temporary via Cloudflare proxy. Updated Cloudflare DNS: changed www CNAME target from lollygagss.id to cname.vercel-dns.com, proxy status from Proxied to DNS only. Result: https://www.lollygagss.id/ now returns 308 → https://lollygagss.id/ in a single hop.
+
+Fresha booking links — Intentionally left as-is. Both book-now share URLs 307-redirect to longer /a/…/booking URLs, but these are Fresha-controlled temporary redirects by design. Hardcoding the resolved URL would be fragile and low SEO impact (external target="_blank" links).
+
+Post-deploy actions: trigger a new Ahrefs Site Audit crawl to clear the five issues.
+
+---
+
 v2.9 — 23 June 2026
 
 Lash extensions journal article — first lash-focused content on the site.
