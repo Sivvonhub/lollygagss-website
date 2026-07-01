@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=social&utm_campaign=bali-tourist-info", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/gallery", "destination": "/" },
     { "source": "/about", "destination": "/" },
