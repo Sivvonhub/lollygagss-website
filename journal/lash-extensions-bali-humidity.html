@@ -142,31 +142,9 @@
       overflow-x:hidden;
     }
 
-    /* ── ANNOUNCEMENT BAR ── */
-    .ann-bar {
-      position:fixed; top:0; left:0; right:0; z-index:201;
-      background:var(--black);
-      padding:9px 48px;
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-    }
-    .ann-bar-left { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
-    .ann-bar-heart { font-family:'Dancing Script',cursive; font-size:18px; color:var(--rose); flex-shrink:0; }
-    .ann-bar-text { font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic; color:rgba(250,247,245,0.85); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .ann-bar-text strong { font-style:normal; font-weight:600; color:var(--rose-light); }
-    .ann-bar-right { display:flex; align-items:center; gap:14px; flex-shrink:0; }
-    .ann-bar-until { font-family:'Jost',sans-serif; font-size:10px; font-weight:300; letter-spacing:0.08em; color:var(--gray); }
-    .ann-bar-btn { font-family:'Jost',sans-serif; font-size:10px; font-weight:500; letter-spacing:0.06em; color:var(--black); background:var(--rose); padding:6px 16px; border-radius:2px; text-decoration:none; white-space:nowrap; transition:background .2s; }
-    .ann-bar-btn:hover { background:var(--rose-dark); }
-    @media(max-width:768px) {
-      .ann-bar { padding:8px 20px; gap:10px; }
-      .ann-bar-until { display:none; }
-      .ann-bar-text { font-size:12px; }
-      .ann-bar-btn { padding:5px 12px; font-size:9px; }
-    }
-
     /* ── NAV ── */
     nav {
-      position:fixed; top:38px; left:0; right:0; z-index:200;
+      position:fixed; top:0; left:0; right:0; z-index:200;
       height:var(--nav-h);
       display:flex; align-items:center; justify-content:space-between;
       padding:0 48px;
@@ -217,7 +195,7 @@
     .split-hero {
       display:grid; grid-template-columns:1fr 1fr;
       background:var(--cream);
-      padding-top:calc(var(--nav-h) + 38px);
+      padding-top:var(--nav-h);
     }
     .split-hero-img {
       overflow:hidden;
@@ -640,17 +618,6 @@
 </head>
 <body>
 
-<!-- ══ ANNOUNCEMENT BAR ══ -->
-<div class="ann-bar" id="ann-bar">
-  <div class="ann-bar-left">
-    <span class="ann-bar-heart">♡</span>
-    <span class="ann-bar-text"><strong>June offer:</strong> Complimentary lash removal included with any full lash set booking</span>
-  </div>
-  <div class="ann-bar-right">
-    <span class="ann-bar-until">Until 30 June</span>
-    <a class="ann-bar-btn" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=p%3A1869397&share=true&pId=2869775" target="_blank">Book now</a>
-  </div>
-</div>
 
 
 <!-- Reading progress bar -->

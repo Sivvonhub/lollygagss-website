@@ -1,3 +1,23 @@
+v2.11 — 2 July 2026
+
+Site audit fixes: expired June promo removed site-wide, hidden SPA page clones deleted, schema corrections.
+
+All pages — Removed the expired "June offer" announcement bar (HTML + CSS) from index.html, services.html, journal.html, and all five journal articles. Nav repositioned from top:38px to top:0 and page/hero padding offsets reduced accordingly (gel-biab-extensions-bali.html uses --ann-h variable, set to 0px). Fresha promo-offer URLs (oiid=p:…) reverted to the standard booking URL where they appeared outside the promo blocks (services.html nav Book Now button).
+
+services.html — Removed the "June Special" banner and the June 2026 lash promo bundles table with its "Standard pricing" divider. Removed the hidden SPA clone sections (page-home, page-about, page-gallery, page-journal, page-contact) that duplicated homepage content and loaded the Fouita widget invisibly. Promoted the visible page heading from h2 to h1 and reworded it to "BIAB, Gel & Lash Services in Kerobokan" (ID: "Layanan BIAB, Gel & Bulu Mata di Kerobokan") — previously the only h1 was inside hidden content.
+
+index.html — Removed the hidden page-services section that still showed the pre-June lash pricing (2D 250k / 3D 280k / 4D–6D 350k, infill 220k) and old nail art tiers, and was reachable at /#services. Removed the unreachable page-journal section (stale two-article grid). PAGES array reduced to home/about/gallery/contact; /#services now redirects to /services the same way /#journal redirects to /journal. Reviews load triggers updated to home/contact.
+
+journal.html — Removed all hidden SPA clone sections including the base64-embedded About photo (~300 KB). File size reduced from 388 KB to 56 KB. Promoted the visible page heading from h2 to h1 and reworded it to "Nail & Lash Guides from Kerobokan, Bali" (ID: "Panduan Kuku & Bulu Mata dari Kerobokan, Bali").
+
+journal/gel-biab-extensions-bali.html — Corrected Gel Manicure price from Rp 130.000 / 45 min to Rp 150.000 / 60 min in the comparison card and the service snapshot row.
+
+Structured data (index.html, services.html, journal.html) — postalCode left at 80117 for now, pending verification: 80117 is a West Denpasar code, while Pos Indonesia's kodepos lookup shows 80365 for Kerobokan Kelod (and for Dalung — shared code). The studio's coordinates reverse-geocode to Kerobokan Kelod, Kuta Utara, Badung, matching the Fresha listing. Decision deferred until GBP investigation concludes. Corrected geo coordinates from -8.6706, 115.2126 (central Denpasar, ~4 km east of the studio) to -8.67582, 115.17618 (matches the Place-ID map embed). Description updated to "Boutique nail and lash studio in Kerobokan Kelod, Bali. Every appointment by owner Lina." Added priceRange (Rp 50.000–Rp 450.000) and image (gallery storefront photo).
+
+mockup-enhanced.html — Deleted. Was publicly served at /mockup-enhanced via cleanUrls with no noindex.
+
+---
+
 v2.10 — 27 June 2026
 
 Ahrefs Site Audit fix (project 9891341) — five issues resolved.

@@ -131,23 +131,12 @@
       --gray:       #8A8A8A;
       --gray-light: #E0DAD8;
       --nav-h:      72px;
-      --ann-h:      38px;
+      --ann-h:      0px;
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
     body { background:var(--cream); color:var(--black); font-family:'Cormorant Garamond',serif; padding-top:calc(var(--nav-h) + var(--ann-h)); }
 
-    /* ANNOUNCEMENT BAR */
-    .ann-bar { position:fixed; top:0; left:0; right:0; z-index:200; height:var(--ann-h); background:var(--black); color:var(--white); display:flex; align-items:center; justify-content:space-between; padding:0 20px; gap:12px; }
-    .ann-bar-left { display:flex; align-items:center; gap:8px; }
-    .ann-bar-heart { font-family:'Dancing Script',cursive; font-size:18px; color:var(--rose); flex-shrink:0; }
-    .ann-bar-text { font-family:'Jost',sans-serif; font-size:12px; font-weight:300; color:rgba(255,255,255,.85); }
-    .ann-bar-text strong { font-style:normal; font-weight:600; color:var(--rose-light); }
-    .ann-bar-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-    .ann-bar-until { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:1px; color:rgba(255,255,255,.5); white-space:nowrap; }
-    .ann-bar-btn { font-family:'Jost',sans-serif; font-size:10px; font-weight:500; letter-spacing:0.06em; color:var(--black); background:var(--rose); padding:6px 16px; border-radius:2px; text-decoration:none; white-space:nowrap; transition:background .2s; }
-    .ann-bar-btn:hover { background:var(--rose-dark); }
-    @media(max-width:600px) { .ann-bar-until { display:none; } .ann-bar-text { font-size:11px; } }
 
     /* READING PROGRESS */
     .reading-progress { position:fixed; top:var(--ann-h); left:0; height:2px; background:var(--rose); width:0%; z-index:199; transition:width .1s linear; }
@@ -294,17 +283,6 @@
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BAR -->
-<div class="ann-bar">
-  <div class="ann-bar-left">
-    <span class="ann-bar-heart">&#9829;</span>
-    <span class="ann-bar-text"><strong>June offer:</strong> Complimentary lash removal included with any full lash set booking</span>
-  </div>
-  <div class="ann-bar-right">
-    <span class="ann-bar-until">Until 30 June</span>
-    <a class="ann-bar-btn" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=p%3A1869397&share=true&pId=2869775" target="_blank">Claim offer →</a>
-  </div>
-</div>
 
 <!-- Reading progress bar -->
 <div class="reading-progress" id="readingProgress"></div>
@@ -402,7 +380,7 @@
     <div class="comp-card">
       <div class="comp-card-tag">Option 01</div>
       <h3>Gel Manicure</h3>
-      <div class="comp-card-price">From Rp 130.000 &nbsp;&middot;&nbsp; 45 min</div>
+      <div class="comp-card-price">From Rp 150.000 &nbsp;&middot;&nbsp; 60 min</div>
       <p>A thin colour layer over natural nails. No added thickness, no structural change. The go-to for a clean, polished finish without commitment.</p>
       <ul class="comp-card-pros">
         <li>Quickest appointment</li>
@@ -473,8 +451,8 @@
     <h3>Gel Manicure</h3>
     <p class="service-spotlight-desc">Gel colour applied and cured over natural nails. Shape, prep, colour, finish. Everything done by Lina from start to end.</p>
     <div class="service-row">
-      <div class="service-row-item"><span class="lbl">Duration</span><span class="val">45 min</span></div>
-      <div class="service-row-item"><span class="lbl">Price</span><span class="val">From Rp 130.000</span></div>
+      <div class="service-row-item"><span class="lbl">Duration</span><span class="val">60 min</span></div>
+      <div class="service-row-item"><span class="lbl">Price</span><span class="val">From Rp 150.000</span></div>
       <div class="service-row-item"><span class="lbl">Best for</span><span class="val">Short stays</span></div>
       <div class="service-row-item"><span class="lbl">Lasts</span><span class="val">1&ndash;2 weeks</span></div>
     </div>
