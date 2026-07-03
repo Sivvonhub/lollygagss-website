@@ -2,14 +2,11 @@
 // api/reviews.js — Vercel serverless function (Places API New, ES Module)
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://lollygagss.id');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
 
   const PLACE_ID = 'ChIJHTK4hLlH0i0RMqbSXuaV1XY';
   const API_KEY  = process.env.GOOGLE_PLACES_API_KEY;
-
-  console.log('API key present:', !!API_KEY);
-  console.log('API key prefix:', API_KEY ? API_KEY.substring(0, 8) : 'MISSING');
 
   if (!API_KEY) {
     return res.status(500).json({ error: 'API key not configured' });

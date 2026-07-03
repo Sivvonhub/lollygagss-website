@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lollygagss Studio — Nails & Lashes Bali</title>
-  <meta name="description" content="Lollygagss Studio — nail & lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail & lash extensions by Lina. Book online or via WhatsApp.">
+  <title>Lollygagss Studio - Nails & Lashes Bali</title>
+  <meta name="description" content="Lollygagss Studio, nail & lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail & lash extensions by Lina. Book online or via WhatsApp.">
 
   <!-- Search Console Verification -->
   <meta name="google-site-verification" content="Z0zSRF8admGdH7TZp5bXov08-XMq9WgDhtPPXUL3Zb4" />
@@ -16,11 +16,11 @@
   <meta name="p:domain_verify" content="4b554f207405d4c823c34a7cb05ddd23"/>
 
   <!-- Open Graph (social sharing) -->
-  <meta property="og:title" content="Lollygagss Studio — Nails & Lashes Bali">
+  <meta property="og:title" content="Lollygagss Studio - Nails & Lashes Bali">
   <meta property="og:description" content="Nail and lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail extensions and lash extensions, all by owner Lina.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lollygagss.id">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="en_AU">
   <meta property="og:site_name" content="Lollygagss Studio">
   <meta property="og:image" content="https://lollygagss.id/images/studio-interior.jpg">
   <meta property="og:image:secure_url" content="https://lollygagss.id/images/studio-interior.jpg">
@@ -31,7 +31,7 @@
 
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Lollygagss Studio — Nails & Lashes Bali">
+  <meta name="twitter:title" content="Lollygagss Studio - Nails & Lashes Bali">
   <meta name="twitter:description" content="Nail and lash studio in Kerobokan, Bali. Gel manicure, BIAB, nail extensions and lash extensions, all by owner Lina.">
   <meta name="twitter:image" content="https://lollygagss.id/images/studio-interior.jpg">
   <link rel="canonical" href="https://lollygagss.id/">
@@ -176,8 +176,29 @@
       letter-spacing:2px; text-transform:uppercase;
       padding:11px 26px; background:var(--black); color:var(--white);
       border:none; cursor:pointer; transition:background .2s;
+      display:inline-block; text-decoration:none;
     }
     .btn-book-nav:hover { background:var(--rose); }
+
+    /* ── MOBILE HAMBURGER ── */
+    .nav-hamburger {
+      display:none; flex-direction:column; gap:5px; cursor:pointer;
+      background:none; border:none; padding:4px;
+    }
+    .nav-hamburger span {
+      display:block; width:22px; height:1.5px; background:var(--black); transition:all .3s;
+    }
+    .nav-mobile-menu {
+      display:none; position:fixed; top:var(--nav-h); left:0; right:0;
+      background:var(--white); border-bottom:1px solid var(--gray-light);
+      padding:24px; z-index:199; flex-direction:column; gap:20px;
+    }
+    .nav-mobile-menu.open { display:flex; }
+    .nav-mobile-menu a {
+      font-family:'Jost',sans-serif; font-size:12px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gray-dark); text-decoration:none;
+    }
+    .nav-mobile-menu a.active { color:var(--rose); }
 
     /* ── PAGES ── */
     .page { display:none; padding-top:var(--nav-h); }
@@ -204,6 +225,7 @@
       letter-spacing:2.5px; text-transform:uppercase;
       padding:16px 42px; background:var(--white); color:var(--rose);
       border:2px solid var(--white); cursor:pointer; transition:all .25s;
+      display:inline-block; text-decoration:none;
     }
     .btn-white:hover { background:transparent; color:var(--white); }
 
@@ -212,7 +234,7 @@
     .section-full { padding:88px 48px; background:var(--blush); }
     .section-label {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:4px;
-      text-transform:uppercase; color:var(--rose); margin-bottom:14px;
+      text-transform:uppercase; color:var(--rose-dark); margin-bottom:14px;
     }
     .section-title {
       font-family:'Playfair Display',serif;
@@ -379,7 +401,7 @@
       letter-spacing:1.5px; text-transform:uppercase;
       padding:7px 16px; background:transparent; color:var(--rose);
       border:1px solid var(--rose); cursor:pointer; transition:all .2s;
-      white-space:nowrap; margin-left:16px;
+      white-space:nowrap; margin-left:16px; display:inline-block; text-decoration:none;
     }
     .btn-book-row:hover { background:var(--rose); color:var(--white); }
     .svc-name { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400; }
@@ -502,7 +524,7 @@
     }
     .journal-card-meta {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px;
-      text-transform:uppercase; color:var(--rose); margin-bottom:10px;
+      text-transform:uppercase; color:var(--rose-dark); margin-bottom:10px;
     }
     .journal-card-title {
       font-family:'Playfair Display',serif; font-size:24px; font-weight:700;
@@ -515,7 +537,7 @@
     }
     .journal-card-link {
       font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px;
-      text-transform:uppercase; color:var(--rose); margin-top:14px; display:inline-block;
+      text-transform:uppercase; color:var(--rose-dark); margin-top:14px; display:inline-block;
     }
     .journal-empty {
       text-align:center; padding:80px 24px; max-width:680px; margin:0 auto;
@@ -557,7 +579,7 @@
       font-family:'Jost',sans-serif; font-size:12px; font-weight:500;
       letter-spacing:2px; text-transform:uppercase;
       padding:14px 28px; background:#25D366; color:var(--white);
-      border:none; cursor:pointer; margin-top:44px; transition:opacity .2s;
+      border:none; cursor:pointer; margin-top:44px; transition:opacity .2s; text-decoration:none;
     }
     .wa-btn:hover { opacity:.88; }
     .fresha-placeholder {
@@ -606,11 +628,11 @@
     .reviews-stars span { color:var(--rose); font-size:18px; }
     .reviews-count {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
-      text-transform:uppercase; color:var(--gray); margin-top:4px;
+      text-transform:uppercase; color:var(--gray-dark); margin-top:4px;
     }
     .reviews-google-link {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
-      text-transform:uppercase; color:var(--rose); text-decoration:none;
+      text-transform:uppercase; color:var(--rose-dark); text-decoration:none;
       border-bottom:1px solid var(--rose-light); padding-bottom:2px;
       transition:color .2s;
     }
@@ -648,7 +670,7 @@
       text-align:center; padding:48px 0;
       font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray);
     }
-    /* Contact page reviews — dark background variant */
+    /* Contact page reviews, dark background variant */
     .reviews-section-dark {
       padding:72px 48px; background:var(--blush);
     }
@@ -658,6 +680,7 @@
     @media(max-width:768px) {
       nav { padding:0 20px; }
       .nav-links, .currency-select { display:none; }
+      .nav-hamburger { display:flex; }
       .btn-book-nav { padding:10px 18px; font-size:10px; }
       .section, .svc-section { padding:56px 24px; }
       .section-full { padding:56px 24px; }
@@ -804,9 +827,22 @@
       <option value="EUR">EUR</option>
       <option value="GBP">GBP</option>
     </select>
-    <button class="btn-book-nav" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan">Book Now</button>
+    <a class="btn-book-nav" data-en="Book Now" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener">Book Now</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile menu -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="/" onclick="event.preventDefault();showPage('home')" data-en="Home" data-id="Beranda">Home</a>
+  <a href="/services" data-en="Services" data-id="Layanan">Services</a>
+  <a href="/#about" onclick="event.preventDefault();showPage('about')" data-en="About" data-id="Tentang">About</a>
+  <a href="/#gallery" onclick="event.preventDefault();showPage('gallery')" data-en="Gallery" data-id="Galeri">Gallery</a>
+  <a href="/journal" data-en="Journal" data-id="Jurnal">Journal</a>
+  <a href="/#contact" onclick="event.preventDefault();showPage('contact')" data-en="Contact" data-id="Kontak">Contact</a>
+</div>
 
 <!-- ══════════════════════════════════════
      HOME
@@ -829,7 +865,7 @@
         Nail and Lash Studio in Kerobokan, Bali. Home service available.
       </h1>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan Sekarang">Book Now</button>
+        <a class="btn-primary" data-en="Book Now" data-id="Pesan Sekarang" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener">Book Now</a>
         <a href="/services" class="btn-secondary" data-en="View Services" data-id="Lihat Layanan">View Services</a>
       </div>
     </div>
@@ -885,7 +921,7 @@
     </div>
   </section>
 
-  <!-- GOOGLE REVIEWS — HOME -->
+  <!-- GOOGLE REVIEWS, HOME -->
   <div class="reviews-section reveal">
     <div class="reviews-inner">
       <div class="reviews-header">
@@ -905,7 +941,7 @@
   <div class="book-banner reveal">
     <h2 data-en="Ready to treat yourself?" data-id="Siap memanjakan diri?">Ready to treat yourself?</h2>
     <p data-en="Book your appointment via WhatsApp or our online booking system." data-id="Buat janji Anda melalui WhatsApp atau sistem pemesanan online kami.">Book your appointment via WhatsApp or our online booking system.</p>
-    <button class="btn-white" onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" data-en="Book Now" data-id="Pesan Sekarang">Book Now</button>
+    <a class="btn-white" data-en="Book Now" data-id="Pesan Sekarang" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener">Book Now</a>
   </div>
 
 </div>
@@ -957,7 +993,7 @@
   <div class="services-hero">
     <p class="section-label" data-en="Our Work" data-id="Karya Kami">Our Work</p>
     <h2 class="section-title" data-en="Gallery" data-id="Galeri">Gallery</h2>
-    <p data-en="Nails, lashes, and studio life — all by Lina at Lollygagss Studio, Kerobokan." data-id="Kuku, bulu mata, dan kehidupan studio — semuanya oleh Lina di Lollygagss Studio, Kerobokan.">Nails, lashes, and studio life — all by Lina at Lollygagss Studio, Kerobokan.</p>
+    <p data-en="Nails, lashes, and studio life, all by Lina at Lollygagss Studio, Kerobokan." data-id="Kuku, bulu mata, dan kehidupan studio, semuanya oleh Lina di Lollygagss Studio, Kerobokan.">Nails, lashes, and studio life, all by Lina at Lollygagss Studio, Kerobokan.</p>
   </div>
 
   <div style="padding:48px 0;">
@@ -1038,18 +1074,18 @@
       </div>
       <div class="c-item">
         <div class="c-lbl" data-en="Home Service" data-id="Layanan ke Rumah">Home Service</div>
-        <div class="c-val" data-en="Available — enquire via WhatsApp" data-id="Tersedia — tanyakan melalui WhatsApp">Available — enquire via WhatsApp</div>
+        <div class="c-val" data-en="Available, enquire via WhatsApp" data-id="Tersedia, tanyakan melalui WhatsApp">Available, enquire via WhatsApp</div>
       </div>
 
-      <button class="wa-btn" onclick="window.open('https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20make%20a%20booking.','_blank')">
+      <a class="wa-btn" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20make%20a%20booking." target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span data-en="Message on WhatsApp" data-id="Pesan di WhatsApp">Message on WhatsApp</span>
-      </button>
+      </a>
 
       <div class="fresha-placeholder">
         <p data-en="Online Booking" data-id="Pemesanan Online">Online Booking</p>
-        <p data-en="Book directly — instant confirmation, no account required." data-id="Pesan langsung — konfirmasi instan, tidak perlu akun.">Book directly — instant confirmation, no account required.</p>
-        <button onclick="window.open('https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true','_blank')" style="margin-top:16px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;background:var(--rose);color:white;border:none;cursor:pointer;" data-en="Book Online via Fresha" data-id="Pesan Online via Fresha">Book Online via Fresha</button>
+        <p data-en="Book directly, instant confirmation, no account required." data-id="Pesan langsung, konfirmasi instan, tidak perlu akun.">Book directly, instant confirmation, no account required.</p>
+        <a style="margin-top:16px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;background:var(--rose);color:white;border:none;cursor:pointer;display:inline-block;text-decoration:none;" data-en="Book Online via Fresha" data-id="Pesan Online via Fresha" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener">Book Online via Fresha</a>
       </div>
     </div>
 
@@ -1062,7 +1098,7 @@
     </div>
   </div>
 
-  <!-- GOOGLE REVIEWS — CONTACT -->
+  <!-- GOOGLE REVIEWS, CONTACT -->
   <div class="reviews-section-dark reveal">
     <div class="reviews-inner">
       <div class="reviews-header">
@@ -1093,8 +1129,8 @@
         <text x="98" y="70" font-family="Arial" font-size="12" fill="#E8A89E">♥</text>
         <text x="60" y="85" font-family="'Jost',sans-serif" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="4">STUDIO</text>
       </svg>
-      <p data-en="Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you." data-id="Studio kuku dan bulu mata di jantung Teuku Umar, Bali. Presisi, kepedulian, dan seni — untuk Anda.">
-        Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry — for you.
+      <p data-en="Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry, for you." data-id="Studio kuku dan bulu mata di jantung Teuku Umar, Bali. Presisi, kepedulian, dan seni, untuk Anda.">
+        Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry, for you.
       </p>
       <div class="footer-social">
         <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -1202,10 +1238,12 @@
   });
 
   // ── LANGUAGE ──
-  let lang = 'en';
+  let lang = (function(){ try { return localStorage.getItem('lolly_lang') || 'en'; } catch(e){ return 'en'; } })();
 
   function setLang(l) {
     lang = l;
+    try { localStorage.setItem('lolly_lang', l); } catch(e) {}
+    document.documentElement.lang = (l === 'id') ? 'id' : 'en';
     document.querySelectorAll('.lang-btn').forEach(b => {
       b.classList.toggle('active', b.textContent.toLowerCase() === l);
     });
@@ -1214,6 +1252,9 @@
       if(txt) el.innerHTML = txt;
     });
   }
+
+  // Apply saved language preference on load
+  setLang(lang);
 
   // ── CURRENCY ──
   let cur = 'IDR';
@@ -1233,7 +1274,7 @@
         if(cur !== 'IDR') updatePrices(cur);
       }
     })
-    .catch(() => {}); // silent — use fallback rates
+    .catch(() => {}); // silent, use fallback rates
 
   function formatPrice(idr, currency) {
     const val = idr * RATES[currency];
@@ -1281,7 +1322,7 @@
   const MAPS_LINK  = 'https://www.google.com/maps/place/?q=place_id:' + PLACE_ID;
   let   reviewsData = null; // cache so we only fetch once
 
-  // Curated real Google reviews — static baseline so the section always shows,
+  // Curated real Google reviews, static baseline so the section always shows,
   // even if the live API is briefly unavailable. Live data replaces these on load.
   const FALLBACK_REVIEWS = {
     rating: 5.0,
@@ -1354,7 +1395,7 @@
       .slice(0, 3);
 
     if (!sorted.length) {
-      el.innerHTML = '<p style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:var(--gray);font-size:18px;">No written reviews yet — be the first!</p>';
+      el.innerHTML = '<p style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:var(--gray);font-size:18px;">No written reviews yet, be the first!</p>';
       return;
     }
 
@@ -1516,6 +1557,15 @@
     if (e.key === 'ArrowLeft') navLightbox(e, -1);
     if (e.key === 'ArrowRight') navLightbox(e, 1);
   });
+  // Mobile hamburger menu
+  (function(){
+    var hb = document.getElementById('hamburger');
+    var mm = document.getElementById('mobileMenu');
+    if (hb && mm) {
+      hb.addEventListener('click', function(){ mm.classList.toggle('open'); });
+      mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mm.classList.remove('open'); }); });
+    }
+  })();
 </script>
 </body>
 </html>

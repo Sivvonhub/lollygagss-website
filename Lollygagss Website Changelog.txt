@@ -1,3 +1,29 @@
+v2.12 — 3 July 2026
+
+Tier 2 site-audit fixes: mobile navigation, accessibility, conversion and content polish.
+
+Mobile hamburger nav (index.html, services.html, journal.html) — Added a hamburger button and slide-down mobile menu (ported from the article template) so the primary nav is reachable on phones. Previously .nav-links was display:none at <=768px with no replacement, leaving mobile visitors unable to reach Services/Journal/About/Gallery/Contact except via footer links. Menu mirrors each page's nav (with active state), is bilingual (data-en/data-id), and closes on link tap. Hamburger shows only <=768px; desktop nav unchanged.
+
+Contrast / WCAG AA (index.html, services.html, journal.html) — Small coral text on white/cream (section labels, service-note "starting price", journal "read our guide" links, reviews "View on Google") changed from --rose #C4796F (~3.2:1, fails) to --rose-dark #8F4E46 (~6.3:1, passes). Small grey text (service descriptions, durations, review counts, journal card meta) changed from --gray #8A8A8A (~3.4:1, fails) to --gray-dark #4A4A4A (~7.5:1, passes). Coral/rose-light on dark backgrounds (heroes, footer) left unchanged — already compliant. journal.html dark page-hero label switched to --rose-light for consistency with the other heroes.
+
+Booking buttons to anchors (all pages) — Converted every <button onclick="window.open(...)"> booking/WhatsApp CTA to a real <a href target="_blank" rel="noopener"> (nav, hero, table "Book" buttons, book banners, contact WhatsApp/Fresha). Real anchors support middle-click and long-press "open in new tab" and are announced as links by assistive tech. Added display:inline-block; text-decoration:none; to .btn-book-nav, .btn-white, .btn-book-row and text-decoration:none to .wa-btn so anchors render identically to the old buttons. Currency/language/lightbox buttons (real JS actions) left as <button>.
+
+Language persistence (index.html, services.html, journal.html) — setLang now saves the choice to localStorage and sets <html lang>; the saved preference is applied on every page load. Previously the EN/ID toggle reset to English on each navigation and never updated the document language for search engines or screen readers.
+
+Internal linking (services.html + two lash articles) — Added a "Classic, Volume or Style? Read our guide" link under the Classic Lashes row on services.html pointing to the lash comparison article. Changed the in-article "See Lash and Nail Prices" CTA in lash-classic-volume-style-bali.html and lash-extensions-bali-humidity.html from /services to /services#lash-extensions (deep-links to the lash section; anchor already existed).
+
+Opening hours (services.html, journal.html) — Footer hours changed from "Sun by appointment" to "Closed Sunday" (EN) and "Minggu hanya dengan janji" to "Tutup Hari Minggu" (ID), matching index.html and the Mon-Sat openingHoursSpecification schema.
+
+og:locale (index.html, services.html, journal.html) — Changed from en_US to en_AU (Australian English brand voice). The Meta Pixel fbevents.js en_US path was left untouched.
+
+Em dashes removed site-wide (all 9 HTML files) — Per brand voice (no em dashes). Title/OG/Twitter separators use a hyphen; nail-art tier labels ("Nail Art - Basic" etc.) use a colon; body prose uses commas. En dashes in ranges/times (Mon-Sat, 09:00-19:00, 4D-6D, 5-10 km) were preserved. Both EN and ID copy updated so the language toggle stays consistent.
+
+api/reviews.js — Removed the two console.log lines that logged API key presence and the first 8 characters of the key. Restricted Access-Control-Allow-Origin from "*" to "https://lollygagss.id" (the site fetches /api/reviews same-origin, so its own use is unaffected; this stops other origins reading the endpoint).
+
+Deliberately NOT changed: schema postalCode left at 80117 pending Simon's Kerobokan-Kelod postcode decision (candidate 80365 per Pos Indonesia); the unused Playfair Display 400 font weight left in the Google Fonts request to avoid any fallback-rendering risk for negligible gain.
+
+---
+
 v2.11 — 2 July 2026
 
 Site audit fixes: expired June promo removed site-wide, hidden SPA page clones deleted, schema corrections.
