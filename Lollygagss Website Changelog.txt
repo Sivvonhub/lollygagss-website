@@ -1,3 +1,15 @@
+v2.13 — 5 July 2026
+
+UTM parameters added to all Fresha outbound links for GA4 booking attribution.
+
+All 62 Fresha booking links across 9 HTML files (index.html, services.html, journal.html, links.html, all five journal articles) now carry utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=[placement]. Fresha strips referrer data in transit, so booking-page sessions previously arrived in GA4 as (direct)/(none); utm_content now identifies the exact page and placement that drove each booking click.
+
+utm_content scheme — index.html: homepage (all 5 CTAs). services.html: services_general (nav/banner/mobile bar), services_biab, services_classic, services_gel, services_extensions, services_nailart (4 tiers), services_removal (2 nail removals), services_lashes (Classic/Volume/Style + lash removal), services_infills (3), services_homeservice (2). journal.html: journal_index. links.html: links_page. Journal articles: journal_[slug with underscores], e.g. journal_biab_bali, journal_gel_biab_extensions_bali, journal_biab_nails_kerobokan, journal_lash_extensions_bali_humidity, journal_lash_classic_volume_style_bali.
+
+All existing query parameters (eid, oiid=sv%3A…, share, pId) preserved byte-identical; UTMs appended only. Domains/paths unchanged, so the GA4 book_click trigger (link_url contains "fresha") still fires. wa.me, Instagram, and internal links untouched. The /fb redirect UTMs in vercel.json are unrelated and unchanged.
+
+---
+
 v2.12 — 3 July 2026
 
 Tier 2 site-audit fixes: mobile navigation, accessibility, conversion and content polish.
