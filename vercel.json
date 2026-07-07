@@ -10,6 +10,10 @@
     { "source": "/gallery", "destination": "/" },
     { "source": "/about", "destination": "/" },
     { "source": "/contact", "destination": "/" },
-    { "source": "/home", "destination": "/" }
+    { "source": "/home", "destination": "/" },
+    { "source": "/id/gallery", "destination": "/id" },
+    { "source": "/id/about", "destination": "/id" },
+    { "source": "/id/contact", "destination": "/id" },
+    { "source": "/id/home", "destination": "/id" }
   ]
 }

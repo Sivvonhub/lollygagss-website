@@ -1,3 +1,15 @@
+v2.16 — 7 July 2026
+
+Indonesian /id/ mirror pages for index, services and journal, with hreflang wiring.
+
+id/index.html, id/services.html, id/journal.html — Static Indonesian versions of the three main pages so the Indonesian copy is finally crawlable (it previously lived only in data-id attributes swapped by JS, which Google does not index). Rendered text is the existing data-id copy verbatim (Lina's translations; 83, 122 and 65 elements respectively); data-en/data-id attributes and the setLang text-swap are stripped, pages are single-language with <html lang="id">. Net-new Indonesian written for everything the toggle never covered: titles, meta descriptions, OG/Twitter tags (og:locale id_ID), JSON-LD description plus "inLanguage": "id", all image alt text, aria-labels (Buka menu, Tutup, Sebelumnya, Berikutnya), map iframe title, reviews-widget strings (ulasan Google, Lihat di Google, fallback relative dates) and the two hardcoded journal leaks ("By" -> "Oleh", "July 2026" -> "Juli 2026"). Fresha links keep the v2.13 UTM scheme with "_id" appended to utm_content (homepage_id, services_biab_id, journal_index_id etc., 30 links total). WhatsApp prefills translated ("Halo Lollygagss Studio, saya mau booking." / "saya mau tanya."). Nav and footer link to the /id equivalents; journal article cards still point at the English articles (articles out of scope). GA4, Clarity, Meta Pixel and Ahrefs snippets identical to the EN pages. Home-page SPA routing mirrored under /id (pushState to /id/about etc.).
+
+hreflang + toggle rewiring (index.html, services.html, journal.html and mirrors) — All six pages declare hreflang en / id / x-default (x-default = English) with self-referencing canonicals on both versions. The EN/ID language toggle is now a real link between the language versions instead of a JS text swap, and the localStorage auto-apply is removed from the three EN pages so an English URL always renders English (no browser-language redirects anywhere). Journal article pages and links.html untouched.
+
+Site wiring — sitemap.xml: /id, /id/services and /id/journal added (lastmod 2026-07-07). vercel.json: /id/gallery, /id/about, /id/contact and /id/home rewrites to /id, mirroring the EN SPA rewrites.
+
+---
+
 v2.15 — 7 July 2026
 
 Vanity redirect links for the lash Kerobokan social campaign.

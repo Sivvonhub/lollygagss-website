@@ -29,6 +29,9 @@
   <meta name="twitter:description" content="Nail and lash guides from Lina at Lollygagss Studio, Kerobokan Bali. BIAB, gel manicures, lash extensions and more.">
   <meta name="twitter:image" content="https://lollygagss.id/images/journal/biab-nails-bali-kerobokan.jpg">
   <link rel="canonical" href="https://lollygagss.id/journal">
+  <link rel="alternate" hreflang="en" href="https://lollygagss.id/journal">
+  <link rel="alternate" hreflang="id" href="https://lollygagss.id/id/journal">
+  <link rel="alternate" hreflang="x-default" href="https://lollygagss.id/journal">
 
   <!-- Local Business Structured Data -->
   <script type="application/ld+json">
@@ -760,8 +763,8 @@
 
   <div class="nav-right">
     <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn"        onclick="setLang('id')">ID</button>
+      <span class="lang-btn active" style="display:inline-block;">EN</span>
+      <a class="lang-btn" href="/id/journal" style="text-decoration:none;display:inline-block;">ID</a>
     </div>
     <select class="currency-select" onchange="setCurrency(this.value)">
       <option value="IDR">IDR</option>
@@ -1009,25 +1012,6 @@
   function showPage(id) {
     window.location.href = '/#' + id;
   }
-
-  // ── LANGUAGE ──
-  let lang = (function(){ try { return localStorage.getItem('lolly_lang') || 'en'; } catch(e){ return 'en'; } })();
-
-  function setLang(l) {
-    lang = l;
-    try { localStorage.setItem('lolly_lang', l); } catch(e) {}
-    document.documentElement.lang = (l === 'id') ? 'id' : 'en';
-    document.querySelectorAll('.lang-btn').forEach(b => {
-      b.classList.toggle('active', b.textContent.toLowerCase() === l);
-    });
-    document.querySelectorAll('[data-en]').forEach(el => {
-      const txt = el.getAttribute('data-'+l);
-      if(txt) el.innerHTML = txt;
-    });
-  }
-
-  // Apply saved language preference on load
-  setLang(lang);
 
   // ── CURRENCY ──
   let cur = 'IDR';
