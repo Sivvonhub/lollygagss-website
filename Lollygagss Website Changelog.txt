@@ -1,3 +1,11 @@
+v2.15 — 7 July 2026
+
+Vanity redirect links for the lash Kerobokan social campaign.
+
+vercel.json — Added three temporary (307) redirects so social captions carry short readable links instead of raw UTM strings: /lash-fb, /lash-threads and /lash-gbp all point at /journal/lash-extensions-kerobokan with the platform's UTM parameters baked into the destination (facebook/social, threads/social, google-business/organic; campaign lash-extensions-kerobokan). Same pattern as the existing /fb redirect for the Bali tourist info group. Pinterest deliberately uses the direct UTM URL in the hidden pin-link field, and Instagram carries no caption link (bio points at /links).
+
+---
+
 v2.14 — 7 July 2026
 
 New journal article: Lash Extensions in Kerobokan (sixth article, completes the journal cluster).
