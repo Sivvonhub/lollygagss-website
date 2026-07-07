@@ -1,3 +1,17 @@
+v2.14 — 7 July 2026
+
+New journal article: Lash Extensions in Kerobokan (sixth article, completes the journal cluster).
+
+journal/lash-extensions-kerobokan.html — New article cloned from the BIAB Kerobokan template (CSS verbatim, all structural components kept). Prices match services.html: Classic Rp 250.000, Volume Rp 350.000, Style Rp 450.000, infills Rp 150.000-350.000; durations state around two hours for Classic/Volume and three and a half for Style (copy adjusted from the approved draft's blanket "around two hours" after checking the live menu). Article + FAQ JSON-LD (3 questions), OG/Twitter cards with og:image 1200x1600, canonical /journal/lash-extensions-kerobokan. Fresha links carry utm_content=journal_lash_extensions_kerobokan; WhatsApp prefills adapted to lashes. Review card: Dwi Madame (attention-to-detail excerpt; no live review mentions lashes). Rating strip uses the live Google count of 49 reviews. Hero image images/journal/lash-extensions-kerobokan-bali.jpg (1200x1600) added.
+
+Site wiring — sitemap.xml: new URL entry (lastmod 2026-07-07) and /journal index lastmod bumped to match. journal.html: new article promoted to the featured card; Classic/Volume/Style article demoted to the grid. links.html: new article promoted to the featured slot (trackClick featured_lash_extensions_kerobokan); sets article demoted to the "More from the Journal" list (journal_lash_classic_volume_style). Related cards: added to lash-extensions-bali-humidity.html (grid now 2x2) and swapped in for the BIAB Kerobokan card in lash-classic-volume-style-bali.html (stays at two). services.html: "Getting lashes in Kerobokan? Read our guide" link (bilingual) under the Lash Extensions section header.
+
+Journal grid reordered nails-first: BIAB Kerobokan, Gel vs BIAB, What Is BIAB, then the lash sets guide and lash humidity. Standing rule for future publishes: featured slot = newest article regardless of category; grid = nail articles before lash articles, booking-intent pieces above education within each block (nail studio first, lash studio second).
+
+Known follow-ups: the BIAB Kerobokan article's rating strip still says 52 reviews while the live count is 49 (Google Business support ticket open for the disappeared reviews; reconcile when resolved). The new article's title tag uses an em dash brand separator per the publish brief, whereas v2.12 standardised the other pages on a hyphen.
+
+---
+
 v2.13 — 5 July 2026
 
 UTM parameters added to all Fresha outbound links for GA4 booking attribution.
