@@ -1,3 +1,11 @@
+v2.18 — 12 July 2026
+
+Follow-up to v2.17: sync /id/services og tags, add dateModified to biab-bali JSON-LD.
+
+id/services.html — og:title, og:description, twitter:title and twitter:description brought into sync with the title/meta description shipped in v2.17 (Harga BIAB, Gel & Bulu Mata di Kerobokan, Bali framing). These were flagged as a known gap in v2.17 since that pass only updated the title tag and meta description on this page. No other content changed.
+
+journal/biab-bali.html — Added "dateModified": "2026-07-12" to the Article JSON-LD alongside the existing "datePublished": "2026-05-25", reflecting the v2.17 content and meta updates. No other JSON-LD fields changed.
+
 v2.17 — 12 July 2026
 
 Seminyak/Legian section on biab-bali, meta/CTR pass on biab-bali and services (EN + /id/services), sitemap completeness.
