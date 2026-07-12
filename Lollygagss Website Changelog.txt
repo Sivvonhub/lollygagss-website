@@ -1,3 +1,15 @@
+v2.17 — 12 July 2026
+
+Seminyak/Legian section on biab-bali, meta/CTR pass on biab-bali and services (EN + /id/services), sitemap completeness.
+
+journal/biab-bali.html — New H2 section "Coming from Seminyak, Legian or Canggu?" added after the "Where to get BIAB nails in Bali" section and before the closing CTA. Covers travel times from Seminyak (~10 min), Legian (~15 min) and Canggu (~20-25 min) and frames the Kerobokan price advantage over the Seminyak/Legian strip rents, with an internal link to the biab-nails-kerobokan article. Title/meta description/og:title/og:description rewritten for CTR (price signal "Rp 250k" and geo cue "ten minutes from Seminyak" added); JSON-LD headline updated to match (brand suffix omitted per the existing headline convention). No dateModified field exists in this article's JSON-LD, so none was added.
+
+services.html — Title/meta description/og:title/og:description rewritten from a generic "Services" framing to a price-led "Prices" framing (BIAB Rp 250k, gel manicure Rp 150k, lash sets from Rp 250k called out directly). Page content, prices and anchors untouched.
+
+id/services.html — Title and meta description updated for conceptual parity with the new EN services.html copy (harga/price-list framing). Sourced from existing owner-written conventions on the page and sitewide: "Manikur"/"Bulu Mata" for manicure/lashes (not left in English) and the existing "Setiap janji ditangani langsung oleh Lina" phrase for "every appointment handled by Lina" (not "appointment" left in English). Flagged for human review before merge; og:title/og:description were left unchanged on this page as they were out of scope for this pass, so they now read the older Indonesian copy while the title tag is new.
+
+sitemap.xml — Added xmlns:xhtml namespace and xhtml:link hreflang (en/id/x-default) annotations to the three EN/ID page pairs (/ ↔ /id, /services ↔ /id/services, /journal ↔ /id/journal). lastmod bumped to 2026-07-12 for /services and /journal/biab-bali. All other URLs (three lash articles, /id, /id/services, /id/journal) were already present from prior releases; no new entries were needed. /links intentionally not added, it was not previously in the sitemap.
+
 v2.16 — 7 July 2026
 
 Indonesian /id/ mirror pages for index, services and journal, with hreflang wiring.

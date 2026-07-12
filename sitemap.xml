@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lollygagss.id/</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lollygagss.id/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://lollygagss.id/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lollygagss.id/" />
   </url>
   <url>
     <loc>https://lollygagss.id/services</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lollygagss.id/services" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://lollygagss.id/id/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lollygagss.id/services" />
   </url>
   <url>
     <loc>https://lollygagss.id/journal</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lollygagss.id/journal" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://lollygagss.id/id/journal" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lollygagss.id/journal" />
   </url>
   <url>
     <loc>https://lollygagss.id/id</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lollygagss.id/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://lollygagss.id/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lollygagss.id/" />
   </url>
   <url>
     <loc>https://lollygagss.id/id/services</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lollygagss.id/services" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://lollygagss.id/id/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lollygagss.id/services" />
   </url>
   <url>
     <loc>https://lollygagss.id/id/journal</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lollygagss.id/journal" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://lollygagss.id/id/journal" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lollygagss.id/journal" />
   </url>
   <url>
     <loc>https://lollygagss.id/journal/biab-bali</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
