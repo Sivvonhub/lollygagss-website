@@ -132,6 +132,13 @@
       --gray-light: #E0DAD8;
       --nav-h:      72px;
       --ann-h:      0px;
+      /* Motion system — slow ease-out, restrained distances */
+      --ease-out:        cubic-bezier(.22,1,.36,1);
+      --dur-reveal:      .65s;
+      --dur-reveal-slow: .8s;
+      --dur-hover:       .3s;
+      --reveal-shift:    24px;
+      --stagger-step:    .09s;
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
@@ -242,7 +249,7 @@
     .related-inner { max-width:820px; margin:0 auto; }
     .related h2 { font-family:'Playfair Display',serif; font-weight:700; font-size:28px; color:var(--black); margin-bottom:40px; border:none !important; padding:0 !important; margin-top:0 !important; }
     .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
-    .related-card { background:var(--white); padding:32px; text-decoration:none; color:inherit; transition:transform .25s; display:block; }
+    .related-card { background:var(--white); padding:32px; text-decoration:none; color:inherit; transition:transform var(--dur-hover) var(--ease-out); display:block; }
     .related-card:hover { transform:translateY(-4px); }
     .related-card-label { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gray); margin-bottom:12px; }
     .related-card h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--black); margin-bottom:10px; line-height:1.35; }
@@ -279,6 +286,18 @@
     }
 
     @media(max-width:600px) { .mid-cta { padding:44px 24px; } .closing-cta { padding:64px 24px; } .related { padding:52px 24px; } .related-grid { grid-template-columns:1fr; } footer { padding:40px 24px 24px; } .footer-inner { flex-direction:column; } }
+
+    /* ── SCROLL REVEALS (motion polish) ── */
+    .reveal { opacity:0; transform:translateY(var(--reveal-shift)); transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
+    .reveal.visible { opacity:1; transform:none; }
+    .reveal-stagger > * { opacity:0; transform:translateY(var(--reveal-shift)); transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
+    .reveal-stagger.visible > * { opacity:1; transform:none; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay:calc(var(--stagger-step)*1); }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay:calc(var(--stagger-step)*2); }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay:calc(var(--stagger-step)*3); }
+    @media(prefers-reduced-motion:reduce) {
+      .reveal, .reveal-stagger > * { opacity:1 !important; transform:none !important; transition:none; }
+    }
   </style>
 </head>
 <body>
@@ -380,7 +399,7 @@
     <div class="comp-card">
       <div class="comp-card-tag">Option 01</div>
       <h3>Gel Manicure</h3>
-      <div class="comp-card-price">From Rp 150.000 &nbsp;&middot;&nbsp; 60 min</div>
+      <div class="comp-card-price">From Rp 195.000 &nbsp;&middot;&nbsp; 60 min</div>
       <p>A thin colour layer over natural nails. No added thickness, no structural change. The go-to for a clean, polished finish without commitment.</p>
       <ul class="comp-card-pros">
         <li>Quickest appointment</li>
@@ -392,7 +411,7 @@
     <div class="comp-card">
       <div class="comp-card-tag">Option 02</div>
       <h3>BIAB</h3>
-      <div class="comp-card-price">From Rp 250.000 &nbsp;&middot;&nbsp; 90 min</div>
+      <div class="comp-card-price">From Rp 325.000 &nbsp;&middot;&nbsp; 90 min</div>
       <p>Builder gel that strengthens the natural nail while still looking completely natural. The best option for growth, durability, and Bali's climate.</p>
       <ul class="comp-card-pros">
         <li>Lasts 3&ndash;4 weeks</li>
@@ -404,7 +423,7 @@
     <div class="comp-card">
       <div class="comp-card-tag">Option 03</div>
       <h3>Gel Extensions</h3>
-      <div class="comp-card-price">From Rp 350.000 &nbsp;&middot;&nbsp; 90 min</div>
+      <div class="comp-card-price">From Rp 325.000 &nbsp;&middot;&nbsp; 90 min</div>
       <p>Gel tips bonded to the natural nail to add length. Best for clients who want longer nails than they can grow, with a natural-looking finish.</p>
       <ul class="comp-card-pros">
         <li>Adds real length immediately</li>
@@ -452,7 +471,7 @@
     <p class="service-spotlight-desc">Gel colour applied and cured over natural nails. Shape, prep, colour, finish. Everything done by Lina from start to end.</p>
     <div class="service-row">
       <div class="service-row-item"><span class="lbl">Duration</span><span class="val">60 min</span></div>
-      <div class="service-row-item"><span class="lbl">Price</span><span class="val">From Rp 150.000</span></div>
+      <div class="service-row-item"><span class="lbl">Price</span><span class="val">From Rp 195.000</span></div>
       <div class="service-row-item"><span class="lbl">Best for</span><span class="val">Short stays</span></div>
       <div class="service-row-item"><span class="lbl">Lasts</span><span class="val">1&ndash;2 weeks</span></div>
     </div>
@@ -472,7 +491,7 @@
     <p class="service-spotlight-desc">Builder gel applied over natural nails to add structure and strength. Colour of your choice. Applied by Lina &mdash; the owner and only technician at the studio.</p>
     <div class="service-row">
       <div class="service-row-item"><span class="lbl">Duration</span><span class="val">90 min</span></div>
-      <div class="service-row-item"><span class="lbl">Price</span><span class="val">Rp 250.000</span></div>
+      <div class="service-row-item"><span class="lbl">Price</span><span class="val">Rp 325.000</span></div>
       <div class="service-row-item"><span class="lbl">Lasts</span><span class="val">3&ndash;4 weeks</span></div>
     </div>
     <div class="service-buttons">
@@ -491,7 +510,7 @@
     <p class="service-spotlight-desc">Gel tips bonded to the natural nail for added length, shaped and finished to look completely natural. Custom length and shape &mdash; all applied by Lina.</p>
     <div class="service-row">
       <div class="service-row-item"><span class="lbl">Duration</span><span class="val">90 min</span></div>
-      <div class="service-row-item"><span class="lbl">Price</span><span class="val">From Rp 350.000</span></div>
+      <div class="service-row-item"><span class="lbl">Price</span><span class="val">From Rp 325.000</span></div>
       <div class="service-row-item"><span class="lbl">Lasts</span><span class="val">Up to 3 weeks</span></div>
     </div>
     <div class="service-buttons">
@@ -526,10 +545,10 @@
 </article>
 
 <!-- CLOSING CTA -->
-<div class="closing-cta">
+<div class="closing-cta reveal">
   <span class="section-label">Ready to book?</span>
   <h2>Book your nail appointment at <em>Lollygagss</em></h2>
-  <p>Nail and lash studio on Teuku Umar, Kerobokan. Every appointment with Lina.</p>
+  <p>Nail and lash studio in Kerobokan, Bali. Every appointment with Lina.</p>
   <div class="closing-cta-buttons">
     <a class="btn-white" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=journal_gel_biab_extensions_bali" target="_blank">Book Online via Fresha</a>
     <a class="btn-wa" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20make%20a%20booking." target="_blank">
@@ -545,7 +564,7 @@
   <div class="related-inner">
     <p class="section-label">More from the Journal</p>
     <h2>Keep reading</h2>
-    <div class="related-grid">
+    <div class="related-grid reveal-stagger">
       <a class="related-card" href="/journal/biab-bali">
         <div class="related-card-label">Treatments &middot; 6 min read</div>
         <h3>What Is BIAB? Why BIAB Nails Are So Popular in Bali Right Now</h3>
@@ -579,7 +598,7 @@
   <div class="footer-inner">
     <div>
       <span class="footer-brand-script">Lollygagss</span>
-      <span class="footer-brand-sub">Studio &middot; Teuku Umar, Bali</span>
+      <span class="footer-brand-sub">Studio &middot; Kerobokan, Bali</span>
     </div>
     <ul class="footer-links-row">
       <li><a href="/">Home</a></li>
@@ -614,6 +633,16 @@
 </a>
 
 <script>
+  // Scroll reveals
+  (function () {
+    const els = document.querySelectorAll('.reveal, .reveal-stagger');
+    if (!('IntersectionObserver' in window) || !els.length) { els.forEach(el => el.classList.add('visible')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
   window.addEventListener('scroll', () => {
     const doc = document.documentElement;
     const scrollTop = doc.scrollTop || document.body.scrollTop;

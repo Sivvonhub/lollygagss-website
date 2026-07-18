@@ -1,3 +1,42 @@
+v2.19 — 19 July 2026
+
+Full menu reprice across services and journal. Covers footer copy, service menu, all journal article prices, and JSON-LD priceRange.
+
+Footer (all 10 HTML files) — "Teuku Umar" replaced with "Kerobokan" in every footer tagline and footer-brand-sub element. Files: index.html, id/index.html, services.html, id/services.html, journal.html, id/journal.html, and all six journal articles. gel-biab-extensions-bali.html used the HTML entity &middot; rather than the Unicode character so required a separate replacement pass.
+
+services.html + id/services.html — Full menu reprice:
+- Classic Manicure and Classic Pedicure split from a single combined row into two rows; original Fresha sv: ID preserved on the manicure row, new pedicure sv: IDs added.
+- Gel Manicure / Gel Pedicure similarly split.
+- BIAB Manicure: Rp 250,000 → Rp 325,000 (data-idr 250000 → 325000).
+- Gel Manicure: Rp 150,000 → Rp 195,000 (data-idr 150000 → 195000).
+- Gel Tip Extensions: Rp 350,000 → Rp 325,000 (data-idr 350000 → 325000).
+- Classic Lashes: Rp 250,000 → Rp 375,000 (data-idr 250000 → 375000).
+- Volume Lashes: Rp 350,000 → Rp 500,000 (data-idr 350000 → 500000).
+- Style Lashes: Rp 450,000 → Rp 650,000, duration 3h 30min → 3h (data-idr 450000 → 650000).
+- Classic Lash Infill: Rp 150,000 → Rp 185,000 (data-idr 150000 → 185000).
+- Volume Lash Infill: Rp 250,000 → Rp 275,000 (data-idr 250000 → 275000).
+- Style Lashes enquiry button changed from btn-book-row (Fresha/rose) to mbb-wa (WhatsApp/green) to reflect that Style Lashes require confirmation before booking.
+- priceRange JSON-LD: "Rp 60.000–Rp 650.000" (was already correct on services.html from prior audit work; confirmed matching).
+- All id/services.html mirrors updated in lockstep with Indonesian string formatting.
+
+journal/lash-extensions-kerobokan.html — Prices updated in meta description, og:description, twitter:description, Article JSON-LD description, FAQ JSON-LD answer, prose paragraph, and service spotlight .val elements. Classic Rp 250.000 → Rp 375.000, Volume Rp 350.000 → Rp 500.000, Style Rp 450.000 → Rp 650.000, infill floor Rp 150.000 → Rp 185.000. Style duration prose "takes three and a half" → "takes three hours".
+
+journal/lash-classic-volume-style-bali.html — Classic service spotlight price Rp 250,000 → Rp 375,000, infill Rp 150,000 → Rp 185,000. Volume spotlight price Rp 350,000 → Rp 500,000, infill Rp 250,000 → Rp 275,000. Style spotlight price Rp 450,000 → Rp 650,000, duration 3h 30min → 3h. Comparison table updated to match. Prose infill sentence updated. FAQ duration answer "three and a half hours" → "three hours". Prose planning sentence "Three and a half hours is a Style" → "Three hours is a Style".
+
+journal/biab-bali.html — Title, og:title, meta description, og:description, Article JSON-LD headline: Rp 250k → Rp 325k. Service spotlight price Rp 250.000 → Rp 325.000. Prose paragraph Rp 250,000 → Rp 325,000.
+
+journal/biab-nails-kerobokan.html — Meta description, og:description, twitter:description, Article JSON-LD description, FAQ answer: Rp 250.000 → Rp 325.000. Service spotlight price Rp 250.000 → Rp 325.000. Prose paragraph Rp 250.000 → Rp 325.000.
+
+journal/gel-biab-extensions-bali.html — Comparison card prices: Gel Manicure Rp 150.000 → Rp 195.000, BIAB Rp 250.000 → Rp 325.000, Gel Extensions Rp 350.000 → Rp 325.000. Service spotlight prices updated to match.
+
+journal/lash-extensions-bali-humidity.html — Service spotlight Classic Rp 250.000 → Rp 375.000, Volume Rp 350.000 → Rp 500.000, Style Rp 450.000 → Rp 650.000.
+
+index.html, id/index.html, journal.html, id/journal.html — priceRange JSON-LD updated from "Rp 50.000–Rp 450.000" to "Rp 60.000–Rp 650.000" on all four files.
+
+Not changed: Fresha sv: IDs (all preserved byte-identical). schema postalCode (remains 80361). Nail Art pricing (Rp 60,000–Rp 400,000 tiers untouched). Style Lash Infill (remains Rp 350,000 — not in the reprice brief). Price punctuation convention maintained throughout: comma format (Rp 325,000) in menu tables, period format (Rp 325.000) in journal prose. No em dashes introduced.
+
+---
+
 v2.18 — 12 July 2026
 
 Follow-up to v2.17: sync /id/services og tags, add dateModified to biab-bali JSON-LD.

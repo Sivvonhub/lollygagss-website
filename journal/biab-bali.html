@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What Is BIAB? Gel Nails in Bali from Rp 250k — Lollygagss</title>
-  <meta name="description" content="What BIAB does, how it lasts in Bali's humidity, and what Rp 250k includes. By Lina, owner and only technician at Lollygagss Studio, Kerobokan, ten minutes from Seminyak.">
+  <title>What Is BIAB? Gel Nails in Bali from Rp 325k — Lollygagss</title>
+  <meta name="description" content="What BIAB does, how it lasts in Bali's humidity, and what Rp 325k includes. By Lina, owner and only technician at Lollygagss Studio, Kerobokan, ten minutes from Seminyak.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="What Is BIAB? Gel Nails in Bali from Rp 250k — Lollygagss">
-  <meta property="og:description" content="What BIAB does, how it lasts in Bali's humidity, and what Rp 250k includes. By Lina, owner and only technician at Lollygagss Studio, Kerobokan, ten minutes from Seminyak.">
+  <meta property="og:title" content="What Is BIAB? Gel Nails in Bali from Rp 325k — Lollygagss">
+  <meta property="og:description" content="What BIAB does, how it lasts in Bali's humidity, and what Rp 325k includes. By Lina, owner and only technician at Lollygagss Studio, Kerobokan, ten minutes from Seminyak.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://lollygagss.id/journal/biab-bali">
   <meta property="og:image" content="https://lollygagss.id/images/journal/biab-nails-bali-kerobokan.jpg">
@@ -30,7 +30,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "What Is BIAB? Gel Nails in Bali from Rp 250k",
+    "headline": "What Is BIAB? Gel Nails in Bali from Rp 325k",
     "description": "BIAB stands for Builder In A Bottle, a strengthening gel that helps natural nails grow in Bali's heat and humidity.",
     "author": {
       "@type": "Person",
@@ -132,6 +132,13 @@
       --gray:       #8A8A8A;
       --gray-light: #E0DAD8;
       --nav-h:      72px;
+      /* Motion system — slow ease-out, restrained distances */
+      --ease-out:        cubic-bezier(.22,1,.36,1);
+      --dur-reveal:      .65s;
+      --dur-reveal-slow: .8s;
+      --dur-hover:       .3s;
+      --reveal-shift:    24px;
+      --stagger-step:    .09s;
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -513,7 +520,7 @@
     }
     .related-card {
       background:var(--white); padding:32px; text-decoration:none; color:inherit;
-      transition:transform .25s; display:block;
+      transition:transform var(--dur-hover) var(--ease-out); display:block;
     }
     .related-card:hover { transform:translateY(-4px); }
     .related-card-label {
@@ -616,6 +623,18 @@
       .comparison-header div:first-child, .comparison-row div:first-child { display:none; }
       footer { padding:44px 24px 24px; }
       .footer-inner { flex-direction:column; align-items:flex-start; }
+    }
+
+    /* ── SCROLL REVEALS (motion polish) ── */
+    .reveal { opacity:0; transform:translateY(var(--reveal-shift)); transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
+    .reveal.visible { opacity:1; transform:none; }
+    .reveal-stagger > * { opacity:0; transform:translateY(var(--reveal-shift)); transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
+    .reveal-stagger.visible > * { opacity:1; transform:none; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay:calc(var(--stagger-step)*1); }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay:calc(var(--stagger-step)*2); }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay:calc(var(--stagger-step)*3); }
+    @media(prefers-reduced-motion:reduce) {
+      .reveal, .reveal-stagger > * { opacity:1 !important; transform:none !important; transition:none; }
     }
   </style>
 </head>
@@ -829,7 +848,7 @@
       </div>
       <div class="service-row-item">
         <span class="lbl">Price</span>
-        <span class="val">Rp 250.000</span>
+        <span class="val">Rp 325.000</span>
       </div>
     </div>
     <div class="service-buttons">
@@ -901,16 +920,16 @@
   </p>
 
   <p>
-    The trade-off works in your favour. Salons on the Seminyak and Legian strips carry strip rents, and it shows in the pricing. A few streets back in Kerobokan, a full BIAB Manicure is Rp 250,000 with a dry manicure, cuticle care and the colour of your choice included, and every appointment is done by me from start to finish. If you are weighing up where to book, I have written a separate <a href="/journal/biab-nails-kerobokan">guide to BIAB in Kerobokan</a> that covers the studio and what to expect on your first visit.
+    The trade-off works in your favour. Salons on the Seminyak and Legian strips carry strip rents, and it shows in the pricing. A few streets back in Kerobokan, a full BIAB Manicure is Rp 325,000 with a dry manicure, cuticle care and the colour of your choice included, and every appointment is done by me from start to finish. If you are weighing up where to book, I have written a separate <a href="/journal/biab-nails-kerobokan">guide to BIAB in Kerobokan</a> that covers the studio and what to expect on your first visit.
   </p>
 
 </article>
 
 <!-- ── CLOSING CTA ── -->
-<div class="closing-cta">
+<div class="closing-cta reveal">
   <p class="section-label">Ready to book?</p>
   <h2>Come and try <em>BIAB</em> at Lollygagss</h2>
-  <p>Nail and lash studio near Teuku Umar, Kerobokan. Home service available across Seminyak, Canggu, and beyond.</p>
+  <p>Nail and lash studio in Kerobokan, Bali. Home service available across Seminyak, Canggu, and beyond.</p>
   <div class="closing-cta-buttons">
     <a class="btn-white" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=journal_biab_bali" target="_blank">Book Online via Fresha</a>
     <a class="btn-wa" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20book%20a%20BIAB%20appointment." target="_blank">
@@ -926,7 +945,7 @@
   <div class="related-inner">
     <p class="section-label">More from the Journal</p>
     <h2>Keep reading</h2>
-    <div class="related-grid">
+    <div class="related-grid reveal-stagger">
       <a class="related-card" href="/journal/gel-biab-extensions-bali">
         <div class="related-card-label">Treatments · 7 min read</div>
         <h3>Gel Manicure vs BIAB vs Extensions: Which One Is Right for You?</h3>
@@ -960,7 +979,7 @@
   <div class="footer-inner">
     <div>
       <span class="footer-brand-script">Lollygagss</span>
-      <span class="footer-brand-sub">Studio · Teuku Umar, Bali</span>
+      <span class="footer-brand-sub">Studio · Kerobokan, Bali</span>
     </div>
     <ul class="footer-links-row">
       <li><a href="https://lollygagss.id">Home</a></li>
@@ -995,6 +1014,16 @@
 </a>
 
 <script>
+  // Scroll reveals
+  (function () {
+    const els = document.querySelectorAll('.reveal, .reveal-stagger');
+    if (!('IntersectionObserver' in window) || !els.length) { els.forEach(el => el.classList.add('visible')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
   // Reading progress bar
   window.addEventListener('scroll', () => {
     const doc = document.documentElement;
