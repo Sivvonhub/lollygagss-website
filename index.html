@@ -48,7 +48,7 @@
     "description": "Boutique nail and lash studio in Kerobokan Kelod, Bali. Every appointment by owner Lina.",
     "url": "https://lollygagss.id",
     "image": "https://lollygagss.id/images/gallery/lollygagss-studio-storefront-kerobokan.jpg",
-    "priceRange": "Rp 50.000–Rp 450.000",
+    "priceRange": "Rp 60.000–Rp 650.000",
     "telephone": "+6285121950351",
     "address": {
       "@type": "PostalAddress",
@@ -124,6 +124,13 @@
       --gray:       #8A8A8A;
       --gray-light: #E0DAD8;
       --nav-h:      72px;
+      /* Motion system — slow ease-out, restrained distances */
+      --ease-out:        cubic-bezier(.22,1,.36,1);
+      --dur-reveal:      .65s;
+      --dur-reveal-slow: .8s;
+      --dur-hover:       .3s;
+      --reveal-shift:    24px;
+      --stagger-step:    .09s;
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -713,25 +720,30 @@
     .page.active { animation:pageIn .45s ease both; }
 
     /* Scroll reveals */
-    .reveal      { opacity:0; transform:translateY(30px); transition:opacity .75s ease, transform .75s ease; }
-    .reveal-left { opacity:0; transform:translateX(-42px); transition:opacity .85s ease, transform .85s ease; }
-    .reveal-right{ opacity:0; transform:translateX(42px);  transition:opacity .85s ease .12s, transform .85s ease .12s; }
+    .reveal      { opacity:0; transform:translateY(var(--reveal-shift)); transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
+    .reveal-left { opacity:0; transform:translateX(calc(-1 * var(--reveal-shift))); transition:opacity var(--dur-reveal-slow) var(--ease-out), transform var(--dur-reveal-slow) var(--ease-out); }
+    .reveal-right{ opacity:0; transform:translateX(var(--reveal-shift));  transition:opacity var(--dur-reveal-slow) var(--ease-out) .12s, transform var(--dur-reveal-slow) var(--ease-out) .12s; }
     .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity:1; transform:none; }
-    .reveal-stagger > * { opacity:0; transform:translateY(26px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal-stagger > * { opacity:0; transform:translateY(var(--reveal-shift)); transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
     .reveal-stagger.visible > * { opacity:1; transform:none; }
-    .reveal-stagger.visible > *:nth-child(2) { transition-delay:.1s; }
-    .reveal-stagger.visible > *:nth-child(3) { transition-delay:.2s; }
-    .reveal-stagger.visible > *:nth-child(4) { transition-delay:.3s; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay:calc(var(--stagger-step)*1); }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay:calc(var(--stagger-step)*2); }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay:calc(var(--stagger-step)*3); }
+    .reveal-stagger.visible > *:nth-child(5) { transition-delay:calc(var(--stagger-step)*4); }
+    .reveal-stagger.visible > *:nth-child(6) { transition-delay:calc(var(--stagger-step)*5); }
+    .reveal-stagger.visible > *:nth-child(7) { transition-delay:calc(var(--stagger-step)*6); }
+    .reveal-stagger.visible > *:nth-child(8) { transition-delay:calc(var(--stagger-step)*7); }
+    .reveal-stagger.visible > *:nth-child(9) { transition-delay:calc(var(--stagger-step)*8); }
 
     /* Service card hover upgrade */
-    .service-card { transition:transform .3s ease, box-shadow .3s ease, filter .3s ease; }
+    .service-card { transition:transform var(--dur-hover) var(--ease-out), box-shadow var(--dur-hover) var(--ease-out), filter var(--dur-hover) var(--ease-out); }
     .service-card::after {
       content:''; position:absolute; left:52px; bottom:46px;
-      width:0; height:2px; background:currentColor; opacity:.55; transition:width .35s ease;
+      width:0; height:2px; background:currentColor; opacity:.55; transition:width .35s var(--ease-out);
     }
     .service-card:hover { transform:translateY(-6px); box-shadow:0 20px 52px rgba(0,0,0,.18); }
     .service-card:hover::after { width:46px; }
-    .service-card .sc-link { display:inline-block; transition:transform .3s ease; }
+    .service-card .sc-link { display:inline-block; transition:transform var(--dur-hover) var(--ease-out); }
     .service-card:hover .sc-link { transform:translateX(7px); }
 
     /* Animated nav underline (grows from centre) */
@@ -1132,8 +1144,8 @@
         <text x="98" y="70" font-family="Arial" font-size="12" fill="#E8A89E">♥</text>
         <text x="60" y="85" font-family="'Jost',sans-serif" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="4">STUDIO</text>
       </svg>
-      <p data-en="Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry, for you." data-id="Studio kuku dan bulu mata di jantung Teuku Umar, Bali. Presisi, kepedulian, dan seni, untuk Anda.">
-        Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry, for you.
+      <p data-en="Nail and lash studio in the heart of Kerobokan, Bali. Precision, care, and artistry, for you." data-id="Studio kuku dan bulu mata di jantung Kerobokan, Bali. Presisi, kepedulian, dan seni, untuk Anda.">
+        Nail and lash studio in the heart of Kerobokan, Bali. Precision, care, and artistry, for you.
       </p>
       <div class="footer-social">
         <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -1165,7 +1177,7 @@
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
         <li><a href="mailto:hello@lollygagss.id">hello@lollygagss.id</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
-        <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')">Jl. Persada II No. 4B, Teuku Umar</a></li>
+        <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')">Jl. Persada II No. 4B, Kerobokan</a></li>
         <li><a href="/#contact" onclick="event.preventDefault();showPage('contact')" data-en="Mon–Sat 09:00–19:00. Closed Sunday." data-id="Sen–Sab 09.00–19.00. Tutup Hari Minggu.">Mon–Sat 09:00–19:00. Closed Sunday.</a></li>
       </ul>
     </div>

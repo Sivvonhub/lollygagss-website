@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIAB, Gel & Lash Prices in Kerobokan, Bali — Lollygagss</title>
-  <meta name="description" content="Full price list at Lollygagss Studio, Kerobokan: BIAB Rp 250k, gel manicure Rp 150k, lash sets from Rp 250k. Every appointment by owner Lina. Book online or WhatsApp.">
+  <meta name="description" content="Nail and lash prices at Lollygagss Studio, Kerobokan: BIAB Rp 325k, gel manicure Rp 195k, lash sets from Rp 375k. Every appointment by owner Lina.">
 
   <!-- Search Console Verification -->
   <meta name="google-site-verification" content="Z0zSRF8admGdH7TZp5bXov08-XMq9WgDhtPPXUL3Zb4" />
 
   <!-- Open Graph (social sharing) -->
   <meta property="og:title" content="BIAB, Gel & Lash Prices in Kerobokan, Bali — Lollygagss">
-  <meta property="og:description" content="Full price list at Lollygagss Studio, Kerobokan: BIAB Rp 250k, gel manicure Rp 150k, lash sets from Rp 250k. Every appointment by owner Lina. Book online or WhatsApp.">
+  <meta property="og:description" content="Nail and lash prices at Lollygagss Studio, Kerobokan: BIAB Rp 325k, gel manicure Rp 195k, lash sets from Rp 375k. Every appointment by owner Lina.">
   <meta property="og:image" content="https://lollygagss.id/images/journal/biab-nails-bali-kerobokan.jpg">
   <meta property="og:image:secure_url" content="https://lollygagss.id/images/journal/biab-nails-bali-kerobokan.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -26,7 +26,7 @@
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BIAB, Gel & Lash Services in Kerobokan, Bali - Lollygagss">
-  <meta name="twitter:description" content="Nail and lash menu with pricing at Lollygagss Studio, Kerobokan Bali. BIAB, gel manicure, nail and lash extensions by owner Lina. Book online.">
+  <meta name="twitter:description" content="Nail and lash prices at Lollygagss Studio, Kerobokan: BIAB Rp 325k, gel manicure Rp 195k, lash sets from Rp 375k. Every appointment by owner Lina.">
   <meta name="twitter:image" content="https://lollygagss.id/images/journal/biab-nails-bali-kerobokan.jpg">
   <link rel="canonical" href="https://lollygagss.id/services">
   <link rel="alternate" hreflang="en" href="https://lollygagss.id/services">
@@ -42,7 +42,7 @@
     "description": "Boutique nail and lash studio in Kerobokan Kelod, Bali. Every appointment by owner Lina.",
     "url": "https://lollygagss.id",
     "image": "https://lollygagss.id/images/gallery/lollygagss-studio-storefront-kerobokan.jpg",
-    "priceRange": "Rp 50.000–Rp 450.000",
+    "priceRange": "Rp 60.000–Rp 650.000",
     "telephone": "+6285121950351",
     "address": {
       "@type": "PostalAddress",
@@ -114,6 +114,13 @@
       --gray:       #8A8A8A;
       --gray-light: #E0DAD8;
       --nav-h:      72px;
+      /* Motion system — slow ease-out, restrained distances */
+      --ease-out:        cubic-bezier(.22,1,.36,1);
+      --dur-reveal:      .65s;
+      --dur-reveal-slow: .8s;
+      --dur-hover:       .3s;
+      --reveal-shift:    24px;
+      --stagger-step:    .09s;
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -557,7 +564,7 @@
     [data-idr] { transition:opacity .18s ease; }
     [data-idr].price-flash { opacity:0; }
     /* Scroll reveals */
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal { opacity:0; transform:translateY(var(--reveal-shift)); transition:opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
     .reveal.visible { opacity:1; transform:none; }
     /* Magnetic WhatsApp */
     .wa-float { transition:transform .18s ease, box-shadow .2s ease; }
@@ -720,27 +727,45 @@
             <a class="journal-card-link" href="/journal/biab-bali" data-en="What is BIAB? Read our guide →" data-id="Apa itu BIAB? Baca panduan kami →">What is BIAB? Read our guide →</a>
           </td>
           <td><div class="svc-dur">1h 30m</div></td>
-          <td><div class="svc-price" data-idr="250000">Rp 250,000</div></td>
+          <td><div class="svc-price" data-idr="325000">Rp 325,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443614&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_biab" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
           <td>
-            <div class="svc-name" data-en="Classic Manicure / Classic Pedicure" data-id="Manikur Klasik / Pedikur Klasik">Classic Manicure / Classic Pedicure</div>
-            <div class="svc-desc" data-en="Dry manicure/pedicure with drill machine. No gel, no polish." data-id="Manikur/pedikur kering dengan mesin bor. Tanpa gel, tanpa cat.">Dry manicure/pedicure with drill machine. No gel, no polish.</div>
+            <div class="svc-name" data-en="Classic Manicure" data-id="Manikur Klasik">Classic Manicure</div>
+            <div class="svc-desc" data-en="Dry manicure with drill machine. No gel, no polish." data-id="Manikur kering dengan mesin bor. Tanpa gel, tanpa cat.">Dry manicure with drill machine. No gel, no polish.</div>
           </td>
           <td><div class="svc-dur">45m</div></td>
-          <td><div class="svc-price" data-idr="100000">Rp 100,000</div></td>
+          <td><div class="svc-price" data-idr="145000">Rp 145,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443577&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_classic" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
           <td>
-            <div class="svc-name" data-en="Gel Manicure / Gel Pedicure" data-id="Manikur Gel / Pedikur Gel">Gel Manicure / Gel Pedicure</div>
-            <div class="svc-desc" data-en="Classic prep with gel colour and nail vitamin finish." data-id="Persiapan klasik dengan warna gel dan vitamin kuku.">Classic prep with gel colour and nail vitamin finish.</div>
+            <div class="svc-name" data-en="Classic Pedicure" data-id="Pedikur Klasik">Classic Pedicure</div>
+            <div class="svc-desc" data-en="Dry pedicure with drill machine. No gel, no polish." data-id="Pedikur kering dengan mesin bor. Tanpa gel, tanpa cat.">Dry pedicure with drill machine. No gel, no polish.</div>
+          </td>
+          <td><div class="svc-dur">1h</div></td>
+          <td><div class="svc-price" data-idr="175000">Rp 175,000</div></td>
+          <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A28452259&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_classic_pedicure" target="_blank" rel="noopener">Book</a></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="svc-name" data-en="Gel Manicure" data-id="Manikur Gel">Gel Manicure</div>
+            <div class="svc-desc" data-en="Classic prep with gel colour and nail vitamin finish." data-id="Persiapan klasik dengan warna gel dan lapisan vitamin kuku.">Classic prep with gel colour and nail vitamin finish.</div>
             <a class="journal-card-link" href="/journal/gel-biab-extensions-bali" data-en="Gel vs BIAB vs extensions, which is right for you? →" data-id="Gel vs BIAB vs ekstensi, mana yang tepat untuk kamu? →">Gel vs BIAB vs extensions, which is right for you? →</a>
           </td>
           <td><div class="svc-dur">1h</div></td>
-          <td><div class="svc-price" data-idr="150000">Rp 150,000</div></td>
+          <td><div class="svc-price" data-idr="195000">Rp 195,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443583&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_gel" target="_blank" rel="noopener">Book</a></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="svc-name" data-en="Gel Pedicure" data-id="Pedikur Gel">Gel Pedicure</div>
+            <div class="svc-desc" data-en="Classic prep with gel colour and nail vitamin finish." data-id="Persiapan klasik dengan warna gel dan lapisan vitamin kuku.">Classic prep with gel colour and nail vitamin finish.</div>
+          </td>
+          <td><div class="svc-dur">1h 30m</div></td>
+          <td><div class="svc-price" data-idr="225000">Rp 225,000</div></td>
+          <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A28452276&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_gel_pedicure" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
           <td>
@@ -748,7 +773,7 @@
             <div class="svc-desc" data-en="Full set with plastic tips, gel colour and nail vitamin." data-id="Set penuh dengan tip plastik, warna gel dan vitamin kuku.">Full set with plastic tips, gel colour and nail vitamin.</div>
           </td>
           <td><div class="svc-dur">1h 30m</div></td>
-          <td><div class="svc-price" data-idr="200000">Rp 200,000</div></td>
+          <td><div class="svc-price" data-idr="325000">Rp 325,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443597&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_extensions" target="_blank" rel="noopener">Book</a></td>
         </tr>
       </tbody>
@@ -786,7 +811,7 @@
           </td>
           <td><div class="svc-dur">20m</div></td>
           <td>
-            <div class="svc-price" data-idr="50000">Rp 50,000</div>
+            <div class="svc-price" data-idr="60000">Rp 60,000</div>
             <div class="svc-note" data-en="starting price" data-id="harga mulai dari">starting price</div>
           </td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27844050&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_nailart" target="_blank" rel="noopener">Book</a></td>
@@ -822,7 +847,7 @@
           </td>
           <td><div class="svc-dur">1h 30m</div></td>
           <td>
-            <div class="svc-price" data-idr="300000">Rp 300,000</div>
+            <div class="svc-price" data-idr="400000">Rp 400,000</div>
             <div class="svc-note" data-en="starting price" data-id="harga mulai dari">starting price</div>
           </td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27844157&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_nailart" target="_blank" rel="noopener">Book</a></td>
@@ -855,19 +880,19 @@
         <tr>
           <td>
             <div class="svc-name" data-en="Hard Gel &amp; Extension Removal" data-id="Pelepasan Hard Gel &amp; Ekstensi">Hard Gel &amp; Extension Removal</div>
-            <div class="svc-desc" data-en="Safe removal of hard gel and nail tip extensions." data-id="Pelepasan aman hard gel dan ekstensi tip kuku.">Safe removal of hard gel and nail tip extensions.</div>
+            <div class="svc-desc" data-en="Safe removal of hard gel and nail tip extensions." data-id="Pelepasan hard gel dan nail tip extensions dengan aman.">Safe removal of hard gel and nail tip extensions.</div>
           </td>
-          <td><div class="svc-dur">45m</div></td>
-          <td><div class="svc-price" data-idr="80000">Rp 80,000</div></td>
+          <td><div class="svc-dur">30m</div></td>
+          <td><div class="svc-price" data-idr="100000">Rp 100,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443698&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_removal" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
           <td>
             <div class="svc-name" data-en="Gel Removal" data-id="Pelepasan Gel">Gel Removal</div>
-            <div class="svc-desc" data-en="Safe removal of gel polish. Free for returning clients." data-id="Pelepasan aman cat gel. Gratis untuk klien yang kembali.">Safe removal of gel polish. Free for returning clients.</div>
+            <div class="svc-desc" data-en="Safe removal of gel polish." data-id="Pelepasan gel polish dengan aman.">Safe removal of gel polish.</div>
           </td>
           <td><div class="svc-dur">30m</div></td>
-          <td><div class="svc-price" data-idr="50000">Rp 50,000</div></td>
+          <td><div class="svc-price" data-idr="75000">Rp 75,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443694&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_removal" target="_blank" rel="noopener">Book</a></td>
         </tr>
       </tbody>
@@ -903,7 +928,7 @@
             <a class="journal-card-link" href="/journal/lash-classic-volume-style-bali" data-en="Classic, Volume or Style? Read our guide →" data-id="Classic, Volume atau Style? Baca panduan kami →">Classic, Volume or Style? Read our guide →</a>
           </td>
           <td><div class="svc-dur">2h</div></td>
-          <td><div class="svc-price" data-idr="250000">Rp 250,000</div></td>
+          <td><div class="svc-price" data-idr="375000">Rp 375,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27387368&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_lashes" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
@@ -911,8 +936,8 @@
             <div class="svc-name" data-en="Volume Lashes" data-id="Bulu Mata Volume">Volume Lashes</div>
             <div class="svc-desc" data-en="Full volume or cat eye styling for a dramatic finish." data-id="Volume penuh atau styling cat eye untuk tampilan dramatis.">Full volume or cat eye styling for a dramatic finish.</div>
           </td>
-          <td><div class="svc-dur">2h</div></td>
-          <td><div class="svc-price" data-idr="350000">Rp 350,000</div></td>
+          <td><div class="svc-dur">2h 30m</div></td>
+          <td><div class="svc-price" data-idr="500000">Rp 500,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443755&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_lashes" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
@@ -920,9 +945,9 @@
             <div class="svc-name" data-en="Style Lashes" data-id="Bulu Mata Style">Style Lashes</div>
             <div class="svc-desc" data-en="Wispy, wet mascara, anime, strip lash, Kim K style." data-id="Wispy, wet mascara, anime, strip lash, gaya Kim K.">Wispy, wet mascara, anime, strip lash, Kim K style.</div>
           </td>
-          <td><div class="svc-dur">3h 30m</div></td>
-          <td><div class="svc-price" data-idr="450000">Rp 450,000</div></td>
-          <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27845040&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_lashes" target="_blank" rel="noopener">Book</a></td>
+          <td><div class="svc-dur">3h</div></td>
+          <td><div class="svc-price" data-idr="650000">Rp 650,000</div></td>
+          <td><a class="mbb-wa" data-en="Enquire" data-id="Tanya" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20enquire%20about%20Style%20Lashes." target="_blank" rel="noopener">Enquire</a></td>
         </tr>
         <tr>
           <td>
@@ -946,8 +971,8 @@
         <p class="section-label">05</p>
         <h2 class="section-title" data-en="Lash Infills" data-id="Isi Ulang Bulu Mata">Lash Infills</h2>
       </div>
-      <div class="design-note" data-en="Maintenance appointment. Minimum 70% of lashes remaining required." data-id="Janji perawatan. Minimum 70% bulu mata tersisa diperlukan.">
-        Maintenance appointment. Minimum 70% of lashes remaining required.
+      <div class="design-note" data-en="Maintenance appointment. Minimum 50% of lashes remaining, within 3 weeks." data-id="Perawatan lanjutan. Minimal 50% bulu mata tersisa, dalam 3 minggu.">
+        Maintenance appointment. Minimum 50% of lashes remaining, within 3 weeks.
       </div>
     </div>
 
@@ -964,13 +989,13 @@
         <tr>
           <td><div class="svc-name" data-en="Classic Lash Infill" data-id="Isi Ulang Bulu Mata Klasik">Classic Lash Infill</div></td>
           <td><div class="svc-dur">1h</div></td>
-          <td><div class="svc-price" data-idr="150000">Rp 150,000</div></td>
+          <td><div class="svc-price" data-idr="185000">Rp 185,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27845154&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_infills" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
           <td><div class="svc-name" data-en="Volume Lash Infill" data-id="Isi Ulang Bulu Mata Volume">Volume Lash Infill</div></td>
-          <td><div class="svc-dur">1h</div></td>
-          <td><div class="svc-price" data-idr="250000">Rp 250,000</div></td>
+          <td><div class="svc-dur">1h 30m</div></td>
+          <td><div class="svc-price" data-idr="275000">Rp 275,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27845183&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_infills" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
@@ -1010,19 +1035,19 @@
         <tr>
           <td>
             <div class="svc-name" data-en="Home Service (within 5 km)" data-id="Layanan ke Rumah (dalam 5 km)">Home Service (within 5 km)</div>
-            <div class="svc-desc" data-en="At-home nail service within 5 km of the studio. Minimum booking spend of Rp 300,000 applies." data-id="Layanan kuku di rumah dalam 5 km dari studio. Minimum pembelian Rp 300.000 berlaku.">At-home nail service within 5 km of the studio. Minimum booking spend of Rp 300,000 applies.</div>
+            <div class="svc-desc" data-en="At-home nail service within 5 km of the studio. Minimum booking spend of Rp 400,000 applies." data-id="Layanan kuku di rumah dalam 5 km dari studio. Minimum pemesanan Rp 400.000 berlaku.">At-home nail service within 5 km of the studio. Minimum booking spend of Rp 400,000 applies.</div>
           </td>
           <td><div class="svc-dur">1h+</div></td>
-          <td><div class="svc-price" data-idr="75000">Rp 75,000</div></td>
+          <td><div class="svc-price" data-idr="100000">Rp 100,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27645230&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_homeservice" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
           <td>
             <div class="svc-name" data-en="Home Service Extended (5–10 km)" data-id="Layanan ke Rumah Jarak Jauh (5–10 km)">Home Service Extended (5–10 km)</div>
-            <div class="svc-desc" data-en="At-home nail service for locations 5–10 km from the studio. Minimum booking spend of Rp 300,000 applies." data-id="Layanan kuku di rumah untuk lokasi 5–10 km dari studio. Minimum pembelian Rp 300.000 berlaku.">At-home nail service for locations 5–10 km from the studio. Minimum booking spend of Rp 300,000 applies.</div>
+            <div class="svc-desc" data-en="At-home nail service for locations 5–10 km from the studio. Minimum booking spend of Rp 400,000 applies." data-id="Layanan kuku di rumah untuk lokasi 5–10 km dari studio. Minimum pemesanan Rp 400.000 berlaku.">At-home nail service for locations 5–10 km from the studio. Minimum booking spend of Rp 400,000 applies.</div>
           </td>
           <td><div class="svc-dur">1h+</div></td>
-          <td><div class="svc-price" data-idr="150000">Rp 150,000</div></td>
+          <td><div class="svc-price" data-idr="200000">Rp 200,000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27646253&share=true&pId=2869775&utm_source=lollygagss.id&utm_medium=website&utm_campaign=booking&utm_content=services_homeservice" target="_blank" rel="noopener">Book</a></td>
         </tr>
       </tbody>
@@ -1052,8 +1077,8 @@
         <text x="98" y="70" font-family="Arial" font-size="12" fill="#E8A89E">♥</text>
         <text x="60" y="85" font-family="'Jost',sans-serif" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="4">STUDIO</text>
       </svg>
-      <p data-en="Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry, for you." data-id="Studio kuku dan bulu mata di jantung Teuku Umar, Bali. Presisi, kepedulian, dan seni, untuk Anda.">
-        Nail and lash studio in the heart of Teuku Umar, Bali. Precision, care, and artistry, for you.
+      <p data-en="Nail and lash studio in the heart of Kerobokan, Bali. Precision, care, and artistry, for you." data-id="Studio kuku dan bulu mata di jantung Kerobokan, Bali. Presisi, kepedulian, dan seni, untuk Anda.">
+        Nail and lash studio in the heart of Kerobokan, Bali. Precision, care, and artistry, for you.
       </p>
       <div class="footer-social">
         <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -1081,7 +1106,7 @@
         <li><a href="tel:+6285121950351">+62 851-2195-0351</a></li>
         <li><a href="mailto:hello@lollygagss.id">hello@lollygagss.id</a></li>
         <li><a href="https://www.instagram.com/lollygagss_studio/" target="_blank">@lollygagss_studio</a></li>
-        <li><a href="/#contact">Jl. Persada II No. 4B, Teuku Umar</a></li>
+        <li><a href="/#contact">Jl. Persada II No. 4B, Kerobokan</a></li>
         <li><a href="/#contact" data-en="Mon–Sat 09:00–19:00. Closed Sunday." data-id="Sen–Sab 09.00–19.00. Tutup Hari Minggu.">Mon–Sat 09:00–19:00. Closed Sunday.</a></li>
       </ul>
     </div>
