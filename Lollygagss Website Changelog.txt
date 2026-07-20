@@ -1,3 +1,25 @@
+v2.20 — 20 July 2026
+
+Reverted all eyelash price and duration changes from v2.19. Nail/BIAB changes from v2.19 are retained.
+
+services.html + id/services.html — Lash prices reverted:
+- Classic Lashes: Rp 375,000 → Rp 250,000 (data-idr 375000 → 250000).
+- Volume Lashes: Rp 500,000 → Rp 350,000 (data-idr 500000 → 350000).
+- Style Lashes: Rp 650,000 → Rp 450,000, duration 3h → 3h 30min (data-idr 650000 → 450000).
+- Classic Lash Infill: Rp 185,000 → Rp 150,000 (data-idr 185000 → 150000).
+- Volume Lash Infill: Rp 275,000 → Rp 250,000 (data-idr 275000 → 250000).
+- Style Lashes enquiry button retains btn-book-row styling (WhatsApp link) added this session.
+
+journal/lash-extensions-kerobokan.html — All lash prices reverted in meta, OG, twitter, JSON-LD, FAQ, prose paragraph, and service spotlight. Style duration prose "takes three hours" → "takes three and a half". priceRange reverted to "Rp 60.000–Rp 450.000".
+
+journal/lash-classic-volume-style-bali.html — Service spotlights, comparison table, FAQ, and prose all reverted to original prices and 3h 30min duration.
+
+journal/lash-extensions-bali-humidity.html — Service spotlight prices reverted to 250.000 / 350.000 / 450.000.
+
+index.html, id/index.html, services.html, id/services.html, journal.html, id/journal.html — priceRange JSON-LD reverted from "Rp 60.000–Rp 650.000" to "Rp 60.000–Rp 450.000".
+
+---
+
 v2.19 — 19 July 2026
 
 Full menu reprice across services and journal. Covers footer copy, service menu, all journal article prices, and JSON-LD priceRange.
