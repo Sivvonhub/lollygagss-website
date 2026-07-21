@@ -654,7 +654,7 @@
     }
     .reviews-google-link:hover { color:var(--rose-dark); }
     .reviews-grid {
-      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+      display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
     }
     .review-card {
       background:var(--white); padding:26px 22px;
@@ -1406,7 +1406,7 @@
       var sorted = reviews
         .filter(function(r) { return r.text && r.text.trim().length > 10; })
         .sort(function(a, b) { return b.rating - a.rating; })
-        .slice(0, 3);
+        .slice(0, 2);
       if (!sorted.length) return;
       el.innerHTML = sorted.map(function(r) {
         var avatarInner = r.profile_photo_url
