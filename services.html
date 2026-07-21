@@ -353,6 +353,20 @@
     .services-hero .section-label { color:var(--rose-light); }
     .services-hero .section-title { color:var(--white); }
     .services-hero p { font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:rgba(255,255,255,.65); margin-top:14px; }
+    .hero-rating {
+      margin-top:24px; display:flex; align-items:center; justify-content:center;
+      gap:12px; flex-wrap:wrap; min-height:22px;
+    }
+    .hero-rating-stars { display:flex; gap:3px; color:var(--rose-light); }
+    .hero-rating-score {
+      font-family:'Playfair Display',serif; font-weight:700; font-size:20px; color:var(--white);
+    }
+    .hero-rating-link {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--rose-light); text-decoration:none;
+      border-bottom:1px solid rgba(232,168,158,.45); padding-bottom:2px; transition:color .2s;
+    }
+    .hero-rating-link:hover { color:var(--white); }
 
     .currency-bar {
       background:var(--cream); padding:14px 48px;
@@ -745,6 +759,7 @@
     <p data-en="All nail art prices are starting prices. Final price depends on complexity and detail." data-id="Semua harga seni kuku adalah harga mulai dari. Harga akhir tergantung kompleksitas dan detail.">
       All nail art prices are starting prices. Final price depends on complexity and detail.
     </p>
+    <div class="hero-rating" id="reviews-hero-badge"></div>
   </div>
 
   <!-- Currency bar (sticky) -->
@@ -1414,7 +1429,19 @@
       }).join('');
     }
 
+    function renderHeroBadge(rating, total) {
+      var el = document.getElementById('reviews-hero-badge');
+      if (!el) return;
+      el.innerHTML =
+        '<span class="hero-rating-stars">' + starsHTML(rating, 16) + '</span>' +
+        '<span class="hero-rating-score">' + rating.toFixed(1) + '</span>' +
+        '<a class="hero-rating-link" href="' + MAPS_LINK + '" target="_blank" rel="noopener" ' +
+           'data-en="' + total + ' Google reviews →" data-id="' + total + ' ulasan Google →">' +
+           total + ' Google reviews →</a>';
+    }
+
     function populate(data) {
+      renderHeroBadge(data.rating, data.user_ratings_total);
       renderSummary(data.rating, data.user_ratings_total);
       renderGrid(data.reviews || []);
     }
