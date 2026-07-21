@@ -353,6 +353,20 @@
     .services-hero .section-label { color:var(--rose-light); }
     .services-hero .section-title { color:var(--white); }
     .services-hero p { font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:rgba(255,255,255,.65); margin-top:14px; }
+    .hero-rating {
+      margin-top:24px; display:flex; align-items:center; justify-content:center;
+      gap:12px; flex-wrap:wrap; min-height:22px;
+    }
+    .hero-rating-stars { display:flex; gap:3px; color:var(--rose-light); }
+    .hero-rating-score {
+      font-family:'Playfair Display',serif; font-weight:700; font-size:20px; color:var(--white);
+    }
+    .hero-rating-link {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--rose-light); text-decoration:none;
+      border-bottom:1px solid rgba(232,168,158,.45); padding-bottom:2px; transition:color .2s;
+    }
+    .hero-rating-link:hover { color:var(--white); }
 
     .currency-bar {
       background:var(--cream); padding:14px 48px;
@@ -609,6 +623,68 @@
       .currency-bar { padding:12px 24px; gap:8px; flex-wrap:wrap; }
       .svc-header { flex-direction:column; }
       .footer-grid { gap:40px; }
+      .reviews-section, .reviews-section-dark { padding:40px 20px; }
+      .reviews-grid { grid-template-columns:1fr; }
+      .reviews-header { flex-direction:column; align-items:flex-start; margin-bottom:28px; }
+      .reviews-big-score { font-size:44px; }
+    }
+    /* ── GOOGLE REVIEWS ── */
+    .reviews-section {
+      padding:60px 48px; background:var(--cream);
+    }
+    .reviews-inner { max-width:960px; margin:0 auto; }
+    .reviews-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:20px; }
+    .reviews-rating-summary { display:flex; align-items:center; gap:20px; }
+    .reviews-big-score {
+      font-family:'Playfair Display',serif; font-size:52px; font-weight:900;
+      color:var(--rose); line-height:1;
+    }
+    .reviews-stars-col { display:flex; flex-direction:column; gap:4px; }
+    .reviews-stars { display:flex; gap:3px; }
+    .reviews-stars span { color:var(--rose); font-size:18px; }
+    .reviews-count {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gray-dark); margin-top:4px;
+    }
+    .reviews-google-link {
+      font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--rose-dark); text-decoration:none;
+      border-bottom:1px solid var(--rose-light); padding-bottom:2px;
+      transition:color .2s;
+    }
+    .reviews-google-link:hover { color:var(--rose-dark); }
+    .reviews-grid {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+    }
+    .review-card {
+      background:var(--white); padding:26px 22px;
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .review-card-stars { display:flex; gap:2px; }
+    .review-card-stars span { color:var(--rose); font-size:14px; }
+    .review-card-text {
+      font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:300;
+      font-style:italic; color:var(--gray-dark); line-height:1.6; flex:1;
+    }
+    .review-card-author {
+      display:flex; align-items:center; gap:12px; margin-top:8px;
+    }
+    .review-card-avatar {
+      width:36px; height:36px; border-radius:50%; background:var(--rose-light);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Jost',sans-serif; font-size:13px; font-weight:500; color:var(--white);
+      flex-shrink:0; overflow:hidden;
+    }
+    .review-card-avatar img { width:100%; height:100%; object-fit:cover; }
+    .review-card-name {
+      font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:var(--black);
+    }
+    .review-card-date {
+      font-family:'Jost',sans-serif; font-size:10px; color:var(--gray); margin-top:2px;
+    }
+    .reviews-loading {
+      text-align:center; padding:48px 0;
+      font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray);
     }
 
   </style>
@@ -683,6 +759,7 @@
     <p data-en="All nail art prices are starting prices. Final price depends on complexity and detail." data-id="Semua harga seni kuku adalah harga mulai dari. Harga akhir tergantung kompleksitas dan detail.">
       All nail art prices are starting prices. Final price depends on complexity and detail.
     </p>
+    <div class="hero-rating" id="reviews-hero-badge"></div>
   </div>
 
   <!-- Currency bar (sticky) -->
@@ -697,6 +774,23 @@
     </div>
   </div>
 
+
+  <!-- GOOGLE REVIEWS, SERVICES -->
+  <div class="reviews-section reveal">
+    <div class="reviews-inner">
+      <div class="reviews-header">
+        <div>
+          <p class="section-label" data-en="What Clients Say" data-id="Kata Klien">What Clients Say</p>
+          <h2 class="section-title" data-en="Google Reviews" data-id="Ulasan Google">Google Reviews</h2>
+        </div>
+        <div id="reviews-summary-services">
+          <div class="reviews-loading" data-en="Loading reviews…" data-id="Memuat ulasan…">Loading reviews…</div>
+        </div>
+      </div>
+      <div class="reviews-grid" id="reviews-grid-services">
+      </div>
+    </div>
+  </div>
 
   <!-- ── 01 NAIL SERVICES ── -->
   <div class="svc-section reveal" id="nail-services" style="scroll-margin-top:130px;">
@@ -1240,6 +1334,132 @@
       mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mm.classList.remove('open'); }); });
     }
   })();
+  // ── GOOGLE REVIEWS (SERVICES PAGE) ──
+  (function() {
+    var PLACE_ID  = 'ChIJHTK4hLlH0i0RMqbSXuaV1XY';
+    var MAPS_LINK = 'https://www.google.com/maps/place/?q=place_id:' + PLACE_ID;
+
+    var FALLBACK = {
+      rating: 5.0,
+      user_ratings_total: 62,
+      reviews: [
+        {
+          rating: 5,
+          text: "I'm really satisfied with the service at this nail salon! The nail art is absolutely beautiful and neatly done, just like I wanted. The staff are very friendly and professional, which made the whole experience even better. The owner is also super kind and pays great attention to detail. Totally recommended for anyone looking to get perfectly done nails! 💅✨",
+          author_name: "Dwi Madame",
+          profile_photo_url: "",
+          relative_time: "a year ago"
+        },
+        {
+          rating: 5,
+          text: "Clean and cozy studio, very friendly nail tech, they provide wide options of nail colors.",
+          author_name: "Putri YW",
+          profile_photo_url: "",
+          relative_time: "a month ago"
+        },
+        {
+          rating: 5,
+          text: "Really nice and amazing studio service! The owner was very friendly and polite 😊 and staff also very polite. Recommend for you ladies who stay around Denpasar or Badung. Thank you for the service 🌸🙏🏽",
+          author_name: "Marina Nju",
+          profile_photo_url: "",
+          relative_time: "a year ago"
+        }
+      ]
+    };
+
+    function starsHTML(rating, size) {
+      size = size || 16;
+      var full  = Math.floor(rating);
+      var half  = (rating % 1 >= 0.5) ? 1 : 0;
+      var empty = 5 - full - half;
+      return (
+        '<span style="display:flex;gap:2px;font-size:' + size + 'px;">' +
+        '★'.repeat(full) +
+        (half ? '½' : '') +
+        '<span style="opacity:.3;">' + '★'.repeat(empty) + '</span>' +
+        '</span>'
+      );
+    }
+
+    function initials(name) {
+      return name.split(' ').map(function(w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
+    }
+
+    function renderSummary(rating, total) {
+      var el = document.getElementById('reviews-summary-services');
+      if (!el) return;
+      el.innerHTML =
+        '<div class="reviews-rating-summary">' +
+          '<div class="reviews-big-score">' + rating.toFixed(1) + '</div>' +
+          '<div class="reviews-stars-col">' +
+            '<div class="reviews-stars">' + starsHTML(rating, 18) + '</div>' +
+            '<div class="reviews-count">' + total + ' Google reviews</div>' +
+            '<a class="reviews-google-link" href="' + MAPS_LINK + '" target="_blank" ' +
+               'data-en="View on Google →" data-id="Lihat di Google →">View on Google →</a>' +
+          '</div>' +
+        '</div>';
+    }
+
+    function renderGrid(reviews) {
+      var el = document.getElementById('reviews-grid-services');
+      if (!el) return;
+      var sorted = reviews
+        .filter(function(r) { return r.text && r.text.trim().length > 10; })
+        .sort(function(a, b) { return b.rating - a.rating; })
+        .slice(0, 2);
+      if (!sorted.length) return;
+      el.innerHTML = sorted.map(function(r) {
+        var avatarInner = r.profile_photo_url
+          ? '<img src="' + r.profile_photo_url + '" alt="' + r.author_name + '" loading="lazy">'
+          : initials(r.author_name);
+        var text = r.text.replace(/"/g, '&quot;').substring(0, 140) + (r.text.length > 140 ? '…' : '');
+        return (
+          '<div class="review-card">' +
+            '<div class="review-card-stars">' + starsHTML(r.rating, 14) + '</div>' +
+            '<p class="review-card-text">"' + text + '"</p>' +
+            '<div class="review-card-author">' +
+              '<div class="review-card-avatar">' + avatarInner + '</div>' +
+              '<div>' +
+                '<div class="review-card-name">' + r.author_name + '</div>' +
+                '<div class="review-card-date">' + (r.relative_time || '') + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    function renderHeroBadge(rating, total) {
+      var el = document.getElementById('reviews-hero-badge');
+      if (!el) return;
+      el.innerHTML =
+        '<span class="hero-rating-stars">' + starsHTML(rating, 16) + '</span>' +
+        '<span class="hero-rating-score">' + rating.toFixed(1) + '</span>' +
+        '<a class="hero-rating-link" href="' + MAPS_LINK + '" target="_blank" rel="noopener" ' +
+           'data-en="' + total + ' Google reviews →" data-id="' + total + ' ulasan Google →">' +
+           total + ' Google reviews →</a>';
+    }
+
+    function populate(data) {
+      renderHeroBadge(data.rating, data.user_ratings_total);
+      renderSummary(data.rating, data.user_ratings_total);
+      renderGrid(data.reviews || []);
+    }
+
+    window.addEventListener('load', function() {
+      populate(FALLBACK);
+      try {
+        fetch('/api/reviews').then(function(res) {
+          return res.json();
+        }).then(function(json) {
+          if (json && json.rating && Array.isArray(json.reviews) && json.reviews.length) {
+            populate(json);
+          }
+        }).catch(function() {});
+      } catch(e) {}
+    });
+  })();
+
 </script>
 </body>
 </html>
