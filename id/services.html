@@ -1396,14 +1396,14 @@
       if (!el) return;
       var sorted = reviews
         .filter(function(r) { return r.text && r.text.trim().length > 10; })
-        .sort(function(a, b) { return b.rating - a.rating; })
+        .sort(function(a, b) { return (b.rating - a.rating) || (b.text.length - a.text.length); })
         .slice(0, 2);
       if (!sorted.length) return;
       el.innerHTML = sorted.map(function(r) {
         var avatarInner = r.profile_photo_url
           ? '<img src="' + r.profile_photo_url + '" alt="' + r.author_name + '" loading="lazy">'
           : initials(r.author_name);
-        var text = r.text.replace(/"/g, '&quot;').substring(0, 140) + (r.text.length > 140 ? '…' : '');
+        var text = r.text.replace(/"/g, '&quot;').substring(0, 180) + (r.text.length > 180 ? '…' : '');
         return (
           '<div class="review-card">' +
             '<div class="review-card-stars">' + starsHTML(r.rating, 14) + '</div>' +
