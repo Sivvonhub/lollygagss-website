@@ -609,20 +609,20 @@
       .currency-bar { padding:12px 24px; gap:8px; flex-wrap:wrap; }
       .svc-header { flex-direction:column; }
       .footer-grid { gap:40px; }
-      .reviews-section, .reviews-section-dark { padding:56px 24px; }
+      .reviews-section, .reviews-section-dark { padding:40px 20px; }
       .reviews-grid { grid-template-columns:1fr; }
-      .reviews-header { flex-direction:column; align-items:flex-start; }
-      .reviews-big-score { font-size:56px; }
+      .reviews-header { flex-direction:column; align-items:flex-start; margin-bottom:28px; }
+      .reviews-big-score { font-size:44px; }
     }
     /* ── GOOGLE REVIEWS ── */
     .reviews-section {
-      padding:88px 48px; background:var(--cream);
+      padding:60px 48px; background:var(--cream);
     }
-    .reviews-inner { max-width:1200px; margin:0 auto; }
-    .reviews-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:52px; flex-wrap:wrap; gap:20px; }
+    .reviews-inner { max-width:960px; margin:0 auto; }
+    .reviews-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:20px; }
     .reviews-rating-summary { display:flex; align-items:center; gap:20px; }
     .reviews-big-score {
-      font-family:'Playfair Display',serif; font-size:72px; font-weight:900;
+      font-family:'Playfair Display',serif; font-size:52px; font-weight:900;
       color:var(--rose); line-height:1;
     }
     .reviews-stars-col { display:flex; flex-direction:column; gap:4px; }
@@ -643,14 +643,14 @@
       display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
     }
     .review-card {
-      background:var(--white); padding:36px 32px;
-      display:flex; flex-direction:column; gap:16px;
+      background:var(--white); padding:26px 22px;
+      display:flex; flex-direction:column; gap:12px;
     }
     .review-card-stars { display:flex; gap:2px; }
     .review-card-stars span { color:var(--rose); font-size:14px; }
     .review-card-text {
-      font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:300;
-      font-style:italic; color:var(--gray-dark); line-height:1.7; flex:1;
+      font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:300;
+      font-style:italic; color:var(--gray-dark); line-height:1.6; flex:1;
     }
     .review-card-author {
       display:flex; align-items:center; gap:12px; margin-top:8px;
@@ -1397,7 +1397,7 @@
         var avatarInner = r.profile_photo_url
           ? '<img src="' + r.profile_photo_url + '" alt="' + r.author_name + '" loading="lazy">'
           : initials(r.author_name);
-        var text = r.text.replace(/"/g, '&quot;').substring(0, 220) + (r.text.length > 220 ? '…' : '');
+        var text = r.text.replace(/"/g, '&quot;').substring(0, 140) + (r.text.length > 140 ? '…' : '');
         return (
           '<div class="review-card">' +
             '<div class="review-card-stars">' + starsHTML(r.rating, 14) + '</div>' +
