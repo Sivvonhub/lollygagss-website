@@ -677,6 +677,19 @@
     .review-card-date {
       font-family:'Jost',sans-serif; font-size:10px; color:var(--gray); margin-top:2px;
     }
+    .skeleton-bar {
+      background:var(--gray-light); border-radius:3px;
+      animation:skeleton-pulse 1.4s ease-in-out infinite;
+    }
+    .skeleton-stars { width:70px; height:14px; }
+    .skeleton-text { width:100%; height:14px; }
+    .skeleton-name { width:80px; height:11px; margin-bottom:4px; }
+    .skeleton-date { width:50px; height:10px; }
+    .skeleton-avatar {
+      width:36px; height:36px; border-radius:50%; background:var(--gray-light);
+      flex-shrink:0; animation:skeleton-pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes skeleton-pulse { 0%,100% { opacity:.4; } 50% { opacity:.8; } }
     .reviews-loading {
       text-align:center; padding:48px 0;
       font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray);
@@ -709,9 +722,20 @@
       .svc-header { flex-direction:column; }
       .footer-grid { gap:40px; }
       .reviews-section, .reviews-section-dark { padding:56px 24px; }
-      .reviews-grid { grid-template-columns:1fr; }
+      /* Reserved height measured at 401px width (this band's narrowest point,
+         768-401), 3-card cap, cards filled with max-length text at the 220-char
+         truncation cap. Changing the card cap (3) or the truncation cap (220
+         chars) invalidates this figure — remeasure. */
+      .reviews-grid { grid-template-columns:1fr; min-height:964px; }
       .reviews-header { flex-direction:column; align-items:flex-start; }
       .reviews-big-score { font-size:56px; }
+    }
+    @media(max-width:400px) {
+      /* Reserved height measured at 376px width (this band's narrowest point,
+         400-0; identical value confirmed down to true 360px), 3-card cap,
+         max-length text at the 220-char truncation cap. Changing the card cap
+         or the truncation cap invalidates this figure — remeasure. */
+      .reviews-grid { min-height:1056px; }
     }
 
     /* ════════ MOTION & INTERACTION ENHANCEMENTS ════════ */
@@ -950,6 +974,45 @@
         </div>
       </div>
       <div class="reviews-grid" id="reviews-grid-home">
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1126,6 +1189,45 @@
         </div>
       </div>
       <div class="reviews-grid" id="reviews-grid-contact">
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

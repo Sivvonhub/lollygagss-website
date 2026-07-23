@@ -618,6 +618,7 @@
       .currency-bar { padding:12px 24px; gap:8px; flex-wrap:wrap; }
       .svc-header { flex-direction:column; }
       .footer-grid { gap:40px; }
+      .hero-rating { min-height:56px; }
     }
 
     /* ── GOOGLE REVIEWS ── */
@@ -674,6 +675,19 @@
     .review-card-date {
       font-family:'Jost',sans-serif; font-size:10px; color:var(--gray); margin-top:2px;
     }
+    .skeleton-bar {
+      background:var(--gray-light); border-radius:3px;
+      animation:skeleton-pulse 1.4s ease-in-out infinite;
+    }
+    .skeleton-stars { width:70px; height:14px; }
+    .skeleton-text { width:100%; height:14px; }
+    .skeleton-name { width:80px; height:11px; margin-bottom:4px; }
+    .skeleton-date { width:50px; height:10px; }
+    .skeleton-avatar {
+      width:36px; height:36px; border-radius:50%; background:var(--gray-light);
+      flex-shrink:0; animation:skeleton-pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes skeleton-pulse { 0%,100% { opacity:.4; } 50% { opacity:.8; } }
     .reviews-loading {
       text-align:center; padding:48px 0;
       font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray);
@@ -681,13 +695,29 @@
     /* Mobile reviews overrides — must come after the base .reviews-grid/.review-card
        rules above, since equal-specificity class selectors resolve by source order,
        not media-query match. (Placing these earlier in the file, before the base
-       rules, silently disabled them on mobile — reviews rendered as a broken
-       2-column layout at every viewport width, including mobile.) */
+       rules, silently disables them on mobile — that was the pre-existing bug.) */
     @media(max-width:768px) {
       .reviews-section { padding:40px 20px; }
-      .reviews-grid { grid-template-columns:1fr; }
+      /* Reserved height measured at 401px width (this band's narrowest point,
+         768-401), 2-card cap, cards filled with max-length text at the 180-char
+         truncation cap, single-column layout. Changing the card cap (2) or the
+         truncation cap (180 chars) invalidates this figure — remeasure. */
+      .reviews-grid { grid-template-columns:1fr; min-height:425px; }
       .reviews-header { flex-direction:column; align-items:flex-start; margin-bottom:28px; }
       .reviews-big-score { font-size:44px; }
+    }
+    @media(max-width:400px) {
+      /* Reserved height measured at the narrowest testable width for this page
+         (386px — this page has a separate, unrelated overflow bug that prevents
+         holding a true sub-386px viewport; see tracked follow-up task), 2-card
+         cap, max-length text at the 180-char truncation cap, single-column
+         layout. Changing the card cap or the truncation cap invalidates this
+         figure — remeasure.
+         This 386px floor is itself a symptom of that overflow bug, not a real
+         breakpoint choice: if the overflow bug is fixed, true narrower widths
+         (down to ~320px) become renderable, card height increases further, and
+         this value must be remeasured too. */
+      .reviews-grid { min-height:473px; }
     }
   </style>
 </head>
@@ -788,6 +818,32 @@
         </div>
       </div>
       <div class="reviews-grid" id="reviews-grid-id-services">
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card review-card-skeleton" aria-hidden="true">
+          <div class="skeleton-bar skeleton-stars"></div>
+          <div class="skeleton-bar skeleton-text"></div>
+          <div class="skeleton-bar skeleton-text" style="width:92%"></div>
+          <div class="skeleton-bar skeleton-text" style="width:70%"></div>
+          <div class="review-card-author">
+            <div class="skeleton-avatar"></div>
+            <div>
+              <div class="skeleton-bar skeleton-name"></div>
+              <div class="skeleton-bar skeleton-date"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
