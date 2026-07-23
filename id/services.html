@@ -618,10 +618,6 @@
       .currency-bar { padding:12px 24px; gap:8px; flex-wrap:wrap; }
       .svc-header { flex-direction:column; }
       .footer-grid { gap:40px; }
-      .reviews-section { padding:40px 20px; }
-      .reviews-grid { grid-template-columns:1fr; }
-      .reviews-header { flex-direction:column; align-items:flex-start; margin-bottom:28px; }
-      .reviews-big-score { font-size:44px; }
     }
 
     /* ── GOOGLE REVIEWS ── */
@@ -681,6 +677,17 @@
     .reviews-loading {
       text-align:center; padding:48px 0;
       font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray);
+    }
+    /* Mobile reviews overrides — must come after the base .reviews-grid/.review-card
+       rules above, since equal-specificity class selectors resolve by source order,
+       not media-query match. (Placing these earlier in the file, before the base
+       rules, silently disabled them on mobile — reviews rendered as a broken
+       2-column layout at every viewport width, including mobile.) */
+    @media(max-width:768px) {
+      .reviews-section { padding:40px 20px; }
+      .reviews-grid { grid-template-columns:1fr; }
+      .reviews-header { flex-direction:column; align-items:flex-start; margin-bottom:28px; }
+      .reviews-big-score { font-size:44px; }
     }
   </style>
 </head>
