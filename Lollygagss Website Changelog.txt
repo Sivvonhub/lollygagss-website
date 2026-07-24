@@ -1,3 +1,47 @@
+v2.21 — 23–24 July 2026
+
+Two-part /services performance and layout-shift session: reviews-block CLS fix (23 July, 2 commits) followed by third-party/font/critical-path performance work (24 July, 9 commits). Eleven commits total.
+
+services.html, id/services.html (6bd5301) — Fixed a cascade-order bug where .reviews-grid's mobile 1-column override was declared before the base repeat(2,1fr) rule in the stylesheet. Both are plain class selectors of equal specificity, so the later base rule always won regardless of viewport width — review cards had been rendering as a broken, cramped 2-column layout on mobile since the reviews feature launched. Moved the mobile overrides after the base rules, matching the working order already used on index.html. Pure reorder, no new selectors or properties.
+
+services.html, id/services.html, index.html, id/index.html (54a6a7b) — Reserved layout space for the Google reviews block, root-caused as the actual driver of a Chrome-reported CLS of 1.00 on /services. .hero-rating and .reviews-grid populate on window.load with no reserved height, so the container jumped from empty/near-empty to full size well after first paint, shifting the nail-services section and everything below it. Added banded min-height reservations sized to the card cap (2 on services pages, 3 on home/contact) filled with max-length text at each page's truncation cap (180 chars services, 220 chars index), plus pulse-animated skeleton placeholder cards so the reserved space isn't blank on slow connections. Reserved heights: services 425px (≥401px) / 473px (≤400px); index 964px (≥401px) / 1056px (≤400px). Population timing left on window.load — fallback and live API text can't be guaranteed to render at identical heights, so timing isn't a safe lever here, reserved space is.
+
+Meta Pixel (9d60e28, 13 pages) — Deferred pixel init off the critical rendering path. Was inline and synchronous, costing 494ms CPU during initial load per Lighthouse and contributing directly to TBT. Init now fires via requestIdleCallback (2000ms timeout) with a setTimeout(1500) fallback for browsers without it, plus immediate firing on first scroll or touch, behind a once-only guard. PageView still fires exactly once; the noscript pixel fallback untouched. Deliberately not deferred to window.load — load fires ~4-5s on this page and would silently drop PageView for anyone who leaves before then, the same failure mode already suspected for GA4 session undercounting on paid clicks.
+
+Microsoft Clarity (8ea9012, 13 pages) — Same rationale and pattern as the Meta Pixel deferral above (316ms CPU cost, same requestIdleCallback/setTimeout/scroll-or-touch guard).
+
+Exchange rates (67131b9, 6 pages) — Deferred the live exchangerate-api.com fetch to window.load and added a 24-hour localStorage cache so most page loads skip the network call entirely. Refreshed the hardcoded fallback rates (used on every cold load before any live fetch resolves), which were up to ~15% stale — the AUD fallback (0.0000862) had been overstating AUD-displayed prices by roughly 8% against the current live rate (0.0000800). No displayed IDR prices changed; services.html remains the source of truth for pricing.
+
+Font self-hosting (5835c0d, 13 pages + new /fonts/ directory) — Replaced the Google Fonts CSS2 link (cross-origin CSS fetch, then cross-origin font fetch) with 45 self-hosted woff2 files at /fonts/, mirroring Google's own unicode-range subsetting exactly (same subsets — latin, latin-ext, vietnamese, cyrillic, cyrillic-ext, whichever each family has — same ranges, same files, just served same-origin). Chosen deliberately over guessing a narrower subset: .review-card-text renders user-generated Google review content and sits inside the CLS-reserved box from 54a6a7b, so a coverage gap would silently fall back to a different-metrics font and reintroduce the shift. Playfair Display weight 400 dropped — confirmed unused anywhere in the codebase (only 700 and 900 appear). font-display: swap set explicitly on every @font-face rule (continuity with the prior Google Fonts &display=swap parameter, not a new addition). Five above-the-fold faces preloaded initially (Jost 400/500, Playfair Display 700, Dancing Script 600, Cormorant Garamond 400 italic).
+
+Avatar sizing (a523de9, api/reviews.js) — Review avatar photo URLs shrunk from Google's =s128 to =s90 (avatars display at 36×36 CSS px; s128 was roughly 3.5x more resolution than needed). Google controls and appends the size parameter to the photoUri itself, so this is a regex on the =s\d+- segment applied server-side, not a literal string replace.
+
+Font preload correction (4f04587, 13 pages) — Lighthouse's dependency chain on /services showed two faces arriving 3,000ms+ late (cormorant-garamond-300-italic, playfair-display-900) alongside two more moderately late (jost-300, cormorant-garamond-400-normal). Traced actual above-the-fold usage from the live rendered DOM rather than assumption: jost-300-normal-latin.woff2 (the nav logo's SVG "STUDIO" subtitle) was genuinely above the fold and missing from preload; added it. The other five existing preloads were re-verified live and are all genuine first-paint faces — none removed. The two 3,000ms+ faces are correctly NOT preloaded: cormorant-300-italic only appears in below-the-fold body copy, and playfair-900 is used by .reviews-big-score, which is empty/skeleton in the server-rendered HTML and only populates via JS on window.load, well after first paint.
+
+Font cache headers (75b7ec9, vercel.json) — Both fonts.css and every .woff2 file were shipping Vercel's default Cache-Control: public, max-age=0, must-revalidate — a fresh round-trip to the server on every visit, not just the first. Added a headers rule scoped to /fonts/(.*).woff2 setting public, max-age=31536000, immutable. fonts.css deliberately left on the default policy since its content isn't filename-versioned and could change without a rename.
+
+Font inlining (5f30f19, 13 pages) — fonts.css is 16KB uncompressed for all 45 rules, too much to inline wholesale across 13 pages. Instead inlined just the six @font-face rules for the above-the-fold faces (Jost 300/400/500, Playfair Display 700, Dancing Script 600, Cormorant Garamond 400 italic; latin subset only) directly in each page's <head>, 2,206 bytes of raw CSS per page. fonts.css itself is untouched — still all 45 rules, full unicode-range subsetting intact — and is now loaded via the standard preload-as-style + onload swap so it no longer blocks rendering, with a noscript fallback for JS-disabled clients.
+
+Measured outcome, https://lollygagss.id/services, Lighthouse mobile:
+- Performance: 56 → 79
+- First Contentful Paint: 3.5s → 1.3s
+- Largest Contentful Paint: 4.1s → 1.3s
+- Speed Index: 3.5s → 1.8s
+- Total Blocking Time: 1,100ms → 930ms
+- Cumulative Layout Shift: 1.00 → 0.003
+
+Post-deploy actions: /fonts/*.woff2 are now cached as immutable for one year, so any future change to a font file needs a new filename — overwriting one in place leaves returning visitors on the stale file for up to a year. The CLS reserved min-heights above (425/473px services, 964/1056px index) were measured against max-length text at each page's truncation cap and the current card caps (2 services, 3 index); changing either cap invalidates them and requires remeasuring. The services 473px (≤400px) figure was measured at a 386px viewport, not true 360px, because of the forced-viewport overflow bug below — fixing that bug will change true narrow-width rendering and requires remeasuring this reservation too.
+
+Not changed / known issues, logged separately rather than fixed this pass:
+
+/services forced-viewport overflow — the page does not hold a true sub-386px mobile viewport; some element is wider than the requested width and forces the browser to expand it. Confirmed via automation (360px and 376px requests both resolve to an actual 386px); does not happen on the home page. Root element not yet identified.
+
+.section-label / .services-hero p cascade bug — on services.html and id/services.html, the "Our Menu" section label renders in Cormorant Garamond italic instead of the intended Jost, because .services-hero p (one class + one type selector) has higher specificity than .section-label (one class) alone and wins the cascade regardless of source order. Cosmetic; not currently causing layout or performance problems.
+
+GA4 "book_click" trigger — the v2.13 entry above (dcd2cb2) states "the GA4 book_click trigger (link_url contains 'fresha') still fires." That is a claim about Tag Manager/GA4-side trigger configuration, not code in this repository — a search of the full git history finds "book_click" nowhere except that changelog sentence itself. No code here implements or depends on such a trigger (GA4's built-in outbound-link tracking needs no custom event). Whether a trigger literally named book_click was ever configured in GA4/GTM is unverified from this repo and worth confirming directly in the GA4 admin console.
+
+---
+
 v2.20 — 20 July 2026
 
 Reverted all eyelash price and duration changes from v2.19. Nail/BIAB changes from v2.19 are retained.
