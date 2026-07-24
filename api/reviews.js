@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       rating:            r.rating                           || 5,
       text:              r.text?.text                       || '',
       author_name:       r.authorAttribution?.displayName  || 'Guest',
-      profile_photo_url: r.authorAttribution?.photoUri     || '',
+      profile_photo_url: (r.authorAttribution?.photoUri || '').replace(/=s\d+-/, '=s90-'),
       relative_time:     r.relativePublishTimeDescription   || '',
     }));
 
