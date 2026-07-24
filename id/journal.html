@@ -1043,23 +1043,44 @@
 
   // ── CURRENCY ──
   let cur = 'IDR';
-  // Fallback rates (IDR base). Updated via live fetch below.
-  const RATES = { IDR:1, AUD:0.0000862, USD:0.0000630, EUR:0.0000582, GBP:0.0000500 };
+  // Fallback rates (IDR base), refreshed 2026-07-23. Updated via live fetch below.
+  const RATES = { IDR:1, AUD:0.0000800, USD:0.0000560, EUR:0.0000490, GBP:0.0000420 };
   const SYM   = { IDR:'Rp ', AUD:'A$\u00a0', USD:'US$\u00a0', EUR:'€\u00a0', GBP:'£\u00a0' };
   const DEC   = { IDR:0, AUD:2, USD:2, EUR:2, GBP:2 };
 
-  // Fetch live exchange rates (free, no key required)
-  fetch('https://api.exchangerate-api.com/v4/latest/IDR')
-    .then(r => r.json())
-    .then(d => {
-      if(d && d.rates) {
-        ['AUD','USD','EUR','GBP'].forEach(c => {
-          if(d.rates[c]) RATES[c] = d.rates[c];
-        });
-        if(cur !== 'IDR') updatePrices(cur);
-      }
-    })
-    .catch(() => {}); // silent, use fallback rates
+  // Live exchange rates: cached in localStorage for 24h so most visits skip
+  // the network call entirely; otherwise fetched after window.load so it
+  // never competes with anything render-critical (prices already render
+  // correctly on the fallback rates above).
+  (function() {
+    var CACHE_KEY = 'lg_rates_v1';
+    var TTL_MS = 24 * 60 * 60 * 1000;
+    function applyRates(rates) {
+      ['AUD','USD','EUR','GBP'].forEach(c => {
+        if (rates[c]) RATES[c] = rates[c];
+      });
+      if (cur !== 'IDR') updatePrices(cur);
+    }
+    var cached = null;
+    try { cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null'); } catch (e) {}
+    if (cached && cached.rates && (Date.now() - cached.time) < TTL_MS) {
+      applyRates(cached.rates);
+      return;
+    }
+    window.addEventListener('load', function() {
+      fetch('https://api.exchangerate-api.com/v4/latest/IDR')
+        .then(r => r.json())
+        .then(d => {
+          if (d && d.rates) {
+            applyRates(d.rates);
+            try {
+              localStorage.setItem(CACHE_KEY, JSON.stringify({ rates: d.rates, time: Date.now() }));
+            } catch (e) {}
+          }
+        })
+        .catch(() => {}); // silent, use fallback rates
+    });
+  })();
 
   function formatPrice(idr, currency) {
     const val = idr * RATES[currency];
