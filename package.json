@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@upstash/redis": "^1.38.1",
     "@vercel/speed-insights": "^2.0.0",
     "motion": "^12.40.0"
   }
