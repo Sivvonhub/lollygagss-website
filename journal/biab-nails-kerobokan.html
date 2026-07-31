@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Server-side arrival beacon: fires immediately during head parse, ahead of gtag -->
+  <script>
+  try {
+    var __g = /[?&](gclid|gbraid|wbraid)=/.test(location.search) ? 1 : 0;
+    var __ect = (navigator.connection && navigator.connection.effectiveType) || '';
+    var __vw = window.innerWidth || document.documentElement.clientWidth || 0;
+    var __u = '/api/hit?p=' + encodeURIComponent(location.pathname) +
+      '&g=' + __g + '&ect=' + encodeURIComponent(__ect) + '&vw=' + __vw;
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(__u);
+    } else {
+      fetch(__u, { method: 'POST', keepalive: true });
+    }
+  } catch (e) {}
+  </script>
+
   <title>BIAB Nails in Kerobokan: Where to Book in Bali - Lollygagss</title>
   <meta name="description" content="BIAB nails in Kerobokan from Rp 325.000. Private studio, one technician, no rushing. Lollygagss Studio on Teuku Umar, Bali, book via Fresha.">
 

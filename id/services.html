@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Server-side arrival beacon: fires immediately during head parse, ahead of gtag -->
+  <script>
+  try {
+    var __g = /[?&](gclid|gbraid|wbraid)=/.test(location.search) ? 1 : 0;
+    var __ect = (navigator.connection && navigator.connection.effectiveType) || '';
+    var __vw = window.innerWidth || document.documentElement.clientWidth || 0;
+    var __u = '/api/hit?p=' + encodeURIComponent(location.pathname) +
+      '&g=' + __g + '&ect=' + encodeURIComponent(__ect) + '&vw=' + __vw;
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(__u);
+    } else {
+      fetch(__u, { method: 'POST', keepalive: true });
+    }
+  } catch (e) {}
+  </script>
+
   <title>Harga BIAB, Gel & Bulu Mata di Kerobokan, Bali — Lollygagss</title>
   <meta name="description" content="Harga kuku dan bulu mata di Lollygagss Studio, Kerobokan: BIAB Rp 325rb, manikur gel Rp 195rb, set bulu mata mulai Rp 250rb. Setiap janji ditangani langsung oleh Lina.">
 

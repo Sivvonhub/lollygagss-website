@@ -8,16 +8,29 @@ export default async function handler(req, res) {
 
   try {
     const p = String(req.query.p || '').slice(0, 200);
+    const g = req.query.g === '1';
+    const ect = String(req.query.ect || '').slice(0, 20);
+    const vw = parseInt(req.query.vw, 10) || 0;
     const ua = String(req.headers['user-agent'] || '').slice(0, 300);
-    const ref = String(req.headers['referer'] || req.headers['referrer'] || '').slice(0, 300);
     const geo = req.headers['x-vercel-ip-country'] || '';
+
+    let refHost = '';
+    const ref = req.headers['referer'] || req.headers['referrer'] || '';
+    if (ref) {
+      try {
+        refHost = new URL(ref).hostname.slice(0, 100);
+      } catch {}
+    }
 
     console.log(JSON.stringify({
       evt: 'hit',
       p,
+      g,
+      ect,
+      vw,
       ua,
       geo,
-      ref,
+      refHost,
       ts: Date.now(),
     }));
   } catch (err) {
