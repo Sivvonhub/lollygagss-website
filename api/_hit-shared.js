@@ -1,7 +1,8 @@
 
-// api/_hit-shared.js — shared by api/hit.js (write) and api/hit-report.js
-// (read). Vercel excludes any path segment starting with "_" from routing,
-// so this file is not itself an endpoint.
+// api/_hit-shared.js — shared by api/_hit-handler.js (write, used by both
+// api/a.js and its api/hit.js alias) and api/hit-report.js (read). Vercel
+// excludes any path segment starting with "_" from routing, so this file is
+// not itself an endpoint.
 //
 // Keeping the path/ect bucket universe in one place is what keeps the
 // write-side allow-list and the read-side report from drifting apart: the
@@ -87,10 +88,22 @@ export function bucketEct(rawEct) {
 
 export const ALL_ECT_BUCKETS = [...ALLOWED_ECT, OTHER_ECT_BUCKET];
 
-export function utcDateKey(date) {
-  return date.toISOString().slice(0, 10);
+// Asia/Makassar (WITA) is a fixed UTC+8 offset with no daylight saving, so
+// the calendar date can be computed by shifting the instant and reading the
+// UTC date fields — no Intl/timezone-database lookup needed. Must be called
+// per request with a freshly-constructed Date; never memoize the result at
+// module scope, since a warm Lambda would keep returning a stale day.
+export function makassarDateKey(date) {
+  const shifted = new Date(date.getTime() + 8 * 60 * 60 * 1000);
+  return shifted.toISOString().slice(0, 10);
 }
 
+// Key prefix for Asia/Makassar-bucketed counters. Distinct from the old
+// UTC-bucketed "hit:" prefix so the two never mix — the old keys hold ~2
+// days of UTC-bucketed test data and are left to expire via their existing
+// TTL rather than migrated.
+export const KEY_PREFIX = 'hitm';
+
 export function indexKey(date) {
-  return `hit:index:${date}`;
+  return `${KEY_PREFIX}:index:${date}`;
 }
