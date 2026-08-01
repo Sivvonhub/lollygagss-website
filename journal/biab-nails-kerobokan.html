@@ -104,13 +104,20 @@
   <link rel="canonical" href="https://lollygagss.id/journal/biab-nails-kerobokan">
 
   <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-62J9EXMBRP"></script>
   <script>
+  // Production only: keep Vercel preview traffic out of the GA4 property.
+  if (location.hostname === 'lollygagss.id') {
+    var __gaLoader = document.createElement('script');
+    __gaLoader.async = true;
+    __gaLoader.src = 'https://www.googletagmanager.com/gtag/js?id=G-62J9EXMBRP';
+    document.head.appendChild(__gaLoader);
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-62J9EXMBRP');
     gtag('config', 'AW-18316090924');
+  }
   </script>
 
   <!-- Fresha booking click event -->
