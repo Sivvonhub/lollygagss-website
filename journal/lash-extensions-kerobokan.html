@@ -8,10 +8,12 @@
   <script>
   try {
     var __g = /[?&](gclid|gbraid|wbraid)=/.test(location.search) ? 1 : 0;
+    var __t = /[?&]bcn=test(&|$)/.test(location.search) ? 1 : 0;
     var __ect = (navigator.connection && navigator.connection.effectiveType) || '';
     var __vw = window.innerWidth || document.documentElement.clientWidth || 0;
-    var __u = '/api/hit?p=' + encodeURIComponent(location.pathname) +
-      '&g=' + __g + '&ect=' + encodeURIComponent(__ect) + '&vw=' + __vw;
+    var __u = '/api/a?p=' + encodeURIComponent(location.pathname) +
+      '&g=' + __g + '&ect=' + encodeURIComponent(__ect) + '&vw=' + __vw +
+      (__t ? '&t=1' : '');
     if (navigator.sendBeacon) {
       navigator.sendBeacon(__u);
     } else {
@@ -102,13 +104,20 @@
   <link rel="canonical" href="https://lollygagss.id/journal/lash-extensions-kerobokan">
 
   <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-62J9EXMBRP"></script>
   <script>
+  // Production only: keep Vercel preview traffic out of the GA4 property.
+  if (location.hostname === 'lollygagss.id') {
+    var __gaLoader = document.createElement('script');
+    __gaLoader.async = true;
+    __gaLoader.src = 'https://www.googletagmanager.com/gtag/js?id=G-62J9EXMBRP';
+    document.head.appendChild(__gaLoader);
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-62J9EXMBRP');
     gtag('config', 'AW-18316090924');
+  }
   </script>
 
   <!-- Fresha booking click event -->
