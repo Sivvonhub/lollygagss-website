@@ -147,7 +147,7 @@
   }, true);
   </script>
 
-  <!-- Microsoft Clarity (deferred: idle callback / 1.5s fallback / first scroll or touch) -->
+  <!-- Microsoft Clarity (deferred: first scroll or touch only) -->
   <script type="text/javascript">
     (function() {
       var clarityInited = false;
@@ -160,41 +160,10 @@
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "wm9ol66bbv");
       }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initClarity, { timeout: 2000 });
-      } else {
-        setTimeout(initClarity, 1500);
-      }
       window.addEventListener('scroll', initClarity, { once: true, passive: true });
       window.addEventListener('touchstart', initClarity, { once: true, passive: true });
     })();
   </script>
-
-  <!-- Meta Pixel (deferred: idle callback / 1.5s fallback / first scroll or touch) -->
-  <script>
-    (function() {
-      var fbInited = false;
-      function initFbPixel() {
-        if (fbInited) return;
-        fbInited = true;
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '2380616549131464');
-        fbq('track', 'PageView');
-      }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initFbPixel, { timeout: 2000 });
-      } else {
-        setTimeout(initFbPixel, 1500);
-      }
-      window.addEventListener('scroll', initFbPixel, { once: true, passive: true });
-      window.addEventListener('touchstart', initFbPixel, { once: true, passive: true });
-    })();
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2380616549131464&ev=PageView&noscript=1"/></noscript>
   <link rel="preload" href="/fonts/jost-300-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jost-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jost-500-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
