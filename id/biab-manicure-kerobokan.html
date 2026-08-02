@@ -162,7 +162,16 @@
       window.addEventListener('touchstart', initClarity, { once: true, passive: true });
     })();
   </script>
-  <link rel="preload" href="/fonts/jost-300-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/avif"
+        href="/images/services/biab-manicure-kerobokan.jpg"
+        imagesrcset="/images/services/biab-manicure-kerobokan-400w.avif 400w, /images/services/biab-manicure-kerobokan-600w.avif 600w, /images/services/biab-manicure-kerobokan-800w.avif 800w, /images/services/biab-manicure-kerobokan-1200w.avif 1200w"
+        imagesizes="(max-width: 768px) calc(100vw - 48px), 45vw"
+        fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp"
+        href="/images/services/biab-manicure-kerobokan.jpg"
+        imagesrcset="/images/services/biab-manicure-kerobokan-400w.webp 400w, /images/services/biab-manicure-kerobokan-600w.webp 600w, /images/services/biab-manicure-kerobokan-800w.webp 800w, /images/services/biab-manicure-kerobokan-1200w.webp 1200w"
+        imagesizes="(max-width: 768px) calc(100vw - 48px), 45vw"
+        fetchpriority="high">
   <link rel="preload" href="/fonts/jost-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jost-500-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/playfair-display-700-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -231,7 +240,7 @@
     .nav-links a:hover::after { width:100%; }
     .nav-right { display:flex; align-items:center; gap:14px; }
     .lang-toggle { display:flex; gap:4px; }
-    .lang-btn { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; padding:5px 10px; border:1px solid var(--gray-light); background:none; cursor:pointer; border-radius:2px; transition:all .2s; color:var(--gray); }
+    .lang-btn { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; padding:5px 10px; border:1px solid var(--gray-light); background:none; cursor:pointer; border-radius:2px; transition:all .2s; color:var(--gray-dark); }
     .lang-btn.active { background:var(--black); color:var(--white); border-color:var(--black); }
     .currency-select { font-family:'Jost',sans-serif; font-size:11px; border:1px solid var(--gray-light); background:none; padding:5px 10px; border-radius:2px; cursor:pointer; color:var(--gray-dark); outline:none; }
     .btn-book-nav { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; padding:11px 26px; background:var(--black); color:var(--white); border:none; cursor:pointer; transition:background .2s; display:inline-block; text-decoration:none; }
@@ -247,7 +256,7 @@
     .btn-primary:hover { background:var(--rose); border-color:var(--rose); }
     .btn-secondary { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; padding:16px 42px; background:transparent; color:var(--black); border:2px solid var(--black); cursor:pointer; transition:all .25s; display:inline-block; text-decoration:none; }
     .btn-secondary:hover { background:var(--black); color:var(--white); }
-    .btn-white { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; padding:16px 42px; background:var(--white); color:var(--rose); border:2px solid var(--white); cursor:pointer; transition:all .25s; display:inline-block; text-decoration:none; }
+    .btn-white { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; padding:16px 42px; background:var(--white); color:var(--rose-dark); border:2px solid var(--white); cursor:pointer; transition:all .25s; display:inline-block; text-decoration:none; }
     .btn-white:hover { background:transparent; color:var(--white); }
 
     /* SECTIONS */
@@ -263,11 +272,11 @@
 
     .svc-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:36px; padding-bottom:20px; border-bottom:2px solid var(--black); gap:24px; }
     .svc-table { width:100%; border-collapse:collapse; }
-    .svc-table th { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--gray-light); }
+    .svc-table th { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray-dark); text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--gray-light); }
     .svc-table th:last-child { text-align:right; }
     .svc-table td { padding:18px 16px 18px 0; border-bottom:1px solid var(--blush); vertical-align:middle; }
     .svc-table td:last-child { text-align:right; white-space:nowrap; }
-    .btn-book-row { font-family:'Jost',sans-serif; font-size:10px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; padding:7px 16px; background:transparent; color:var(--rose); border:1px solid var(--rose); cursor:pointer; transition:all .2s; white-space:nowrap; margin-left:16px; display:inline-block; text-decoration:none; }
+    .btn-book-row { font-family:'Jost',sans-serif; font-size:10px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; padding:7px 16px; background:transparent; color:var(--rose-dark); border:1px solid var(--rose); cursor:pointer; transition:all .2s; white-space:nowrap; margin-left:16px; display:inline-block; text-decoration:none; }
     .btn-book-row:hover { background:var(--rose); color:var(--white); }
     .svc-name { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400; }
     .svc-desc { font-family:'Jost',sans-serif; font-size:11px; color:var(--gray-dark); margin-top:5px; letter-spacing:.5px; }
@@ -283,7 +292,7 @@
     .faq-q { font-family:'Playfair Display',serif; font-size:21px; font-weight:700; margin-bottom:10px; }
     .faq-a { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; color:var(--gray-dark); line-height:1.7; }
 
-    .book-banner { background:var(--rose); color:var(--white); padding:72px 48px; text-align:center; }
+    .book-banner { background:var(--rose-dark); color:var(--white); padding:72px 48px; text-align:center; }
     .book-banner h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,50px); font-weight:700; margin-bottom:14px; }
     .book-banner p { font-family:'Cormorant Garamond',serif; font-size:21px; font-style:italic; margin-bottom:36px; opacity:.9; }
 
@@ -296,7 +305,7 @@
     .footer-links li a { font-family:'Cormorant Garamond',serif; font-size:18px; color:rgba(255,255,255,.65); text-decoration:none; cursor:pointer; transition:color .2s; }
     .footer-links li a:hover { color:var(--rose-light); }
     .footer-btm { max-width:1100px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; align-items:center; }
-    .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.28); }
+    .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.50); }
     .footer-social { display:flex; gap:12px; margin-top:22px; }
     .footer-social a { width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); transition:all .25s; text-decoration:none; }
     .footer-social a:hover { background:var(--rose); border-color:var(--rose); color:var(--white); transform:translateY(-3px); }
@@ -336,8 +345,8 @@
 
 <!-- NAVIGATION -->
 <nav id="navbar">
-  <a class="nav-logo" href="/id" style="text-decoration:none;">
-    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <a class="nav-logo" href="/id" style="text-decoration:none;" aria-label="Lollygagss Studio – beranda">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <defs><clipPath id="cc"><circle cx="60" cy="60" r="57"/></clipPath></defs>
       <circle cx="60" cy="60" r="58" fill="white" stroke="#E8E0DE" stroke-width="1.5"/>
       <text x="8" y="92" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="#1A1A1A" clip-path="url(#cc)">L</text>
@@ -381,6 +390,7 @@
   <a href="/id#contact">Kontak</a>
 </div>
 
+<main>
 <!-- HERO -->
 <div class="lp-hero">
   <div>
@@ -392,7 +402,16 @@
       <a class="btn-secondary" href="https://wa.me/6285121950351" target="_blank" rel="noopener">Masih bingung? Chat Lina</a>
     </div>
   </div>
-  <img class="lp-hero-img" src="/images/services/biab-manicure-kerobokan.jpg" alt="Manikur BIAB builder gel di Lollygagss Studio, Kerobokan Bali" fetchpriority="high" decoding="async">
+<picture>
+    <source type="image/avif" srcset="/images/services/biab-manicure-kerobokan-400w.avif 400w, /images/services/biab-manicure-kerobokan-600w.avif 600w, /images/services/biab-manicure-kerobokan-800w.avif 800w, /images/services/biab-manicure-kerobokan-1200w.avif 1200w" sizes="(max-width: 768px) calc(100vw - 48px), 45vw">
+    <source type="image/webp" srcset="/images/services/biab-manicure-kerobokan-400w.webp 400w, /images/services/biab-manicure-kerobokan-600w.webp 600w, /images/services/biab-manicure-kerobokan-800w.webp 800w, /images/services/biab-manicure-kerobokan-1200w.webp 1200w" sizes="(max-width: 768px) calc(100vw - 48px), 45vw">
+    <img class="lp-hero-img" src="/images/services/biab-manicure-kerobokan.jpg"
+         srcset="/images/services/biab-manicure-kerobokan-400w.jpg 400w, /images/services/biab-manicure-kerobokan-600w.jpg 600w, /images/services/biab-manicure-kerobokan-800w.jpg 800w, /images/services/biab-manicure-kerobokan-1200w.jpg 1200w"
+         sizes="(max-width: 768px) calc(100vw - 48px), 45vw"
+         width="1200" height="1600"
+         alt="Manikur BIAB builder gel di Lollygagss Studio, Kerobokan Bali"
+         fetchpriority="high" decoding="async">
+  </picture>
 </div>
 
 <!-- LAYANAN BIAB DAN GEL -->
@@ -460,7 +479,16 @@
 
 <!-- BEDANYA BIAB DAN MANIKUR GEL -->
 <div class="svc-section reveal">
-  <img class="lp-section-img" src="/images/services/biab-versus-gel-manicure.jpg" alt="Perbandingan lapisan BIAB dengan manikur gel di Lollygagss Studio" loading="lazy" decoding="async">
+<picture>
+    <source type="image/avif" srcset="/images/services/biab-versus-gel-manicure-400w.avif 400w, /images/services/biab-versus-gel-manicure-600w.avif 600w, /images/services/biab-versus-gel-manicure-800w.avif 800w, /images/services/biab-versus-gel-manicure-1200w.avif 1200w" sizes="(max-width: 768px) calc(100vw - 48px), 460px">
+    <source type="image/webp" srcset="/images/services/biab-versus-gel-manicure-400w.webp 400w, /images/services/biab-versus-gel-manicure-600w.webp 600w, /images/services/biab-versus-gel-manicure-800w.webp 800w, /images/services/biab-versus-gel-manicure-1200w.webp 1200w" sizes="(max-width: 768px) calc(100vw - 48px), 460px">
+    <img class="lp-section-img" src="/images/services/biab-versus-gel-manicure.jpg"
+         srcset="/images/services/biab-versus-gel-manicure-400w.jpg 400w, /images/services/biab-versus-gel-manicure-600w.jpg 600w, /images/services/biab-versus-gel-manicure-800w.jpg 800w, /images/services/biab-versus-gel-manicure-1200w.jpg 1200w"
+         sizes="(max-width: 768px) calc(100vw - 48px), 460px"
+         width="1383" height="1600"
+         alt="Perbandingan lapisan BIAB dengan manikur gel di Lollygagss Studio"
+         loading="lazy" decoding="async">
+  </picture>
   <p class="section-label">02</p>
   <h2 class="section-title">Bedanya BIAB dan Manikur Gel</h2>
   <p class="section-intro">Manikur gel itu soal warna. Tampilannya bagus selama dua sampai tiga minggu lalu dilepas. Tidak ada fungsi penguat.</p>
@@ -484,7 +512,16 @@
 
 <!-- MENAMBAH NAIL ART -->
 <div class="svc-section reveal">
-  <img class="lp-section-img" src="/images/services/nail-art-over-biab-kerobokan.jpg" alt="Nail art cat eye pink dan holografik di atas BIAB di Lollygagss Studio, Kerobokan Bali" loading="lazy" decoding="async">
+<picture>
+    <source type="image/avif" srcset="/images/services/nail-art-over-biab-kerobokan-400w.avif 400w, /images/services/nail-art-over-biab-kerobokan-600w.avif 600w, /images/services/nail-art-over-biab-kerobokan-800w.avif 800w, /images/services/nail-art-over-biab-kerobokan-900w.avif 900w" sizes="(max-width: 768px) calc(100vw - 48px), 460px">
+    <source type="image/webp" srcset="/images/services/nail-art-over-biab-kerobokan-400w.webp 400w, /images/services/nail-art-over-biab-kerobokan-600w.webp 600w, /images/services/nail-art-over-biab-kerobokan-800w.webp 800w, /images/services/nail-art-over-biab-kerobokan-900w.webp 900w" sizes="(max-width: 768px) calc(100vw - 48px), 460px">
+    <img class="lp-section-img" src="/images/services/nail-art-over-biab-kerobokan.jpg"
+         srcset="/images/services/nail-art-over-biab-kerobokan-400w.jpg 400w, /images/services/nail-art-over-biab-kerobokan-600w.jpg 600w, /images/services/nail-art-over-biab-kerobokan-800w.jpg 800w, /images/services/nail-art-over-biab-kerobokan-900w.jpg 900w"
+         sizes="(max-width: 768px) calc(100vw - 48px), 460px"
+         width="900" height="1600"
+         alt="Nail art cat eye pink dan holografik di atas BIAB di Lollygagss Studio, Kerobokan Bali"
+         loading="lazy" decoding="async">
+  </picture>
   <p class="section-label">05</p>
   <h2 class="section-title">Menambah Nail Art</h2>
   <p class="section-intro">Semua tingkat nail art bisa ditambahkan di atas BIAB, mulai Rp 60.000 untuk titik dan garis sampai Rp 400.000 untuk lukisan tangan 3D. Semua harga nail art adalah harga mulai. Bawa foto referensi atau kirim lewat WhatsApp sebelum datang.</p>
@@ -522,11 +559,13 @@
   <a class="btn-white" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener">Pesan</a>
 </div>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50" aria-hidden="true" focusable="false">
         <defs><clipPath id="cc2"><circle cx="60" cy="60" r="57"/></clipPath></defs>
         <circle cx="60" cy="60" r="58" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
         <text x="8" y="92" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="rgba(255,255,255,0.12)" clip-path="url(#cc2)">L</text>
@@ -538,10 +577,10 @@
       <p>Studio kuku dan bulu mata di jantung Kerobokan, Bali. Presisi, kepedulian, dan seni, untuk Anda.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
         </a>
         <a href="https://www.threads.net/@lollygagss_studio" target="_blank" rel="noopener" aria-label="Threads">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.18 22h-.04c-2.85-.02-5.04-.95-6.51-2.78C4.27 17.6 3.6 15.21 3.55 12.27v-.04c.05-2.94.72-5.33 2.08-6.95C7.1 3.45 9.29 2.52 12.14 2.5h.04c2.18.02 4 .51 5.41 1.48 1.33.91 2.26 2.21 2.77 3.86l-1.85.55c-.84-2.66-2.74-4.02-5.34-4.04-1.72.01-3.02.55-3.87 1.6-.79.98-1.2 2.39-1.24 4.21v.07c.04 1.82.45 3.23 1.24 4.21.85 1.05 2.15 1.59 3.87 1.6 1.55-.01 2.58-.38 3.44-1.23.99-.98 1.07-2.18 1-2.94-.41 1.5-1.65 2.39-3.34 2.39-2.05 0-3.4-1.18-3.4-2.99 0-1.79 1.46-2.9 3.61-2.9.78 0 1.5.12 2.11.35-.08-1.32-.78-2.08-2.05-2.09-.86 0-1.49.31-1.94 1.04l-1.68-1.01c.74-1.21 1.95-1.86 3.62-1.86 2.51.02 3.9 1.62 3.97 4.3.01.06.01.13.01.19v.06c0 .06 0 .11-.01.17.93.56 1.62 1.36 2 2.34.5 1.29.53 3.4-1.18 5.11-1.31 1.31-2.9 1.9-5.16 1.92z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.18 22h-.04c-2.85-.02-5.04-.95-6.51-2.78C4.27 17.6 3.6 15.21 3.55 12.27v-.04c.05-2.94.72-5.33 2.08-6.95C7.1 3.45 9.29 2.52 12.14 2.5h.04c2.18.02 4 .51 5.41 1.48 1.33.91 2.26 2.21 2.77 3.86l-1.85.55c-.84-2.66-2.74-4.02-5.34-4.04-1.72.01-3.02.55-3.87 1.6-.79.98-1.2 2.39-1.24 4.21v.07c.04 1.82.45 3.23 1.24 4.21.85 1.05 2.15 1.59 3.87 1.6 1.55-.01 2.58-.38 3.44-1.23.99-.98 1.07-2.18 1-2.94-.41 1.5-1.65 2.39-3.34 2.39-2.05 0-3.4-1.18-3.4-2.99 0-1.79 1.46-2.9 3.61-2.9.78 0 1.5.12 2.11.35-.08-1.32-.78-2.08-2.05-2.09-.86 0-1.49.31-1.94 1.04l-1.68-1.01c.74-1.21 1.95-1.86 3.62-1.86 2.51.02 3.9 1.62 3.97 4.3.01.06.01.13.01.19v.06c0 .06 0 .11-.01.17.93.56 1.62 1.36 2 2.34.5 1.29.53 3.4-1.18 5.11-1.31 1.31-2.9 1.9-5.16 1.92z"/></svg>
         </a>
       </div>
     </div>
@@ -569,20 +608,20 @@
   </div>
   <div class="footer-btm">
     <p>© 2026 Lollygagss Studio. Bali, Indonesia.</p>
-    <p style="cursor:pointer;color:var(--rose-light);" onclick="window.open('https://www.instagram.com/lollygagss_studio/','_blank')">♥ @lollygagss_studio</p>
+    <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" rel="noopener" style="color:var(--rose-light);text-decoration:none;">♥ @lollygagss_studio</a>
   </div>
 </footer>
 
 <div class="mobile-book-bar">
   <a class="mbb-wa" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20make%20a%20booking." target="_blank" rel="noopener">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
     <span>WhatsApp</span>
   </a>
   <a class="mbb-book" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&share=true" target="_blank" rel="noopener">Pesan</a>
 </div>
 
-<a class="wa-float" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20make%20a%20booking." target="_blank" title="Chat via WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+<a class="wa-float" href="https://wa.me/6285121950351?text=Hi%20Lollygagss%20Studio%2C%20I%27d%20like%20to%20make%20a%20booking." target="_blank" title="Chat via WhatsApp" aria-label="Chat dengan Lollygagss Studio di WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true" focusable="false">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
