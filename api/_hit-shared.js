@@ -20,7 +20,9 @@ export const TTL_SECONDS = 90 * 24 * 60 * 60; // 90 days
 const HTML_PAGE_PATHS = [
   '/',
   '/id',
+  '/id/biab-manicure-kerobokan',
   '/id/journal',
+  '/id/lash-extensions-kerobokan',
   '/id/services',
   '/journal',
   '/journal/biab-bali',
@@ -29,6 +31,8 @@ const HTML_PAGE_PATHS = [
   '/journal/lash-classic-volume-style-bali',
   '/journal/lash-extensions-bali-humidity',
   '/journal/lash-extensions-kerobokan',
+  '/biab-manicure-kerobokan',
+  '/lash-extensions-kerobokan',
   '/links',
   '/services',
 ];
