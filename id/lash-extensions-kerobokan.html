@@ -134,16 +134,51 @@
   </script>
 
   <!-- Fresha booking click event -->
+  <!-- Also forwards stored Google Ads click identifiers (gclid/gbraid/wbraid)
+       onto outbound Fresha links so Google Ads can attribute the booking. -->
   <script>
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('a[href*="fresha.com"]');
-    if (!a || typeof gtag !== 'function') return;
-    gtag('event', 'book_click', {
-      link_url: a.href,
-      link_text: (a.textContent || '').trim().slice(0, 100),
-      transport_type: 'beacon'
-    });
-  }, true);
+  (function () {
+    var AD_ID_KEY = 'lg_ad_ids_v1';
+    var AD_ID_PARAMS = ['gclid', 'gbraid', 'wbraid'];
+
+    try {
+      var urlParams = new URLSearchParams(location.search);
+      var stored = JSON.parse(sessionStorage.getItem(AD_ID_KEY) || '{}');
+      var changed = false;
+      AD_ID_PARAMS.forEach(function (key) {
+        var value = urlParams.get(key);
+        if (value) {
+          stored[key] = value;
+          changed = true;
+        }
+      });
+      if (changed) sessionStorage.setItem(AD_ID_KEY, JSON.stringify(stored));
+    } catch (e) {}
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href*="fresha.com"]');
+      if (!a) return;
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'book_click', {
+          link_url: a.href,
+          link_text: (a.textContent || '').trim().slice(0, 100),
+          transport_type: 'beacon'
+        });
+      }
+
+      try {
+        var ids = JSON.parse(sessionStorage.getItem(AD_ID_KEY) || '{}');
+        var url = new URL(a.href);
+        AD_ID_PARAMS.forEach(function (key) {
+          if (ids[key] && !url.searchParams.has(key)) {
+            url.searchParams.set(key, ids[key]);
+          }
+        });
+        a.href = url.href;
+      } catch (e) {}
+    }, true);
+  })();
   </script>
 
   <!-- Microsoft Clarity (deferred: first scroll or touch only) -->
