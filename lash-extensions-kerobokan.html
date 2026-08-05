@@ -269,6 +269,15 @@
     .lp-hero { padding:150px 48px 64px; max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; }
     .lp-hero-img { width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:2px; }
     .lp-cta-row { display:flex; gap:16px; flex-wrap:wrap; margin-top:28px; }
+    .lp-hero-copy .lp-hero-rule { border:none; border-top:1px solid var(--gray-light); margin:20px 0; }
+    .lp-hero-copy .lp-fact-row { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+    .lp-hero-copy .lp-price-pre { font-family:'Jost',sans-serif; font-size:14px; color:var(--gray-dark); }
+    .lp-hero-copy .lp-price { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:600; }
+    .lp-hero-copy .lp-dot { font-size:18px; color:var(--gray-dark); }
+    .lp-hero-copy .lp-dur { font-family:'Jost',sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:2px; color:var(--gray-dark); }
+    .lp-hero-copy .lp-descriptor { font-family:'Jost',sans-serif; font-size:13px; font-style:italic; color:var(--gray-dark); margin-top:14px; }
+    .lp-hero-copy .lp-secondary-link { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--rose-dark); text-decoration:underline; border:none; background:none; display:inline-block; margin-top:16px; }
+    .lp-secondary-link + .section-intro { margin-top:28px; }
 
     .svc-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:36px; padding-bottom:20px; border-bottom:2px solid var(--black); gap:24px; }
     .design-note { background:var(--blush); border-left:3px solid var(--rose); padding:14px 18px; font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:var(--gray-dark); max-width:280px; }
@@ -332,6 +341,7 @@
       .btn-book-nav { padding:10px 18px; font-size:10px; }
       .svc-section { padding:56px 24px; }
       .lp-hero { grid-template-columns:1fr; padding:120px 24px 48px; gap:32px; }
+      .lp-hero-copy .btn-primary { width:100%; text-align:center; }
       .lp-section-img { float:none; max-width:100%; margin:0 0 24px; }
       .svc-header { flex-direction:column; }
       .svc-table thead { display:none; }
@@ -408,15 +418,23 @@
 <main>
 <!-- HERO -->
 <div class="lp-hero">
-  <div>
+  <div class="lp-hero-copy">
     <p class="section-label">Kerobokan, Bali</p>
     <h1 class="section-title">Lash Extensions in Kerobokan</h1>
-    <p class="section-intro">Every set is applied by me, Lina. I own the studio and I am the only technician, so the person who maps your lash line is the same person who applies every extension and the same person you see at your infill four weeks later. That continuity is the whole point.</p>
-    <p class="section-intro">A full set takes between two and three and a half hours depending on the style. You are lying down the entire time with your eyes closed, so bring nothing and expect to be comfortable.</p>
+    <hr class="lp-hero-rule">
+    <div class="lp-fact-row">
+      <span class="lp-price-pre">from</span>
+      <span class="lp-price" data-idr="250000">Rp 250.000</span>
+      <span class="lp-dot">·</span>
+      <span class="lp-dur">2h - 3h 30m</span>
+    </div>
+    <p class="lp-descriptor">Classic Rp 250.000, Volume Rp 350.000, Style Rp 450.000. Infills from Rp 150.000.</p>
     <div class="lp-cta-row">
       <a class="btn-primary" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27387368&share=true&pId=2869775" target="_blank" rel="noopener">Book Your Lash Appointment</a>
-      <a class="btn-secondary" href="https://wa.me/6285121950351" target="_blank" rel="noopener">Ask Lina on WhatsApp</a>
     </div>
+    <a class="lp-secondary-link" href="https://wa.me/6285121950351" target="_blank" rel="noopener">Ask Lina on WhatsApp</a>
+    <p class="section-intro">Every set is applied by me, Lina. I own the studio and I am the only technician, so the person who maps your lash line is the same person who applies every extension and the same person you see at your infill four weeks later. That continuity is the whole point.</p>
+    <p class="section-intro">A full set takes between two and three and a half hours depending on the style. You are lying down the entire time with your eyes closed, so bring nothing and expect to be comfortable.</p>
   </div>
 <picture>
     <source type="image/avif" srcset="/images/services/lash-extensions-volume-kerobokan-400w.avif 400w, /images/services/lash-extensions-volume-kerobokan-600w.avif 600w, /images/services/lash-extensions-volume-kerobokan-800w.avif 800w, /images/services/lash-extensions-volume-kerobokan-1200w.avif 1200w" sizes="(max-width: 768px) calc(100vw - 48px), 45vw">
