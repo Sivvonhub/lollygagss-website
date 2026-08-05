@@ -266,7 +266,7 @@
 
     /* LP HERO */
     .lp-hero { padding:150px 48px 64px; max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; }
-    .lp-hero-img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:2px; }
+    .lp-hero-img { width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:2px; }
     .lp-cta-row { display:flex; gap:16px; flex-wrap:wrap; margin-top:28px; }
 
     .svc-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:36px; padding-bottom:20px; border-bottom:2px solid var(--black); gap:24px; }
@@ -283,7 +283,7 @@
     .svc-price { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; }
     .journal-card-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-dark); margin-top:14px; display:inline-block; text-decoration:none; }
 
-    .lp-section-img { width:100%; max-width:460px; aspect-ratio:3/4; object-fit:cover; border-radius:2px; float:right; margin:0 0 24px 32px; }
+    .lp-section-img { width:100%; height:auto; max-width:460px; aspect-ratio:3/4; object-fit:cover; border-radius:2px; float:right; margin:0 0 24px 32px; }
 
     .faq-section { background:var(--cream); padding:64px 48px; }
     .faq-inner { max-width:800px; margin:0 auto; }
@@ -329,11 +329,22 @@
       .lp-hero { grid-template-columns:1fr; padding:120px 24px 48px; gap:32px; }
       .lp-section-img { float:none; max-width:100%; margin:0 0 24px; }
       .svc-header { flex-direction:column; }
+      .svc-table thead { display:none; }
+      .svc-table, .svc-table tbody { display:block; width:100%; }
+      .svc-table tr { display:grid; grid-template-columns:auto auto 1fr; grid-template-areas:"name name name" "price dur book"; align-items:center; gap:10px 14px; padding:20px 0; border-bottom:1px solid var(--blush); }
+      .svc-table td { display:block; padding:0; border-bottom:0; }
+      .svc-table td:nth-child(1) { grid-area:name; }
+      .svc-table td:nth-child(2) { grid-area:dur; }
+      .svc-table td:nth-child(3) { grid-area:price; }
+      .svc-table td:nth-child(4) { grid-area:book; text-align:right; }
+      .svc-desc { font-size:12px; line-height:1.5; }
+      .svc-price { font-size:25px; }
+      .btn-book-row { margin-left:0; padding:0 20px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; }
       .faq-section { padding:48px 24px; }
       .footer-grid { grid-template-columns:1fr; gap:40px; }
       .mobile-book-bar { display:flex; position:fixed; bottom:0; left:0; right:0; z-index:250; background:var(--white); border-top:1px solid var(--gray-light); box-shadow:0 -4px 20px rgba(0,0,0,.08); }
       .mobile-book-bar a { flex:1; text-align:center; padding:15px 8px; font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; }
-      .mbb-wa { background:#075E54; color:#fff; }
+      .mbb-wa { background:#25D366; color:#fff; }
       .mbb-book { background:var(--black); color:#fff; }
       .wa-float { display:none; }
       body { padding-bottom:50px; }
