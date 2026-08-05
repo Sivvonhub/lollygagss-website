@@ -265,8 +265,17 @@
 
     /* LP HERO */
     .lp-hero { padding:150px 48px 64px; max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; }
-    .lp-hero-img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:2px; }
+    .lp-hero-img { width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:2px; }
     .lp-cta-row { display:flex; gap:16px; flex-wrap:wrap; margin-top:28px; }
+    .lp-hero-copy .lp-hero-rule { border:none; border-top:1px solid var(--gray-light); margin:20px 0; }
+    .lp-hero-copy .lp-fact-row { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+    .lp-hero-copy .lp-price-pre { font-family:'Jost',sans-serif; font-size:14px; color:var(--gray-dark); }
+    .lp-hero-copy .lp-price { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:600; }
+    .lp-hero-copy .lp-dot { font-size:18px; color:var(--gray-dark); }
+    .lp-hero-copy .lp-dur { font-family:'Jost',sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:2px; color:var(--gray-dark); }
+    .lp-hero-copy .lp-descriptor { font-family:'Jost',sans-serif; font-size:13px; font-style:italic; color:var(--gray-dark); margin-top:14px; }
+    .lp-hero-copy .lp-secondary-link { font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--rose-dark); text-decoration:underline; border:none; background:none; display:inline-block; margin-top:16px; }
+    .lp-secondary-link + .section-intro { margin-top:28px; }
 
     .svc-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:36px; padding-bottom:20px; border-bottom:2px solid var(--black); gap:24px; }
     .svc-table { width:100%; border-collapse:collapse; }
@@ -282,7 +291,7 @@
     .svc-price { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; }
     .journal-card-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-dark); margin-top:14px; display:inline-block; text-decoration:none; }
 
-    .lp-section-img { width:100%; max-width:460px; aspect-ratio:3/4; object-fit:cover; border-radius:2px; float:right; margin:0 0 24px 32px; }
+    .lp-section-img { width:100%; height:auto; max-width:460px; aspect-ratio:3/4; object-fit:cover; border-radius:2px; float:right; margin:0 0 24px 32px; }
 
     .faq-section { background:var(--cream); padding:64px 48px; }
     .faq-inner { max-width:800px; margin:0 auto; }
@@ -326,13 +335,25 @@
       .btn-book-nav { padding:10px 18px; font-size:10px; }
       .svc-section { padding:56px 24px; }
       .lp-hero { grid-template-columns:1fr; padding:120px 24px 48px; gap:32px; }
+      .lp-hero-copy .btn-primary { width:100%; text-align:center; }
       .lp-section-img { float:none; max-width:100%; margin:0 0 24px; }
       .svc-header { flex-direction:column; }
+      .svc-table thead { display:none; }
+      .svc-table, .svc-table tbody { display:block; width:100%; }
+      .svc-table tr { display:grid; grid-template-columns:auto auto 1fr; grid-template-areas:"name name name" "price dur book"; align-items:center; gap:10px 14px; padding:20px 0; border-bottom:1px solid var(--blush); }
+      .svc-table td { display:block; padding:0; border-bottom:0; }
+      .svc-table td:nth-child(1) { grid-area:name; }
+      .svc-table td:nth-child(2) { grid-area:dur; }
+      .svc-table td:nth-child(3) { grid-area:price; }
+      .svc-table td:nth-child(4) { grid-area:book; text-align:right; }
+      .svc-desc { font-size:12px; line-height:1.5; }
+      .svc-price { font-size:25px; }
+      .btn-book-row { margin-left:0; padding:0 20px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; }
       .faq-section { padding:48px 24px; }
       .footer-grid { grid-template-columns:1fr; gap:40px; }
       .mobile-book-bar { display:flex; position:fixed; bottom:0; left:0; right:0; z-index:250; background:var(--white); border-top:1px solid var(--gray-light); box-shadow:0 -4px 20px rgba(0,0,0,.08); }
       .mobile-book-bar a { flex:1; text-align:center; padding:15px 8px; font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; }
-      .mbb-wa { background:#075E54; color:#fff; }
+      .mbb-wa { background:#25D366; color:#fff; }
       .mbb-book { background:var(--black); color:#fff; }
       .wa-float { display:none; }
       body { padding-bottom:50px; }
@@ -391,14 +412,21 @@
 <main>
 <!-- HERO -->
 <div class="lp-hero">
-  <div>
+  <div class="lp-hero-copy">
     <p class="section-label">Kerobokan, Bali</p>
     <h1 class="section-title">BIAB Manicure in Kerobokan</h1>
-    <p class="section-intro">BIAB stands for builder in a bottle. It is a builder gel applied as an overlay across your natural nail, adding strength without adding length. If your nails split, peel or bend before they get anywhere near the length you want, this is the service that fixes it.</p>
+    <hr class="lp-hero-rule">
+    <div class="lp-fact-row">
+      <span class="lp-price" data-idr="325000">Rp 325.000</span>
+      <span class="lp-dot">·</span>
+      <span class="lp-dur">1h 30m</span>
+    </div>
+    <p class="lp-descriptor">Strengthening builder gel over natural nails. Includes dry manicure and cuticle care.</p>
     <div class="lp-cta-row">
       <a class="btn-primary" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&eid=5277110&oiid=sv%3A27443614&share=true&pId=2869775" target="_blank" rel="noopener">Book BIAB Manicure</a>
-      <a class="btn-secondary" href="https://wa.me/6285121950351" target="_blank" rel="noopener">Not sure? Message Lina</a>
     </div>
+    <a class="lp-secondary-link" href="https://wa.me/6285121950351" target="_blank" rel="noopener">Not sure? Message Lina</a>
+    <p class="section-intro">BIAB stands for builder in a bottle. It is a builder gel applied as an overlay across your natural nail, adding strength without adding length. If your nails split, peel or bend before they get anywhere near the length you want, this is the service that fixes it.</p>
   </div>
 <picture>
     <source type="image/avif" srcset="/images/services/biab-manicure-kerobokan-400w.avif 400w, /images/services/biab-manicure-kerobokan-600w.avif 600w, /images/services/biab-manicure-kerobokan-800w.avif 800w, /images/services/biab-manicure-kerobokan-1200w.avif 1200w" sizes="(max-width: 768px) calc(100vw - 48px), 45vw">
