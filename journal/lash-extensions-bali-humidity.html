@@ -156,32 +156,6 @@
     })();
   </script>
 
-  <!-- Meta Pixel (deferred: idle callback / 1.5s fallback / first scroll or touch) -->
-  <script>
-    (function() {
-      var fbInited = false;
-      function initFbPixel() {
-        if (fbInited) return;
-        fbInited = true;
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '2380616549131464');
-        fbq('track', 'PageView');
-      }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initFbPixel, { timeout: 2000 });
-      } else {
-        setTimeout(initFbPixel, 1500);
-      }
-      window.addEventListener('scroll', initFbPixel, { once: true, passive: true });
-      window.addEventListener('touchstart', initFbPixel, { once: true, passive: true });
-    })();
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2380616549131464&ev=PageView&noscript=1"/></noscript>
-
   <link rel="preload" href="/fonts/jost-300-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jost-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jost-500-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -669,14 +643,14 @@
     }
     .footer-brand-sub {
       font-family:'Jost',sans-serif; font-size:9px; letter-spacing:4px;
-      text-transform:uppercase; color:rgba(255,255,255,.35); display:block; margin-top:2px;
+      text-transform:uppercase; color:rgba(255,255,255,.55); display:block; margin-top:2px;
     }
     .footer-links-row {
       display:flex; gap:28px; list-style:none; flex-wrap:wrap;
     }
     .footer-links-row a {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px;
-      text-transform:uppercase; color:rgba(255,255,255,.45);
+      text-transform:uppercase; color:rgba(255,255,255,.55);
       text-decoration:none; transition:color .2s;
     }
     .footer-links-row a:hover { color:var(--rose-light); }
@@ -687,7 +661,7 @@
     }
     .footer-btm-bar p {
       font-family:'Jost',sans-serif; font-size:10px; letter-spacing:1px;
-      color:rgba(255,255,255,.25);
+      color:rgba(255,255,255,.55);
     }
 
     /* ── FLOATING WA ── */
@@ -733,7 +707,7 @@
 
 <!-- ── NAV ── -->
 <nav id="navbar">
-  <a class="nav-logo" href="/" style="text-decoration:none;">
+  <a class="nav-logo" href="/" style="text-decoration:none;" aria-label="Lollygagss Studio, home">
     <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <clipPath id="cc"><circle cx="60" cy="60" r="57"/></clipPath>

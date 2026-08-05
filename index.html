@@ -147,32 +147,6 @@
     })();
   </script>
 
-  <!-- Meta Pixel (deferred: idle callback / 1.5s fallback / first scroll or touch) -->
-  <script>
-    (function() {
-      var fbInited = false;
-      function initFbPixel() {
-        if (fbInited) return;
-        fbInited = true;
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '2380616549131464');
-        fbq('track', 'PageView');
-      }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initFbPixel, { timeout: 2000 });
-      } else {
-        setTimeout(initFbPixel, 1500);
-      }
-      window.addEventListener('scroll', initFbPixel, { once: true, passive: true });
-      window.addEventListener('touchstart', initFbPixel, { once: true, passive: true });
-    })();
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2380616549131464&ev=PageView&noscript=1"/></noscript>
-
   <!-- Ahrefs Analytics -->
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="Pf1jyIpNtnvFwT/PbiQGEA" async></script>
 
@@ -728,7 +702,7 @@
     .footer-links li a { font-family:'Cormorant Garamond',serif; font-size:18px; color:rgba(255,255,255,.65); text-decoration:none; cursor:pointer; transition:color .2s; }
     .footer-links li a:hover { color:var(--rose-light); }
     .footer-btm { max-width:1100px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; align-items:center; }
-    .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.28); }
+    .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.55); }
 
     /* ── GOOGLE REVIEWS ── */
     .reviews-section {
@@ -939,7 +913,7 @@
 
 <!-- ══ NAVIGATION ══ -->
 <nav id="navbar">
-  <a class="nav-logo" href="/" onclick="event.preventDefault();showPage('home')" style="text-decoration:none;cursor:pointer;">
+  <a class="nav-logo" href="/" onclick="event.preventDefault();showPage('home')" style="text-decoration:none;cursor:pointer;" aria-label="Lollygagss Studio, home">
     <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <clipPath id="cc"><circle cx="60" cy="60" r="57"/></clipPath>
@@ -1061,7 +1035,29 @@
     <p class="section-intro" data-en="Our latest nail and lash work, straight from Instagram." data-id="Karya kuku dan bulu mata terbaru kami, langsung dari Instagram.">Our latest nail and lash work, straight from Instagram.</p>
     <div style="margin-top:44px;">
       <div data-key="Carousel Instagram Feed" class="ft" id="fthsb0t5d"></div>
-      <script src="https://wdg.fouita.com/widgets/0x455bdc.js"></script>
+      <script>
+        (function() {
+          function loadFouitaWidget() {
+            var s = document.createElement('script');
+            s.src = 'https://wdg.fouita.com/widgets/0x455bdc.js';
+            document.body.appendChild(s);
+          }
+          var mount = document.getElementById('fthsb0t5d');
+          if ('IntersectionObserver' in window && mount) {
+            var io = new IntersectionObserver(function(entries) {
+              entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                  io.disconnect();
+                  loadFouitaWidget();
+                }
+              });
+            }, { rootMargin: '400px 0px' });
+            io.observe(mount);
+          } else {
+            window.addEventListener('load', loadFouitaWidget);
+          }
+        })();
+      </script>
     </div>
     <div style="text-align:center;margin-top:28px;">
       <a href="https://www.instagram.com/lollygagss_studio/" target="_blank" style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);text-decoration:none;" data-en="Follow on Instagram →" data-id="Ikuti di Instagram →">Follow on Instagram →</a>
@@ -1345,7 +1341,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50" aria-hidden="true" focusable="false">
         <defs><clipPath id="cc2"><circle cx="60" cy="60" r="57"/></clipPath></defs>
         <circle cx="60" cy="60" r="58" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
         <text x="8" y="92" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="rgba(255,255,255,0.12)" clip-path="url(#cc2)">L</text>
