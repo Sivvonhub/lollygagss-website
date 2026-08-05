@@ -141,31 +141,6 @@
     })();
   </script>
 
-  <!-- Meta Pixel (deferred: idle callback / 1.5s fallback / first scroll or touch) -->
-  <script>
-    (function() {
-      var fbInited = false;
-      function initFbPixel() {
-        if (fbInited) return;
-        fbInited = true;
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '2380616549131464');
-        fbq('track', 'PageView');
-      }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initFbPixel, { timeout: 2000 });
-      } else {
-        setTimeout(initFbPixel, 1500);
-      }
-      window.addEventListener('scroll', initFbPixel, { once: true, passive: true });
-      window.addEventListener('touchstart', initFbPixel, { once: true, passive: true });
-    })();
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2380616549131464&ev=PageView&noscript=1"/></noscript>
   <link rel="preload" href="/fonts/jost-300-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jost-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jost-500-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -785,7 +760,7 @@
     .footer-links li a { font-family:'Cormorant Garamond',serif; font-size:18px; color:rgba(255,255,255,.65); text-decoration:none; cursor:pointer; transition:color .2s; }
     .footer-links li a:hover { color:var(--rose-light); }
     .footer-btm { max-width:1100px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; align-items:center; }
-    .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.28); }
+    .footer-btm p { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; color:rgba(255,255,255,.55); }
     /* Footer social icons */
     .footer-social { display:flex; gap:12px; margin-top:22px; }
     .footer-social a { width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); transition:all .25s; text-decoration:none; }
@@ -853,7 +828,7 @@
 
 <!-- ══ NAVIGATION ══ -->
 <nav id="navbar">
-  <a class="nav-logo" href="/" style="text-decoration:none;">
+  <a class="nav-logo" href="/" style="text-decoration:none;" aria-label="Lollygagss Studio, home">
     <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <clipPath id="cc"><circle cx="60" cy="60" r="57"/></clipPath>
@@ -1054,7 +1029,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50" aria-hidden="true" focusable="false">
         <defs><clipPath id="cc2"><circle cx="60" cy="60" r="57"/></clipPath></defs>
         <circle cx="60" cy="60" r="58" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
         <text x="8" y="92" font-family="'Playfair Display',serif" font-weight="700" font-size="92" fill="rgba(255,255,255,0.12)" clip-path="url(#cc2)">L</text>
