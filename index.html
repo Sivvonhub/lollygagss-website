@@ -62,13 +62,16 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BeautySalon",
+    "@type": ["BeautySalon", "NailSalon"],
+    "@id": "https://lollygagss.id/#studio",
     "name": "Lollygagss Studio",
     "description": "Boutique nail and lash studio in Kerobokan Kelod, Bali. Every appointment by owner Lina.",
     "url": "https://lollygagss.id",
     "image": "https://lollygagss.id/images/gallery/lollygagss-studio-storefront-kerobokan.jpg",
-    "priceRange": "Rp 60.000–Rp 450.000",
+    "priceRange": "Rp 60.000 to Rp 450.000",
     "telephone": "+6285121950351",
+    "email": "hello@lollygagss.id",
+    "founder": { "@type": "Person", "name": "Lina Zahirah Dimes" },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Jl. Persada II No. 4B",
@@ -90,7 +93,23 @@
         "closes": "19:00"
       }
     ],
-    "sameAs": ["https://www.instagram.com/lollygagss_studio/"]
+    "areaServed": [
+      {"@type": "Place", "name": "Kerobokan"},
+      {"@type": "Place", "name": "Seminyak"},
+      {"@type": "Place", "name": "Umalas"},
+      {"@type": "Place", "name": "Canggu"},
+      {"@type": "Place", "name": "Berawa"},
+      {"@type": "Place", "name": "Kuta"},
+      {"@type": "Place", "name": "Legian"}
+    ],
+    "sameAs": [
+      "https://www.instagram.com/lollygagss_studio/",
+      "https://www.facebook.com/people/lollygagss-Studio/61589021502518/",
+      "https://www.threads.com/@lollygagss_studio",
+      "https://www.pinterest.com/lollygagss_studio/",
+      "https://www.fresha.com/en-GB/a/lollygagss-studio-kuta-utara-jl-persada-ii-no-4b-ntnu6pao",
+      "https://www.google.com/maps/place/?q=place_id:ChIJHTK4hLlH0i0RMqbSXuaV1XY"
+    ]
   }
   </script>
 
