@@ -49,20 +49,7 @@
     "@type": "Service",
     "serviceType": "Manicure",
     "name": "BIAB Manicure in Kerobokan",
-    "provider": {
-      "@type": "BeautySalon",
-      "name": "Lollygagss Studio",
-      "url": "https://lollygagss.id",
-      "telephone": "+6285121950351",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Jl. Persada II No. 4B",
-        "addressLocality": "Kerobokan Kelod, Kuta Utara",
-        "addressRegion": "Bali",
-        "postalCode": "80361",
-        "addressCountry": "ID"
-      }
-    },
+    "provider": { "@id": "https://lollygagss.id/#studio" },
     "areaServed": [
       {"@type": "Place", "name": "Kerobokan"},
       {"@type": "Place", "name": "Seminyak"},
@@ -81,6 +68,61 @@
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hard Gel & Extension Removal"}, "price": "100000", "priceCurrency": "IDR"}
       ]
     }
+  }
+  </script>
+
+  <!-- BeautySalon structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["BeautySalon", "NailSalon"],
+    "@id": "https://lollygagss.id/#studio",
+    "name": "Lollygagss Studio",
+    "description": "Boutique nail and lash studio in Kerobokan Kelod, Bali. Every appointment by owner Lina.",
+    "url": "https://lollygagss.id",
+    "image": "https://lollygagss.id/images/gallery/lollygagss-studio-storefront-kerobokan.jpg",
+    "priceRange": "Rp 60.000 to Rp 450.000",
+    "telephone": "+6285121950351",
+    "email": "hello@lollygagss.id",
+    "founder": { "@type": "Person", "name": "Lina Zahirah Dimes" },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Persada II No. 4B",
+      "addressLocality": "Kerobokan Kelod, Kuta Utara",
+      "addressRegion": "Bali",
+      "postalCode": "80361",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -8.67582,
+      "longitude": 115.17618
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "areaServed": [
+      {"@type": "Place", "name": "Kerobokan"},
+      {"@type": "Place", "name": "Seminyak"},
+      {"@type": "Place", "name": "Umalas"},
+      {"@type": "Place", "name": "Canggu"},
+      {"@type": "Place", "name": "Berawa"},
+      {"@type": "Place", "name": "Kuta"},
+      {"@type": "Place", "name": "Legian"}
+    ],
+    "sameAs": [
+      "https://www.instagram.com/lollygagss_studio/",
+      "https://www.facebook.com/people/lollygagss-Studio/61589021502518/",
+      "https://www.threads.com/@lollygagss_studio",
+      "https://www.pinterest.com/lollygagss_studio/",
+      "https://www.fresha.com/en-GB/a/lollygagss-studio-kuta-utara-jl-persada-ii-no-4b-ntnu6pao",
+      "https://www.google.com/maps/place/?q=place_id:ChIJHTK4hLlH0i0RMqbSXuaV1XY"
+    ]
   }
   </script>
 
