@@ -1,3 +1,13 @@
+v2.26 — 8 August 2026
+
+Indonesian location-phrasing correction: "tepat di belakang" -> "masuk sedikit dari". One commit (bd47efd).
+
+index.html, id/index.html, id/lash-extensions-kerobokan.html, id/biab-manicure-kerobokan.html (bd47efd) — Six occurrences of "yang tenang tepat di belakang Teuku Umar Barat" corrected to "yang tenang, masuk sedikit dari Teuku Umar Barat": the data-id attribute and visible .about-body text on index.html/id/index.html, and on each of the two ID landing pages both the FAQPage JSON-LD "text" field and the visible .faq-a for the "Lokasinya di mana?" question, verified byte-identical to each other both before and after the fix. The v2.25 entry above states this mistranslation was still live and flags it as out of scope for that build; this entry corrects it. It was not, as an earlier assumption held, fixed by PR #31 — that PR's commit message describes dropping Teuku Umar mentions from meta tags and JSON-LD description/name fields, not this body-copy and FAQ phrase, which is why it was still live going into this fix. English data-en strings, areaServed, canonicals, hreflang, og tags, and JSON-LD structure were all left untouched. The two landing pages from PR #32 (nail-salon-kerobokan.html, id/salon-kuku-kerobokan.html) already used the correct "masuk sedikit dari" phrasing from the start and were not touched here.
+
+sitemap.xml (bd47efd) — lastmod bumped to 2026-08-08 on exactly the four URLs whose source files changed above (https://lollygagss.id/, https://lollygagss.id/id/, https://lollygagss.id/id/lash-extensions-kerobokan, https://lollygagss.id/id/biab-manicure-kerobokan). The other fourteen entries, including the two added in PR #32, were left untouched.
+
+---
+
 v2.25 — 8 August 2026
 
 Two new proximity landing pages for the Google Ads "nail salon near me" / "nail art terdekat" campaign. One commit (d550805).
