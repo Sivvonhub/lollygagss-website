@@ -73,10 +73,10 @@ export function buildHitKeys({ day, bucket, paid, bot, test, ectBucket }) {
 // `path` and `ect` are bucketed against a fixed allow-list before ever
 // touching Redis (see _hit-shared.js) — an unauthenticated client cannot
 // mint new keys by sending arbitrary `p`/`ect` values. That bounds daily
-// key creation to a constant: at most 26 known paths (17 HTML pages + 8
+// key creation to a constant: at most 28 known paths (19 HTML pages + 8
 // vercel.json rewrite-source aliases) + 1 "/other" bucket, each with up to
-// 4 keys (total/paid/bot/test) = 104, plus 5 ect buckets, plus 1 index key
-// per day = 110 keys/day max.
+// 4 keys (total/paid/bot/test) = 112, plus 5 ect buckets, plus 1 index key
+// per day = 118 keys/day max.
 async function recordHit(redisClient, { path, paid, bot, test, ect }) {
   const day = makassarDateKey(new Date());
   const bucket = bucketPath(path);
