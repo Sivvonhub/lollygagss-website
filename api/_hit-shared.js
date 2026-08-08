@@ -33,6 +33,8 @@ const HTML_PAGE_PATHS = [
   '/journal/lash-extensions-kerobokan',
   '/biab-manicure-kerobokan',
   '/lash-extensions-kerobokan',
+  '/nail-salon-kerobokan',
+  '/id/salon-kuku-kerobokan',
   '/links',
   '/services',
 ];
