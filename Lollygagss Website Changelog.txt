@@ -1,3 +1,19 @@
+v2.27 — 9 August 2026
+
+Indonesian lash vocabulary: high-volume phrasings added, "eyelash extension" retained, Klasik renamed to Classic on lash sets. One commit (d13fe0e).
+
+id/lash-extensions-kerobokan.html, id/services.html, id/salon-kuku-kerobokan.html (d13fe0e) — Added two high-volume Indonesian lash search phrasings identified via Google Keyword Planner ("extension bulu mata," 4,400/mo, Low competition; "pasang bulu mata," 1,600/mo, Low) into six natural placements: the meta description and og:description on the lash page (opener swapped to "Extension bulu mata," meta trimmed from 157 to 147 characters to clear the ~155-char ceiling, og:description now 108 characters and matches the new meta opener), the hero intro paragraph ("Semua set extension bulu mata dikerjakan..."), one FAQ answer (visible .faq-a and its FAQPage JSON-LD text field kept byte-identical), one image alt on the lash page, a new intro sentence under the lash heading on id/services.html, and a swap inside the existing first sentence under "Eyelash Extension Juga" on id/salon-kuku-kerobokan.html. "Eyelash extension" was deliberately retained everywhere it already appeared and read well: 12 instances stay untouched on the lash page alone (title, H1, FAQ question, journal link, etc.), and every heading, service tier name, and journal-card-link outside the six specific placements above is unchanged.
+
+id/lash-extensions-kerobokan.html, id/services.html (d13fe0e) — Klasik renamed to Classic on lash sets only, 9 instances across the two files: the OfferCatalog JSON-LD name and visible svc-name for "Bulu Mata Klasik" and "Isi Ulang Bulu Mata Klasik" (2 each, both files), the two matching Fresha aria-labels on the lash page, and the lash page's `.lp-descriptor` line, which had been the one place on the site translating only the first of three parallel set names ("Klasik Rp 250.000, Volume Rp 350.000, Style Rp 450.000"). Result reads "Bulu Mata Classic" and "Isi Ulang Bulu Mata Classic," matching the "Bulu Mata Volume" / "Bulu Mata Style" pattern already in place. Each svc-name and its OfferCatalog itemOffered name were verified programmatically to remain byte-identical after the rename. Manikur Klasik and Pedikur Klasik (nail services, 8 instances across id/services.html and id/salon-kuku-kerobokan.html) are explicitly out of scope and were not touched.
+
+id/services.html, services.html (d13fe0e) — Section heading "Ekstensi Bulu Mata" renamed to "Extension Bulu Mata" on the Indonesian page. The English services.html carries this same string as a data-id attribute on its "Lash Extensions" heading; that attribute was updated to match ("Ekstensi Bulu Mata" -> "Extension Bulu Mata") so the two pages' bilingual pairing stays correct. This was the only edit made to any English file in this job; the data-en value and every other visible English string on services.html are untouched.
+
+sitemap.xml (d13fe0e) — lastmod bumped to 2026-08-09 on exactly the four URLs whose source files changed: /services, /id/services, /id/lash-extensions-kerobokan, /id/salon-kuku-kerobokan. The homepage entries (/ and /id) were deliberately left untouched since index.html and id/index.html were not part of this job.
+
+Not changed: v2.26's "masuk sedikit dari Teuku Umar Barat" phrasing (2 instances on the lash page) is undisturbed. id/index.html and id/biab-manicure-kerobokan.html were out of scope and not touched.
+
+---
+
 v2.26 — 8 August 2026
 
 Indonesian location-phrasing correction: "tepat di belakang" -> "masuk sedikit dari". One commit (bd47efd).
