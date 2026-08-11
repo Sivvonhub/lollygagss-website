@@ -718,6 +718,17 @@
       .contact-info { padding:60px 32px; }
       .currency-bar { padding:12px 24px; gap:8px; flex-wrap:wrap; }
       .svc-header { flex-direction:column; }
+      .svc-table thead { display:none; }
+      .svc-table, .svc-table tbody { display:block; width:100%; }
+      .svc-table tr { display:grid; grid-template-columns:auto auto 1fr; grid-template-areas:"name name name" "price dur book"; align-items:center; gap:10px 14px; padding:20px 0; border-bottom:1px solid var(--blush); }
+      .svc-table td { display:block; padding:0; border-bottom:0; }
+      .svc-table td:nth-child(1) { grid-area:name; }
+      .svc-table td:nth-child(2) { grid-area:dur; }
+      .svc-table td:nth-child(3) { grid-area:price; }
+      .svc-table td:nth-child(4) { grid-area:book; text-align:right; }
+      .svc-desc { font-size:12px; line-height:1.5; }
+      .svc-price { font-size:25px; }
+      .btn-book-row { margin-left:0; padding:0 20px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; }
       .footer-grid { gap:40px; }
       .hero-rating { min-height:56px; }
     }
