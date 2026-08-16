@@ -1,3 +1,9 @@
+v2.30 — 16 August 2026
+
+Featured journal slot on /links swapped from the lash extensions article to the gel/BIAB/extensions comparison article. One commit (1498a5a, PR #38).
+
+links.html (1498a5a, PR #38) — The featured slot's `<a class="featured">` now links to /journal/gel-biab-extensions-bali (was /journal/lash-extensions-kerobokan), trackClick id changed to featured_gel_biab_extensions, and the featured-tag text changed from "New on the Journal" to "From the Journal" since the article isn't new. The displaced lash-extensions-kerobokan article was moved into the More From the Journal list, into the same slot the gel/BIAB/extensions entry previously held (position 2 of 5), trackClick id journal_lash_extensions_kerobokan. The other four More From the Journal entries were not reordered. No CSS was touched and the Fresha booking link was not altered.
+
 v2.29 — 11 August 2026
 
 Fix: horizontal overflow at 320-360px on /services and /id/services, caused by .svc-table never having received the mobile-grid conversion the other six .svc-table pages already carry. One commit (e20352c).
