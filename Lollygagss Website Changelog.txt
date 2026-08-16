@@ -1,3 +1,11 @@
+v2.31 — 16 August 2026
+
+Fix: removed the invalid inLanguage property from JSON-LD on the seven Indonesian pages flagged by Ahrefs Site Audit (crawl 14 August 2026) with "Structured data has schema.org validation error". One commit (ab61e1b).
+
+id/index.html, id/services.html, id/journal.html, id/biab-manicure-kerobokan.html, id/lash-extensions-kerobokan.html, id/nail-art-kerobokan.html, id/salon-kuku-kerobokan.html (ab61e1b) — Deleted `"inLanguage": "id",` from the JSON-LD node on each page: the BeautySalon node on the three core pages, the Service node on the four landing pages. inLanguage is only valid on schema.org's CreativeWork, Event, BroadcastService, LinkRole and a couple of action types. BeautySalon is a LocalBusiness (Organization + Place) and Service is an Intangible; neither inherits from CreativeWork, so the property was out of domain on both node types, which is what Ahrefs' validator was flagging on all seven URLs. Google ignores out-of-domain properties, so it contributed nothing while present and its removal loses no signal. No replacement was added, since there is no valid home for inLanguage on either node type. Each edit was a single-line deletion, located by grep rather than by line number, with the line immediately following confirmed to be another property (`"url"` on the three core pages, `"provider"` on the four landing pages) before deletion, so no dangling comma was introduced. All 48 ld+json blocks across all 21 HTML files in the repo were parsed before and after the edit with zero syntax errors both times, and every other property on the affected nodes (@id, name, description, url, image, address, geo, openingHoursSpecification, areaServed, sameAs on the BeautySalon nodes; @context, @type, name, provider, serviceType, areaServed, hasOfferCatalog on the Service nodes) was confirmed unchanged. Page language continues to be declared correctly via `<html lang="id">`, the hreflang alternates and the self-canonical on each page; none of that was touched. This clears the Ahrefs "Structured data has schema.org validation error" notice on all seven ID URLs.
+
+---
+
 v2.30 — 16 August 2026
 
 Featured journal slot on /links swapped from the lash extensions article to the gel/BIAB/extensions comparison article. One commit (1498a5a, PR #38).
