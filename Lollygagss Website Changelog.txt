@@ -1,3 +1,11 @@
+v2.32 — 16 August 2026
+
+Sitemap fix: lastmod updated on the seven Indonesian pages changed by PR #39. One commit (d748607).
+
+sitemap.xml (d748607) — Set lastmod to 2026-08-16 on the seven ID URLs whose JSON-LD PR #39 edited: /id, /id/services, /id/journal, /id/biab-manicure-kerobokan, /id/lash-extensions-kerobokan, /id/nail-art-kerobokan, /id/salon-kuku-kerobokan. Their lastmod values had been left at 2026-08-07 through 2026-08-10, predating that edit. The other thirteen entries were deliberately left unchanged to preserve lastmod accuracy across the rest of the sitemap.
+
+---
+
 v2.31 — 16 August 2026
 
 Fix: removed the invalid inLanguage property from JSON-LD on the seven Indonesian pages flagged by Ahrefs Site Audit (crawl 14 August 2026) with "Structured data has schema.org validation error". One commit (ab61e1b).
