@@ -151,6 +151,16 @@
         "@type": "Question",
         "name": "Lokasinya di mana?",
         "acceptedAnswer": {"@type": "Answer", "text": "Jl. Persada II No. 4B, Kerobokan Kelod, Kuta Utara, di jalan kecil yang tenang, masuk sedikit dari Teuku Umar Barat. Buka Senin sampai Sabtu, 09.00 sampai 19.00."}
+      },
+      {
+        "@type": "Question",
+        "name": "Berapa harga BIAB di Kerobokan?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Di Lollygagss Studio Kerobokan, Manikur BIAB Rp 325.000, sudah termasuk manikur kering, perawatan kutikula dan warna pilihan Anda. Nail art bisa ditambahkan di atasnya dengan harga terpisah tergantung desainnya."}
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah saya harus tahu desain yang diinginkan sebelum datang?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Tidak. Banyak klien datang tanpa rencana pasti dan memilih warna serta hasil akhirnya di kursi. BIAB bisa dibiarkan bening sebagai lapisan penguat atau ditutup warna apa pun, jadi bisa mulai dari yang sederhana dulu."}
       }
     ]
   }
@@ -337,6 +347,39 @@
     .journal-card-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-dark); margin-top:14px; display:inline-block; text-decoration:none; }
 
     .lp-section-img { width:100%; height:auto; max-width:460px; aspect-ratio:3/4; object-fit:cover; border-radius:2px; float:right; margin:0 0 24px 32px; }
+
+    /* Ported from the retired BIAB journal article: rating strip */
+    .rating-strip { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:36px 0; padding:18px 24px; background:var(--cream); border:1px solid var(--gray-light); }
+    .rating-strip-stars { color:var(--rose); font-size:18px; letter-spacing:3px; }
+    .rating-strip-score { font-family:'Jost',sans-serif; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--black); font-weight:500; }
+    .rating-strip-count { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gray); }
+    .rating-strip-src { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rose); margin-left:auto; }
+    @media(max-width:600px) { .rating-strip-src { margin-left:0; width:100%; } }
+
+    /* Ported from the retired BIAB journal article: review card */
+    .review-card { margin:40px 0; border:1px solid var(--gray-light); background:var(--white); padding:32px 36px; }
+    .review-card-stars { color:var(--rose); font-size:15px; letter-spacing:3px; margin-bottom:14px; }
+    .review-card p { font-family:'Cormorant Garamond',serif; font-size:clamp(19px,2vw,23px); font-weight:300; font-style:italic; color:var(--black); line-height:1.6; margin:0 0 16px; }
+    .review-card cite { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); font-style:normal; }
+
+    /* Ported from the retired BIAB journal article: getting-here travel block */
+    .getting-here { margin:52px 0; border:1px solid var(--gray-light); }
+    .getting-here-header { background:var(--black); color:var(--rose-light); padding:16px 24px; font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; }
+    .getting-here-row { display:grid; grid-template-columns:1fr 1.4fr; border-top:1px solid var(--gray-light); }
+    .getting-here-row:first-of-type { border-top:none; }
+    .getting-here-row:nth-child(even) { background:var(--cream); }
+    .getting-here-row div { padding:16px 24px; font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--gray-dark); line-height:1.5; }
+    .getting-here-row div:first-child { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gray); padding-top:20px; }
+    @media(max-width:600px) {
+      .getting-here-row { grid-template-columns:1fr; }
+      .getting-here-row div:first-child { padding-bottom:0; padding-top:18px; }
+      .getting-here-row div:last-child { padding-top:6px; }
+    }
+
+    /* Ported from the retired BIAB journal article: care-list checklist */
+    .care-list { list-style:none; margin:24px 0 32px; }
+    .care-list li { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; color:var(--gray-dark); line-height:1.6; padding:14px 0 14px 28px; border-bottom:1px solid var(--blush); position:relative; }
+    .care-list li::before { content:'♥'; position:absolute; left:0; top:14px; font-size:12px; color:var(--rose); }
 
     .faq-section { background:var(--cream); padding:64px 48px; }
     .faq-inner { max-width:800px; margin:0 auto; }
@@ -548,6 +591,13 @@
   </table>
 </div>
 
+<!-- HARGA BIAB DI KEROBOKAN -->
+<div class="svc-section reveal">
+  <h2 class="section-title">Harga BIAB di Kerobokan</h2>
+  <p class="section-intro">Harga di Bali sangat bervariasi. BIAB kadang ditawarkan sebagai tambahan murah, kadang dihargai seperti perawatan mewah. Di Lollygagss, harganya sesuai dengan isi layanannya: aplikasi builder gel yang benar, termasuk manikur kering dan perawatan kutikula, ditutup dengan warna pilihan Anda.</p>
+  <p class="section-intro">Manikur BIAB lengkap Rp 325.000. Tidak ada biaya tambahan tersembunyi untuk layanan standar. Kalau Anda ingin menambah nail art di atas BIAB, harganya terpisah dan saya akan beri tahu sebelum Anda memutuskan.</p>
+</div>
+
 <!-- BEDANYA BIAB DAN MANIKUR GEL -->
 <div class="svc-section reveal">
 <picture>
@@ -599,6 +649,63 @@
   <p class="section-intro"><a href="/id/nail-art-kerobokan" style="color:var(--rose-dark);">Lihat menu nail art lengkap →</a></p>
 </div>
 
+<!-- KENAPA KLIEN MEMILIH LOLLYGAGSS UNTUK BIAB -->
+<div class="svc-section reveal">
+  <h2 class="section-title">Kenapa Klien Memilih Lollygagss untuk BIAB</h2>
+  <p class="section-intro">Lollygagss Studio berada di Jl. Persada II, masuk sedikit dari Teuku Umar Barat di Kerobokan Kelod. Jalannya kecil dan tenang, bukan jalan utama yang ramai, dan itu memang disengaja. Anda tidak masuk ke salon sibuk dengan lima kursi berjalan sekaligus. Ini studio kecil di mana waktu janji sepenuhnya milik Anda.</p>
+  <p class="section-intro">Saya pemilik sekaligus satu-satunya technician di studio ini, jadi tidak ada rotasi staf, tidak dioper ke junior di tengah perawatan, dan tidak ada tekanan untuk menambah layanan yang tidak Anda minta. Anda buat janji dengan saya, dan saya yang mengerjakan kuku Anda dari awal sampai selesai. Saya menerima satu klien dalam satu waktu di ruangan yang tenang dan bersih, jadi perawatan tidak terburu-buru dan persiapannya dikerjakan dengan benar. Khusus untuk BIAB, persiapan yang teliti adalah penentu utama daya tahannya, dan justru bagian itulah yang sering dilewatkan salon yang ramai.</p>
+  <div class="rating-strip" aria-label="Google rating">
+    <span class="rating-strip-stars">★★★★★</span>
+    <span class="rating-strip-score">5.0 di Google</span>
+    <span class="rating-strip-count">69 ulasan</span>
+    <span class="rating-strip-src">Lollygagss Studio, Kerobokan</span>
+  </div>
+  <div class="review-card">
+    <div class="review-card-stars">★★★★★</div>
+    <p>"The nail art is absolutely beautiful and neatly done, just like I wanted. The owner is also super kind and pays great attention to detail."</p>
+    <cite>Dwi Madame · <a href="https://www.google.com/maps/place/?q=place_id:ChIJHTK4hLlH0i0RMqbSXuaV1XY" target="_blank" rel="noopener" style="color:var(--rose);text-decoration:none;">Lihat di Google →</a></cite>
+  </div>
+  <p class="section-intro">Satu catatan jujur soal pemesanan: karena semua set saya kerjakan sendiri, jumlah janji per hari terbatas. Sebaiknya buat janji lebih awal supaya dapat jam yang Anda mau, terutama di akhir pekan.</p>
+</div>
+
+<!-- CARA MENUJU STUDIO -->
+<div class="svc-section reveal">
+  <h2 class="section-title">Cara Menuju Studio</h2>
+  <p class="section-intro">Bali itu kecil dan Teuku Umar mudah dijangkau, jadi kebanyakan klien sampai dalam waktu kurang dari dua puluh menit. Ini perkiraan waktu tempuh dari area sekitar, tergantung lalu lintas.</p>
+  <div class="getting-here">
+    <div class="getting-here-header">Perkiraan waktu tempuh ke Lollygagss Studio</div>
+    <div class="getting-here-row">
+      <div>Dari Seminyak</div>
+      <div>Sekitar 10 sampai 15 menit naik motor atau mobil, tergantung lalu lintas.</div>
+    </div>
+    <div class="getting-here-row">
+      <div>Dari Umalas</div>
+      <div>Dekat sekali, biasanya di bawah 10 menit.</div>
+    </div>
+    <div class="getting-here-row">
+      <div>Dari Kuta atau Legian</div>
+      <div>Kurang lebih 15 sampai 20 menit lewat Sunset Road atau Teuku Umar.</div>
+    </div>
+    <div class="getting-here-row">
+      <div>Dari Denpasar</div>
+      <div>Sekitar 15 menit, dengan parkir lebih mudah dibanding daerah pantai.</div>
+    </div>
+  </div>
+  <p class="section-intro">Kalau Anda tidak ingin bepergian, kami juga menyediakan home service untuk klien yang tinggal di sekitar. Kalau Anda menginap di vila sekitar Seminyak atau Kerobokan dan lebih suka perawatan datang ke tempat Anda, hubungi kami lewat WhatsApp untuk cek ketersediaan.</p>
+</div>
+
+<!-- PERSIAPAN SEBELUM DATANG -->
+<div class="svc-section reveal">
+  <h2 class="section-title">Persiapan Sebelum Datang</h2>
+  <p class="section-intro">Beberapa hal kecil membantu hasil akhirnya maksimal.</p>
+  <ul class="care-list">
+    <li>Usahakan datang dengan kuku polos, atau beri tahu kami sebelumnya kalau ada set lama yang perlu dilepas.</li>
+    <li>Kalau sudah ada warna atau gaya yang diinginkan, screenshot adalah cara paling mudah untuk menunjukkannya. Kalau belum, tidak masalah.</li>
+    <li>Rencanakan kunjungan ulang setiap tiga sampai empat minggu seiring kuku tumbuh, jangan menunggu sampai terlihat terangkat.</li>
+    <li>Beri tahu kalau kuku Anda punya riwayat mudah terangkat atau lemah, supaya persiapannya bisa disesuaikan.</li>
+  </ul>
+</div>
+
 <!-- FAQ -->
 <div class="faq-section reveal">
   <div class="faq-inner">
@@ -619,6 +726,14 @@
     <div class="faq-item">
       <div class="faq-q">Lokasinya di mana?</div>
       <div class="faq-a">Jl. Persada II No. 4B, Kerobokan Kelod, Kuta Utara, di jalan kecil yang tenang, masuk sedikit dari Teuku Umar Barat. Buka Senin sampai Sabtu, 09.00 sampai 19.00.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Berapa harga BIAB di Kerobokan?</div>
+      <div class="faq-a">Di Lollygagss Studio Kerobokan, Manikur BIAB Rp 325.000, sudah termasuk manikur kering, perawatan kutikula dan warna pilihan Anda. Nail art bisa ditambahkan di atasnya dengan harga terpisah tergantung desainnya.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Apakah saya harus tahu desain yang diinginkan sebelum datang?</div>
+      <div class="faq-a">Tidak. Banyak klien datang tanpa rencana pasti dan memilih warna serta hasil akhirnya di kursi. BIAB bisa dibiarkan bening sebagai lapisan penguat atau ditutup warna apa pun, jadi bisa mulai dari yang sederhana dulu.</div>
     </div>
   </div>
 </div>

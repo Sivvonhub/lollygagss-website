@@ -4,7 +4,8 @@
     { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=social&utm_campaign=bali-tourist-info", "permanent": false },
     { "source": "/lash-fb", "destination": "/journal/lash-extensions-kerobokan?utm_source=facebook&utm_medium=social&utm_campaign=lash-extensions-kerobokan", "permanent": false },
     { "source": "/lash-threads", "destination": "/journal/lash-extensions-kerobokan?utm_source=threads&utm_medium=social&utm_campaign=lash-extensions-kerobokan", "permanent": false },
-    { "source": "/lash-gbp", "destination": "/journal/lash-extensions-kerobokan?utm_source=google-business&utm_medium=organic&utm_campaign=lash-extensions-kerobokan", "permanent": false }
+    { "source": "/lash-gbp", "destination": "/journal/lash-extensions-kerobokan?utm_source=google-business&utm_medium=organic&utm_campaign=lash-extensions-kerobokan", "permanent": false },
+    { "source": "/journal/biab-nails-kerobokan", "destination": "/biab-manicure-kerobokan", "permanent": true }
   ],
   "rewrites": [
     { "source": "/gallery", "destination": "/" },
