@@ -153,6 +153,16 @@
         "@type": "Question",
         "name": "Where are you located?",
         "acceptedAnswer": {"@type": "Answer", "text": "Jl. Persada II No. 4B, Kerobokan Kelod, Kuta Utara, on a quiet side street just off Teuku Umar Barat. Open Monday to Saturday, 09:00 to 19:00."}
+      },
+      {
+        "@type": "Question",
+        "name": "How much do lash extensions cost in Kerobokan?",
+        "acceptedAnswer": {"@type": "Answer", "text": "At Lollygagss Studio in Kerobokan, a Classic set is Rp 250.000, Volume is Rp 350.000, and Style sets are Rp 450.000. Infills range from Rp 150.000 to Rp 350.000 depending on your set, booked every two to three weeks."}
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to choose my lash set before my appointment?",
+        "acceptedAnswer": {"@type": "Answer", "text": "No. Many clients decide in the chair. Lina maps the set to your eye shape and natural lashes during a short consultation, so you can arrive with a screenshot of a look you like or with no fixed idea at all."}
       }
     ]
   }
@@ -342,7 +352,41 @@
 
     .lp-section-img { width:100%; height:auto; max-width:460px; aspect-ratio:3/4; object-fit:cover; border-radius:2px; float:right; margin:0 0 24px 32px; }
     .switcher-callout { background:var(--blush); border-left:3px solid var(--rose); padding:28px 32px; max-width:760px; }
-    .switcher-callout p { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray-dark); line-height:1.75; }
+    .switcher-callout p { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--gray-dark); line-height:1.75; margin-bottom:16px; }
+    .switcher-callout p:last-child { margin-bottom:0; }
+
+    /* Ported from the retired lash journal article: rating strip */
+    .rating-strip { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:36px 0; padding:18px 24px; background:var(--cream); border:1px solid var(--gray-light); }
+    .rating-strip-stars { color:var(--rose); font-size:18px; letter-spacing:3px; }
+    .rating-strip-score { font-family:'Jost',sans-serif; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--black); font-weight:500; }
+    .rating-strip-count { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gray); }
+    .rating-strip-src { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rose); margin-left:auto; }
+    @media(max-width:600px) { .rating-strip-src { margin-left:0; width:100%; } }
+
+    /* Ported from the retired lash journal article: review card */
+    .review-card { margin:40px 0; border:1px solid var(--gray-light); background:var(--white); padding:32px 36px; }
+    .review-card-stars { color:var(--rose); font-size:15px; letter-spacing:3px; margin-bottom:14px; }
+    .review-card p { font-family:'Cormorant Garamond',serif; font-size:clamp(19px,2vw,23px); font-weight:300; font-style:italic; color:var(--black); line-height:1.6; margin:0 0 16px; }
+    .review-card cite { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); font-style:normal; }
+
+    /* Ported from the retired lash journal article: getting-here travel block */
+    .getting-here { margin:52px 0; border:1px solid var(--gray-light); }
+    .getting-here-header { background:var(--black); color:var(--rose-light); padding:16px 24px; font-family:'Jost',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; }
+    .getting-here-row { display:grid; grid-template-columns:1fr 1.4fr; border-top:1px solid var(--gray-light); }
+    .getting-here-row:first-of-type { border-top:none; }
+    .getting-here-row:nth-child(even) { background:var(--cream); }
+    .getting-here-row div { padding:16px 24px; font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--gray-dark); line-height:1.5; }
+    .getting-here-row div:first-child { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gray); padding-top:20px; }
+    @media(max-width:600px) {
+      .getting-here-row { grid-template-columns:1fr; }
+      .getting-here-row div:first-child { padding-bottom:0; padding-top:18px; }
+      .getting-here-row div:last-child { padding-top:6px; }
+    }
+
+    /* Ported from the retired lash journal article: care-list checklist */
+    .care-list { list-style:none; margin:24px 0 32px; }
+    .care-list li { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; color:var(--gray-dark); line-height:1.6; padding:14px 0 14px 28px; border-bottom:1px solid var(--blush); position:relative; }
+    .care-list li::before { content:'♥'; position:absolute; left:0; top:14px; font-size:12px; color:var(--rose); }
 
     .faq-section { background:var(--cream); padding:64px 48px; }
     .faq-inner { max-width:800px; margin:0 auto; }
@@ -549,6 +593,13 @@
   <p class="svc-note">Not sure which suits your eye shape? Send me a photo on WhatsApp and I will tell you honestly, including if the answer is Classic.</p>
 </div>
 
+<!-- WHAT LASH EXTENSIONS COST IN KEROBOKAN -->
+<div class="svc-section reveal">
+  <h2 class="section-title">What Lash Extensions Cost in Kerobokan</h2>
+  <p class="section-intro">Lash pricing in Bali runs from suspiciously cheap to resort-level expensive, and the price does not always tell you much about the work. At Lollygagss the menu is short and the pricing is on the page, so you know exactly what you are booking before you arrive.</p>
+  <p class="section-intro">A Classic or Volume set takes around two hours and a Style set takes three and a half, so plan your day around it rather than squeezing it between other appointments.</p>
+</div>
+
 <!-- INFILLS -->
 <div class="svc-section reveal">
   <div class="svc-header">
@@ -610,7 +661,65 @@
   <h2 class="section-title">Coming From Another Technician</h2>
   <div class="switcher-callout">
     <p>If you are already wearing extensions and want to switch, message me first with a photo. Depending on retention and how the set was applied, I may be able to infill over it, or it may be cleaner to remove and start again. I would rather tell you that before you arrive than after.</p>
+    <p>If you have had a bad set before, stinging glue, sore eyes, or lashes that dropped within the first week, you are not alone. A lot of my lash clients came to me after exactly that experience somewhere else. Tell me what went wrong and I will work around it, whether that means a patch test, a different adhesive, or simply going slower.</p>
   </div>
+</div>
+
+<!-- WHY CLIENTS CHOOSE LOLLYGAGSS FOR LASHES -->
+<div class="svc-section reveal">
+  <h2 class="section-title">Why Clients Choose Lollygagss for Lashes</h2>
+  <p class="section-intro">Lollygagss Studio sits on Jl. Persada II, just off Teuku Umar Barat in Kerobokan Kelod. It is a quiet side street rather than a busy main road, and for lash work that matters more than you might think. A full set takes around two hours with your eyes closed, longer for a Style set, and the difference between a calm private room and a salon with five chairs going at once is the difference between a nap and an endurance test.</p>
+  <p class="section-intro">Lash extensions ask for more trust than most beauty services. Your eyes are closed for a couple of hours while someone works a few millimetres from them, and you cannot check the result until it is finished. That is exactly why seeing the same technician every time matters. I am the owner and the only technician at Lollygagss, so the person who mapped your last set, knows your natural lashes, and remembers what worked is the same person doing your infill.</p>
+  <p class="section-intro">I take one client at a time in a calm, clean space. With lashes in particular, unhurried work shows. Proper isolation of each natural lash is what separates a set that grows out comfortably from one that tangles, pulls, and damages your own lashes, and that careful application is the first thing a high-turnover salon cuts. It is the part I refuse to rush.</p>
+  <div class="rating-strip" aria-label="Google rating">
+    <span class="rating-strip-stars">★★★★★</span>
+    <span class="rating-strip-score">5.0 on Google</span>
+    <span class="rating-strip-count">69 reviews</span>
+    <span class="rating-strip-src">Lollygagss Studio, Kerobokan</span>
+  </div>
+  <div class="review-card">
+    <div class="review-card-stars">★★★★★</div>
+    <p>"This is already my second time coming here for a treatment. The first time, I got my eyelashes done and I was absolutely obsessed with themmmm."</p>
+    <cite>Lola · <a href="https://www.google.com/maps/place/?q=place_id:ChIJHTK4hLlH0i0RMqbSXuaV1XY" target="_blank" rel="noopener" style="color:var(--rose);text-decoration:none;">View on Google →</a></cite>
+  </div>
+</div>
+
+<!-- GETTING TO THE STUDIO -->
+<div class="svc-section reveal">
+  <h2 class="section-title">Getting to the Studio</h2>
+  <p class="section-intro">Bali is small, and Teuku Umar is well connected, so most clients reach us in under twenty minutes. Here is roughly what to expect from the nearby areas, traffic depending.</p>
+  <div class="getting-here">
+    <div class="getting-here-header">Approximate travel to Lollygagss Studio</div>
+    <div class="getting-here-row">
+      <div>From Seminyak</div>
+      <div>Around 10 to 15 minutes by scooter or car, traffic depending.</div>
+    </div>
+    <div class="getting-here-row">
+      <div>From Umalas</div>
+      <div>A short hop, usually under 10 minutes.</div>
+    </div>
+    <div class="getting-here-row">
+      <div>From Kuta or Legian</div>
+      <div>Roughly 15 to 20 minutes via Sunset Road or Teuku Umar.</div>
+    </div>
+    <div class="getting-here-row">
+      <div>From Denpasar</div>
+      <div>About 15 minutes, with easier parking than the beach areas.</div>
+    </div>
+  </div>
+  <p class="section-intro">If you would rather not travel, I also offer home service for clients staying nearby. If you are in a villa around Seminyak or Kerobokan and would prefer your lash appointment to come to you, message me on WhatsApp to check availability for your dates.</p>
+</div>
+
+<!-- BEFORE YOUR APPOINTMENT -->
+<div class="svc-section reveal">
+  <h2 class="section-title">Before Your Appointment</h2>
+  <p class="section-intro">A few small things make a real difference to your result.</p>
+  <ul class="care-list">
+    <li>Arrive with clean lashes and no eye makeup, especially mascara. Removing it eats into your appointment time and old mascara ruins retention.</li>
+    <li>If you have a look in mind, a screenshot is the easiest way to show it. If not, we will map a set to your eye shape in the chair.</li>
+    <li>Plan infills every two to three weeks rather than waiting for the set to thin out.</li>
+    <li>Mention sensitive eyes or any past reaction to lash glue so I can patch test or adjust products before we start.</li>
+  </ul>
 </div>
 
 <!-- FAQ -->
@@ -633,6 +742,14 @@
     <div class="faq-item">
       <div class="faq-q">Where are you located?</div>
       <div class="faq-a">Jl. Persada II No. 4B, Kerobokan Kelod, Kuta Utara, on a quiet side street just off Teuku Umar Barat. Open Monday to Saturday, 09:00 to 19:00.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much do lash extensions cost in Kerobokan?</div>
+      <div class="faq-a">At Lollygagss Studio in Kerobokan, a Classic set is Rp 250.000, Volume is Rp 350.000, and Style sets are Rp 450.000. Infills range from Rp 150.000 to Rp 350.000 depending on your set, booked every two to three weeks.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to choose my lash set before my appointment?</div>
+      <div class="faq-a">No. Many clients decide in the chair. Lina maps the set to your eye shape and natural lashes during a short consultation, so you can arrive with a screenshot of a look you like or with no fixed idea at all.</div>
     </div>
   </div>
 </div>

@@ -30,7 +30,6 @@ const HTML_PAGE_PATHS = [
   '/journal/gel-biab-extensions-bali',
   '/journal/lash-classic-volume-style-bali',
   '/journal/lash-extensions-bali-humidity',
-  '/journal/lash-extensions-kerobokan',
   '/biab-manicure-kerobokan',
   '/lash-extensions-kerobokan',
   '/nail-art-kerobokan',
