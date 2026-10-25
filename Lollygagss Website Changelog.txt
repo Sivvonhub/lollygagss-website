@@ -1,3 +1,25 @@
+v2.35 — 25 October 2026
+
+Home service temporarily paused. Every mention of home service removed from the live site in both languages. One commit. Temporary. To restore home service, run `git revert <this commit SHA>`. The SHA is recorded in the pull request description rather than in this commit.
+
+services.html, id/services.html — Deleted the whole "06 Home Service" / "06 Layanan ke Rumah" section, from the `section-divider` above it through the closing `</div>` of its `svc-section`, stopping before the Book banner. This removes the heading, the WhatsApp design note, and both table rows (Home Service within 5 km, Rp 100.000, and Home Service Extended 5–10 km, Rp 200.000) with their Fresha Book buttons. Sections 01 to 05 are untouched.
+
+index.html — Removed home service from the hero subtitle, the hours line, the About paragraph (one sentence), the About meta grid (the "Home Service / Available" item) and the Contact section (the "Home Service" item). `data-en`, `data-id` and visible text were kept in sync in each place.
+
+id/index.html — The same five removals as index.html, in plain text.
+
+lash-extensions-kerobokan.html, id/lash-extensions-kerobokan.html, biab-manicure-kerobokan.html, id/biab-manicure-kerobokan.html — Deleted the closing home service paragraph at the end of "Getting to the Studio" / "Cara Menuju Studio". The `.getting-here` table and the section wrapper are kept.
+
+journal/biab-bali.html — Deleted the home service paragraph and removed the home service sentence from the footer line. The "villas around Kerobokan" line is unrelated to home service and was left alone.
+
+journal/lash-classic-volume-style-bali.html, journal/lash-extensions-bali-humidity.html — Removed the home service sentence from the footer line.
+
+sitemap.xml — Set `lastmod` to 2026-10-25 on the 11 URLs whose content changed. Every other entry is unchanged.
+
+Not changed: no `<script>` block, JSON-LD, Fresha link elsewhere, `book_click` listener, GA4, Clarity, vercel.json or redirect was touched.
+
+---
+
 v2.34 — 18 August 2026
 
 Keyword-cannibalisation fix: consolidated the journal article that had been outranking the commercial lash landing page back into that landing page, in both languages, with a permanent redirect, and repointed the three social short links that had fed the journal. Same shape as v2.33's BIAB consolidation. One commit (ee1d9e0).
