@@ -1,3 +1,15 @@
+v2.36 — 25 October 2026
+
+Hard Gel & Extension Removal duration changed from 30m to 45m on the services and BIAB landing pages, in both languages. One commit. Prices and Fresha links are unchanged.
+
+services.html, id/services.html, biab-manicure-kerobokan.html, id/biab-manicure-kerobokan.html — In the "Hard Gel & Extension Removal" / "Pelepasan Hard Gel & Ekstensi" row, the `svc-dur` cell changed from `30m` to `45m`. Gel Removal / Pelepasan Gel and Lash Removal / Pelepasan Bulu Mata stay at 30m. No schema was changed: the BIAB pages' Offer JSON-LD carries no duration field.
+
+sitemap.xml — Not changed. `lastmod` on /services, /id/services, /biab-manicure-kerobokan and /id/biab-manicure-kerobokan was already 2026-10-25 from v2.35, which is today's date.
+
+Not changed: no `<script>` block, price or Fresha link was touched.
+
+---
+
 v2.35 — 25 October 2026
 
 Home service temporarily paused. Every mention of home service removed from the live site in both languages. One commit. Temporary. To restore home service, run `git revert <this commit SHA>`. The SHA is recorded in the pull request description rather than in this commit.
