@@ -1,3 +1,27 @@
+v2.37 — 1 November 2026
+
+Style Lashes and Style Lash Infill temporarily paused. Every bookable mention removed from the live site in both languages. One commit. Temporary. To restore both services, run `git revert <this commit SHA>` (or `git revert -m 1 <merge commit>` on main). The SHA is recorded in the pull request description rather than in this commit.
+
+services.html, id/services.html — Deleted the Style Lashes / Bulu Mata Style row (3h 30min, Rp 450.000) and the Style Lash Infill / Isi Ulang Bulu Mata Style row (2h, Rp 350.000) with their Fresha Book buttons. The Classic, Volume, Lash Removal and infill rows around them are intact. The journal link under Classic Lashes now reads "Classic or Volume? Read our guide →" / "Classic atau Volume? Baca panduan kami →" (data-en, data-id and visible text in sync on services.html). In id/services.html the lash intro now says "Ada dua pilihan set". The English services.html has no lash intro, so nothing changed there.
+
+lash-extensions-kerobokan.html, id/lash-extensions-kerobokan.html — Meta description and og:description no longer mention Style or Rp 450k. Deleted the Style Lashes and Style Lash Infill Offer lines from the JSON-LD (no trailing comma left). Hero descriptor now lists Classic and Volume only, with infills from Rp 150.000. Intro first sentence now says a full set takes two to two and a half hours. Section comment and heading changed from "The Three Sets" / "Tiga Pilihan Set" to "Choose Your Set" / "Pilih Set Anda". Deleted the Style and Style infill rows with their Fresha Book buttons. Cost section now says a Classic or Volume set takes around two hours. FAQ answer (schema and visible text, identical) now quotes Classic Rp 250.000, Volume Rp 350.000 and infills Rp 150.000 to Rp 250.000.
+
+index.html, id/index.html — Lashes service card now reads "Classic and Volume lash extensions. Cat eye styling available." (data-en, data-id and visible text in sync on index.html). Style removed from the lash sentence in the About paragraph (data-en, data-id and visible text on index.html; plain text on id/index.html).
+
+nail-salon-kerobokan.html, id/salon-kuku-kerobokan.html — The lash line at 573 now names Classic and Volume sets only, from Rp 250.000.
+
+journal/lash-classic-volume-style-bali.html — URL, title, meta, H1, FAQ schema and descriptive Style content unchanged. The link to the lash page now reads "Classic and Volume lash prices in Kerobokan →". The Style service-spotlight block (label, heading, description, price rows, Fresha button and WhatsApp button) replaced with one paragraph saying Style Lashes are not currently offered and pointing to Volume with cat eye styling. In the comparison table, the Style Lashes row keeps its duration and shows "Not currently offered" in the price and infill cells.
+
+journal/lash-extensions-bali-humidity.html — The lash service block now reads "Classic and Volume sets... Infills available for both." and the Style price item was deleted. The Fresha button, the guide link and the related-article card are unchanged.
+
+priceRange — Changed from "Rp 60.000 to Rp 450.000" to "Rp 60.000 to Rp 400.000" in the JSON-LD on 18 pages: index.html, id/index.html, services.html, id/services.html, journal.html, id/journal.html, lash-extensions-kerobokan.html, id/lash-extensions-kerobokan.html, nail-salon-kerobokan.html, id/salon-kuku-kerobokan.html, nail-art-kerobokan.html, id/nail-art-kerobokan.html, biab-manicure-kerobokan.html, id/biab-manicure-kerobokan.html, journal/biab-bali.html, journal/gel-biab-extensions-bali.html, journal/lash-extensions-bali-humidity.html, journal/lash-classic-volume-style-bali.html. Nothing else in those script blocks was touched.
+
+sitemap.xml — Set `lastmod` to 2026-11-01 on the 10 URLs with visible text changes: /, /id, /services, /id/services, /lash-extensions-kerobokan, /id/lash-extensions-kerobokan, /nail-salon-kerobokan, /id/salon-kuku-kerobokan, /journal/lash-classic-volume-style-bali and /journal/lash-extensions-bali-humidity. Pages where only priceRange changed keep their existing lastmod.
+
+Not changed: links.html, journal.html and id/journal.html article cards, the related-article cards, the 301 from /journal/lash-extensions-kerobokan, vercel.json, GA4, Clarity, the book_click listener and any other `<script>` block.
+
+---
+
 v2.36 — 25 October 2026
 
 Hard Gel & Extension Removal duration changed from 30m to 45m on the services and BIAB landing pages, in both languages. One commit. Prices and Fresha links are unchanged.
