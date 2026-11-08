@@ -16,6 +16,8 @@ sitemap.xml — Set `lastmod` to 2026-11-08 on the 11 URLs whose content changed
 
 Conflicts were resolved so that later changes stay in effect. PR #45 (Hard Gel & Extension Removal at 45m) is unchanged. PR #46 (Style Lashes and Style Lash Infill paused) is unchanged: Style stays off every page, the About paragraph still reads "Classic and Volume sets" / "set Classic dan Volume", and the schema priceRange is as #46 left it.
 
+services.html, id/services.html — Home service descriptions updated because home service now covers nails and lashes. Both rows now lead with the minimum spend (Rp 400.000) and read "Nails and lashes at your home or villa" / "Kuku dan bulu mata di rumah atau vila Anda". `data-en` and `data-id` kept in sync with the visible text on services.html. Names, durations, prices, `data-idr` values and Fresha links are unchanged. This is a separate second commit, so reverting only the first commit still removes home service entirely.
+
 Not changed: opening hours, "Closed Sunday" and the "I am the only technician" wording. These are handled in a separate PR.
 
 ---
