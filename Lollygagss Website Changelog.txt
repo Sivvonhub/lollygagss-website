@@ -1,3 +1,25 @@
+v2.38 — 8 November 2026
+
+Home service restored. Revert of PR #44 (merge commit 20400a3). Home service is back on the live site in both languages. This is two commits: the revert itself, then a small wording update to the two service-table descriptions. To pause home service again, revert the first commit.
+
+services.html, id/services.html — Restored the whole "06 Home Service" / "06 Layanan ke Rumah" section with its two rows, Home Service (within 5 km, Rp 100.000) and Home Service Extended (5–10 km, Rp 200.000), and their Fresha booking links.
+
+index.html, id/index.html — Restored home service in the hero subtitle, the hours line, the About paragraph (one sentence), the About meta grid and the Contact section.
+
+lash-extensions-kerobokan.html, id/lash-extensions-kerobokan.html, biab-manicure-kerobokan.html, id/biab-manicure-kerobokan.html — Restored the closing home service paragraph under "Getting to the Studio" / "Cara Menuju Studio".
+
+journal/biab-bali.html — Restored the home service paragraph and the home service sentence in the footer line.
+
+journal/lash-classic-volume-style-bali.html, journal/lash-extensions-bali-humidity.html — Restored the home service sentence in the footer line.
+
+sitemap.xml — Set `lastmod` to 2026-11-08 on the 11 URLs whose content changed. Every other entry is unchanged.
+
+Conflicts were resolved so that later changes stay in effect. PR #45 (Hard Gel & Extension Removal at 45m) is unchanged. PR #46 (Style Lashes and Style Lash Infill paused) is unchanged: Style stays off every page, the About paragraph still reads "Classic and Volume sets" / "set Classic dan Volume", and the schema priceRange is as #46 left it.
+
+Not changed: opening hours, "Closed Sunday" and the "I am the only technician" wording. These are handled in a separate PR.
+
+---
+
 v2.37 — 1 November 2026
 
 Style Lashes and Style Lash Infill temporarily paused. Every bookable mention removed from the live site in both languages. One commit. Temporary. To restore both services, run `git revert <this commit SHA>` (or `git revert -m 1 <merge commit>` on main). The SHA is recorded in the pull request description rather than in this commit.
