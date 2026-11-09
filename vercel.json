@@ -5,6 +5,7 @@
     { "source": "/lash-fb", "destination": "/lash-extensions-kerobokan?utm_source=facebook&utm_medium=social&utm_campaign=lash-extensions-kerobokan", "permanent": false },
     { "source": "/lash-threads", "destination": "/lash-extensions-kerobokan?utm_source=threads&utm_medium=social&utm_campaign=lash-extensions-kerobokan", "permanent": false },
     { "source": "/lash-gbp", "destination": "/lash-extensions-kerobokan?utm_source=google&utm_medium=gbp_post&utm_campaign=lash-extensions-kerobokan", "permanent": false },
+    { "source": "/book", "destination": "https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855", "permanent": false },
     { "source": "/journal/biab-nails-kerobokan", "destination": "/biab-manicure-kerobokan", "permanent": true },
     { "source": "/journal/lash-extensions-kerobokan", "destination": "/lash-extensions-kerobokan", "permanent": true }
   ],

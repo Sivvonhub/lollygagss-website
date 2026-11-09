@@ -1,3 +1,7 @@
+v2.40 — 9 November 2026
+
+Added /book short redirect to the Fresha booking page for use in WhatsApp and printed material.
+
 v2.39 — 8 November 2026
 
 Opening hours: open 7 days. From Monday 9 November 2026 the studio is open every day, 09:00 to 19:00. All visible text, FAQ answers, FAQ JSON-LD, meta descriptions and openingHoursSpecification schema now match Google Business Profile, Fresha and Facebook. One commit. Hours only. Opens and closes times are unchanged ("09:00" and "19:00"), and no second hours block was added.
