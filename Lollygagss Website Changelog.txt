@@ -1,3 +1,15 @@
+v2.41 - 9 November 2026
+
+Owner-run wording. From 9 November 2026 the studio has two technicians (Lina and Ely), so every "only technician", "every appointment by Lina" and "satu-satunya technician" claim was replaced with owner-run wording in English and Indonesian: Lina owns the studio and is there every day, clients can book the same technician each visit, and every technician works to her standard. Text only. Opening hours, prices, Fresha links and the home service wording are unchanged.
+
+Shared strings. BeautySalon JSON-LD description on all 18 pages ("Owner-run and open 7 days." / "Dikelola langsung oleh pemiliknya, buka 7 hari."). Meta, og and twitter descriptions on services, id/services, lash-extensions-kerobokan, id/lash-extensions-kerobokan, id/nail-art-kerobokan and journal/biab-bali. All stay at or under 160 characters and contain "Kerobokan".
+
+Page copy. index, id/index, lash-extensions-kerobokan, id/lash-extensions-kerobokan, biab-manicure-kerobokan, id/biab-manicure-kerobokan, nail-art-kerobokan, id/nail-art-kerobokan, nail-salon-kerobokan, id/salon-kuku-kerobokan, id/services and four journal articles. Removed the "limited number of appointments a day" capacity claim and all "no junior, no rotation, no handoff" wording. The walk-in FAQ answer on nail-salon-kerobokan and id/salon-kuku-kerobokan now reads "Walk-ins are welcome, but a quick message first saves you a trip if both technicians are mid-appointment." (visible text and FAQPage JSON-LD match). The BIAB and Gel Tip rows in the journal articles no longer end with "Applied by Lina".
+
+Style Lashes article (journal/lash-classic-volume-style-bali). Style Lashes are described as paused, with Volume Lashes with cat eye styling as the closest alternative. Removed the Style infill price and "best known for". Section heading is now "Style lashes: the wispy, spiky look". Volume duration corrected from 2 hours to 2 hours 30 min (matches the 2h 30m on the services menu) in the Volume card, the price table and the FAQPage JSON-LD. Style row in the price table now reads "Paused". Title, URL, cross-link cards and FAQ questions are unchanged.
+
+sitemap.xml - Set lastmod to 2026-11-09 on all 18 URLs, since all 18 corresponding files changed.
+
 v2.40 — 9 November 2026
 
 Added /book short redirect to the Fresha booking page for use in WhatsApp and printed material.
