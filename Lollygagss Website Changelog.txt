@@ -1,3 +1,9 @@
+v2.42 - 13 November 2026
+
+Owner-run wording, leftovers missed by v2.41. Home page meta, og and twitter descriptions in English and Indonesian no longer say the services are "by Lina" or "all by owner Lina" / "semuanya oleh Lina"; they now say owner-run and open 7 days (all at or under 160 characters, all still contain "Kerobokan"). The Instagram strip line on index and id/index no longer says "all by Lina". The Gel Manicure spotlight in journal/gel-biab-extensions-bali now ends "One technician from start to finish." instead of "Everything done by Lina from start to end." Text only. Author bylines ("By Lina, owner of Lollygagss Studio") are kept deliberately.
+
+sitemap.xml - lastmod set to 2026-11-13 on the three changed URLs.
+
 v2.41 - 9 November 2026
 
 Owner-run wording. From 9 November 2026 the studio has two technicians (Lina and Ely), so every "only technician", "every appointment by Lina" and "satu-satunya technician" claim was replaced with owner-run wording in English and Indonesian: Lina owns the studio and is there every day, clients can book the same technician each visit, and every technician works to her standard. Text only. Opening hours, prices, Fresha links and the home service wording are unchanged.
