@@ -1,3 +1,13 @@
+v2.43 - 14 November 2026
+
+Hard Gel Extensions added to the services pages (PR 52, PR 54). services.html (bilingual data-en / data-id) and id/services.html (Indonesian) each have a new Hard Gel Extensions / Ekstensi Hard Gel row directly after Gel Tip Extensions: Rp 450.000, 3h (first published as 2h 30m in PR 52, changed to 3h in PR 54). The description says removal is priced separately. The Book button uses the general Fresha services URL with no oiid, so it opens the full services list. TODO: add the Hard Gel Extensions oiid to both rows once the Fresha service is live. No refill line has been added.
+
+priceRange - Changed from "Rp 60.000 to Rp 400.000" to "Rp 60.000 to Rp 450.000" in the JSON-LD on the same 18 pages as v2.37, so the range covers the new Rp 450.000 price. This reverses the v2.37 change. Nothing else in those script blocks was touched. The Rp 400.000 mentions for nail art prices and home service minimum spend are unchanged.
+
+sitemap.xml - lastmod set to 2026-11-14 on /services and /id/services (the two URLs with visible changes).
+
+Not changed: any other row, price or text, the JSON-LD service lists (there are none), vercel.json, GA4, Clarity.
+
 v2.42 - 13 November 2026
 
 Owner-run wording, leftovers missed by v2.41. Home page meta, og and twitter descriptions in English and Indonesian no longer say the services are "by Lina" or "all by owner Lina" / "semuanya oleh Lina"; they now say owner-run and open 7 days (all at or under 160 characters, all still contain "Kerobokan"). The Instagram strip line on index and id/index no longer says "all by Lina". The Gel Manicure spotlight in journal/gel-biab-extensions-bali now ends "One technician from start to finish." instead of "Everything done by Lina from start to end." Text only. Author bylines ("By Lina, owner of Lollygagss Studio") are kept deliberately.
