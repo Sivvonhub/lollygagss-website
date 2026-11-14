@@ -1,3 +1,11 @@
+v2.44 - 14 November 2026
+
+Hard Gel Extensions Book button. services.html and id/services.html: replaced the Hard Gel Extensions Book / Pesan href with the direct Fresha offer link (offerItemId=s%3A25981382) and removed the "TODO: add Hard Gel Extensions oiid" comment. Nothing else on the row changed.
+
+Technician lock removed from Fresha links. Removed the eid=5277110 parameter (and its leading &) from every Fresha booking link so clients can book either technician. 86 links changed across 12 files: services.html (19), id/services.html (19), lash-extensions-kerobokan.html (6), id/lash-extensions-kerobokan.html (6), biab-manicure-kerobokan.html (6), id/biab-manicure-kerobokan.html (6), nail-art-kerobokan.html (5), id/nail-art-kerobokan.html (5), nail-salon-kerobokan.html (5), id/salon-kuku-kerobokan.html (5), journal/gel-biab-extensions-bali.html (2), journal/lash-classic-volume-style-bali.html (2). No other part of any URL changed. grep for eid=5277110 now returns 0.
+
+Style Lashes cleanup, follow-up to the Classic vs Volume guide. journal/lash-classic-volume-style-bali.html: removed or rewrote every remaining Style reference (intro, the "What is the actual difference" H2 and its Style paragraph, the "How to choose" answers, the retention summary, and the FAQ JSON-LD retention and switching questions). The "Volume with cat eye styling" advice is kept. lash-extensions-kerobokan.html and id/lash-extensions-kerobokan.html: removed "longer for a Style set" / "lebih lama untuk set Style" from the studio location intro. Earlier changelog entries are unchanged.
+
 v2.42 - 13 November 2026
 
 Owner-run wording, leftovers missed by v2.41. Home page meta, og and twitter descriptions in English and Indonesian no longer say the services are "by Lina" or "all by owner Lina" / "semuanya oleh Lina"; they now say owner-run and open 7 days (all at or under 160 characters, all still contain "Kerobokan"). The Instagram strip line on index and id/index no longer says "all by Lina". The Gel Manicure spotlight in journal/gel-biab-extensions-bali now ends "One technician from start to finish." instead of "Everything done by Lina from start to end." Text only. Author bylines ("By Lina, owner of Lollygagss Studio") are kept deliberately.
