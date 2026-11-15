@@ -1,3 +1,27 @@
+v2.48 - 15 November 2026
+
+Two technicians in the meta and schema descriptions, plus Google Business Profile post photos (PR 59, PR 60). Meta, og, twitter and BeautySalon JSON-LD descriptions on the 18 English and Indonesian pages that carried owner-run wording now say "Two technicians, open 7 days" / "Dua teknisi, buka 7 hari". On index and id/index the og and twitter descriptions read "Lina's studio, two technicians, open 7 days." / "Studio milik Lina, dua teknisi, buka 7 hari." Files: index, id/index, services, id/services, journal, id/journal, biab-manicure-kerobokan, id/biab-manicure-kerobokan, lash-extensions-kerobokan, id/lash-extensions-kerobokan, nail-art-kerobokan, id/nail-art-kerobokan, nail-salon-kerobokan, id/salon-kuku-kerobokan and the four journal articles. Text only. This replaces the v2.41 and v2.42 owner-run meta copy; visible page copy, author bylines and the home page About section are unchanged.
+
+New folder images/gbp/ with six 1200 x 900 JPEGs (EXIF stripped) used as public image URLs for Google Business Profile posts: gbp-2026-11-p1-open-7-days.jpg, gbp-2026-11-p2-biab.jpg, gbp-2026-11-p3-extensions.jpg, gbp-2026-11-p4-lashes.jpg, gbp-2026-11-express-manicure.jpg (PR 59) and gbp-2026-11-p5-home-service.jpg (PR 60). They are not linked from any page. Do not delete or rename them while the GBP posts that use them are live (scheduled weekly to 14 December 2026).
+
+sitemap.xml - Not changed in PR 59 or PR 60.
+
+Not changed: prices, Fresha links, hours, home service wording, vercel.json, GA4, Clarity.
+
+v2.47 - 15 November 2026
+
+Gel Pedicure (wet) raised from Rp 250.000, 1h 30m to Rp 275.000, 1h 45m (PR 58), so gel adds Rp 75.000 and the wet soak and massage add Rp 50.000 across the pedicure menu. Changed the price, data-idr value and duration on services.html, id/services.html, nail-salon-kerobokan.html and id/salon-kuku-kerobokan.html, and the Gel Pedicure Offer price in the salon page JSON-LD (250000 to 275000). The Rp 250.000 and 1h 30m in the v2.45 entry are out of date from here. Booking link (offerItemId=s%3A26423238) unchanged.
+
+priceRange - Not changed (still Rp 60.000 to Rp 450.000).
+
+sitemap.xml - Not changed in this PR (v2.45 already set 2026-11-15 on these URLs).
+
+v2.46 - 15 November 2026
+
+Services menu grouped (second commit of PR 57). services.html and id/services.html: the single Nail Services table is split into three sections, cheapest first: Manicures, Pedicures and Extensions. Pedicures sit in a two-column grid, Express (dry) beside Classic (wet), with a one-line explainer. Jump buttons added to the sticky currency bar, and the later sections renumbered. Existing anchors #nail-services, #nail-art and #lash-extensions are kept; new anchors #pedicures, #extensions and #home-service added (use these for ad sitelinks and GBP buttons).
+
+Not changed: prices, Fresha links, other pages.
+
 v2.45 - 15 November 2026
 
 November 2026 manicure and pedicure menu. Prices, times and booking IDs follow Fresha.
