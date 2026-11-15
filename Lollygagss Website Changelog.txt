@@ -1,3 +1,21 @@
+v2.45 - 15 November 2026
+
+November 2026 manicure and pedicure menu. Prices, times and booking IDs follow Fresha.
+
+Menu now: Express Manicure Rp 120.000, 30m (dry, no soak, no polish). Gel Manicure Rp 195.000, 1h. Express Pedicure Rp 150.000, 30m (dry, no soak, no polish). Express Gel Pedicure Rp 225.000, 1h 30m (dry, gel colour). Classic Pedicure Rp 200.000, 1h (wet, foot soak and foot and calf massage, no polish). Gel Pedicure Rp 250.000, 1h 30m (wet, gel colour, foot soak and massage included). BIAB Manicure is unchanged at Rp 325.000. Wet pedicures are done by Ely only; no technician name is shown on the site.
+
+Renamed services keep their old Fresha IDs: Classic Manicure (sv%3A27443577) is now Express Manicure, old dry Classic Pedicure (sv%3A28452259) is now Express Pedicure, old Gel Pedicure (sv%3A28452276) is now Express Gel Pedicure. The two new wet services use new links: Classic Pedicure offerItemId=s%3A26423237 and Gel Pedicure offerItemId=s%3A26423238 (same URL format as the Hard Gel Extensions link). "Classic Manicure" no longer exists anywhere on the site. "Classic Pedicure" now means the wet service at Rp 200.000, not the old dry one at Rp 175.000.
+
+Pages: services.html, id/services.html, nail-salon-kerobokan.html and id/salon-kuku-kerobokan.html (price tables, descriptions, Book buttons, OfferCatalog JSON-LD and the prices FAQ in both the visible text and the FAQPage JSON-LD; the old Classic Manicure Rp 145.000 FAQ answer now names Express Manicure Rp 120.000). The Gel Manicure description no longer says "Classic prep" and now reads "Dry manicure prep with gel colour and a nail vitamin finish." on those four pages plus biab-manicure-kerobokan.html and id/biab-manicure-kerobokan.html. The old "drill machine" / "mesin bor" wording is gone; only the Express services are described as dry with no soak.
+
+Indonesian pages keep the service names in English for the new menu (Express Manicure, Express Pedicure, Express Gel Pedicure, Classic Pedicure, Gel Pedicure). The existing "Manikur Gel" name is unchanged.
+
+priceRange - Not changed. The lowest price on the site is still the Rp 60.000 Basic nail art tier and the highest is still Rp 450.000 Hard Gel Extensions; none of the new services is lower or higher.
+
+sitemap.xml - lastmod set to 2026-11-15 on /services, /id/services, /nail-salon-kerobokan, /id/salon-kuku-kerobokan, /biab-manicure-kerobokan and /id/biab-manicure-kerobokan.
+
+Not changed: the BIAB Manicure row and link, any other price or text, index, journal, llms files (there are none in the repo), vercel.json, GA4, Clarity.
+
 v2.44 - 14 November 2026
 
 Hard Gel Extensions Book button. services.html and id/services.html: replaced the Hard Gel Extensions Book / Pesan href with the direct Fresha offer link (offerItemId=s%3A25981382) and removed the "TODO: add Hard Gel Extensions oiid" comment. Nothing else on the row changed.
