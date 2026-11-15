@@ -522,6 +522,33 @@
     .svc-note  { font-family:'Jost',sans-serif; font-size:10px; color:var(--rose-dark); letter-spacing:1px; }
     .price-tba { font-family:'Jost',sans-serif; font-size:11px; color:var(--gray); letter-spacing:1px; text-transform:uppercase; }
 
+    /* ── MENU GROUPS (Nov 2026) ── */
+    .svc-jump { display:flex; gap:6px; margin-left:auto; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+    .svc-jump::-webkit-scrollbar { display:none; }
+    .svc-jump a {
+      font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:.5px;
+      padding:6px 14px; border:1px solid var(--rose); color:var(--rose-dark);
+      border-radius:100px; text-decoration:none; white-space:nowrap; transition:all .2s;
+    }
+    .svc-jump a:hover { background:var(--rose); color:var(--white); }
+    .svc-section[id] { scroll-margin-top:150px; }
+    .svc-intro { font-family:'Jost',sans-serif; font-size:13px; color:var(--gray-dark); margin-top:10px; max-width:520px; line-height:1.6; }
+    .pedi-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+    .pedi-col h3 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:500; margin:0; }
+    .pedi-col .pedi-sub { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-dark); margin:4px 0 6px; padding-bottom:12px; border-bottom:1px solid var(--gray-light); }
+    .pedi-grid .svc-table thead { display:none; }
+    .pedi-grid .svc-table, .pedi-grid .svc-table tbody { display:block; width:100%; }
+    .pedi-grid .svc-table tr { display:grid; grid-template-columns:auto auto 1fr; grid-template-areas:"name name name" "price dur book"; align-items:center; gap:10px 14px; padding:20px 0; border-bottom:1px solid var(--blush); }
+    .pedi-grid .svc-table td { display:block; padding:0; border-bottom:0; }
+    .pedi-grid .svc-table td:nth-child(1) { grid-area:name; }
+    .pedi-grid .svc-table td:nth-child(2) { grid-area:dur; }
+    .pedi-grid .svc-table td:nth-child(3) { grid-area:price; }
+    .pedi-grid .svc-table td:nth-child(4) { grid-area:book; text-align:right; }
+    @media(max-width:768px) {
+      .svc-jump { margin-left:0; flex-basis:100%; padding-bottom:2px; }
+      .svc-section[id] { scroll-margin-top:170px; }
+      .pedi-grid { grid-template-columns:1fr; gap:36px; }
+    }
     .section-divider { height:1px; background:var(--gray-light); margin:0 48px; }
 
     /* ── ABOUT ── */
@@ -922,6 +949,14 @@
       <button class="pill"        onclick="setCurrencyPill(this,'EUR')">EUR</button>
       <button class="pill"        onclick="setCurrencyPill(this,'GBP')">GBP</button>
     </div>
+    <div class="svc-jump" role="navigation" aria-label="Jump to section">
+      <a href="#nail-services" data-en="Manicure" data-id="Manikur">Manicure</a>
+      <a href="#pedicures" data-en="Pedicure" data-id="Pedikur">Pedicure</a>
+      <a href="#extensions" data-en="Extensions" data-id="Ekstensi">Extensions</a>
+      <a href="#nail-art" data-en="Nail Art" data-id="Seni Kuku">Nail Art</a>
+      <a href="#lash-extensions" data-en="Lashes" data-id="Bulu Mata">Lashes</a>
+      <a href="#home-service" data-en="Home service" data-id="Ke rumah">Home service</a>
+    </div>
   </div>
 
 
@@ -968,12 +1003,12 @@
     </div>
   </div>
 
-  <!-- ── 01 NAIL SERVICES ── -->
-  <div class="svc-section reveal" id="nail-services" style="scroll-margin-top:130px;">
+  <!-- ── 01 MANICURES ── -->
+  <div class="svc-section reveal" id="nail-services">
     <div class="svc-header">
       <div>
         <p class="section-label">01</p>
-        <h2 class="section-title" data-en="Nail Services" data-id="Layanan Kuku">Nail Services</h2>
+        <h2 class="section-title" data-en="Manicures" data-id="Manikur">Manicures</h2>
         <a class="journal-card-link" href="/biab-manicure-kerobokan" data-en="BIAB manicure in Kerobokan: prices and what it does →" data-id="Manikur BIAB di Kerobokan: harga dan penjelasan →">BIAB manicure in Kerobokan: prices and what it does →</a>
         <a class="journal-card-link" style="display:block;" href="/nail-salon-kerobokan" data-en="Nail salon in Kerobokan: location, hours and directions →" data-id="Salon kuku di Kerobokan: lokasi, jam buka dan petunjuk arah →">Nail salon in Kerobokan: location, hours and directions →</a>
       </div>
@@ -994,36 +1029,17 @@
       <tbody>
         <tr>
           <td>
-            <div class="svc-name" data-en="BIAB Manicure (Builder Overlay)" data-id="Manikur BIAB (Builder Overlay)">BIAB Manicure (Builder Overlay)</div>
-            <div class="svc-desc" data-en="Strengthening builder gel over natural nails. Includes dry manicure and cuticle care." data-id="Gel builder penguat di atas kuku alami. Termasuk manikur kering dan perawatan kutikula.">Strengthening builder gel over natural nails. Includes dry manicure and cuticle care.</div>
-            <a class="journal-card-link" href="/journal/biab-bali" data-en="What is BIAB? Read our guide →" data-id="Apa itu BIAB? Baca panduan kami →">What is BIAB? Read our guide →</a>
+            <div class="svc-name" data-en="Express Manicure" data-id="Express Manicure">Express Manicure</div>
+            <div class="svc-desc" data-en="Dry manicure. Nails shaped, cuticles tidied and a nail vitamin finish. No soak, no polish." data-id="Manikur kering. Kuku dibentuk, kutikula dirapikan, dan diakhiri vitamin kuku. Tanpa rendam, tanpa kutek.">Dry manicure. Nails shaped, cuticles tidied and a nail vitamin finish. No soak, no polish.</div>
           </td>
-          <td><div class="svc-dur">1h 30m</div></td>
-          <td><div class="svc-price" data-idr="325000">Rp 325.000</div></td>
-          <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&oiid=sv%3A27443614&share=true&pId=2869775" target="_blank" rel="noopener">Book</a></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="svc-name" data-en="Classic Manicure" data-id="Manikur Klasik">Classic Manicure</div>
-            <div class="svc-desc" data-en="Dry manicure with drill machine. No gel, no polish." data-id="Manikur kering dengan mesin bor. Tanpa gel, tanpa cat.">Dry manicure with drill machine. No gel, no polish.</div>
-          </td>
-          <td><div class="svc-dur">45m</div></td>
-          <td><div class="svc-price" data-idr="145000">Rp 145.000</div></td>
+          <td><div class="svc-dur">30m</div></td>
+          <td><div class="svc-price" data-idr="120000">Rp 120.000</div></td>
           <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&oiid=sv%3A27443577&share=true&pId=2869775" target="_blank" rel="noopener">Book</a></td>
         </tr>
         <tr>
           <td>
-            <div class="svc-name" data-en="Classic Pedicure" data-id="Pedikur Klasik">Classic Pedicure</div>
-            <div class="svc-desc" data-en="Dry pedicure with drill machine. No gel, no polish." data-id="Pedikur kering dengan mesin bor. Tanpa gel, tanpa cat.">Dry pedicure with drill machine. No gel, no polish.</div>
-          </td>
-          <td><div class="svc-dur">1h</div></td>
-          <td><div class="svc-price" data-idr="175000">Rp 175.000</div></td>
-          <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&oiid=sv%3A28452259&share=true&pId=2869775" target="_blank" rel="noopener">Book</a></td>
-        </tr>
-        <tr>
-          <td>
             <div class="svc-name" data-en="Gel Manicure" data-id="Manikur Gel">Gel Manicure</div>
-            <div class="svc-desc" data-en="Classic prep with gel colour and nail vitamin finish." data-id="Persiapan klasik dengan warna gel dan lapisan vitamin kuku.">Classic prep with gel colour and nail vitamin finish.</div>
+            <div class="svc-desc" data-en="Dry manicure prep with gel colour and a nail vitamin finish." data-id="Persiapan manikur kering dengan warna gel dan vitamin kuku.">Dry manicure prep with gel colour and a nail vitamin finish.</div>
             <a class="journal-card-link" href="/journal/gel-biab-extensions-bali" data-en="Gel vs BIAB vs extensions, which is right for you? →" data-id="Gel vs BIAB vs ekstensi, mana yang tepat untuk kamu? →">Gel vs BIAB vs extensions, which is right for you? →</a>
           </td>
           <td><div class="svc-dur">1h</div></td>
@@ -1032,13 +1048,121 @@
         </tr>
         <tr>
           <td>
-            <div class="svc-name" data-en="Gel Pedicure" data-id="Pedikur Gel">Gel Pedicure</div>
-            <div class="svc-desc" data-en="Classic prep with gel colour and nail vitamin finish." data-id="Persiapan klasik dengan warna gel dan lapisan vitamin kuku.">Classic prep with gel colour and nail vitamin finish.</div>
+            <div class="svc-name" data-en="BIAB Manicure (Builder Overlay)" data-id="Manikur BIAB (Builder Overlay)">BIAB Manicure (Builder Overlay)</div>
+            <div class="svc-desc" data-en="Strengthening builder gel over natural nails. Includes dry manicure and cuticle care." data-id="Gel builder penguat di atas kuku alami. Termasuk manikur kering dan perawatan kutikula.">Strengthening builder gel over natural nails. Includes dry manicure and cuticle care.</div>
+            <a class="journal-card-link" href="/journal/biab-bali" data-en="What is BIAB? Read our guide →" data-id="Apa itu BIAB? Baca panduan kami →">What is BIAB? Read our guide →</a>
           </td>
           <td><div class="svc-dur">1h 30m</div></td>
-          <td><div class="svc-price" data-idr="225000">Rp 225.000</div></td>
-          <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&oiid=sv%3A28452276&share=true&pId=2869775" target="_blank" rel="noopener">Book</a></td>
+          <td><div class="svc-price" data-idr="325000">Rp 325.000</div></td>
+          <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&oiid=sv%3A27443614&share=true&pId=2869775" target="_blank" rel="noopener">Book</a></td>
         </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ── 02 PEDICURES ── -->
+  <div class="svc-section reveal" id="pedicures">
+    <div class="svc-header">
+      <div>
+        <p class="section-label">02</p>
+        <h2 class="section-title" data-en="Pedicures" data-id="Pedikur">Pedicures</h2>
+        <p class="svc-intro" data-en="Express is dry and quick. Classic is wet, with a foot soak and massage." data-id="Express adalah pedikur kering dan cepat. Classic adalah pedikur basah, dengan rendam kaki dan pijat.">Express is dry and quick. Classic is wet, with a foot soak and massage.</p>
+      </div>
+    </div>
+    <div class="pedi-grid">
+      <div class="pedi-col">
+        <h3 data-en="Express" data-id="Express">Express</h3>
+        <p class="pedi-sub" data-en="Dry · no soak" data-id="Kering · tanpa rendam">Dry · no soak</p>
+        <table class="svc-table">
+          <thead>
+            <tr>
+              <th data-en="Service" data-id="Layanan">Service</th>
+              <th data-en="Duration" data-id="Durasi">Duration</th>
+              <th data-en="Price" data-id="Harga">Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="svc-name" data-en="Express Pedicure" data-id="Express Pedicure">Express Pedicure</div>
+                <div class="svc-desc" data-en="Dry pedicure. Toenails shaped, cuticles tidied and a nail vitamin finish. No soak, no polish." data-id="Pedikur kering. Kuku kaki dibentuk, kutikula dirapikan, dan diakhiri vitamin kuku. Tanpa rendam, tanpa kutek.">Dry pedicure. Toenails shaped, cuticles tidied and a nail vitamin finish. No soak, no polish.</div>
+              </td>
+              <td><div class="svc-dur">30m</div></td>
+              <td><div class="svc-price" data-idr="150000">Rp 150.000</div></td>
+              <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&oiid=sv%3A28452259&share=true&pId=2869775" target="_blank" rel="noopener">Book</a></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="svc-name" data-en="Express Gel Pedicure" data-id="Express Gel Pedicure">Express Gel Pedicure</div>
+                <div class="svc-desc" data-en="Dry pedicure with gel colour. Toenails shaped, cuticles tidied, gel colour and a nail vitamin finish. No soak." data-id="Pedikur kering dengan warna gel. Kuku kaki dibentuk, kutikula dirapikan, warna gel dan vitamin kuku. Tanpa rendam.">Dry pedicure with gel colour. Toenails shaped, cuticles tidied, gel colour and a nail vitamin finish. No soak.</div>
+              </td>
+              <td><div class="svc-dur">1h 30m</div></td>
+              <td><div class="svc-price" data-idr="225000">Rp 225.000</div></td>
+              <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/book-now/lollygagss-studio-jjwlf7jl/services?lid=2968855&oiid=sv%3A28452276&share=true&pId=2869775" target="_blank" rel="noopener">Book</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pedi-col">
+        <h3 data-en="Classic" data-id="Classic">Classic</h3>
+        <p class="pedi-sub" data-en="Wet · foot soak and foot and calf massage" data-id="Basah · rendam kaki serta pijat kaki dan betis">Wet · foot soak and foot and calf massage</p>
+        <table class="svc-table">
+          <thead>
+            <tr>
+              <th data-en="Service" data-id="Layanan">Service</th>
+              <th data-en="Duration" data-id="Durasi">Duration</th>
+              <th data-en="Price" data-id="Harga">Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="svc-name" data-en="Classic Pedicure" data-id="Classic Pedicure">Classic Pedicure</div>
+                <div class="svc-desc" data-en="Wet pedicure. Foot soak, cleaning, shaping, cuticle care and vitamin oil, finished with a foot and calf massage. No polish." data-id="Pedikur basah. Rendam kaki, pembersihan, pembentukan, perawatan kutikula dan minyak vitamin, diakhiri pijat kaki dan betis. Tanpa kutek.">Wet pedicure. Foot soak, cleaning, shaping, cuticle care and vitamin oil, finished with a foot and calf massage. No polish.</div>
+              </td>
+              <td><div class="svc-dur">1h</div></td>
+              <td><div class="svc-price" data-idr="200000">Rp 200.000</div></td>
+              <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/a/lollygagss-studio-kuta-utara-jl-persada-ii-no-4b-ntnu6pao/booking?offerItemId=s%3A26423237&pId=2869775" target="_blank" rel="noopener">Book</a></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="svc-name" data-en="Gel Pedicure" data-id="Gel Pedicure">Gel Pedicure</div>
+                <div class="svc-desc" data-en="Wet pedicure with gel colour. Everything in the Classic Pedicure, the foot soak and foot and calf massage included, finished with gel colour." data-id="Pedikur basah dengan warna gel. Semua yang ada di Classic Pedicure, termasuk rendam kaki serta pijat kaki dan betis, diakhiri warna gel.">Wet pedicure with gel colour. Everything in the Classic Pedicure, the foot soak and foot and calf massage included, finished with gel colour.</div>
+              </td>
+              <td><div class="svc-dur">1h 30m</div></td>
+              <td><div class="svc-price" data-idr="250000">Rp 250.000</div></td>
+              <td><a class="btn-book-row" data-en="Book" data-id="Pesan" href="https://www.fresha.com/a/lollygagss-studio-kuta-utara-jl-persada-ii-no-4b-ntnu6pao/booking?offerItemId=s%3A26423238&pId=2869775" target="_blank" rel="noopener">Book</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ── 03 EXTENSIONS ── -->
+  <div class="svc-section reveal" id="extensions">
+    <div class="svc-header">
+      <div>
+        <p class="section-label">03</p>
+        <h2 class="section-title" data-en="Nail Extensions" data-id="Ekstensi Kuku">Nail Extensions</h2>
+      </div>
+    </div>
+    <table class="svc-table">
+      <thead>
+        <tr>
+          <th data-en="Service" data-id="Layanan">Service</th>
+          <th data-en="Duration" data-id="Durasi">Duration</th>
+          <th data-en="Price" data-id="Harga">Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>
             <div class="svc-name" data-en="Gel Tip Extensions" data-id="Ekstensi Tip Gel">Gel Tip Extensions</div>
@@ -1063,11 +1187,11 @@
 
   <div class="section-divider"></div>
 
-  <!-- ── 02 NAIL ART ── -->
-  <div class="svc-section reveal" id="nail-art" style="scroll-margin-top:130px;">
+  <!-- ── 04 NAIL ART ── -->
+  <div class="svc-section reveal" id="nail-art">
     <div class="svc-header">
       <div>
-        <p class="section-label">02</p>
+        <p class="section-label">04</p>
         <h2 class="section-title" data-en="Nail Art" data-id="Seni Kuku">Nail Art</h2>
         <a class="journal-card-link" href="/nail-art-kerobokan" data-en="Nail art in Kerobokan: four tiers and prices →" data-id="Nail art di Kerobokan: empat tingkat dan harga →">Nail art in Kerobokan: four tiers and prices →</a>
       </div>
@@ -1140,11 +1264,11 @@
 
   <div class="section-divider"></div>
 
-  <!-- ── 03 NAIL REMOVAL ── -->
+  <!-- ── 05 NAIL REMOVAL ── -->
   <div class="svc-section reveal">
     <div class="svc-header">
       <div>
-        <p class="section-label">03</p>
+        <p class="section-label">05</p>
         <h2 class="section-title" data-en="Nail Removal" data-id="Pelepasan Kuku">Nail Removal</h2>
       </div>
     </div>
@@ -1183,11 +1307,11 @@
 
   <div class="section-divider"></div>
 
-  <!-- ── 04 LASH EXTENSIONS ── -->
-  <div class="svc-section reveal" id="lash-extensions" style="scroll-margin-top:130px;">
+  <!-- ── 06 LASH EXTENSIONS ── -->
+  <div class="svc-section reveal" id="lash-extensions">
     <div class="svc-header">
       <div>
-        <p class="section-label">04</p>
+        <p class="section-label">06</p>
         <h2 class="section-title" data-en="Lash Extensions" data-id="Extension Bulu Mata">Lash Extensions</h2>
         <a class="journal-card-link" href="/lash-extensions-kerobokan" data-en="Lash extensions in Kerobokan: prices, sets and infills →" data-id="Eyelash extension di Kerobokan: harga dan pilihan set →">Lash extensions in Kerobokan: prices, sets and infills →</a>
       </div>
@@ -1237,11 +1361,11 @@
 
   <div class="section-divider"></div>
 
-  <!-- ── 05 LASH INFILLS ── -->
+  <!-- ── 07 LASH INFILLS ── -->
   <div class="svc-section reveal">
     <div class="svc-header">
       <div>
-        <p class="section-label">05</p>
+        <p class="section-label">07</p>
         <h2 class="section-title" data-en="Lash Infills" data-id="Isi Ulang Bulu Mata">Lash Infills</h2>
       </div>
       <div class="design-note" data-en="Maintenance appointment. Minimum 50% of lashes remaining, within 3 weeks." data-id="Perawatan lanjutan. Minimal 50% bulu mata tersisa, dalam 3 minggu.">
@@ -1277,11 +1401,11 @@
 
   <div class="section-divider"></div>
 
-  <!-- ── 06 HOME SERVICE ── -->
-  <div class="svc-section reveal">
+  <!-- ── 08 HOME SERVICE ── -->
+  <div class="svc-section reveal" id="home-service">
     <div class="svc-header">
       <div>
-        <p class="section-label">06</p>
+        <p class="section-label">08</p>
         <h2 class="section-title" data-en="Home Service" data-id="Layanan ke Rumah">Home Service</h2>
       </div>
       <div class="design-note" data-en="Enquire via WhatsApp to confirm availability and your location." data-id="Tanyakan melalui WhatsApp untuk konfirmasi ketersediaan dan lokasi Anda.">
